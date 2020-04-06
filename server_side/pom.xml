@@ -8,10 +8,10 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.click.cloth</groupId>
-	<artifactId>click-cloth_bk</artifactId>
+	<groupId>com.clickndcloth</groupId>
+	<artifactId>server_side</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>click-cloth_bk</name>
+	<name>server_side</name>
 	<description>project_final</description>
 
 	<properties>

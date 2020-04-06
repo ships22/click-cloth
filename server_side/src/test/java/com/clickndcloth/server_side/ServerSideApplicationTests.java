@@ -1,10 +1,10 @@
-package com.click.cloth;
+package com.clickndcloth.server_side;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class ServerSideApplicationTests {
 
 	@Test
 	void contextLoads() {
