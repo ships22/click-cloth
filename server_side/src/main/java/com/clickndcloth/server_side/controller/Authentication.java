@@ -40,7 +40,6 @@ public class Authentication {
 		}
 		final UserDetails userDetails = myUserDetailsService
 				.loadUserByUsername(authenticationRequest.getEmail());
-		System.out.println("test user auth : " + userDetails);
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}

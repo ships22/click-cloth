@@ -67,5 +67,4 @@ public class User {
 		this.is_active = is_active;
 	}
 	
-	
 }
