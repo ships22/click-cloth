@@ -1,5 +1,6 @@
 package com.clickndcloth.server_side.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,10 +12,11 @@ import javax.persistence.Table;
 public class Client {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String first_name;
 	private String last_name;
+	@Column(unique = true)
 	private String email;
 	private String phone;
 	private int zip_code;

@@ -1,6 +1,7 @@
 package com.clickndcloth.server_side.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,26 @@ public class ClientDomainServiceImpl implements ClientDomain {
 	@Override
 	public List<Client> getAllClient() {
 		return clientRepository.findAll();
+	}
+	
+	@Override
+	public Client addClient(Client client) {
+		return clientRepository.save(client);
+	}
+	
+	@Override
+	public Client updateClient(Client client) {
+		return clientRepository.saveAndFlush(client);
+	}
+	
+	@Override
+	public Optional<Client> getById(Integer id) {
+		return clientRepository.findById(id);
+	}
+	
+	@Override
+	public void deleteClient(Integer id) {
+		 clientRepository.deleteById(id);
 	}
 
 }
