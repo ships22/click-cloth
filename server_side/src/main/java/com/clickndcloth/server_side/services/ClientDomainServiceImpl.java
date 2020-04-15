@@ -32,7 +32,7 @@ public class ClientDomainServiceImpl implements ClientDomain {
 	}
 	
 	@Override
-	public Optional<Client> getById(Integer id) {
+	public Optional<Client> findClientById(Integer id) {
 		return clientRepository.findById(id);
 	}
 	

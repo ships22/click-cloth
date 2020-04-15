@@ -51,8 +51,8 @@ public class ClientManager {
 	}
 	
 	@Transactional
-	public ClientDto getById(Integer id) {
-		Optional<Client> client = clientDomainService.getById(id);
+	public ClientDto findClientById(Integer id) {
+		Optional<Client> client = clientDomainService.findClientById(id);
 		ClientDto clientDto = new ClientDto();
 		clientDto.setId(client.get().getId());
 		clientDto.setFirst_name(client.get().getFirst_name());
@@ -117,9 +117,4 @@ public class ClientManager {
 		return "Client with id : " + id + " has been deleted succesfully";
 	}
 	
-//	@Bean
-//	public BCryptPasswordEncoder passwordEncoder(){
-//		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-//		return bCryptPasswordEncoder;
-//	}
 }

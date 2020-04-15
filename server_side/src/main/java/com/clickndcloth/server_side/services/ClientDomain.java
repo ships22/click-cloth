@@ -13,7 +13,7 @@ public interface ClientDomain {
 	
 	public Client updateClient(Client client);
 	
-	public Optional<Client> getById(Integer id);
+	public Optional<Client> findClientById(Integer id);
 	
 	public void deleteClient(Integer id);
 

@@ -11,6 +11,7 @@ public class ClientDto {
 	private int house_no;
 	private String street;
 	private String country;
+	
 	public int getId() {
 		return id;
 	}

@@ -31,7 +31,7 @@ public class ClientController {
 	
 	@GetMapping(value = "/client_by_id/{id}")
 	public ClientDto getById(@PathVariable ("id") Integer id) {
-		return clientManager.getById(id);
+		return clientManager.findClientById(id);
 	}
 	
 	@PostMapping(value = "/add_client/{password}", produces = "application/json")

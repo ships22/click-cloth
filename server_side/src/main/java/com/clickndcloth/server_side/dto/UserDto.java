@@ -9,6 +9,7 @@ public class UserDto {
 	private int is_active;
 	private Integer client_id_client;
 	private Integer admin_id_admin;
+	
 	public int getId() {
 		return id;
 	}
