@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.clickndcloth.server_side.config.SecurityConfig;
 import com.clickndcloth.server_side.dto.UserDto;
 import com.clickndcloth.server_side.models.User;
 import com.clickndcloth.server_side.services.UserDomainServiceImpl;
@@ -17,6 +18,9 @@ public class UserManager {
 	
 	@Autowired
 	private UserDomainServiceImpl userDomainService;
+	
+	@Autowired
+	private SecurityConfig securityConfig;
 	
 	@Transactional
 	public List<UserDto>getAllUser() {
@@ -33,9 +37,9 @@ public class UserManager {
 		return userDtos;
 	}
 	
-	@SuppressWarnings("rawtypes")
+
 	@Transactional
-	public Optional findByEmail(String email) {
+	public Optional<User> findByEmail(String email) {
 		return userDomainService.findByEmail(email);
 	}
 	
@@ -70,6 +74,17 @@ public class UserManager {
 		userDto.setRoles(updatedUser.getRoles());
 		userDto.setIs_active(updatedUser.getIs_active());
 		return userDto;
+	}
+
+
+	public boolean requestPasswordReset(String email) {
+		return userDomainService.requestPasswordReset(email);
+	}
+
+
+	public boolean resetPassword(String token, String password) {
+		String encodedPassword = securityConfig.passwordEncoder().encode(password);
+		return userDomainService.resetPassword(token, encodedPassword);
 	}
 	
 }

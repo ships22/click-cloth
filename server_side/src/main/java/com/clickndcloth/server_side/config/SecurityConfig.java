@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers("/admin", "/clients").hasRole("ADMIN")
 		.antMatchers("/user").hasRole("CLIENT")
-		.antMatchers("/","/api/**", "/authenticate", "/api/add_client/**", "/api/delete_client/**", "/api/client_by_id/**").permitAll()
+		.antMatchers("/**","/api/**", "/authenticate", "/api/add_client/**", "/api/delete_client/**", "/api/client_by_id/**", "/test_mail", "/reset_password").permitAll()
 		.anyRequest().authenticated()
 		.and().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

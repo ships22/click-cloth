@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			Spring security test
+		</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function isEmpty(str) {
+			return (!str || 0 === str.trim().length);
+		}
+		function save() {
+			
+			var urlParams = new URLSearchParams(location.search);
+			console.log("test url params : " + urlParams);
+			
+			if(!urlParams.has('token') || isEmpty(urlParams.get('token'))) {
+				alert("Something went wrong, please try again later.");
+				return;
+			}
+			
+			var tokenValue = urlParams.get('token');
+			var new_password = document.getElementById("new_password").value;
+			var repeat_password = document.getElementById("repeat_password").value;
+			
+			if(isEmpty(new_password)) {
+				alert("Password can not be empty");
+				return;
+			}
+			
+			if(new_password !== repeat_password) {
+				alert("Passwords do not match.");
+				return;
+			}
+			
+			var dataPayload = {
+					"token" : tokenValue,
+					"password" : new_password
+				};
+			
+			$.ajaxSetup({
+				"contentType" : "application/json"
+			})
+			
+			$.post('http://localhost:8080/api/update_password', JSON.stringify(dataPayload))
+			 .done(function (response) {
+				document.getElementById("new_password").value = "";
+				document.getElementById("repeat_password").value = "";
+				
+				if(response["result"] === "SUCCESS") {
+					$("error").attr("style", "display: none !important;");
+					$("success").attr("style", "display: block !important;");
+				} else {
+					$("error").attr("style", "display: block !important;");
+					$("success").attr("style", "display: none !important;");
+				}
+			})
+			
+			
+		}
+	</script>
+	</head>
+	<body>
+		<div id="main">
+			<div class="notification">
+				<p id="success" style="display:none">Password has been updated</p>
+				<p id="error" style="display:none">Could not update password</p>
+			</div>
+			<form>
+				<div class="input_group">
+					<label for="new">New password :</label>
+					<input type="password" id="new_password"/>
+				</div>
+				<div class="input_group">
+					<label for="repeat">Repeat password :</label>
+					<input type="password" id="repeat_password"/>
+				</div>
+				<div class="input_group btns">
+					<input type="button" value="Save" onclick="javascript:save()"/>
+				</div>
+				
+			</form>
+		</div>
+		
+	</body>
+</html>

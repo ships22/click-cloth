@@ -15,6 +15,9 @@ import com.clickndcloth.server_side.models.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	Optional<User> findByEmail(String email);
+	
+	@Query(value = "SELECT user.* FROM User AS user where user.email = ?1", nativeQuery = true)
+	public User getByEmail(String email);
 
 	@Query(value = "update User u set u.is_active = ? where u.id = ?", nativeQuery = true)
 	User userStatus(int is_active, Integer id);

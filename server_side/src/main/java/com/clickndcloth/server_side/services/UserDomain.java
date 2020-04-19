@@ -9,16 +9,18 @@ import com.clickndcloth.server_side.models.User;
 
 public interface UserDomain {
 
-	public User addUser(User user);
+	User addUser(User user);
 	
-	public Optional<User> findByEmail(String email);
+	Optional<User> findByEmail(String email);
 	
-	public List<User>getAllUser();
+	List<User>getAllUser();
 	
-	public User userStatus(int is_active, Integer id);
+	User userStatus(int is_active, Integer id);
 	
-	public User updateUserPassword(String password, Integer id);
+	User updateUserPassword(String password, Integer id);
 	
+	boolean requestPasswordReset(String email);
 	
+	boolean resetPassword(String token, String password);
 	
 }
