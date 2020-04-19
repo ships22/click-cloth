@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Constant {
 	
-	public int resetPasswordTime = 1000 * 60;
+	public int resetPasswordTime = 1000 * 60 * 60;
 	public int loginTokenTime = 1000 * 60 * 60;
 
 }
