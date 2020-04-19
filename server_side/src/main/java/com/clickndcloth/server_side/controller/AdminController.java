@@ -3,6 +3,7 @@ package com.clickndcloth.server_side.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,27 +26,32 @@ public class AdminController {
 	private AdminManager adminManager;
 
 	@GetMapping(value = "/admins")
+	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public List<AdminDto> getAllAdmin() {
 		return adminManager.getAllAdmin();
 	}
 	
 	@GetMapping(value = "/admin_by_id/{id}")
+	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public AdminDto getById(@PathVariable ("id") Integer id) {
 		return adminManager.findAdminById(id);
 	}
 	
-	@PostMapping(value = "/add_admin/{password}", produces = "application/json")
-	public AdminDto addClient(@RequestBody Admin admin, @PathVariable ("password") String password) {
-		return adminManager.addAdmin(admin, password);
+	@PostMapping(value = "/add_admin", produces = "application/json")
+	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
+	public AdminDto addClient(@RequestBody Admin admin) {
+		return adminManager.addAdmin(admin);
 		
 	}
 	
 	@PutMapping(value = "/update_admin")
+	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public AdminDto updateAdmin(@RequestBody Admin admin) {
 		return adminManager.updateAdmin(admin);
 	}
 	
 	@DeleteMapping(value = "/delete_admin/{id}")
+	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public String deleteAdmin(@PathVariable ("id") Integer id) {
 		return adminManager.deleteAdmin(id);
 	}

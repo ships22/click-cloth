@@ -45,7 +45,6 @@ public class JwtUtil {
 	}
 
 	public boolean isTokenExpired(String token) throws ExpiredJwtException {
-		System.out.println("exx :" + extractExpiration(token).before(new Date()));
 		return extractExpiration(token).before(new Date());
 	}
 

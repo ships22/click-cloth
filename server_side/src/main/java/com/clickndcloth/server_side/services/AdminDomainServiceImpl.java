@@ -14,6 +14,7 @@ public class AdminDomainServiceImpl implements AdminDomain {
 
 	@Autowired
 	private AdminRepository adminRepository;
+	
 	@Override
 	public List<Admin> getAllAdmin() {
 		return adminRepository.findAll();

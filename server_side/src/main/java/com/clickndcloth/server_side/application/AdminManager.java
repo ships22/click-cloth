@@ -3,6 +3,7 @@ package com.clickndcloth.server_side.application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import com.clickndcloth.server_side.dto.AdminDto;
 import com.clickndcloth.server_side.models.Admin;
 import com.clickndcloth.server_side.models.User;
 import com.clickndcloth.server_side.services.AdminDomainServiceImpl;
+import com.clickndcloth.server_side.services.Emailer;
 import com.clickndcloth.server_side.services.UserDomainServiceImpl;
 
 @Service
@@ -26,6 +28,9 @@ public class AdminManager {
 	
 	@Autowired
 	private SecurityConfig securityConfig;
+	
+	@Autowired
+	private Emailer emailer;
 	
 	@Transactional
 	public List<AdminDto>getAllAdmin() {
@@ -55,13 +60,13 @@ public class AdminManager {
 		return adminDto;
 	}
 	
+	@SuppressWarnings("unused")
 	@Transactional
-	public AdminDto addAdmin(Admin admin, String password) {
+	public AdminDto addAdmin(Admin admin) {
 		Admin addedAdmin = adminDomainService.addAdmin(admin);
-		
-		String encodedPassword = securityConfig.passwordEncoder().encode(password);
-		System.out.println("test encryption : " + encodedPassword);
-		
+		String inititalPassword = randomPasswordGenerator();
+		String encodedPassword = securityConfig.passwordEncoder().encode(inititalPassword);
+
 		User newUser = new User();
 		newUser.setEmail(addedAdmin.getEmail());
 		newUser.setPassword(encodedPassword);
@@ -70,13 +75,18 @@ public class AdminManager {
 		newUser.setAdmin_id_admin(addedAdmin.getId());
 		userDomainService.addUser(newUser);
 		
-		AdminDto adminDto = new AdminDto();
-		adminDto.setId(addedAdmin.getId());
-		adminDto.setFirst_name(addedAdmin.getFirst_name());
-		adminDto.setLast_name(addedAdmin.getLast_name());
-		adminDto.setEmail(addedAdmin.getEmail());
-		adminDto.setAddress(addedAdmin.getAddress());
-		return adminDto;
+		if(addedAdmin != null) {
+			emailer.sendInitAccountInfo(admin, inititalPassword);
+			AdminDto adminDto = new AdminDto();
+			adminDto.setId(addedAdmin.getId());
+			adminDto.setFirst_name(addedAdmin.getFirst_name());
+			adminDto.setLast_name(addedAdmin.getLast_name());
+			adminDto.setEmail(addedAdmin.getEmail());
+			adminDto.setAddress(addedAdmin.getAddress());
+			return adminDto;
+		}
+		
+		return null;
 
 	}
 	
@@ -97,5 +107,21 @@ public class AdminManager {
 		adminDomainService.deleteAdmin(id);
 		return "Admin with id : " + id + " has been deleted succesfully";
 	}
+	
+	private String randomPasswordGenerator() {
+		int leftLimit = 48; // numeral '0'
+	    int rightLimit = 122; // letter 'z'
+	    int targetStringLength = 10;
+	    Random random = new Random();
+	 
+	    String generatedPassword = random.ints(leftLimit, rightLimit + 1)
+	      .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+	      .limit(targetStringLength)
+	      .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+	      .toString();
+	    return generatedPassword;
+	}
+	
+ 
 
 }

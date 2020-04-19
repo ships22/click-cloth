@@ -83,12 +83,11 @@ public class UserDomainServiceImpl implements UserDomain{
 		} else {
 			try {
 				if(jwtTokenUtil.isTokenExpired(token)) {
-					System.out.println("in try");
 					passwordResetTokenRepository.delete(passwordResetToken);
 					return result;
 				}
 			} catch (Exception e) {
-				System.out.println("test exception : " + e.getMessage());
+				System.out.println("token expired : " + e.getMessage());
 				return result;
 			}
 			
