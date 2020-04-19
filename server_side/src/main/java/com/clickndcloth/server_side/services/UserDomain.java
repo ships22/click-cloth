@@ -17,8 +17,6 @@ public interface UserDomain {
 	
 	User userStatus(int is_active, Integer id);
 	
-	User updateUserPassword(String password, Integer id);
-	
 	boolean requestPasswordReset(String email);
 	
 	boolean resetPassword(String token, String password);

@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -43,7 +44,8 @@ public class JwtUtil {
 		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
 	}
 
-	public boolean isTokenExpired(String token) {
+	public boolean isTokenExpired(String token) throws ExpiredJwtException {
+		System.out.println("exx :" + extractExpiration(token).before(new Date()));
 		return extractExpiration(token).before(new Date());
 	}
 

@@ -6,10 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -27,20 +23,6 @@ public class PasswordResetToken implements Serializable {
 	private String token;
 	
 	private int user_id;
-	
-
-	
-	
-//	@OneToOne
-//	@JoinTable(name = "User",
-//    joinColumns = @JoinColumn(name = "fk_Password_reset_User", referencedColumnName ="id"),
-//    		inverseJoinColumns = @JoinColumn(name = "user_id" , referencedColumnName="id"))
-//	private User user;
-	
-//	@OneToOne
-//	joinColumns = @JoinColumn(name="id",  referencedColumnName ="id"),
-//	inverseJoinColumns = @JoinColumn(name = "User_id" , referencedColumnName="id"))
-//	private User user;
 
 	public long getId() {
 		return id;
@@ -66,14 +48,5 @@ public class PasswordResetToken implements Serializable {
 		this.user_id = user_id;
 	}
 	
-	
-
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
 
 }

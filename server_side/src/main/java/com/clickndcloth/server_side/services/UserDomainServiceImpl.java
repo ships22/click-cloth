@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.clickndcloth.server_side.config.JwtUtil;
@@ -49,10 +48,6 @@ public class UserDomainServiceImpl implements UserDomain{
 		return userRepository.userStatus(is_active, id);
 	}
 	
-	@Override
-	public User updateUserPassword(String password, Integer id) {
-		return userRepository.updateUserPassword(password, id);
-	}
 
 	@Override
 	public boolean requestPasswordReset(String email) {
@@ -61,7 +56,6 @@ public class UserDomainServiceImpl implements UserDomain{
 		User user = userRepository.getByEmail(email);
 		
 		if(user == null) {
-			System.out.println("user not found in db...");
 			return result;
 		}
 		
@@ -69,7 +63,6 @@ public class UserDomainServiceImpl implements UserDomain{
 		
 		PasswordResetToken passwordResetToken = new PasswordResetToken();
 		passwordResetToken.setToken(resetPasswordToken);
-//		passwordResetToken.setUser(user);
 		passwordResetToken.setUser_id(user.getId());
 		passwordResetTokenRepository.save(passwordResetToken);
 		
@@ -83,13 +76,25 @@ public class UserDomainServiceImpl implements UserDomain{
 		
 		boolean result = false;
 		
-		if(jwtTokenUtil.isTokenExpired(token)) {
-			return result;
-		} PasswordResetToken passwordResetToken = passwordResetTokenRepository.findByToken(token);
+		PasswordResetToken passwordResetToken = passwordResetTokenRepository.findByToken(token);
 		
 		if(passwordResetToken == null) {
 			return result;
-		} Optional<User> user = userRepository.findById(passwordResetToken.getUser_id());
+		} else {
+			try {
+				if(jwtTokenUtil.isTokenExpired(token)) {
+					System.out.println("in try");
+					passwordResetTokenRepository.delete(passwordResetToken);
+					return result;
+				}
+			} catch (Exception e) {
+				System.out.println("test exception : " + e.getMessage());
+				return result;
+			}
+			
+		}
+		
+		Optional<User> user = userRepository.findById(passwordResetToken.getUser_id());
 		
 		if(user == null) {
 			return result;
@@ -100,10 +105,9 @@ public class UserDomainServiceImpl implements UserDomain{
 		if(updatedUser != null && updatedUser.getPassword().equalsIgnoreCase(password)) {
 			result = true;
 		}
-		System.out.println("test updated user : " + updatedUser.getEmail() + " new pass : " + updatedUser.getPassword());
 		passwordResetTokenRepository.delete(passwordResetToken);
 		
-		return false;
+		return result;
 	}
 	
 

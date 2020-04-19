@@ -23,7 +23,6 @@ public class MyUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		@SuppressWarnings("unchecked")
 		Optional<User> user = userManager.findByEmail(email);
 		user.orElseThrow(() -> new UsernameNotFoundException("User not found with: " + email));
 		return user.map(MyUserDetails::new).get();

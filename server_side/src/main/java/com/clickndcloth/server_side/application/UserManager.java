@@ -64,17 +64,6 @@ public class UserManager {
 		userDto.setIs_active(updatedUser.getIs_active());
 		return userDto;
 	}
-	
-	@Transactional
-	public UserDto updateUserPassword(String password, Integer id) {
-		User updatedUser = userDomainService.updateUserPassword(password, id);
-		UserDto userDto = new UserDto();
-		userDto.setId(updatedUser.getId());
-		userDto.setEmail(updatedUser.getEmail());
-		userDto.setRoles(updatedUser.getRoles());
-		userDto.setIs_active(updatedUser.getIs_active());
-		return userDto;
-	}
 
 
 	public boolean requestPasswordReset(String email) {

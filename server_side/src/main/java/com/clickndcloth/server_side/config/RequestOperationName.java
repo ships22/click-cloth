@@ -1,4 +1,4 @@
-package com.clickndcloth.server_side.controller;
+package com.clickndcloth.server_side.config;
 
 public enum RequestOperationName {
 	DELETE,
