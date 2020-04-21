@@ -13,6 +13,8 @@ public interface UserDomain {
 	
 	Optional<User> findByEmail(String email);
 	
+	User getByEmail(String email);
+	
 	List<User>getAllUser();
 	
 	User userStatus(int is_active, Integer id);

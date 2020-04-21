@@ -39,6 +39,11 @@ public class UserDomainServiceImpl implements UserDomain{
 	}
 	
 	@Override
+	public User getByEmail(String email) {
+		return userRepository.getByEmail(email);
+	}
+	
+	@Override
 	public List<User>getAllUser() {
 		return userRepository.findAll();
 	}

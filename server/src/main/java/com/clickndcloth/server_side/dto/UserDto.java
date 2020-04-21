@@ -9,7 +9,14 @@ public class UserDto {
 	private int is_active;
 	private Integer client_id_client;
 	private Integer admin_id_admin;
+	private String first_name;
 	
+	public String getFirst_name() {
+		return first_name;
+	}
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
 	public int getId() {
 		return id;
 	}
