@@ -7,14 +7,16 @@ import com.clickndcloth.server_side.models.Admin;
 
 public interface AdminDomain {
 	
-	public List<Admin> getAllAdmin();
+	List<Admin> getAllAdmin();
 	
-	public Admin addAdmin(Admin admin);
+	Admin addAdmin(Admin admin);
 	
-	public Admin updateAdmin(Admin admin);
+	Admin updateAdmin(Admin admin);
 	
-	public Optional<Admin> findAdminById(Integer id);
+	Optional<Admin> findAdminById(Integer id);
 	
-	public void deleteAdmin(Integer id);
+	void deleteAdmin(Integer id);
+	
+	Admin findByEmail(String email);
 
 }

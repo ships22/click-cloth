@@ -2,9 +2,12 @@ package com.clickndcloth.server_side.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,11 +25,21 @@ public class User {
 	private Integer client_id_client;
 	private Integer admin_id_admin;
 	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id", unique = true, nullable = true)
+	private Client client;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id", unique = true, nullable = true)
+	private Admin admin;
+	
+
 	public User() {
 		super();
 	}
 	
-	public User(int id, String email, String password, String roles, int is_active, Integer client_id_client, Integer admin_id_admin) {
+	public User(int id, String email, String password, String roles, int is_active, 
+				Integer client_id_client, Integer admin_id_admin, Client client, Admin admin) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -35,6 +48,8 @@ public class User {
 		this.is_active = is_active;
 		this.client_id_client = client_id_client;
 		this.admin_id_admin = admin_id_admin;
+		this.client = client;
+		this.admin = admin;
 	}
 
 	public int getId() {
@@ -86,6 +101,21 @@ public class User {
 		this.admin_id_admin = admin_id_admin;
 	}
 
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 	
 	
 }

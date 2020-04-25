@@ -1,5 +1,8 @@
 package com.clickndcloth.server_side.dto;
 
+import com.clickndcloth.server_side.models.Admin;
+import com.clickndcloth.server_side.models.Client;
+
 public class UserDto {
 	
 	private int id;
@@ -9,14 +12,9 @@ public class UserDto {
 	private int is_active;
 	private Integer client_id_client;
 	private Integer admin_id_admin;
-	private String first_name;
+	private Client client;
+	private Admin admin;
 	
-	public String getFirst_name() {
-		return first_name;
-	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
 	public int getId() {
 		return id;
 	}
@@ -59,6 +57,18 @@ public class UserDto {
 	public void setAdmin_id_admin(Integer admin_id_admin) {
 		this.admin_id_admin = admin_id_admin;
 	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	public Admin getAdmin() {
+		return admin;
+	}
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 	
-
+	
 }

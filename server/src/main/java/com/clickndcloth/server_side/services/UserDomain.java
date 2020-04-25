@@ -23,4 +23,6 @@ public interface UserDomain {
 	
 	boolean resetPassword(String token, String password);
 	
+	void deleteUser(Integer id);
+	
 }

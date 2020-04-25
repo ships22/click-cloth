@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.clickndcloth.server_side.dto.UserDto;
-import com.clickndcloth.server_side.models.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -27,8 +26,6 @@ public class JwtUtil {
 	
 	
 	public String generateToken(UserDetails userDetails, UserDto userDto) {
-//		Map<String, Object> claims = new HashMap<>();
-//		return createToken(claims, userDetails.getUsername(), constant.loginTokenTime);
 		return doGenerateToken(userDetails, userDto, constant.loginTokenTime);
 	}
 	
@@ -40,24 +37,26 @@ public class JwtUtil {
 	private String createToken(Map<String, Object> claims, String subject, int duration) {
 		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + duration))
-				.signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
+				.signWith(SignatureAlgorithm.HS512, SECRET_KEY).compact();
 	}
 	
 	private String doGenerateToken(UserDetails userDetails, UserDto userDto, int duration) {
 		Claims claims = Jwts.claims().setSubject(userDetails.getUsername());
 		claims.put("scopes", userDetails.getAuthorities());
 		claims.put("user_name", userDetails.getUsername());
-		
-			claims.put("first_name", userDto.getFirst_name());
-		
-//			claims.put("id_client", user.getClient_id_client());	
+		if(userDto.getClient() != null) {
+			claims.put("details", userDto.getClient());
+		}
+		if(userDto.getAdmin() != null) {
+			claims.put("details", userDto.getAdmin());
+		}
 		
 		return Jwts.builder()
 				.setClaims(claims)
 				.setSubject(userDetails.getUsername())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + duration))
-				.signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
+				.signWith(SignatureAlgorithm.HS512, SECRET_KEY).compact();
 	}
 	
 	public Boolean validateToken(String token, UserDetails userDetails) {
