@@ -3,6 +3,7 @@ package com.clickndcloth.server_side.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clickndcloth.server_side.application.ShopManager;
-import com.clickndcloth.server_side.dto.ClientDto;
 import com.clickndcloth.server_side.dto.ShopDto;
-import com.clickndcloth.server_side.models.Client;
 import com.clickndcloth.server_side.models.Shop;
 
 
@@ -27,7 +26,7 @@ public class ShopController {
 	private ShopManager shopManager;
 
 	@GetMapping(value = "/shops")
-	public List<ShopDto> getAllClient() {
+	public List<ShopDto> getAllShop() {
 		return shopManager.getAllShop();
 	}
 	
@@ -38,6 +37,7 @@ public class ShopController {
 	}
 	
 	@PostMapping(value = "/add_shop/{admin_id}", produces = "application/json")
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ShopDto addShop(@RequestBody Shop shop, @PathVariable ("admin_id") int admin_id) {
 		return shopManager.addShop(shop, admin_id);
 		

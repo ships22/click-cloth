@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,15 +18,13 @@ public class Shop {
 	private String email;
 	private String phone;
 	private int is_active;
-	private int admin_id_admin;
+	private int admin_id;
 	
-	@ManyToOne
-	private Admin admin;
 	
 	public Shop() {
 		super();
 	}
-	public Shop(int id, String name, String address, String email, String phone, int is_active, int admin_id_admin) {
+	public Shop(int id, String name, String address, String email, String phone, int is_active, int admin_id) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -35,7 +32,7 @@ public class Shop {
 		this.email = email;
 		this.phone = phone;
 		this.is_active = is_active;
-		this.admin_id_admin = admin_id_admin;
+		this.admin_id = admin_id;
 	}
 	public int getId() {
 		return id;
@@ -73,11 +70,12 @@ public class Shop {
 	public void setIs_active(int is_active) {
 		this.is_active = is_active;
 	}
-	public int getAdmin_id_admin() {
-		return admin_id_admin;
+	
+	public int getAdmin_id() {
+		return admin_id;
 	}
-	public void setAdmin_id_admin(int admin_id_admin) {
-		this.admin_id_admin = admin_id_admin;
+	public void setAdmin_id(int admin_id) {
+		this.admin_id = admin_id;
 	}
 	
 

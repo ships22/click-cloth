@@ -8,7 +8,8 @@ public class ShopDto {
 	private String email;
 	private String phone;
 	private int is_active;
-	private int admin_id_admin;
+	private int admin_id;
+	
 	public int getId() {
 		return id;
 	}
@@ -45,11 +46,11 @@ public class ShopDto {
 	public void setIs_active(int is_active) {
 		this.is_active = is_active;
 	}
-	public int getAdmin_id_admin() {
-		return admin_id_admin;
+	public int getAdmin_id() {
+		return admin_id;
 	}
-	public void setAdmin_id_admin(int admin_id_admin) {
-		this.admin_id_admin = admin_id_admin;
+	public void setAdmin_id(int admin_id) {
+		this.admin_id = admin_id;
 	}
 	
 

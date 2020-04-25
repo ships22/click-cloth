@@ -21,7 +21,7 @@ public class ShopManager {
 	@Transactional
 	public ShopDto addShop(Shop shop, int admin_id) {
 		
-		shop.setAdmin_id_admin(admin_id);
+		shop.setAdmin_id(admin_id);
 		shop.setIs_active(1);
 		
 		Shop addedShop = shopDomainService.addShop(shop);

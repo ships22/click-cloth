@@ -31,9 +31,10 @@ public class Admin {
 	private User user;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "id", nullable = true)
+	@JoinColumn(name="id", referencedColumnName = "id", nullable = true)
 	private List<Shop> shopList;
 	
+
 	public Admin() {
 		super();
 	}
@@ -85,6 +86,21 @@ public class Admin {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
+
+	public List<Shop> getShopList() {
+		return shopList;
+	}
+
+	public void setShopList(List<Shop> shopList) {
+		this.shopList = shopList;
 	}
 	
 	
