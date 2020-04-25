@@ -66,31 +66,33 @@ public class ClientManager {
 	
 	@Transactional
 	public ClientDto addClient(Client client, String password) {
-		Client addedClient = clientDomainService.addClient(client);
-		
-		String encodedPassword = securityConfig.passwordEncoder().encode(password);
-		System.out.println("test encryption : " + encodedPassword);
-		
-		User newUser = new User();
-		newUser.setEmail(addedClient.getEmail());
-		newUser.setPassword(encodedPassword);
-		newUser.setRoles("ROLE_CLIENT");
-		newUser.setIs_active(1);
-		newUser.setClient_id_client(addedClient.getId());
-		userDomainService.addUser(newUser);
-		
-		ClientDto clientDto = new ClientDto();
-		clientDto.setId(addedClient.getId());
-		clientDto.setFirst_name(addedClient.getFirst_name());
-		clientDto.setLast_name(addedClient.getLast_name());
-		clientDto.setEmail(addedClient.getEmail());
-		clientDto.setPhone(addedClient.getPhone());
-		clientDto.setHouse_no(addedClient.getHouse_no());
-		clientDto.setStreet(addedClient.getStreet());
-		clientDto.setZip_code(addedClient.getZip_code());
-		clientDto.setCountry(addedClient.getCountry());
-		return clientDto;
-
+		if(userDomainService.getByEmail(client.getEmail()) ==  null) {
+			
+			Client addedClient = clientDomainService.addClient(client);
+			String encodedPassword = securityConfig.passwordEncoder().encode(password);
+			
+			User newUser = new User();
+			newUser.setEmail(addedClient.getEmail());
+			newUser.setPassword(encodedPassword);
+			newUser.setRoles("ROLE_CLIENT");
+			newUser.setIs_active(1);
+			newUser.setClient_id_client(addedClient.getId());
+			userDomainService.addUser(newUser);
+			
+			ClientDto clientDto = new ClientDto();
+			clientDto.setId(addedClient.getId());
+			clientDto.setFirst_name(addedClient.getFirst_name());
+			clientDto.setLast_name(addedClient.getLast_name());
+			clientDto.setEmail(addedClient.getEmail());
+			clientDto.setPhone(addedClient.getPhone());
+			clientDto.setHouse_no(addedClient.getHouse_no());
+			clientDto.setStreet(addedClient.getStreet());
+			clientDto.setZip_code(addedClient.getZip_code());
+			clientDto.setCountry(addedClient.getCountry());
+			return clientDto;
+		}
+		System.out.println("User exists with mail id : " + client.getEmail());
+		return null;
 	}
 	
 	@Transactional

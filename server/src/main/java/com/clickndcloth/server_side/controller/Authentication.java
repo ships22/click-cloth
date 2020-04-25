@@ -17,7 +17,6 @@ import com.clickndcloth.server_side.config.JwtUtil;
 import com.clickndcloth.server_side.dto.UserDto;
 import com.clickndcloth.server_side.models.AuthenticationRequest;
 import com.clickndcloth.server_side.models.AuthenticationResponse;
-import com.clickndcloth.server_side.models.User;
 import com.clickndcloth.server_side.services.security.MyUserDetailsService;
 
 
@@ -39,7 +38,7 @@ public class Authentication {
 	@RequestMapping(value = "api/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 		
-		try {
+		try {		
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword())
 			);

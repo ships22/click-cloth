@@ -9,11 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.clickndcloth.server_side.config.SecurityConfig;
-import com.clickndcloth.server_side.dto.AdminDto;
-import com.clickndcloth.server_side.dto.ClientDto;
 import com.clickndcloth.server_side.dto.UserDto;
-import com.clickndcloth.server_side.models.Admin;
-import com.clickndcloth.server_side.models.Client;
 import com.clickndcloth.server_side.models.User;
 import com.clickndcloth.server_side.services.UserDomainServiceImpl;
 
@@ -25,12 +21,6 @@ public class UserManager {
 	
 	@Autowired
 	private SecurityConfig securityConfig;
-	
-	@Autowired
-	private AdminManager adminManager;
-	
-	@Autowired
-	private ClientManager clientManager;
 	
 	@Transactional
 	public List<UserDto>getAllUser() {
@@ -59,12 +49,13 @@ public class UserManager {
 		User user = userDomainService.getByEmail(email);
 		UserDto userDto = new UserDto();
 		userDto.setIs_active(user.getIs_active());
+		userDto.setEmail(user.getEmail());
+		userDto.setRoles(user.getRoles());
 		if(user.getAdmin_id_admin() != null) {
-			AdminDto admin = adminManager.findAdminById(user.getAdmin_id_admin());
-			userDto.setFirst_name(admin.getFirst_name());
-		} else {
-			ClientDto client = clientManager.findClientById(user.getClient_id_client());
-			userDto.setFirst_name(client.getFirst_name());
+			userDto.setAdmin(user.getAdmin());
+		}
+		if(user.getClient_id_client() != null) {
+			userDto.setClient(user.getClient());
 		}
 		return userDto;
 		
@@ -101,6 +92,10 @@ public class UserManager {
 	public boolean resetPassword(String token, String password) {
 		String encodedPassword = securityConfig.passwordEncoder().encode(password);
 		return userDomainService.resetPassword(token, encodedPassword);
+	}
+	
+	public void deleteUser(Integer id) {
+		userDomainService.deleteUser(id);
 	}
 	
 }

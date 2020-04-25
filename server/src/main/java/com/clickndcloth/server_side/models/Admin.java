@@ -1,10 +1,17 @@
 package com.clickndcloth.server_side.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +26,13 @@ public class Admin {
 	@Column(unique = true)
 	private String email;
 	private String address;
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "admin")
+	private User user;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name = "id", nullable = true)
+	private List<Shop> shopList;
 	
 	public Admin() {
 		super();
