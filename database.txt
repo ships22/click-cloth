@@ -1,0 +1,255 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema click_nd_cloth
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `click_nd_cloth` ;
+
+-- -----------------------------------------------------
+-- Schema click_nd_cloth
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `click_nd_cloth` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `click_nd_cloth` ;
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Admin`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Admin` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Shop`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Shop` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NULL,
+  `is_active` TINYINT(1) NOT NULL,
+  `admin_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `admin_id`),
+  INDEX `fk_Shop_Admin_idx` (`admin_id` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  CONSTRAINT `fk_Shop_Admin`
+    FOREIGN KEY (`admin_id`)
+    REFERENCES `click_nd_cloth`.`Admin` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Product` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(100) NULL,
+  `price` DECIMAL(6,2) NOT NULL,
+  `image` BLOB NULL,
+  `discount` VARCHAR(100) NULL,
+  `shop_id_shop` INT UNSIGNED NOT NULL,
+  `shop_admin_id_admin` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `shop_id_shop`, `shop_admin_id_admin`),
+  INDEX `fk_Product_Shop_idx` (`shop_id_shop` ASC, `shop_admin_id_admin` ASC) VISIBLE,
+  CONSTRAINT `fk_Product_Shop`
+    FOREIGN KEY (`shop_id_shop` , `shop_admin_id_admin`)
+    REFERENCES `click_nd_cloth`.`Shop` (`id` , `admin_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Categories`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Categories` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Product_categories`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Product_categories` (
+  `product_id_product` BIGINT UNSIGNED NOT NULL,
+  `categories_id_categories` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`product_id_product`, `categories_id_categories`),
+  INDEX `fk_Product_has_categories_categories_idx` (`categories_id_categories` ASC) VISIBLE,
+  INDEX `fk_Product_has_categories_Product_idx` (`product_id_product` ASC) VISIBLE,
+  CONSTRAINT `fk_Product_has_categories_Product`
+    FOREIGN KEY (`product_id_product`)
+    REFERENCES `click_nd_cloth`.`Product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Product_has_categories_categories`
+    FOREIGN KEY (`categories_id_categories`)
+    REFERENCES `click_nd_cloth`.`Categories` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Client`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Client` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(20) NULL,
+  `zip_code` MEDIUMINT(6) NOT NULL,
+  `house_no` SMALLINT(4) NOT NULL,
+  `street` VARCHAR(45) NOT NULL,
+  `country` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`User`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`User` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
+  `roles` VARCHAR(16) NULL,
+  `is_active` TINYINT(1) NOT NULL,
+  `client_id_client` BIGINT UNSIGNED NULL,
+  `admin_id_admin` INT UNSIGNED NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_User_Client_idx` (`client_id_client` ASC) VISIBLE,
+  INDEX `fk_User_Admin_idx` (`admin_id_admin` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  CONSTRAINT `fk_User_Client`
+    FOREIGN KEY (`client_id_client`)
+    REFERENCES `click_nd_cloth`.`Client` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_User_Admin`
+    FOREIGN KEY (`admin_id_admin`)
+    REFERENCES `click_nd_cloth`.`Admin` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Reservation_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Reservation_details` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `quantity` SMALLINT(4) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Reservation_details_Product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Reservation_details_Product` (
+  `reservation_details_id_reservation_details` BIGINT UNSIGNED NOT NULL,
+  `product_id_product` BIGINT UNSIGNED NOT NULL,
+  `product_shop_id_shop` INT UNSIGNED NOT NULL,
+  `product_shop_admin_id_admin` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`reservation_details_id_reservation_details`, `product_id_product`, `product_shop_id_shop`, `product_shop_admin_id_admin`),
+  INDEX `fk_Reservation_details_has_Product_Product_idx` (`product_id_product` ASC, `product_shop_id_shop` ASC, `product_shop_admin_id_admin` ASC) VISIBLE,
+  INDEX `fk_Reservation_details_has_Product_Reservation_details_idx` (`reservation_details_id_reservation_details` ASC) VISIBLE,
+  CONSTRAINT `fk_Reservation_details_has_Product_Reservation_details`
+    FOREIGN KEY (`reservation_details_id_reservation_details`)
+    REFERENCES `click_nd_cloth`.`Reservation_details` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Reservation_details_has_Product_Product`
+    FOREIGN KEY (`product_id_product` , `product_shop_id_shop` , `product_shop_admin_id_admin`)
+    REFERENCES `click_nd_cloth`.`Product` (`id` , `shop_id_shop` , `shop_admin_id_admin`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Product_available`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Product_available` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `quantite` SMALLINT(4) NOT NULL,
+  `size` VARCHAR(10) NOT NULL,
+  `colour` VARCHAR(20) NOT NULL,
+  `product_id_product` BIGINT UNSIGNED NOT NULL,
+  `product_shop_id_shop` INT UNSIGNED NOT NULL,
+  `Product_Shop_Admin_idAdmin` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `product_id_product`, `product_shop_id_shop`, `Product_Shop_Admin_idAdmin`),
+  INDEX `fk_Product_available_Product_idx` (`product_id_product` ASC, `product_shop_id_shop` ASC, `Product_Shop_Admin_idAdmin` ASC) VISIBLE,
+  CONSTRAINT `fk_Product_available_Product1`
+    FOREIGN KEY (`product_id_product` , `product_shop_id_shop` , `Product_Shop_Admin_idAdmin`)
+    REFERENCES `click_nd_cloth`.`Product` (`id` , `shop_id_shop` , `shop_admin_id_admin`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Password_reset`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Password_reset` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `token` VARCHAR(500) NULL,
+  `user_id` BIGINT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `user_id`),
+  INDEX `fk_Password_reset_User1_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_Password_reset_User`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `click_nd_cloth`.`User` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `click_nd_cloth`.`Reservation`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `click_nd_cloth`.`Reservation` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `date_time` DATETIME NULL,
+  `reference` VARCHAR(45) NULL,
+  `total` SMALLINT(5) UNSIGNED NULL,
+  `status` VARCHAR(20) NOT NULL,
+  `Client_id` BIGINT UNSIGNED NOT NULL,
+  `Reservation_details_id` BIGINT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `Client_id`, `Reservation_details_id`),
+  INDEX `fk_r_Client1_idx` (`Client_id` ASC) VISIBLE,
+  INDEX `fk_r_Reservation_details1_idx` (`Reservation_details_id` ASC) VISIBLE,
+  CONSTRAINT `fk_r_Client1`
+    FOREIGN KEY (`Client_id`)
+    REFERENCES `click_nd_cloth`.`Client` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_r_Reservation_details1`
+    FOREIGN KEY (`Reservation_details_id`)
+    REFERENCES `click_nd_cloth`.`Reservation_details` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
