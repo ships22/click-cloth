@@ -43,7 +43,7 @@ public class AdminManager {
 			adminDto.setLast_name(admin.getLast_name());
 			adminDto.setEmail(admin.getEmail());
 			adminDto.setAddress(admin.getAddress());
-			adminDto.setShop(admin.getShopList());
+			adminDto.setShops(admin.getShopList());
 			adminDtos.add(adminDto);
 		});
 		return adminDtos;
@@ -58,7 +58,7 @@ public class AdminManager {
 		adminDto.setLast_name(admin.get().getLast_name());
 		adminDto.setEmail(admin.get().getEmail());
 		adminDto.setAddress(admin.get().getAddress());
-		adminDto.setShop(admin.get().getShopList());
+		adminDto.setShops(admin.get().getShopList());
 		return adminDto;
 	}
 	

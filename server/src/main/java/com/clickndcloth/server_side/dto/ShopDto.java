@@ -2,7 +2,7 @@ package com.clickndcloth.server_side.dto;
 
 public class ShopDto {
 	
-	private int id;
+	private int shop_id;
 	private String name;
 	private String address;
 	private String email;
@@ -10,11 +10,12 @@ public class ShopDto {
 	private int is_active;
 	private int admin_id;
 	
-	public int getId() {
-		return id;
+	
+	public int getShop_id() {
+		return shop_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setShop_id(int shop_id) {
+		this.shop_id = shop_id;
 	}
 	public String getName() {
 		return name;

@@ -16,7 +16,7 @@ import com.clickndcloth.server_side.services.ShopDomainServiceImpl;
 public class ShopManager {
 	
 	@Autowired
-	ShopDomainServiceImpl shopDomainService;
+	private ShopDomainServiceImpl shopDomainService;
 	
 	@Transactional
 	public ShopDto addShop(Shop shop, int admin_id) {
@@ -27,12 +27,13 @@ public class ShopManager {
 		Shop addedShop = shopDomainService.addShop(shop);
 		
 		ShopDto shopDto = new ShopDto();
-		shopDto.setId(addedShop.getId());
+		shopDto.setShop_id(addedShop.getShop_id());
 		shopDto.setName(addedShop.getName());
 		shopDto.setAddress(addedShop.getAddress());
 		shopDto.setEmail(addedShop.getEmail());
 		shopDto.setPhone(addedShop.getPhone());
 		shopDto.setIs_active(addedShop.getIs_active());
+		shopDto.setAdmin_id(addedShop.getAdmin_id());
 		return shopDto;
 	}
 	
@@ -42,12 +43,13 @@ public class ShopManager {
 		List<ShopDto>shopDtos = new ArrayList<ShopDto>();
 		shopList.forEach(shop -> {
 			ShopDto shopDto = new ShopDto();
-			shopDto.setId(shop.getId());
+			shopDto.setShop_id(shop.getShop_id());
 			shopDto.setName(shop.getName());
 			shopDto.setAddress(shop.getAddress());
 			shopDto.setEmail(shop.getEmail());
 			shopDto.setPhone(shop.getPhone());
 			shopDto.setIs_active(shop.getIs_active());
+			shopDtos.add(shopDto);
 		});
 		return shopDtos;
 	}
@@ -56,7 +58,7 @@ public class ShopManager {
 	public ShopDto findShopById(Integer id) {
 		Shop shop = shopDomainService.getById(id);
 		ShopDto shopDto = new ShopDto();
-		shopDto.setId(shop.getId());
+		shopDto.setShop_id(shop.getShop_id());
 		shopDto.setName(shop.getName());
 		shopDto.setAddress(shop.getAddress());
 		shopDto.setEmail(shop.getEmail());
@@ -69,7 +71,7 @@ public class ShopManager {
 	public ShopDto updateShop(Shop shop) {
 		Shop updatedShop = shopDomainService.updateShop(shop);
 		ShopDto shopDto = new ShopDto();
-		shopDto.setId(shop.getId());
+		shopDto.setShop_id(shop.getShop_id());
 		shopDto.setName(updatedShop.getName());
 		shopDto.setAddress(updatedShop.getAddress());
 		shopDto.setEmail(updatedShop.getEmail());

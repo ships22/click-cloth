@@ -12,7 +12,7 @@ public class Shop {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int shop_id;
 	private String name;
 	private String address;
 	private String email;
@@ -24,9 +24,9 @@ public class Shop {
 	public Shop() {
 		super();
 	}
-	public Shop(int id, String name, String address, String email, String phone, int is_active, int admin_id) {
+	public Shop(int shop_id, String name, String address, String email, String phone, int is_active, int admin_id) {
 		super();
-		this.id = id;
+		this.shop_id = shop_id;
 		this.name = name;
 		this.address = address;
 		this.email = email;
@@ -34,11 +34,12 @@ public class Shop {
 		this.is_active = is_active;
 		this.admin_id = admin_id;
 	}
-	public int getId() {
-		return id;
+	
+	public int getShop_id() {
+		return shop_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setShop_id(int shop_id) {
+		this.shop_id = shop_id;
 	}
 	public String getName() {
 		return name;
