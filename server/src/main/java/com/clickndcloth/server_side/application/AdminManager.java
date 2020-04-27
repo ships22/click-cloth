@@ -43,6 +43,7 @@ public class AdminManager {
 			adminDto.setLast_name(admin.getLast_name());
 			adminDto.setEmail(admin.getEmail());
 			adminDto.setAddress(admin.getAddress());
+			adminDto.setShops(admin.getShopList());
 			adminDtos.add(adminDto);
 		});
 		return adminDtos;
@@ -57,35 +58,39 @@ public class AdminManager {
 		adminDto.setLast_name(admin.get().getLast_name());
 		adminDto.setEmail(admin.get().getEmail());
 		adminDto.setAddress(admin.get().getAddress());
+		adminDto.setShops(admin.get().getShopList());
 		return adminDto;
 	}
 	
-	@SuppressWarnings("unused")
+	
 	@Transactional
 	public AdminDto addAdmin(Admin admin) {
-		Admin addedAdmin = adminDomainService.addAdmin(admin);
-		String inititalPassword = randomPasswordGenerator();
-		String encodedPassword = securityConfig.passwordEncoder().encode(inititalPassword);
+		if(userDomainService.getByEmail(admin.getEmail()) ==  null) {
+			Admin addedAdmin = adminDomainService.addAdmin(admin);
+			String inititalPassword = randomPasswordGenerator();
+			String encodedPassword = securityConfig.passwordEncoder().encode(inititalPassword);
 
-		User newUser = new User();
-		newUser.setEmail(addedAdmin.getEmail());
-		newUser.setPassword(encodedPassword);
-		newUser.setRoles("ROLE_ADMIN");
-		newUser.setIs_active(1);
-		newUser.setAdmin_id_admin(addedAdmin.getId());
-		userDomainService.addUser(newUser);
-		
-		if(addedAdmin != null) {
-			emailer.sendInitAccountInfo(admin, inititalPassword);
-			AdminDto adminDto = new AdminDto();
-			adminDto.setId(addedAdmin.getId());
-			adminDto.setFirst_name(addedAdmin.getFirst_name());
-			adminDto.setLast_name(addedAdmin.getLast_name());
-			adminDto.setEmail(addedAdmin.getEmail());
-			adminDto.setAddress(addedAdmin.getAddress());
-			return adminDto;
-		}
-		
+			User newUser = new User();
+			newUser.setEmail(addedAdmin.getEmail());
+			newUser.setPassword(encodedPassword);
+			newUser.setRoles("ROLE_ADMIN");
+			newUser.setIs_active(1);
+			newUser.setAdmin_id_admin(addedAdmin.getId());
+			userDomainService.addUser(newUser);
+			
+			if(addedAdmin != null) {
+				emailer.sendInitAccountInfo(addedAdmin, inititalPassword);
+				AdminDto adminDto = new AdminDto();
+				adminDto.setId(addedAdmin.getId());
+				adminDto.setFirst_name(addedAdmin.getFirst_name());
+				adminDto.setLast_name(addedAdmin.getLast_name());
+				adminDto.setEmail(addedAdmin.getEmail());
+				adminDto.setAddress(addedAdmin.getAddress());
+				return adminDto;
+			}
+
+		} System.out.println("User exists with mail id : " + admin.getEmail());
+				
 		return null;
 
 	}

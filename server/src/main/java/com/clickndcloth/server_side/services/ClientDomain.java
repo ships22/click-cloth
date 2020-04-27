@@ -7,14 +7,16 @@ import com.clickndcloth.server_side.models.Client;
 
 public interface ClientDomain {
 	
-	public List<Client> getAllClient();
+	List<Client> getAllClient();
 	
-	public Client addClient(Client client);
+	Client addClient(Client client);
 	
-	public Client updateClient(Client client);
+	Client updateClient(Client client);
 	
-	public Optional<Client> findClientById(Integer id);
+	Optional<Client> findClientById(Integer id);
 	
-	public void deleteClient(Integer id);
+	void deleteClient(Integer id);
+	
+	Client findByEmail(String email);
 
 }

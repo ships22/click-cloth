@@ -41,4 +41,9 @@ public class ClientDomainServiceImpl implements ClientDomain {
 		 clientRepository.deleteById(id);
 	}
 
+	@Override
+	public Client findByEmail(String email) {
+		return clientRepository.findByEmail(email);
+	}
+
 }

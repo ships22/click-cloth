@@ -1,10 +1,18 @@
 package com.clickndcloth.server_side.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,17 +28,25 @@ public class Admin {
 	private String email;
 	private String address;
 	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "admin")
+	private User user;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="admin_id", referencedColumnName = "id", nullable = true)
+	private List<Shop> shopList = new ArrayList<Shop>();
+
 	public Admin() {
 		super();
 	}
 
-	public Admin(int id, String first_name, String last_name, String email, String address) {
+	public Admin(int id, String first_name, String last_name, String email, String address, List<Shop> shopList) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
 		this.address = address;
+		this.shopList = shopList;
 	}
 
 	public int getId() {
@@ -71,6 +87,14 @@ public class Admin {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public List<Shop> getShopList() {
+		return shopList;
+	}
+
+	public void setShopList(List<Shop> shopList) {
+		this.shopList = shopList;
 	}
 	
 	

@@ -113,6 +113,11 @@ public class UserDomainServiceImpl implements UserDomain{
 		
 		return result;
 	}
+
+	@Override
+	public void deleteUser(Integer id) {
+		userRepository.deleteById(id);
+	}
 	
 
 }

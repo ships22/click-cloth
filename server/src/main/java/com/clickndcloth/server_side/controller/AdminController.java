@@ -26,32 +26,32 @@ public class AdminController {
 	private AdminManager adminManager;
 
 	@GetMapping(value = "/admins")
-	@PreAuthorize("hasRole('SUPER_ADMIN')")
+//	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public List<AdminDto> getAllAdmin() {
 		return adminManager.getAllAdmin();
 	}
 	
 	@GetMapping(value = "/admin_by_id/{id}")
-	@PreAuthorize("hasRole('SUPER_ADMIN')")
+//	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public AdminDto getById(@PathVariable ("id") Integer id) {
 		return adminManager.findAdminById(id);
 	}
 	
 	@PostMapping(value = "/add_admin", produces = "application/json")
-	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
+//	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
 	public AdminDto addClient(@RequestBody Admin admin) {
 		return adminManager.addAdmin(admin);
 		
 	}
 	
 	@PutMapping(value = "/update_admin")
-	@PreAuthorize("hasRole('SUPER_ADMIN')")
+//	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public AdminDto updateAdmin(@RequestBody Admin admin) {
 		return adminManager.updateAdmin(admin);
 	}
 	
 	@DeleteMapping(value = "/delete_admin/{id}")
-	@PreAuthorize("hasRole('SUPER_ADMIN')")
+//	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public String deleteAdmin(@PathVariable ("id") Integer id) {
 		return adminManager.deleteAdmin(id);
 	}

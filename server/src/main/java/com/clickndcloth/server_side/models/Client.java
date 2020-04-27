@@ -2,9 +2,11 @@ package com.clickndcloth.server_side.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,9 @@ public class Client {
 	private int house_no;
 	private String street;
 	private String country;
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "client")
+	private User user;
 	
 	public Client() {
 		super();

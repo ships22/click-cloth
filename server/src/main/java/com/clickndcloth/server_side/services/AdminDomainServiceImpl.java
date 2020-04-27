@@ -40,4 +40,10 @@ public class AdminDomainServiceImpl implements AdminDomain {
 		adminRepository.deleteById(id);
 	}
 
+	@Override
+	public Admin findByEmail(String email) {
+		return adminRepository.findByEmail(email);
+	}
+	
+
 }

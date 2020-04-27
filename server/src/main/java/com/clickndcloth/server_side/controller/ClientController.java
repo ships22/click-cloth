@@ -33,7 +33,7 @@ public class ClientController {
 	
 	
 	@GetMapping(value = "/client_by_id/{id}")
-	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN') or hasRole('ROLE_CLIENT')")
+//	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN') or hasRole('ROLE_CLIENT')")
 	public ClientDto getById(@PathVariable ("id") Integer id) {
 		return clientManager.findClientById(id);
 	}
@@ -45,13 +45,13 @@ public class ClientController {
 	}
 	
 	@PutMapping(value = "/update_client")
-	@PreAuthorize("hasRole('ROLE_CLIENT')")
+//	@PreAuthorize("hasRole('ROLE_CLIENT')")
 	public ClientDto updateClient(@RequestBody Client client) {
 		return clientManager.updateClient(client);
 	}
 	
 	@DeleteMapping(value = "/delete_client/{id}")
-	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN') or hasRole('ROLE_CLIENT')")
+//	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN') or hasRole('ROLE_CLIENT')")
 	public String deleteClient(@PathVariable ("id") Integer id) {
 		return clientManager.deleteClient(id);
 	}

@@ -1,6 +1,11 @@
 package com.clickndcloth.server_side.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
+
+import com.clickndcloth.server_side.models.Shop;
 
 public class AdminDto {
 	
@@ -10,6 +15,7 @@ public class AdminDto {
 	@Column(unique = true)
 	private String email;
 	private String address;
+	private List<Shop> shops = new ArrayList<Shop>();
 	
 	public int getId() {
 		return id;
@@ -40,6 +46,12 @@ public class AdminDto {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public List<Shop> getShops() {
+		return shops;
+	}
+	public void setShops(List<Shop> shops) {
+		this.shops = shops;
 	}
 
 }
