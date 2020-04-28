@@ -1,9 +1,15 @@
 package com.clickndcloth.server_side.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,11 +26,20 @@ public class Shop {
 	private int is_active;
 	private int admin_id;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="shop_id_shop", referencedColumnName = "shop_id", nullable = true)
+	private List<Product> productList = new ArrayList<Product>();
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="shop_shop_id", referencedColumnName = "shop_id", nullable = true)
+	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
 	public Shop() {
 		super();
 	}
-	public Shop(int shop_id, String name, String address, String email, String phone, int is_active, int admin_id) {
+
+	public Shop(int shop_id, String name, String address, String email, String phone, int is_active, int admin_id,
+			List<Product> productList, List<Reservation> reservations) {
 		super();
 		this.shop_id = shop_id;
 		this.name = name;
@@ -33,8 +48,10 @@ public class Shop {
 		this.phone = phone;
 		this.is_active = is_active;
 		this.admin_id = admin_id;
+		this.productList = productList;
+		this.reservations = reservations;
 	}
-	
+
 	public int getShop_id() {
 		return shop_id;
 	}
@@ -71,13 +88,23 @@ public class Shop {
 	public void setIs_active(int is_active) {
 		this.is_active = is_active;
 	}
-	
 	public int getAdmin_id() {
 		return admin_id;
 	}
 	public void setAdmin_id(int admin_id) {
 		this.admin_id = admin_id;
 	}
-	
+	public List<Product> getProductList() {
+		return productList;
+	}
+	public void setProductList(List<Product> productList) {
+		this.productList = productList;
+	}
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
 
 }
