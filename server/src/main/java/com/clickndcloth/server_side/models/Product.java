@@ -1,8 +1,10 @@
 package com.clickndcloth.server_side.models;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,12 +36,16 @@ public class Product {
 	  inverseJoinColumns = @JoinColumn(name = "categories_id_categories"))
 	private List<Categories> categories;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="product_id_product", referencedColumnName = "id", nullable = true)
+	private List<Stock> productList = new ArrayList<Stock>();
+	
 	public Product() {
 		super();
 	}
-
+	
 	public Product(int id, String name, String description, double price, Blob image, String discount, int shop_id_shop,
-			int shop_admin_id_admin, List<Categories> categories) {
+			int shop_admin_id_admin, List<Categories> categories, List<Stock> productList) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,6 +56,7 @@ public class Product {
 		this.shop_id_shop = shop_id_shop;
 		this.shop_admin_id_admin = shop_admin_id_admin;
 		this.categories = categories;
+		this.productList = productList;
 	}
 
 	public int getId() {
@@ -122,6 +130,13 @@ public class Product {
 	public void setCategories(List<Categories> categories) {
 		this.categories = categories;
 	}
-	
+
+	public List<Stock> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<Stock> productList) {
+		this.productList = productList;
+	}
 
 }

@@ -1,11 +1,17 @@
 package com.clickndcloth.server_side.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,12 +35,17 @@ public class Client {
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "client")
 	private User user;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="client_id", referencedColumnName = "id", nullable = true)
+	private List<Reservation> reservations = new ArrayList<Reservation>();
+	
 	public Client() {
 		super();
 	}
+	
 
 	public Client(int id, String first_name, String last_name, String email, String phone, int zip_code, int house_no,
-			String street, String country) {
+			String street, String country, User user, List<Reservation> reservations) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -45,7 +56,10 @@ public class Client {
 		this.house_no = house_no;
 		this.street = street;
 		this.country = country;
+		this.user = user;
+		this.reservations = reservations;
 	}
+
 
 	public int getId() {
 		return id;
@@ -118,6 +132,15 @@ public class Client {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
 	
 }
