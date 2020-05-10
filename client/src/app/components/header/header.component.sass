@@ -1,0 +1,41 @@
+
+/* mixins */
+@mixin li-basic
+    list-style: none
+    cursor: pointer
+        
+
+header    
+    height: 25vh
+    width: 100vw
+    min-height: 140px
+    border-bottom: 1px solid black
+    marquee.sub_info
+        background: #000000
+        color: white
+        font-size: 22px
+        padding: 4px
+        font-weight: 600
+        margin: 0
+    div#title
+        display: flex
+        justify-content: space-evenly
+        align-items: center
+        h1
+            font-size: 66px
+            font-weight: 200
+            span
+                font-weight: 600
+        li
+            @include li-basic
+            line-height: 35px
+            padding: 0px 5px
+            height: 36px
+            font-weight: 800
+            font-size: 22px
+            border-right: 1px solid black
+            border-left: 1px solid black
+            &:hover
+                background: #000000
+                color: white
+            

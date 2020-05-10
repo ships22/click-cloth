@@ -1,0 +1,55 @@
+/* mixins */
+header {
+  height: 25vh;
+  width: 100vw;
+  min-height: 140px;
+  border-bottom: 1px solid black;
+}
+
+header marquee.sub_info {
+  background: #000000;
+  color: white;
+  font-size: 22px;
+  padding: 4px;
+  font-weight: 600;
+  margin: 0;
+}
+
+header div#title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header div#title h1 {
+  font-size: 66px;
+  font-weight: 200;
+}
+
+header div#title h1 span {
+  font-weight: 600;
+}
+
+header div#title li {
+  list-style: none;
+  cursor: pointer;
+  line-height: 35px;
+  padding: 0px 5px;
+  height: 36px;
+  font-weight: 800;
+  font-size: 22px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+header div#title li:hover {
+  background: #000000;
+  color: white;
+}
+/*# sourceMappingURL=header.component.css.map */
