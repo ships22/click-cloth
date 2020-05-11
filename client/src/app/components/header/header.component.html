@@ -1,15 +1,24 @@
 <header>
     <marquee class="sub_info">Choisissez et réservez vos produits sans sortir de chez vous!!!</marquee>
     <div id="title">
-        <li class="quick_access">Femme</li>
+        <a href="#" mat-button color="quick_access">Femme</a>
         <h1>Click <span>&</span> Cloth</h1>
-        <li class="quick_access">Homme</li>
+        <a href="#" mat-button color="quick_access">Homme</a>
     </div>
     <nav>
-        <li>Menu 1</li>
-        <li>Menu 2</li>
-        <li>Menu 3</li>
-        <li>Menu 4</li>
-        <li>Menu 5</li>
+        <ul class="nav_main">
+            <li><a href="#">Acceuil</a></li>
+            <li>Boutique
+                <ul class="drop_menu">
+                    <li><a href="#">Tous les produits</a></li>
+                    <li><a href="#">Femme</a></li>
+                    <li><a href="#">Homme</a></li>
+                    <li><a href="#">Enfants</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Espace utilasateur</a></li>
+            <li><a href="#">Propos</a></li>
+            <li><a href="#">Panier</a></li>
+        </ul>
     </nav>
 </header>

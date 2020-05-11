@@ -1,8 +1,9 @@
 
 /* mixins */
-@mixin li-basic
+@mixin links
     list-style: none
     cursor: pointer
+    text-decoration: none
         
 
 header    
@@ -26,8 +27,7 @@ header
             font-weight: 200
             span
                 font-weight: 600
-        li
-            @include li-basic
+        .mat-quick_access
             line-height: 35px
             padding: 0px 5px
             height: 36px
@@ -35,7 +35,119 @@ header
             font-size: 22px
             border-right: 1px solid black
             border-left: 1px solid black
+            border-radius: 0
             &:hover
-                background: #000000
-                color: white
+                background: #272626
+                color: #ffffff
+
+    nav
+        padding: 10px
+        text-align: center
+        ul
+            list-style: none
+            padding: 0
+            margin: 0
+            display: inline-block
+            background-repeat: red
+            li 
+                float: left
+                width: 150px
+                height: 50px
+                line-height: 50px
+                position: relative
+            li:nth-child(2) ul.drop_menu
+                position: absolute
+                top: 100%
+                left: 0%
+                width: 100%
+                padding: 0
+                li
+                    background: red
+                    display: none
+                    opacity: 0
+                    -webkit-transform-origin: top center
+                    transform-origin: top center
+                li:nth-child(1)
+                    -webkit-animation-name: staircase
+                    animation-name: staircase
+                    -webkit-animation-duration: 300ms
+                    animation-duration: 300ms
+                    -webkit-animation-delay: -150ms
+                    animation-delay: -150ms
+                    -webkit-animation-timing-function: ease-in-out
+                    animation-timing-function: ease-in-out
+                    -webkit-animation-fill-mode: forwards
+                    animation-fill-mode: forwards
+                li:nth-child(2)
+                    -webkit-animation-name: staircase
+                    animation-name: staircase
+                    -webkit-animation-duration: 300ms
+                    animation-duration: 300ms
+                    -webkit-animation-delay: 0ms
+                    animation-delay: 0ms
+                    -webkit-animation-timing-function: ease-in-out
+                    animation-timing-function: ease-in-out
+                    -webkit-animation-fill-mode: forwards
+                    animation-fill-mode: forwards
+                li:nth-child(3)
+                    -webkit-animation-name: staircase
+                    animation-name: staircase
+                    -webkit-animation-duration: 300ms
+                    animation-duration: 300ms
+                    -webkit-animation-delay: 150ms
+                    animation-delay: 150ms
+                    -webkit-animation-timing-function: ease-in-out
+                    animation-timing-function: ease-in-out
+                    -webkit-animation-fill-mode: forwards
+                    animation-fill-mode: forwards
+                li:nth-child(4)
+                    -webkit-animation-name: staircase
+                    animation-name: staircase
+                    -webkit-animation-duration: 300m
+                    animation-duration: 300ms
+                    -webkit-animation-delay: 300ms
+                    animation-delay: 300ms
+                    -webkit-animation-timing-function: ease-in-out
+                    animation-timing-function: ease-in-out
+                    -webkit-animation-fill-mode: forwards
+                    animation-fill-mode: forwards
+
+
+            li:nth-child(2):hover > ul.drop_menu
+                -webkit-perspective: 1000px
+                perspective: 1000px
+                
+            li:nth-child(2):hover > ul.drop_menu li 
+                display: block
+
+    
+/************************************ navbar animation **********************************/
+
+@-webkit-keyframes staircase
+    0%
+        opacity: 0
+        -webkit-transform: rotateX(-90deg)
+        transform: rotateX(-90deg)  
+    60%
+        -webkit-transform: rotateX(50deg)
+        transform: rotateX(50deg)
+    100%
+        opacity: 1
+        -webkit-transform: rotateX(0deg)
+        transform: rotateX(0deg)
+    
+@keyframes staircase
+    0%
+        opacity: 0
+        -webkit-transform: rotateX(-90deg)
+        transform: rotateX(-90deg)  
+    60%
+        -webkit-transform: rotateX(50deg)
+        transform: rotateX(50deg)
+    100%
+        opacity: 1
+        -webkit-transform: rotateX(0deg)
+        transform: rotateX(0deg)
+    
             
+  

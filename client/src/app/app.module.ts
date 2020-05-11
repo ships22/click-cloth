@@ -28,8 +28,7 @@ const MaterialComponents = [MatButtonModule];
     HomeComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
-  exports: [MaterialComponents],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents],
   providers: [AuthenticationService, AdminService, ClientService],
   bootstrap: [AppComponent],
 })
