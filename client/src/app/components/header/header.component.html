@@ -1,24 +1,32 @@
 <header>
     <marquee class="sub_info">Choisissez et réservez vos produits sans sortir de chez vous!!!</marquee>
+    <div class="logo">
+        <img src="../../../assets/images/logo_sample.jpeg" alt="Logo">
+    </div>
     <div id="title">
-        <a href="#" mat-button color="quick_access">Femme</a>
+        <a href="#" mat-button color="menu_access">Femme</a>
         <h1>Click <span>&</span> Cloth</h1>
-        <a href="#" mat-button color="quick_access">Homme</a>
+        <a href="#" mat-button color="menu_access">Homme</a>
     </div>
     <nav>
         <ul class="nav_main">
-            <li><a href="#">Acceuil</a></li>
-            <li>Boutique
-                <ul class="drop_menu">
-                    <li><a href="#">Tous les produits</a></li>
-                    <li><a href="#">Femme</a></li>
-                    <li><a href="#">Homme</a></li>
-                    <li><a href="#">Enfants</a></li>
+            <li><a href="#" mat-button color="menu_access">Acceuil</a></li>
+            <li class="dropdown"><a href="#" mat-button color="menu_access" class="top_li">Boutique</a>
+                <ul class="sub_menu">
+                    <li><a href="#" mat-button color="menu_access">Tous les produits</a></li>
+                    <li><a href="#" mat-button color="menu_access">Femme</a></li>
+                    <li><a href="#" mat-button color="menu_access">Homme</a></li>
+                    <li><a href="#" mat-button color="menu_access">Enfants</a></li>
                 </ul>
             </li>
-            <li><a href="#">Espace utilasateur</a></li>
-            <li><a href="#">Propos</a></li>
-            <li><a href="#">Panier</a></li>
+            <li class="dropdown"><a href="#" mat-button color="menu_access" class="top_li">Espace utilasateur</a>
+                <ul class="sub_menu">
+                    <li><a href="#" mat-button color="menu_access">Se connecter</a></li>
+                    <li><a href="#" mat-button color="menu_access">Créer un compte</a></li>
+                </ul>
+            </li>
+            <li><a href="#" mat-button color="menu_access">Propos</a></li>
+            <li><a href="#" mat-button color="menu_access">Panier</a></li>
         </ul>
     </nav>
 </header>
