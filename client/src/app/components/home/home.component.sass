@@ -1,0 +1,128 @@
+html
+    min-height: 100%
+body
+    height: 100%
+
+.slideshow 
+  list-style: none
+  z-index: 1
+  overflow: hidden
+
+.slideshow li span 
+  width: 100vw
+  height: 100vh
+  max-width: 100%
+  max-height: 100%
+  position: absolute
+  top: 0px
+  left: 0px
+  color: transparent
+  background-size: cover
+  background-position: 50% 50%
+  background-repeat: none
+  opacity: 0
+  z-index: 0
+  -webkit-backface-visibility: hidden
+  backface-visibility: hidden
+  -webkit-animation: imageAnimation 20s linear infinite 0s
+  -moz-animation: imageAnimation 20s linear infinite 0s
+  animation: imageAnimation 20s linear infinite 0s
+
+@-webkit-keyframes imageAnimation 
+    0% 
+        opacity: 0
+        -webkit-animation-timing-function: ease-in
+    12.5% 
+        opacity:  1
+        -webkit-animation-timing-function: ease-out
+    25%    
+        opacity: 1
+    37.5% 
+        opacity: 0
+
+    100% 
+        opacity: 0
+/** 0% {
+    transform: translate(-50%, -50%) scale(1);
+  } 60% {
+    transform: translate(-55%, -45%) scale(1.1);
+  } 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+ **/
+@keyframes imageAnimation
+    0% 
+        opacity: 0
+        -webkit-animation-timing-function: ease-in
+        -moz-animation-timing-function: ease-in
+        animation-timing-function: ease-in
+        transform: scale(1)
+    12.5% 
+        opacity: 1
+        -webkit-animation-timing-function: ease-out
+        -moz-animation-timing-function: ease-out
+        animation-timing-function: ease-out
+        // transform: scale(1.1)
+    25% 
+        opacity: 1
+        -webkit-animation-timing-function: ease-out
+        -moz-animation-timing-function: ease-out
+        animation-timing-function: ease-out
+        // transform: translate(5%, 5%) scale(1.2)
+    37.5% 
+        opacity: 0
+        -webkit-animation-timing-function: ease-out
+        -moz-animation-timing-function: ease-out
+        animation-timing-function: ease-out
+
+    100% 
+        opacity: 0
+        
+        
+
+@-webkit-keyframes titleAnimation 
+    0% 
+        opacity: 0
+    12.5% 
+        opacity: 1
+    25% 
+        opacity: 1
+    37.5% 
+        opacity: 0
+    100% 
+        opacity: 0
+        
+@keyframes titleAnimation 
+    0%
+        opacity: 0
+    12.5% 
+        opacity: 1
+    25% 
+        opacity: 1
+    37.5% 
+        opacity: 0
+    100% 
+        opacity: 0
+
+.slideshow li:nth-child(1) span 
+    background-image: url("../../../assets/images/img_1.jpg")
+
+.slideshow li:nth-child(2) span 
+    background-image: url("../../../assets/images/img_2.jpg")
+    -webkit-animation-delay: 5s
+    -moz-animation-delay: 5s
+    animation-delay: 5s
+
+.slideshow li:nth-child(3) span 
+    background-image: url("../../../assets/images/img_1.jpg")
+    -webkit-animation-delay: 10s
+    -moz-animation-delay: 10s
+    animation-delay: 10s
+
+.slideshow li:nth-child(4) span 
+    background-image: url("../../../assets/images/img_2.jpg")
+    -webkit-animation-delay: 15s
+    -moz-animation-delay: 15s
+    animation-delay: 15s
+
+

@@ -2,7 +2,11 @@
 header {
   width: 100vw;
   height: 170px;
+  z-index: 10;
   position: relative;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 1px 1px 1px;
+          box-shadow: 1px 1px 1px;
 }
 
 header marquee.sub_info {
