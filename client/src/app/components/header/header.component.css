@@ -15,7 +15,8 @@ header marquee.sub_info {
   font-size: 22px;
   padding: 4px;
   font-weight: 600;
-  margin: 0;
+  width: 100%;
+  height: 36px;
 }
 
 header div.logo {
@@ -40,6 +41,7 @@ header div#title {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 94px;
 }
 
 header div#title h1 {
@@ -74,14 +76,12 @@ header div#title a.mat-menu_access:hover {
 }
 
 header nav {
-  padding: 10px;
   text-align: center;
+  height: 36px;
 }
 
 header nav ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: inline-block;
 }
 
