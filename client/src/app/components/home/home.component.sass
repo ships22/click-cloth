@@ -135,74 +135,95 @@ figure
         opacity: 0
          -webkit-transformm:scale(1)
 
-section.text_slider 
-    position: absolute
-    
-    z-index: 2
+section.text_slider
+    position: relative
     top: 50%
-    width: 100%
     transform: translateY(-50%)
+    height: 200px
+    z-index: 2
+    width: 100%
     overflow: hidden
-    // background: rgba(0, 0, 0, 0.1)
+    
     h3
         text-align: center
         white-space: nowrap
         font-size: 90px
         color: white
-        text-shadow: 1px 1px 1px #000000
+        text-shadow: 1px 2px 1px rgba(150, 150, 150, 1)
         font-weight: 600
-        // text-transform: uppercase
-        // background: black
+        position: absolute
+        width: 100%
+        text-transform: uppercase
     h3.quoto_line_top-1, h3.quoto_line_top-2, h3.quoto_line_top-3, h3.quoto_line_top-4
-        animation: slide-text-right 6s cubic-bezier(.01,1.04,1, .01) infinite 0s
-        // slideShow 24s linear infinite 0s
-        transform: translateX(-100%) 
+        animation: slide-text-right 24s cubic-bezier(.01,1.04,1, .01) infinite 
+        transform: translateX(100%) 
+        top: 0
     h3.quoto_line_bottom-1, h3.quoto_line_bottom-2, h3.quoto_line_bottom-3, h3.quoto_line_bottom-4
-        animation: 6s slide-text-left cubic-bezier(.01,1.04,1, .01) infinite
+        animation: 24s slide-text-left cubic-bezier(.01,1.04,1, .01) infinite
         transform: translateX(-100%) 
+        top: 90px
     h3.quoto_line_top-2
-        animation-delay: 6s
+         animation-delay: 6s
          -o-animation-delay: 6s
          -moz--animation-delay: 6s
          -webkit-animation-delay: 6s
     h3.quoto_line_top-3
-        animation-delay: 12s
+         animation-delay: 12s
          -o-animation-delay: 12s
          -moz--animation-delay: 12s
          -webkit-animation-delay: 12s
     h3.quoto_line_top-4
-        animation-delay: 18s
+         animation-delay: 18s
          -o-animation-delay: 18s
          -moz--animation-delay: 18s
          -webkit-animation-delay: 18s
 
     h3.quoto_line_bottom-2
-        animation-delay: 6s
+         animation-delay: 6s
          -o-animation-delay: 6s
          -moz--animation-delay: 6s
          -webkit-animation-delay: 6s
     h3.quoto_line_bottom-3
-        animation-delay: 12s
+         animation-delay: 12s
          -o-animation-delay: 12s
          -moz--animation-delay: 12s
          -webkit-animation-delay: 12s
     h3.quoto_line_bottom-4
-        animation-delay: 18s
+         animation-delay: 18s
          -o-animation-delay: 18s
          -moz--animation-delay: 18s
          -webkit-animation-delay: 18s
 
 @keyframes slide-text-right  
     0% 
+        opacity: 0
         transform: translateX(-100%)
-    100%
-        transform: translateX(90%)
+    2%
+        opacity: 1
+    23%
+        opacity: 1
+    25% 
+        opacity: 0
+        transform: translateX(100%)  
+    100% 
+        opacity: 0
+        transform: translateX(100%)
         
 @keyframes slide-text-left
+
     0% 
+        opacity: 0
         transform: translateX(100%)
-    100%
-        transform: translateX(-90%)
+    2%
+        opacity: 1
+    23%
+        opacity: 1
+    25% 
+        opacity: 0
+        transform: translateX(-100%)  
+    100% 
+        opacity: 0
+        transform: translateX(-100%)
 // section middle -
 
 section.middle
