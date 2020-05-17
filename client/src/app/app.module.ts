@@ -14,8 +14,8 @@ import { ClientService } from "./services/client.service";
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import {MatButtonModule} from '@angular/material/button';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 const MaterialComponents = [MatButtonModule];
 
@@ -28,7 +28,7 @@ const MaterialComponents = [MatButtonModule];
     HomeComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents, CarouselModule],
   providers: [AuthenticationService, AdminService, ClientService],
   bootstrap: [AppComponent],
 })
