@@ -1,5 +1,5 @@
 <div class="main">
-    <div class="slider-wrapper">
+    <div class="slider_wrapper">
         <div id="slider_holder">
           <figure class="slide-1"></figure>
           <figure class="slide-2"></figure>
@@ -19,15 +19,19 @@
     </div>
     <section class="middle">
         <h2>Offre disponible</h2>
-        <div class="wrapper">
+        <div class="owl_wrapper">
+          <h3>trouver plus d'offre comme celles-ci</h3>
             <owl-carousel-o [options]="customOptions">
-          
               <ng-container *ngFor="let slide of apiData">
-                <ng-template class="slide" carouselSlide [id]="slide.id">
-                  <img [src]="slide.url" [alt]="slide.id" [title]="slide.id">
+                <ng-template class="slide_secondary" carouselSlide [id]="slide.id">
+                  <div class="slide_product">
+                    <a href="#" mat-button color="link_access">
+                      <img [src]="slide.url" [alt]="slide.id" [title]="slide.id">
+                    </a>
+                    <span>{{ slide.title.substr(0, 8) }}</span>
+                  </div>
                 </ng-template>
               </ng-container>
-          
             </owl-carousel-o>  
           </div>
     </section>

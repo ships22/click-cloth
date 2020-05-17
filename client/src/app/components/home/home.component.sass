@@ -1,3 +1,10 @@
+@mixin owl_slide_style
+    font-size: 22px
+    color: #000000
+    padding: 0px
+    display: block
+    border-radius: 0
+
 html
     min-height: 100%
 body
@@ -7,7 +14,7 @@ body
     width: 100%
     max-width: 100%
     
-.slider-wrapper 
+.slider_wrapper 
   position: relative
   width: 100vw
   height: 100vh
@@ -90,50 +97,50 @@ figure
         transform: scale(1)
         -ms-transformm: scale(1)
 
-@-o-keyframes   slideShow  
-    0% 
-        opacity: 0
-         -o-transform: scale(1)
-    5% 
-        opacity: 1
-    25% 
-        opacity: 1
-    30% 
-        opacity: 0
-         -o-transform: scale(1.1)
-    100% 
-        opacity: 0
-         -o-transformm: scale(1)
+// @-o-keyframes   slideShow  
+//     0% 
+//         opacity: 0
+//          -o-transform: scale(1)
+//     5% 
+//         opacity: 1
+//     25% 
+//         opacity: 1
+//     30% 
+//         opacity: 0
+//          -o-transform: scale(1.1)
+//     100% 
+//         opacity: 0
+//          -o-transformm: scale(1)
  
-@-moz-keyframes slideShow   
-    0% 
-        opacity: 0
-         -moz-transform: scale(1)
-    5% 
-        opacity: 1
-    25% 
-        opacity: 1
-    30% 
-        opacity: 0
-         -moz-transform: scale(1.1)
-    100% 
-        opacity: 0
-         -moz-transformm: scale(1)
+// @-moz-keyframes slideShow   
+//     0% 
+//         opacity: 0
+//          -moz-transform: scale(1)
+//     5% 
+//         opacity: 1
+//     25% 
+//         opacity: 1
+//     30% 
+//         opacity: 0
+//          -moz-transform: scale(1.1)
+//     100% 
+//         opacity: 0
+//          -moz-transformm: scale(1)
 
-@-webkit-keyframes  slideShow 
-    0% 
-        opacity: 0
-         -webkit-transform: scale(1)
-    5% 
-        opacity: 1
-    25% 
-        opacity: 1     
-    30% 
-        opacity: 0
-         -webkit-transform:scale(1.1)
-    100% 
-        opacity: 0
-         -webkit-transformm:scale(1)
+// @-webkit-keyframes  slideShow 
+//     0% 
+//         opacity: 0
+//          -webkit-transform: scale(1)
+//     5% 
+//         opacity: 1
+//     25% 
+//         opacity: 1     
+//     30% 
+//         opacity: 0
+//          -webkit-transform:scale(1.1)
+//     100% 
+//         opacity: 0
+//          -webkit-transformm:scale(1)
 
 section.text_slider
     position: relative
@@ -231,11 +238,10 @@ section.middle
     height: 100vh
     width: 100vw 
     overflow: hidden
-    max-height: 100%
-    max-width: 100%
-    background: #e9e0e0
+    // max-height: 100%
+    // max-width: 100%
+    // background: #e9e0e0
     h2
-        
         background: yellow
         text-align: center
         font-family: 'Gochi Hand', cursive
@@ -243,7 +249,38 @@ section.middle
         padding: 10px
         font-family: 'Shadows Into Light Two', cursive
         color: rgba(252, 92, 23, 1)
-
+    .owl_wrapper
+        padding-top: 40px
+        border: 1px solid black
+        width: 1100px
+        margin: 0 auto
+        padding: 40px 10px 10px 10px
+        h3
+            font-size: 38px
+            padding: 20px 0px
+            text-align: center
+            background: #dad9d6
+            width: 750px
+            margin: 0px auto 40px
+            font-weight: 600
+    .slide_product 
+        height: 300px
+        // width: 280px
+        border: 1px solid black
+        box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.4)
+        //  -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.4)
+        //  -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.4)
+         margin-bottom: 10px !important
+        
+    a.mat-link_access
+        @include owl_slide_style
+    
+.owl-carousel .owl-stage
+        margin: 30px
+    
+        
+    
+        
         
 
     

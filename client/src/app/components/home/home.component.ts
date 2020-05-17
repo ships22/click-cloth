@@ -26,22 +26,31 @@ export class HomeComponent implements OnInit {
     this.fetch()
   }
   apiData: PhotosApi;
-  limit: number = 10; // <==== Edit this number to limit API results
+  limit: number = 12; // <==== Edit this number to limit API results
   customOptions: OwlOptions = {
     loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
     autoplay: true,
-    center: true,
+    autoplayHoverPause: true,
+    center: false,
     dots: false,
     autoHeight: true,
-    autoWidth: true,
+    // autoWidth: true,
+    slideBy: 3,
+    margin: 10,
+    
+    nav: true,
+    // navText: ['Previous', 'Next'],
     responsive: {
       0: {
         items: 1,
       },
       600: {
-        items: 4,
+        items: 3,
       },
-      1000: {
+      900: {
         items: 4,
       }
     }
