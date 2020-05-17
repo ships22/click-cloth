@@ -1,7 +1,7 @@
 /* mixins */
 header {
   width: 100vw;
-  height: 170px;
+  height: 176px;
   z-index: 10;
   position: relative;
   background: rgba(255, 255, 255, 0.5);
@@ -22,8 +22,11 @@ header marquee.sub_info {
 header div.logo {
   position: absolute;
   left: 25px;
-  height: 90px;
-  width: 90px;
+  height: 70px;
+  width: 70px;
+  top: 50%;
+  -webkit-transform: translateY(-35%);
+          transform: translateY(-35%);
 }
 
 header div.logo img {
