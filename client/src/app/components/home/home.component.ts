@@ -36,10 +36,10 @@ export class HomeComponent implements OnInit {
     autoplayHoverPause: true,
     center: false,
     dots: false,
-    autoHeight: true,
+    autoHeight: false,
     // autoWidth: true,
     slideBy: 3,
-    margin: 10,
+    margin: 15,
     
     nav: true,
     // navText: ['Previous', 'Next'],

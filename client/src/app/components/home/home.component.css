@@ -309,7 +309,7 @@ section.middle h2 {
   background: yellow;
   text-align: center;
   font-family: 'Gochi Hand', cursive;
-  font-size: 10vh;
+  font-size: 68px;
   padding: 10px;
   font-family: 'Shadows Into Light Two', cursive;
   color: #fc5c17;
@@ -318,7 +318,8 @@ section.middle h2 {
 section.middle .owl_wrapper {
   padding-top: 40px;
   border: 1px solid black;
-  width: 1100px;
+  min-width: 1200px;
+  width: 80vw;
   margin: 0 auto;
   padding: 40px 10px 10px 10px;
 }
@@ -335,20 +336,62 @@ section.middle .owl_wrapper h3 {
 
 section.middle .slide_product {
   height: 300px;
-  border: 1px solid black;
-  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
-          box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+  width: 230px;
+  margin: 0 auto;
+  position: relative;
 }
 
-section.middle a.mat-link_access {
+section.middle .slide_product a.mat-link_access {
   font-size: 22px;
   color: #000000;
   padding: 0px;
   display: block;
   border-radius: 0;
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+  border: 8px solid #eb9e47;
+  position: relative;
 }
 
-.owl-carousel .owl-stage {
-  margin: 30px;
+section.middle .slide_product a.mat-link_access span.discount_lbl {
+  text-align: center;
+  height: 30px;
+  width: 120px;
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-transform: rotate(-50deg);
+          transform: rotate(-50deg);
+  top: 150px;
+  right: -17px;
+  background: red;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+}
+
+section.middle .slide_product a.mat-link_access span.discount_lbl::after {
+  content: '';
+  position: absolute;
+  height: 30px;
+  width: 40px;
+  background: red;
+  top: 0;
+  right: -20px;
+  -webkit-transform: skewx(-50deg);
+          transform: skewx(-50deg);
+  z-index: -1;
+}
+
+section.middle .slide_product span.category {
+  position: absolute;
+  width: 100%;
+  bottom: -20px;
+  background: #dad9d6;
+  border: 8px solid #eb9e47;
+  text-align: center;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
 }
 /*# sourceMappingURL=home.component.css.map */

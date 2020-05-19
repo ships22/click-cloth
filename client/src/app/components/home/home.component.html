@@ -24,11 +24,12 @@
             <owl-carousel-o [options]="customOptions">
               <ng-container *ngFor="let slide of apiData">
                 <ng-template class="slide_secondary" carouselSlide [id]="slide.id">
-                  <div class="slide_product">
+                  <div class="slide_product" style="margin-bottom: 20px;">
                     <a href="#" mat-button color="link_access">
                       <img [src]="slide.url" [alt]="slide.id" [title]="slide.id">
+                      <span class="discount_lbl">Jusqu'à -50%</span>
                     </a>
-                    <span>{{ slide.title.substr(0, 8) }}</span>
+                    <span class="category">{{ slide.title.substr(0, 8) }}</span>
                   </div>
                 </ng-template>
               </ng-container>
