@@ -303,6 +303,33 @@ section.middle {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+section.middle .wave {
+  width: 100%;
+  min-height: 700px;
+  background: #ffc600;
+  position: absolute;
+  top: 0;
+}
+
+section.middle .wave::before {
+  content: '';
+  height: 315px;
+  width: 100%;
+  position: absolute;
+  background: url("../../../assets/images/wave.png") no-repeat;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
 }
 
 section.middle h2 {
@@ -313,25 +340,59 @@ section.middle h2 {
   padding: 10px;
   font-family: 'Shadows Into Light Two', cursive;
   color: #fc5c17;
+  z-index: 5;
+}
+
+section.middle p.info_reserve {
+  z-index: 5;
+  position: absolute;
+  -webkit-transform: rotate(-90deg) translateX(50%);
+          transform: rotate(-90deg) translateX(50%);
+  top: 350px;
+  left: -10px;
+  width: 180px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+section.middle p.info_reserve span {
+  font-weight: 600;
+}
+
+section.middle p.info_reserve::before {
+  content: '';
+  height: 5px;
+  width: 185px;
+  background: #000000;
+  background: white;
+  position: absolute;
+  right: 185px;
+  top: 5px;
 }
 
 section.middle .owl_wrapper {
-  padding-top: 40px;
-  border: 1px solid black;
+  z-index: 5;
   min-width: 1200px;
   width: 80vw;
   margin: 0 auto;
-  padding: 40px 10px 10px 10px;
+  padding: 20px 10px 10px 10px;
+}
+
+section.middle .owl_wrapper h6 {
+  width: 750px;
+  margin: 0 auto;
+  font-size: 64px;
+  font-weight: 200;
 }
 
 section.middle .owl_wrapper h3 {
-  font-size: 38px;
-  padding: 20px 0px;
+  font-size: 50px;
+  color: white;
+  padding: 0px 0px 20px;
   text-align: center;
-  background: #dad9d6;
   width: 750px;
-  margin: 0px auto 40px;
-  font-weight: 600;
+  margin: 0px auto 20px;
+  font-weight: 800;
 }
 
 section.middle .slide_product {
@@ -350,24 +411,55 @@ section.middle .slide_product a.mat-link_access {
   -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
           box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
   border: 8px solid #eb9e47;
+  border: 5px solid #000000;
   position: relative;
+  border-radius: 3px;
+  height: 230px;
+  width: 230x;
+}
+
+section.middle .slide_product a.mat-link_access img {
+  height: 100%;
+  width: 100%;
+}
+
+section.middle .slide_product a.mat-link_access:hover {
+  -webkit-box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.4);
+  -webkit-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 section.middle .slide_product a.mat-link_access span.discount_lbl {
   text-align: center;
   height: 30px;
   width: 120px;
+  line-height: 30px;
   font-size: 16px;
   font-weight: 600;
   -webkit-transform: rotate(-50deg);
           transform: rotate(-50deg);
   top: 150px;
   right: -17px;
-  background: red;
+  background: #f86e11;
   position: absolute;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-align: center;
+}
+
+section.middle .slide_product a.mat-link_access span.discount_lbl::before {
+  content: '';
+  position: absolute;
+  height: 30px;
+  width: 40px;
+  background: #f86e11;
+  top: 0;
+  left: -20px;
+  -webkit-transform: skewx(40deg);
+          transform: skewx(40deg);
+  z-index: -1;
 }
 
 section.middle .slide_product a.mat-link_access span.discount_lbl::after {
@@ -375,9 +467,9 @@ section.middle .slide_product a.mat-link_access span.discount_lbl::after {
   position: absolute;
   height: 30px;
   width: 40px;
-  background: red;
+  background: #f86e11;
   top: 0;
-  right: -20px;
+  right: -15px;
   -webkit-transform: skewx(-50deg);
           transform: skewx(-50deg);
   z-index: -1;
@@ -386,12 +478,20 @@ section.middle .slide_product a.mat-link_access span.discount_lbl::after {
 section.middle .slide_product span.category {
   position: absolute;
   width: 100%;
-  bottom: -20px;
+  bottom: -5px;
   background: #dad9d6;
   border: 8px solid #eb9e47;
+  border: 5px solid #000000;
+  border-radius: 3px;
   text-align: center;
   padding: 5px;
   font-size: 16px;
   font-weight: 600;
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+.owl-carousel .owl-nav .owl-next {
+  width: 220px !important;
 }
 /*# sourceMappingURL=home.component.css.map */

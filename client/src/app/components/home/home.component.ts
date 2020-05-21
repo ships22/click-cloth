@@ -40,9 +40,9 @@ export class HomeComponent implements OnInit {
     // autoWidth: true,
     slideBy: 3,
     margin: 15,
-    
     nav: true,
-    // navText: ['Previous', 'Next'],
+    // navText: ['Précédent', 'Suivant'],
+    navText: ["<span class='previous'>Précédent</span>", "<span class='next'>Suivant</span>"],
     responsive: {
       0: {
         items: 1,
