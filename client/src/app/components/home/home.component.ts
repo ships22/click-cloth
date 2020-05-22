@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     private readonly http: HttpClient,) { }
 
   ngOnInit(): void {
-    this.fetch()
+    this.fetch();
   }
   apiData: PhotosApi;
   limit: number = 12; // <==== Edit this number to limit API results
@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+  
   fetch() {
     const api = `https://jsonplaceholder.typicode.com/albums/1/photos?_start=0&_limit=${this.limit}`;
     const http$ = this.http.get<PhotosApi>(api);
@@ -64,4 +65,6 @@ export class HomeComponent implements OnInit {
       err => throwError(err)
     )
   }
+
+
 }

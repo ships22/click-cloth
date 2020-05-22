@@ -1,45 +1,90 @@
 <div class="main">
-    <div class="slider_wrapper">
-        <div id="slider_holder">
-          <figure class="slide-1"></figure>
-          <figure class="slide-2"></figure>
-          <figure class="slide-3"></figure>
-          <figure class="slide-4"></figure>
-        </div>
-        <section class="text_slider">
-            <h3 class="quoto_line_top-1">La vie est devenu</h3>
-            <h3 class="quoto_line_bottom-1">trés belle</h3>
-            <h3 class="quoto_line_top-2">La Techno de la vie</h3>
-            <h3 class="quoto_line_bottom-2">change tout le temps</h3>
-            <h3 class="quoto_line_top-3">Tout est </h3>
-            <h3 class="quoto_line_bottom-3">prêt pour vous</h3>
-            <h3 class="quoto_line_top-4">Je pourrais pas</h3>
-            <h3 class="quoto_line_bottom-4">choisis avant!</h3>
-        </section>
+  <div class="slider_wrapper">
+    <div id="slider_holder">
+      <figure class="slide-1"></figure>
+      <figure class="slide-2"></figure>
+      <figure class="slide-3"></figure>
+      <figure class="slide-4"></figure>
     </div>
-    <section class="middle">
-        <h2>Offre disponible</h2>
-        <span class="wave"></span>
-        <p class="info_reserve">résevez maintenant <br><span>payez plus tard</span></p>
-        <div class="owl_wrapper">
-          <h6>feel the</h6>
-          <h3>FASHION OF MODERN ERA<span>.</span></h3>
-            <owl-carousel-o [options]="customOptions">
-              <ng-container *ngFor="let slide of apiData" let i = index>
-                <ng-template class="slide_secondary" carouselSlide [id]="slide.id">
-                  <div class="slide_product" style="margin-bottom: 20px;">
-                    <a href="#" mat-button color="link_access">
-                      <!-- <img [src]="slide.url" [alt]="slide.id" [title]="slide.id"> -->
-                      <img src="../../../assets/images/owl_images/sec_1.jpg" [alt]="slide.id" [title]="slide.id">
-                      <span class="discount_lbl">Jusqu'à -50%</span>
-                    </a>
-                    <span class="category" style="margin-bottom: 10px;">{{ slide.title.substr(0, 8) }}</span>
-                  </div>
-                </ng-template>
-              </ng-container>
-            </owl-carousel-o>  
-          </div>
+    <section class="text_slider">
+      <h3 class="quoto_line_top-1">La vie est devenu</h3>
+      <h3 class="quoto_line_bottom-1">trés belle</h3>
+      <h3 class="quoto_line_top-2">La Techno de la vie</h3>
+      <h3 class="quoto_line_bottom-2">change tout le temps</h3>
+      <h3 class="quoto_line_top-3">Tout est </h3>
+      <h3 class="quoto_line_bottom-3">prêt pour vous</h3>
+      <h3 class="quoto_line_top-4">Je pourrais pas</h3>
+      <h3 class="quoto_line_bottom-4">choisis avant!</h3>
     </section>
-</div>
-
+  </div>
+  <div class="middle">
+    <h2>Offre disponible</h2>
+    <span class="wave"></span>
+    <p class="info_reserve">résevez maintenant <br><span>payez plus tard</span></p>
+    <div class="owl_wrapper">
+      <h6>feel the</h6>
+      <h3>FASHION OF MODERN ERA<span>.</span></h3>
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let slide of apiData" let i=index>
+          <ng-template class="slide_secondary" carouselSlide [id]="slide.id">
+            <div class="slide_product" style="margin-bottom: 20px;">
+              <a href="#" mat-button color="link_access">
+                <!-- <img [src]="slide.url" [alt]="slide.id" [title]="slide.id"> -->
+                <img src="../../../assets/images/owl_images/sec_1.jpg" [alt]="slide.id" [title]="slide.id">
+                <span class="discount_lbl">Jusqu'à -50%</span>
+              </a>
+              <span class="category" style="margin-bottom: 10px;">{{ slide.title.substr(0, 8) }}</span>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+  <div id="bottom">
+    <!-- <section class="bottom_left">
+      <div class="mode_female">
+        <img class="mode_f_img" src="../../../assets/images/owl_images/sec_4.jpg" alt="image">
+        <img class="mode_f_img" src="../../../assets/images/owl_images/sec_2.jpg" alt="image">
+        <img class="mode_f_img" src="../../../assets/images/owl_images/sec_3.jpg" alt="image">
+      </div>
+    </section>
     
+  </div> -->
+  <div id="bottom">
+    <div id="mode_female">
+       <div id="mode_female-slider">  <!-- Slider container -->
+          <div id="mask">  <!-- Mask -->
+ 
+          <ul>
+          <li id="first" class="firstanimation">  <!-- ID for tooltip and class for animation -->
+          <a href="#"> <img src="../../../assets/images/owl_images/sec_2.jpg" alt="Cougar"/> </a>
+          <div class="tooltip"> <h2>Cougar</h2> </div>
+          </li>
+ 
+          <li id="second" class="secondanimation">
+          <a href="#"> <img src="../../../assets/images/owl_images/sec_3.jpg" alt="Lions"/> </a>
+          <div class="tooltip"> <h2>Lions</h2> </div>
+          </li>
+ 
+          <li id="third" class="thirdanimation">
+          <a href="#"> <img src="../../../assets/images/owl_images/sec_5.jpg" alt="Snowalker"/> </a>
+          <div class="tooltip"> <h2>Snowalker</h2> </div>
+          </li>
+
+          <li id="fourth" class="fourthanimation">
+            <a href="#"> <img src="../../../assets/images/owl_images/sec_1.jpg" alt="Snowalker"/> </a>
+            <div class="tooltip"> <h2>Snowalker</h2> </div>
+            </li>
+
+            <li id="fifth" class="fifthanimation">
+              <a href="#"> <img src="../../../assets/images/owl_images/sec_3.jpg" alt="Snowalker"/> </a>
+              <div class="tooltip"> <h2>Snowalker</h2> </div>
+              </li>
+          </ul>
+ 
+          </div>  <!-- End Mask -->
+          <div class="progress-bar"></div>  <!-- Progress Bar -->
+       </div>  <!-- End Slider Container -->
+    </div>
+ </div>
+</div>
