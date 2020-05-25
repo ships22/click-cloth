@@ -543,4 +543,7 @@ div#bottom #mode_female-slider {
   overflow: visible;
   position: relative;
 }
+div#bottom #mode_female-slider:hover li {
+  animation-play-state: paused;
+}
 /*# sourceMappingURL=home.component.css.map */

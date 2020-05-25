@@ -395,61 +395,53 @@ div#bottom
     width: 100vw
     height: 100vh
     padding-top: 20px
-    .bottom_left
-        border-top: 20px solid #ffffff
-        width: 45%
-        height: 60%
-        background-color: green
-        // min-height: 750px
-        padding: 25px 30px 20px 0px
+    #mode_female
+        border-top: 30px solid #ffffff
+        padding-top: 20px
+        padding-right: 50px
+        height: 400px
+        width: 600px
         position: relative
+        transform: skewX(-15deg)
         &::after
-            content: ''
-            width: 10px
-            height: 100%
-            right: 0
-            position: absolute
-            top: 0
-            background: rgb(255,255,255)
-            background: linear-gradient(180deg, rgba(255,255,255,1) 5%, rgba(254,254,254,0) 100%, rgba(0,212,255,1) 100%)
-        
-    .mode_female
-        width: 100%
-        height: 100%
-        border: 5px solid red
-        img
-            object-fit: cover
-            height: 100%
-            width: 100%
-
+             content: ''
+             position: absolute
+             width: 20px
+             height: 100%
+             background: #ffffff
+             right: 0
+             top: 0
     #mode_female-slider 
-        background: #000
-        border: 5px solid #eaeaea
         box-shadow: 1px 1px 5px rgba(0,0,0,0.7)
-        height: 320px
-        width: 680px
-        margin: 40px auto 0
-        overflow: visible
+        height: 100%
+        width: 100%
+        margin: auto 0
+        overflow: hidden
         position: relative
         &:hover li
-            animation-play-state: paused
+            animation-play-state: paused !important
         &:hover .progress-bar
-            animation-play-state: paused
+            animation-play-state: paused !important
             
         //https://www.smashingmagazine.com/2012/04/pure-css3-cycling-slideshow/
         #mask 
             overflow: hidden
-            height: 320px
+            height: 380px
+            transform: skewX(15deg)
             ul 
                 margin: 0
                 padding: 0
                 position: relative
                 li
-                    width: 680px
-                    height: 320px
+                    width: 600px
+                    height: 380px
                     position: absolute
                     top: -325px
                     list-style: none
+                    a img
+                         object-fit: cover
+                         height: 100%
+                         width: 100%
                     div.tooltip 
                         background: rgba(0,0,0,0.7)
                         width: 300px
@@ -485,9 +477,10 @@ div#bottom
                     animation: cyclefive 25s linear infinite
                     &:hover .tooltip
                         left: 0
+                        
         .progress-bar 
             position: relative
-            top: -5px
+            top: -15px
             width: 680px
             height: 5px
             background: #000
