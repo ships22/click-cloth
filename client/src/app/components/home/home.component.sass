@@ -266,7 +266,6 @@ div.middle
     h2
         background: yellow
         text-align: center
-        font-family: 'Gochi Hand', cursive
         font-size: 68px
         padding: 10px
         font-family: 'Shadows Into Light Two', cursive
@@ -395,6 +394,8 @@ div#bottom
     width: 100vw
     height: 100vh
     padding-top: 20px
+    display: flex
+    justify-content: space-between
     #mode_female
         border-top: 30px solid #ffffff
         padding-top: 20px
@@ -403,14 +404,56 @@ div#bottom
         width: 600px
         position: relative
         transform: skewX(-15deg)
+        margin-left: -50px
         &::after
              content: ''
              position: absolute
              width: 20px
              height: 100%
              background: #ffffff
+             background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 52%) // FF3.6-15 
+             background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // Chrome10-25,Safari5.1-6 
+             background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ) // IE6-9 
              right: 0
              top: 0
+        section.femme_lbl
+             background: #000000
+             margin-top: 15px
+             height: 80px
+             position: relative
+             h3
+               font-size: 24px
+               font-weight: 400
+               line-height: 80px
+               margin-left: 140px
+               transform: skewX(15deg)
+               display: inline-block
+               color: #ffffff
+               float: left
+               &::after
+                    content: ''
+                    position: absolute
+                    height: 5px
+                    background: #ffffff
+                    width: 40px
+                    top: 40px
+                    right: -40px
+             p
+                  position: absolute
+                  right: 0
+                  bottom: 7px
+                  font-family: 'Parisienne', cursive
+                  font-size: 30px
+                  color: #ffffff
+                  border-top: 20px solid #ffffff
+                  transform: rotate(-90deg)
+                  height: 65px
+                  width: 80px
+                  padding-left: 10px
+                                 
+             
+
     #mode_female-slider 
         box-shadow: 1px 1px 5px rgba(0,0,0,0.7)
         height: 100%
@@ -425,8 +468,8 @@ div#bottom
             
         //https://www.smashingmagazine.com/2012/04/pure-css3-cycling-slideshow/
         #mask 
-            overflow: hidden
             height: 380px
+            margin-left: 50px
             transform: skewX(15deg)
             ul 
                 margin: 0
@@ -434,10 +477,13 @@ div#bottom
                 position: relative
                 li
                     width: 600px
-                    height: 380px
+                    height: 350px
                     position: absolute
                     top: -325px
                     list-style: none
+                    a
+                         width: 600px
+                         height: 350px
                     a img
                          object-fit: cover
                          height: 100%
@@ -447,7 +493,7 @@ div#bottom
                         width: 300px
                         height: 60px
                         position: relative
-                        bottom: 75px
+                        bottom: 68px
                         left: -320px
                         transition: all 0.3s ease-in-out
                         h2 
@@ -480,13 +526,151 @@ div#bottom
                         
         .progress-bar 
             position: relative
-            top: -15px
+            top: -35px
             width: 680px
             height: 5px
             background: #000
             animation: fullexpand 25s ease-out infinite
 
 
+    
+    #mode_male
+        border-bottom: 30px solid #ffffff
+        padding-bottom: 20px
+        padding-left: 50px
+        height: 400px
+        width: 600px
+        position: relative
+        transform: skewX(-15deg)
+        right: 0
+        &::after
+             content: ''
+             position: absolute
+             width: 20px
+             height: 100%
+             background: #ffffff
+             background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 52%) // FF3.6-15 
+             background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // Chrome10-25,Safari5.1-6 
+             background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ) // IE6-9 
+             left: 0
+             bottom: 0
+        section.male_lbl
+             background: #000000
+             margin-bottom: 15px
+             height: 80px
+             position: relative
+             h3
+               font-size: 24px
+               font-weight: 400
+               line-height: 80px
+               margin-right: 140px
+               transform: skewX(15deg)
+               display: inline-block
+               color: #ffffff
+               float: right
+               &::after
+                    content: ''
+                    position: absolute
+                    height: 5px
+                    background: #ffffff
+                    width: 40px
+                    bottom: 40px
+                    left: -40px
+             p
+                  position: absolute
+                  left: 0
+                  top: 5px
+                  font-family: 'Parisienne', cursive
+                  font-size: 30px
+                  color: #ffffff
+                  border-bottom: 20px solid #ffffff
+                  transform: rotate(-90deg)
+                  height: 65px
+                  width: 80px
+                  padding-right: 10px
+                                 
+             
+
+    #mode_male-slider 
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.7)
+        height: 100%
+        width: 100%
+        margin: auto 0
+        overflow: hidden
+        position: relative
+        &:hover li
+            animation-play-state: paused !important
+        &:hover .progress-bar_male
+            animation-play-state: paused !important
+            
+        //https://www.smashingmagazine.com/2012/04/pure-css3-cycling-slideshow/
+        #mask 
+            height: 380px
+            margin-right: 50px
+            transform: skewX(-15deg)
+            ul 
+                margin: 0
+                padding: 0
+                position: relative
+                li
+                    width: 600px
+                    height: 350px
+                    position: absolute
+                    top: -325px
+                    list-style: none
+                    a
+                         width: 600px
+                         height: 350px
+                    a img
+                         object-fit: cover
+                         height: 100%
+                         width: 100%
+                    div.tooltip 
+                        background: rgba(0,0,0,0.7)
+                        width: 300px
+                        height: 60px
+                        position: relative
+                        bottom: 68px
+                        right: -320px
+                        transition: all 0.3s ease-in-out
+                        h2 
+                            color: #fff
+                            font-size: 24px
+                            font-weight: 300
+                            line-height: 60px
+                            padding: 0 0 0 10px
+
+                li.firstanimation 
+                    animation: cycle 25s linear infinite
+                    &:hover .tooltip
+                        right: 0
+                li.secondanimation 
+                    animation: cycletwo 25s linear infinite
+                    &:hover .tooltip
+                        right: 0
+                li.thirdanimation 
+                    animation: cyclethree 25s linear infinite
+                    &:hover .tooltip
+                        right: 0
+                li.fourthanimation 
+                    animation: cyclefour 25s linear infinite
+                    &:hover .tooltip
+                        right: 0
+                li.fifthanimation 
+                    animation: cyclefive 25s linear infinite
+                    &:hover .tooltip
+                        right: 0
+                        
+        .progress-bar_male 
+            position: relative
+            top: -35px
+            width: 680px
+            height: 5px
+            background: #000
+            animation: fullexpand 25s ease-out infinite
+
+       
 
 
 @keyframes cycle 
