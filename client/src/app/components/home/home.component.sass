@@ -236,6 +236,7 @@ section.text_slider
 
 div.middle
     height: 100vh
+    min-height: 768px
     width: 100vw 
     overflow: hidden
     display: flex
@@ -841,12 +842,25 @@ div#bottom
      margin-top: 100px
      padding: 10px
      span
-          border: 2px solid orange
-          background: url("../../../assets/images/logo.png") no-repeat center center
+          
+          box-shadow: 1px 1px 15px 3px #eb4c0e1a
           background-size: 90px 60px
           border-radius: 5px
           height: 90px
           width: 130px
+          &:nth-child(1)
+               background: url("../../../assets/images/figaro.webp") no-repeat center center
+               background-size: 120px 60px
+          &:nth-child(2)
+               background: url("../../../assets/images/lexpress.webp") no-repeat center center
+               background-size: 120px 60px
+          &:nth-child(3)
+               background: url("../../../assets/images/liberation.webp") no-repeat center center
+               background-size: 120px 60px
+          &:nth-child(4)
+               background: url("../../../assets/images/lisa.svg") no-repeat center center
+               background-size: 120px 60px
+               
      p
           border-left: 5px solid orange
           padding-left: 15px

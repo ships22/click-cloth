@@ -1,0 +1,68 @@
+div.footer_main
+    width: 100vw
+    background: #1a1a1a
+    div.info_box_header
+        display: flex
+        background: #000000
+        h6
+            padding: 40px
+            font-size: 20px
+            font-weight: 400
+            width: 25%
+            color: #ffffff
+            text-align: center
+            span
+                font-weight: 600
+                position: relative
+                &::after
+                    position: absolute
+                    content: ''
+                    height: 4px
+                    width: 70px
+                    background: #ffffff
+                    bottom: -5px
+                    right: 0
+    div.info_box_body
+        display: flex
+        section.info_box
+            display: flex
+            width: 25%
+            flex-direction: column
+            padding: 50px
+            span
+                height: 50px
+                width: 80px
+                margin: auto
+                &:nth-child(1)
+                    background: url("../../../assets/images/cb.jpg") no-repeat center center
+                    background-size: 70px 40px
+                &:nth-child(2)
+                    background: url("../../../assets/images/visa.png") no-repeat center center
+                    background-size: 70px 40px
+                &:nth-child(3)
+                    background: url("../../../assets/images/mscard.jpg") no-repeat center center
+                    background-size: 70px 40px
+                    
+            a
+                text-decoration: none
+                padding: 10px
+                color: #ffffff
+                cursor: pointer
+                font-size: 16px
+                text-align: left
+                padding-left: 20px
+                text-align: center
+                &:hover
+                    color: orange
+    
+    p
+        text-align: justify
+        color: #9b9494
+        font-size: 14px
+        width: 80%
+        margin: auto
+    p.copyrights
+        text-align: center
+        color: #ffffff
+        padding: 40px
+                

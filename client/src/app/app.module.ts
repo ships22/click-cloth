@@ -16,6 +16,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { FooterComponent } from './components/footer/footer.component';
 
 const MaterialComponents = [MatButtonModule];
 
@@ -27,6 +28,7 @@ const MaterialComponents = [MatButtonModule];
     TestComponent,
     HomeComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents, CarouselModule],
   providers: [AuthenticationService, AdminService, ClientService],
