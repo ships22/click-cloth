@@ -6,6 +6,7 @@ import { map } from "rxjs/operators";
 import * as jwt_decode from "jwt-decode";
 import { MsgService } from './msg.service';
 import { Router } from '@angular/router';
+import { RoleGuardService } from './role-guard.service';
 
 @Injectable({
   providedIn: "root",
@@ -16,10 +17,14 @@ export class AuthenticationService {
   checkLoginSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.isLoggedIn());
   checkLogIn$ = this.checkLoginSubject.asObservable();
 
+  checkAdminSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.isAdmin());
+  checkAdmin$ = this.checkAdminSubject.asObservable();
+
   constructor(
     private httpClient: HttpClient,
     private messageService: MsgService,
-    private router: Router
+    private router: Router,
+    // private roleGuardService: RoleGuardService
     ) {}
 
   signIn(email: string, password: string): Observable<any> {
@@ -34,6 +39,7 @@ export class AuthenticationService {
             this.decoded_token = this.getDecodedAccessToken(res.jwt);
             localStorage.setItem("token", res.jwt);       
             this.checkLoginSubject.next(this.isLoggedIn());
+            this.checkAdminSubject.next(this.isAdmin());
             return res;
           }
         })
@@ -44,7 +50,9 @@ export class AuthenticationService {
     localStorage.removeItem('token');
     localStorage.clear();
     this.checkLoginSubject.next(this.isLoggedIn());
+    this.checkAdminSubject.next(this.isAdmin());
   }
+  
   isLoggedIn():boolean {
     if(this.getToken()) {
       console.log('isLoggedIn called...');
@@ -61,5 +69,16 @@ export class AuthenticationService {
     } catch (Error) {
       return null;
     }
+  }
+
+  isAdmin() {
+    const token = localStorage.getItem('token');
+    if(this.isLoggedIn()) {
+      const decodedToken = jwt_decode(token);
+      if(decodedToken.scopes[0].authority == 'ROLE_ADMIN') {
+        return true;
+      }
+      return false;
+    } 
   }
 }

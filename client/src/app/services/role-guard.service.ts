@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 import decode from 'jwt-decode';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
