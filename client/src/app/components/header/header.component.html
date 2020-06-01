@@ -19,7 +19,8 @@
                     <li><a href="#" mat-button color="menu_access">Enfants</a></li>
                 </ul>
             </li>
-            <li><a href="#" mat-button color="menu_access" class="top_li">Se connecter</a></li>
+            <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="/login" mat-button color="menu_access" class="top_li">Se connecter</a></li>
+            <li *ngIf="isLoggedIn$ | async"><a routerLink="''" mat-button color="menu_access" (click)="logout()" class="top_li">Déconnecter</a></li>
             <li><a href="#" mat-button color="menu_access">Propos</a></li>
             <li><a href="#" mat-button color="menu_access">Panier</a></li>
         </ul>
