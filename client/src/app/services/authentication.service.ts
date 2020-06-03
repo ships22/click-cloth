@@ -20,6 +20,9 @@ export class AuthenticationService {
   checkAdminSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.isAdmin());
   checkAdmin$ = this.checkAdminSubject.asObservable();
 
+  checkSuperAdminSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.isSuperAdmin());
+  checkSuperAdmin$ = this.checkSuperAdminSubject.asObservable();
+
   constructor(
     private httpClient: HttpClient,
     private messageService: MsgService,
@@ -40,6 +43,7 @@ export class AuthenticationService {
             localStorage.setItem("token", res.jwt);       
             this.checkLoginSubject.next(this.isLoggedIn());
             this.checkAdminSubject.next(this.isAdmin());
+            this.checkSuperAdminSubject.next(this.isSuperAdmin());
             return res;
           }
         })
@@ -51,11 +55,11 @@ export class AuthenticationService {
     localStorage.clear();
     this.checkLoginSubject.next(this.isLoggedIn());
     this.checkAdminSubject.next(this.isAdmin());
+    this.checkSuperAdminSubject.next(this.isSuperAdmin());
   }
-  
+
   isLoggedIn():boolean {
     if(this.getToken()) {
-      console.log('isLoggedIn called...');
       return true;
     }
     return false;
@@ -76,6 +80,17 @@ export class AuthenticationService {
     if(this.isLoggedIn()) {
       const decodedToken = jwt_decode(token);
       if(decodedToken.scopes[0].authority == 'ROLE_ADMIN') {
+        return true;
+      }
+      return false;
+    } 
+  }
+
+  isSuperAdmin() {
+    const token = localStorage.getItem('token');
+    if(this.isLoggedIn()) {
+      const decodedToken = jwt_decode(token);
+      if(decodedToken.scopes[0].authority == 'ROLE_SUPER_ADMIN') {
         return true;
       }
       return false;

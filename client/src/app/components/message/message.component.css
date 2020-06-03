@@ -1,0 +1,18 @@
+div {
+  position: absolute;
+  width: 500px;
+  top: 23%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -23%);
+          transform: translate(-50%, -23%);
+}
+
+div p {
+  background: #f6eddc;
+  font-size: 14px;
+  color: #92620a;
+  text-align: center;
+  width: 100%;
+  padding: 5px;
+}
+/*# sourceMappingURL=message.component.css.map */

@@ -9,14 +9,16 @@ import { RoleGuardService } from 'src/app/services/role-guard.service';
 })
 export class HeaderComponent implements OnInit {
   
-  isLoggedIn$;
   isAdmin$;
+  isLoggedIn$;
+  isSuperAdmin$;
 
   constructor(public authentication: AuthenticationService, public roleGuardService: RoleGuardService) { }
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authentication.checkLogIn$;
     this.isAdmin$ = this.authentication.checkAdmin$;
+    this.isSuperAdmin$ = this.authentication.checkSuperAdmin$;
   }
   logout() {
     this.authentication.signOut();

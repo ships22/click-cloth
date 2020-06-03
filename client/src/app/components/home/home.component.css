@@ -301,6 +301,7 @@ section.text_slider h3.quoto_line_bottom-4 {
 
 div.middle {
   height: 100vh;
+  min-height: 768px;
   width: 100vw;
   overflow: hidden;
   display: -webkit-box;
@@ -492,9 +493,7 @@ div.middle .slide_product span.category {
 
 div#bottom_rapper {
   background: #ebdddd;
-  width: 100vw;
-  height: 100vh;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 div#bottom {
@@ -512,7 +511,7 @@ div#bottom #mode_female {
   padding-right: 50px;
   height: 400px;
   width: 700px;
-  width: 55vw;
+  width: 50vw;
   position: relative;
   -webkit-transform: skewX(-15deg);
           transform: skewX(-15deg);
@@ -592,7 +591,6 @@ div#bottom #mode_female-slider:hover .progress-bar {
 
 div#bottom #mode_female-slider #mask {
   height: 380px;
-  margin-left: 50px;
   -webkit-transform: skewX(15deg);
           transform: skewX(15deg);
 }
@@ -1301,6 +1299,49 @@ div#bottom #mode_male-slider .progress-bar_male {
 }
 
 .brands {
-  background: red;
+  background: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 100px;
+  padding: 10px;
+}
+
+.brands span {
+  -webkit-box-shadow: 1px 1px 15px 3px #eb4c0e1a;
+          box-shadow: 1px 1px 15px 3px #eb4c0e1a;
+  background-size: 90px 60px;
+  border-radius: 5px;
+  height: 90px;
+  width: 130px;
+}
+
+.brands span:nth-child(1) {
+  background: url("../../../assets/images/figaro.webp") no-repeat center center;
+  background-size: 120px 60px;
+}
+
+.brands span:nth-child(2) {
+  background: url("../../../assets/images/lexpress.webp") no-repeat center center;
+  background-size: 120px 60px;
+}
+
+.brands span:nth-child(3) {
+  background: url("../../../assets/images/liberation.webp") no-repeat center center;
+  background-size: 120px 60px;
+}
+
+.brands span:nth-child(4) {
+  background: url("../../../assets/images/lisa.svg") no-repeat center center;
+  background-size: 120px 60px;
+}
+
+.brands p {
+  border-left: 5px solid orange;
+  padding-left: 15px;
+  line-height: 90px;
+  font-weight: 600;
 }
 /*# sourceMappingURL=home.component.css.map */

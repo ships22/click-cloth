@@ -22,8 +22,25 @@ import { LoaderComponent } from './components/shared/loader/loader.component';
 import { LoadingService } from './services/loading.service';
 import { MsgService } from './services/msg.service';
 import { MessageComponent } from './components/message/message.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SupAdminComponent } from './components/sup-admin/sup-admin.component';
+import { SuperAdminComponent } from './components/super-admin/super-admin.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
-const MaterialComponents = [MatButtonModule, MatProgressSpinnerModule];
+const MaterialComponents = [  MatButtonModule, 
+                              MatProgressSpinnerModule, 
+                              MatIconModule,
+                              MatFormFieldModule,
+                              MatInputModule,
+                              MatTableModule, 
+                              MatPaginatorModule, 
+                              MatSortModule
+                            ];
 
 @NgModule({
   declarations: [
@@ -36,6 +53,9 @@ const MaterialComponents = [MatButtonModule, MatProgressSpinnerModule];
     FooterComponent,
     LoaderComponent,
     MessageComponent,
+    AdminComponent,
+    SupAdminComponent,
+    SuperAdminComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents, CarouselModule],
   providers: [AuthenticationService, AdminService, ClientService, LoadingService, MsgService],

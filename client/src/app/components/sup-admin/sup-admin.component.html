@@ -1,0 +1,54 @@
+<div id="main">
+    <div class="add_filter">
+        <button mat-raised-button>
+            <mat-icon>add</mat-icon>Ajouter
+        </button>
+        <mat-form-field class="search">
+            <input matInput 
+            class="input_field"
+            [(ngModel)]="searchKey" 
+            placeholder="Chercher..." 
+            autocomplete="off" 
+            onfocus="this.value=''"
+            (keyup)="filter()">
+        </mat-form-field>
+    </div>
+    <div class="dataTable mat-elevation-z8">
+        <mat-table [dataSource]="adminMatList" matSort>
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>No</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.id }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="first_name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.first_name }} {{ element.last_name }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.email }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef>Adresse</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.address }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="options">
+                <mat-header-cell *matHeaderCellDef>Options</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <button mat-icon-button><mat-icon>launch</mat-icon></button>
+                    <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="loading">
+                <mat-footer-cell *matFooterCellDef aria-colspan="6" colspan="6">Chargement en cours...</mat-footer-cell>
+            </ng-container>
+            <ng-container matColumnDef="no-data">
+                <mat-footer-cell *matFooterCellDef aria-colspan="6" colspan="6">Pas de admin</mat-footer-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columns;" class="animate__animated animate__fadeIn"></mat-row>
+            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': adminMatList !=null}" class="animate__animated animate__flash"></mat-footer-row>
+            <mat-footer-row *matFooterRowDef="['no-data']" [ngClass]="{'hide': !(adminMatList !=null && adminMatList.data.length == 0)}" class="animate__animated animate__fadeIn"></mat-footer-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[1, 5, 10]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

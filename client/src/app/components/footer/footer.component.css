@@ -1,0 +1,104 @@
+div.footer_main {
+  width: 100vw;
+  background: #1a1a1a;
+}
+
+div.footer_main div.info_box_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #000000;
+}
+
+div.footer_main div.info_box_header h6 {
+  padding: 40px;
+  font-size: 20px;
+  font-weight: 400;
+  width: 25%;
+  color: #ffffff;
+  text-align: center;
+}
+
+div.footer_main div.info_box_header h6 span {
+  font-weight: 600;
+  position: relative;
+}
+
+div.footer_main div.info_box_header h6 span::after {
+  position: absolute;
+  content: '';
+  height: 4px;
+  width: 70px;
+  background: #ffffff;
+  bottom: -5px;
+  right: 0;
+}
+
+div.footer_main div.info_box_body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+div.footer_main div.info_box_body section.info_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 25%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 50px;
+}
+
+div.footer_main div.info_box_body section.info_box span {
+  height: 50px;
+  width: 80px;
+  margin: auto;
+}
+
+div.footer_main div.info_box_body section.info_box span:nth-child(1) {
+  background: url("../../../assets/images/cb.jpg") no-repeat center center;
+  background-size: 70px 40px;
+}
+
+div.footer_main div.info_box_body section.info_box span:nth-child(2) {
+  background: url("../../../assets/images/visa.png") no-repeat center center;
+  background-size: 70px 40px;
+}
+
+div.footer_main div.info_box_body section.info_box span:nth-child(3) {
+  background: url("../../../assets/images/mscard.jpg") no-repeat center center;
+  background-size: 70px 40px;
+}
+
+div.footer_main div.info_box_body section.info_box a {
+  text-decoration: none;
+  padding: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  padding-left: 20px;
+  text-align: center;
+}
+
+div.footer_main div.info_box_body section.info_box a:hover {
+  color: orange;
+}
+
+div.footer_main p {
+  text-align: justify;
+  color: #9b9494;
+  font-size: 14px;
+  width: 80%;
+  margin: auto;
+}
+
+div.footer_main p.copyrights {
+  text-align: center;
+  color: #ffffff;
+  padding: 40px;
+}
+/*# sourceMappingURL=footer.component.css.map */

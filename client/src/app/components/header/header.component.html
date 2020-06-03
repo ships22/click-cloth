@@ -10,7 +10,7 @@
     </div>
     <nav>
         <ul class="nav_main">
-            <li><a href="#" mat-button color="menu_access">Acceuil</a></li>
+            <li><a routerLink="/" mat-button color="menu_access">Acceuil</a></li>
             <li class="dropdown"><a href="#" mat-button color="menu_access" class="top_li">Boutique</a>
                 <ul class="sub_menu">
                     <li><a href="#" mat-button color="menu_access">Tous les produits</a></li>
@@ -22,8 +22,9 @@
             <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="/login" mat-button color="menu_access" class="top_li">Se connecter</a></li>
             <li *ngIf="isLoggedIn$ | async"><a routerLink="''" mat-button color="menu_access" (click)="logout()" class="top_li">Déconnecter</a></li>
             <li><a href="#" mat-button color="menu_access">Propos</a></li>
-            <li *ngIf="!(isAdmin$ | async)"><a mat-button color="menu_access">Panier</a></li>
+            <li *ngIf="!(isAdmin$ | async) && !(isSuperAdmin$ | async)"><a mat-button color="menu_access">Panier</a></li>
             <li *ngIf="isAdmin$ | async"><a mat-button color="menu_access">Admin</a></li>
+            <li *ngIf="isSuperAdmin$ | async"><a mat-button routerLink="/super_admin" color="menu_access">S_Admin</a></li>
         </ul>
     </nav>
 </header>

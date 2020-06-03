@@ -4,15 +4,25 @@ import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from './components/home/home.component';
 import { TestComponent } from './components/test/test.component';
 import { RoleGuardService as Guard} from './services/role-guard.service';
+import { SupAdminComponent } from './components/sup-admin/sup-admin.component';
+import { SuperAdminComponent } from './components/super-admin/super-admin.component';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  // { path: "", component: HomeComponent },
+  { path: "", component: SupAdminComponent },
   { path: "login", component: LoginComponent },
   { 
     path: "test", component: TestComponent,
     canActivate: [Guard],
     data: {
       expectedRole: 'ROLE_CLIENT'
+    }
+  },
+  { 
+    path: "super_admin", component: SuperAdminComponent,
+    canActivate: [Guard],
+    data: {
+      expectedRole: 'ROLE_SUPER_ADMIN'
     }
   },
   { path: '**', redirectTo: ''}
