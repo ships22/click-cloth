@@ -28,6 +28,11 @@ public class ShopDomainServiceImpl implements ShopDomain {
 	public Shop getById(Integer id) {
 		return shopRepository.getOne(id);
 	}
+	
+	@Override
+	public Shop getByAdminId(int admin_id) {
+		return shopRepository.findByAdminId(admin_id);
+	}
 
 	@Override
 	public Shop updateShop(Shop shop) {

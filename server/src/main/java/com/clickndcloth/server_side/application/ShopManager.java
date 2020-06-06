@@ -68,6 +68,19 @@ public class ShopManager {
 	}
 	
 	@Transactional
+	public ShopDto findShopByAdminId(int admin_id) {
+		Shop shop = shopDomainService.getByAdminId(admin_id);
+		ShopDto shopDto = new ShopDto();
+		shopDto.setShop_id(shop.getShop_id());
+		shopDto.setName(shop.getName());
+		shopDto.setAddress(shop.getAddress());
+		shopDto.setEmail(shop.getEmail());
+		shopDto.setPhone(shop.getPhone());
+		shopDto.setIs_active(shop.getIs_active());
+		return shopDto;
+	}
+	
+	@Transactional
 	public ShopDto updateShop(Shop shop) {
 		Shop updatedShop = shopDomainService.updateShop(shop);
 		ShopDto shopDto = new ShopDto();

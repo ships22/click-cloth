@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,8 @@ public class Shop {
 	private String email;
 	private String phone;
 	private int is_active;
-	private int admin_id;
+	@Column(name="admin_id")
+	private int adminId;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="shop_id_shop", referencedColumnName = "shop_id", nullable = true)
@@ -38,7 +40,7 @@ public class Shop {
 		super();
 	}
 
-	public Shop(int shop_id, String name, String address, String email, String phone, int is_active, int admin_id,
+	public Shop(int shop_id, String name, String address, String email, String phone, int is_active, int adminId,
 			List<Product> productList, List<Reservation> reservations) {
 		super();
 		this.shop_id = shop_id;
@@ -47,7 +49,7 @@ public class Shop {
 		this.email = email;
 		this.phone = phone;
 		this.is_active = is_active;
-		this.admin_id = admin_id;
+		this.adminId = adminId;
 		this.productList = productList;
 		this.reservations = reservations;
 	}
@@ -89,10 +91,10 @@ public class Shop {
 		this.is_active = is_active;
 	}
 	public int getAdmin_id() {
-		return admin_id;
+		return adminId;
 	}
-	public void setAdmin_id(int admin_id) {
-		this.admin_id = admin_id;
+	public void setAdmin_id(int adminId) {
+		this.adminId = adminId;
 	}
 	public List<Product> getProductList() {
 		return productList;

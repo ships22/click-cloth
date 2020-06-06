@@ -8,4 +8,6 @@ import com.clickndcloth.server_side.models.Shop;
 @Repository
 public interface ShopRepository extends JpaRepository<Shop, Integer> {
 
+	Shop findByAdminId(int admin_id);
+	
 }
