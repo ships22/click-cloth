@@ -1,0 +1,63 @@
+div#main {
+  width: 80%;
+  margin: 50px auto;
+}
+
+div#main .add_filter {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+div#main .add_filter button {
+  margin: 5px;
+  width: 150px;
+}
+
+div#main .add_filter ::ng-deep .mat-form-field {
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+}
+
+div#main .add_filter ::ng-deep .mat-form-field .mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+
+div#main .add_filter ::ng-deep .mat-form-field .mat-form-field-underline {
+  background-color: red;
+  display: none;
+}
+
+div#main .add_filter ::ng-deep .mat-form-field .mat-form-field-infix {
+  border-top: 0;
+}
+
+div#main .add_filter ::ng-deep .mat-form-field .mat-form-field-ripple {
+  background: red;
+}
+
+div#main .add_filter ::ng-deep .mat-form-field input {
+  width: 100%;
+  border: none;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: #f5f5f5;
+}
+
+div#main .add_filter ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #000000;
+}
+
+.hide {
+  display: none;
+}
+
+mat-footer-row mat-footer-cell {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=sup-admin.component.css.map */

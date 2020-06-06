@@ -1,37 +1,218 @@
 <div class="main">
-  <form #f="ngForm" (ngSubmit)="f.form.valid && signIn()" novalidate>
-    <div
-      class="input_group"
-      [ngClass]="{ 'has-error': f.submitted && !email.valid }"
-    >
-      <label for="id">Identifiant</label>
-      <input
-        type="text"
-        placeholder="Votre adresse mail"
-        name="email"
-        [(ngModel)]="userToLogin.email"
-        #email="ngModel"
-        required
-      />
-      <span class="warning_msg" *ngIf="f.submitted && !userToLogin.email"
-        >Adresse mail est obligatoire</span
-      >
+  <!-- login form -->
+  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="!registering">
+    <div class="form_header">
+      <h3>
+        S'identifier
+      </h3>
     </div>
-    <div
-      class="input_group"
-      [ngClass]="{ 'has-error': f.submitted && !password.valid }"
-    >
-      <label for="id">Mot de passe</label>
-      <input
-        type="password"
-        name="password"
-        [(ngModel)]="userToLogin.password"
-        #password="ngModel"
-        required
-      />
+    <form #logInForm="ngForm" (ngSubmit)="logInForm.form.valid && signIn(logInForm.value)" novalidate>
+      <section class="left">
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': logInForm.submitted && !email.valid }"
+        >
+          <input
+            type="text"
+            placeholder="E-mail *"
+            name="email"
+            [(ngModel)]="userToLogIn.email"
+            #email="ngModel"
+            required
+          />
+          <span class="warning_msg" *ngIf="logInForm.submitted && !userToLogIn.email"
+            >Adresse mail est obligatoire</span
+          >
+        </div>
+        <div class="input_group">
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="userToLogIn.password"
+            #password="ngModel"
+            placeholder="Mot de passe *"
+            required
+          />
+        </div>
+      </section>
+      <div class="input_group btn">
+        <button mat-raised-button color="login">Conexion</button>
+        <p class="or">ou</p>
+        <div>
+          <span>mot de passe oublié</span>
+          <p>/</p>
+          <span (click)="toggleRegistration()">créer un compte</span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- registration from -->
+
+  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="registering">
+    <div class="form_header">
+      <h3>
+        Inscription
+      </h3>
     </div>
-    <div class="input_group">
-      <button>Se connecter</button>
-    </div>
-  </form>
+    <form #registrationForm="ngForm" (ngSubmit)="registrationForm.form.valid && register(registrationForm.value)" novalidate>
+      <section class="left">
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': registrationForm.submitted && !first_name.valid }"
+        >
+          <input
+            type="text"
+            placeholder="Prénom *"
+            name="first_name"
+            id="first_name"
+            [(ngModel)]="newUser.first_name"
+            #first_name="ngModel"
+            required
+          />
+          <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.first_name"
+            >Prénom est obligatoire</span
+          >
+        </div>
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': registrationForm.submitted && !last_name.valid }"
+        >
+          <input
+            type="text"
+            placeholder="Nom *"
+            name="last_name"
+            [(ngModel)]="newUser.last_name"
+            #last_name="ngModel"
+            required
+          />
+          <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.last_name"
+            >Nom est obligatoire</span
+          >
+        </div>
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': registrationForm.submitted && !email.valid }"
+        >
+          <input
+            type="text"
+            placeholder="E-mail *"
+            name="email"
+            [(ngModel)]="newUser.email"
+            #email="ngModel"
+            required
+          />
+          <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.email"
+            >Adresse mail est obligatoire</span
+          >
+        </div>
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': registrationForm.submitted && !phone.valid }"
+        >
+          <input
+            type="text"
+            placeholder="Numéro de portable"
+            name="phone"
+            [(ngModel)]="newUser.phone"
+            #phone="ngModel"
+          />
+        </div>
+        <div class="input_group">
+          <input
+            type="password"
+            name="new_password"
+            [ngModel]="newUser.new_password"
+            #new_password="ngModel"
+            placeholder="Mot de passe *"
+            required
+          />
+        </div>
+      </section>
+      <section class="right">
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': registrationForm.submitted && !house_no.valid }"
+        >
+          <input
+            type="text"
+            placeholder="No *"
+            name="house_no"
+            [(ngModel)]="newUser.house_no"
+            #house_no="ngModel"
+            required
+          />
+          <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.house_no"
+            >No est obligatoire</span
+          >
+        </div>
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': registrationForm.submitted && !street.valid }"
+        >
+          <input
+            type="text"
+            placeholder="Rue *"
+            name="street"
+            [(ngModel)]="newUser.street"
+            #street="ngModel"
+            required
+          />
+          <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.street"
+            >Rue est obligatoire</span
+          >
+        </div>
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': registrationForm.submitted && !zip_code.valid }"
+        >
+          <input
+            type="text"
+            placeholder="Code postale *" 
+            name="zip_code"
+            [(ngModel)]="newUser.zip_code"
+            #zip_code="ngModel"
+            required
+          />
+          <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.zip_code"
+            >Code postale est obligatoire</span
+          >
+        </div>
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': registrationForm.submitted && !country.valid }"
+        >
+          <input
+            type="text"
+            placeholder="Pays *" 
+            name="country"
+            [(ngModel)]="newUser.country"
+            #country="ngModel"
+            required
+          />
+          <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.country"
+            >Pays est obligatoire</span
+          >
+        </div>
+        <div class="input_group">
+          <input
+            type="password"
+            name="password_retyped"
+            [ngModel]="newUser.password_retyped"
+            #password_retyped="ngModel"
+            placeholder="Re-Mot de passe *"
+            required
+          />
+        </div>
+      </section>
+      <div class="input_group btn">
+        <button mat-raised-button color="registration">Enrégistrer</button> 
+        <br>
+        <p class="or">ou</p>
+        <span (click)="toggleRegistration()">annuler</span>
+      </div>
+    </form>
+  </div>
+  <app-message></app-message>
 </div>

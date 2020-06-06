@@ -1,9 +1,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { map } from "rxjs/operators";
 import * as jwt_decode from "jwt-decode";
+import { MsgService } from './msg.service';
+import { Router } from '@angular/router';
+import { RoleGuardService } from './role-guard.service';
 
 @Injectable({
   providedIn: "root",
@@ -11,24 +14,58 @@ import * as jwt_decode from "jwt-decode";
 export class AuthenticationService {
   private base_url = environment.api_url;
   decoded_token: any = null;
+  checkLoginSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.isLoggedIn());
+  checkLogIn$ = this.checkLoginSubject.asObservable();
 
-  constructor(private httpClient: HttpClient) {}
+  checkAdminSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.isAdmin());
+  checkAdmin$ = this.checkAdminSubject.asObservable();
+
+  checkSuperAdminSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.isSuperAdmin());
+  checkSuperAdmin$ = this.checkSuperAdminSubject.asObservable();
+
+  constructor(
+    private httpClient: HttpClient,
+    private messageService: MsgService,
+    private router: Router,
+    // private roleGuardService: RoleGuardService
+    ) {}
 
   signIn(email: string, password: string): Observable<any> {
     return this.httpClient
-      .post<any>(this.base_url + "/authenticate", {
+      .post<any>(this.base_url + "authenticate", {
         email,
-        password,
+        password
       })
       .pipe(
         map((res) => {
           if (res.jwt) {
             this.decoded_token = this.getDecodedAccessToken(res.jwt);
-            localStorage.setItem("token", res.jwt);
+            localStorage.setItem("token", res.jwt);       
+            this.checkLoginSubject.next(this.isLoggedIn());
+            this.checkAdminSubject.next(this.isAdmin());
+            this.checkSuperAdminSubject.next(this.isSuperAdmin());
             return res;
           }
         })
       );
+  }
+
+  signOut() {
+    localStorage.removeItem('token');
+    localStorage.clear();
+    this.checkLoginSubject.next(this.isLoggedIn());
+    this.checkAdminSubject.next(this.isAdmin());
+    this.checkSuperAdminSubject.next(this.isSuperAdmin());
+  }
+
+  isLoggedIn():boolean {
+    if(this.getToken()) {
+      return true;
+    }
+    return false;
+  }
+  getToken():string {
+    return localStorage.getItem('token');
   }
   getDecodedAccessToken(token: string): any {
     try {
@@ -36,5 +73,27 @@ export class AuthenticationService {
     } catch (Error) {
       return null;
     }
+  }
+
+  isAdmin() {
+    const token = localStorage.getItem('token');
+    if(this.isLoggedIn()) {
+      const decodedToken = jwt_decode(token);
+      if(decodedToken.scopes[0].authority == 'ROLE_ADMIN') {
+        return true;
+      }
+      return false;
+    } 
+  }
+
+  isSuperAdmin() {
+    const token = localStorage.getItem('token');
+    if(this.isLoggedIn()) {
+      const decodedToken = jwt_decode(token);
+      if(decodedToken.scopes[0].authority == 'ROLE_SUPER_ADMIN') {
+        return true;
+      }
+      return false;
+    } 
   }
 }
