@@ -24,13 +24,13 @@ import { MsgService } from './services/msg.service';
 import { MessageComponent } from './components/message/message.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { SupAdminComponent } from './components/sup-admin/sup-admin.component';
-import { SuperAdminComponent } from './components/super-admin/super-admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
 import { AddAdminComponent } from './components/sup-admin/add-admin/add-admin.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin.component';
@@ -43,7 +43,8 @@ const MaterialComponents = [  MatButtonModule,
                               MatTableModule, 
                               MatPaginatorModule, 
                               MatSortModule, 
-                              MatDialogModule
+                              MatDialogModule,
+                              MatTabsModule
                             ];
 
 @NgModule({
@@ -59,7 +60,6 @@ const MaterialComponents = [  MatButtonModule,
     MessageComponent,
     AdminComponent,
     SupAdminComponent,
-    SuperAdminComponent,
     AddAdminComponent,
     EditAdminComponent,
   ],

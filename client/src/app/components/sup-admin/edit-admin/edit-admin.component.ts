@@ -16,7 +16,8 @@ export class EditAdminComponent implements OnInit {
     first_name: null,
     last_name: null,
     email: null,
-    address: null
+    address: null,
+    shops: null
   };
 
   constructor(  private router: Router, 

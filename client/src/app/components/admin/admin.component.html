@@ -1,1 +1,15 @@
-<p>admin works!</p>
+<div id="main">
+    <h3>Bienvenue {{ admin?.first_name }} dans votre panneau d'administration</h3>
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="Détails">
+          <div class="details mat-elevation-z4">
+            Small content
+          </div>
+        </mat-tab>
+        <mat-tab label="Gérer la boutique">
+          <div class="shop mat-elevation-z4">
+            Large content
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+</div>

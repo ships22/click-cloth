@@ -8,6 +8,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { share, shareReplay, finalize, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sup-admin',
@@ -15,7 +17,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sup-admin.component.sass']
 })
 export class SupAdminComponent implements OnInit {
-
+  subscription: Subscription;
   adminListInIt: Admin[];
   adminMatList: MatTableDataSource<Admin>;
   searchKey: string;
@@ -32,15 +34,20 @@ export class SupAdminComponent implements OnInit {
                ) {
                 
                 }
-
+  adminHttpService$ = new Observable<Admin[]>();
   ngOnInit(): void {
+    this.adminHttpService$= this.adminService.getAllAdmin();
+    this.adminService.refresh$
+    .subscribe(() => this.getAllAdmins());
     setTimeout(() => {
       this.getAllAdmins();
     }, 1000);
   }
 
+  
   getAllAdmins() {
-    this.adminService.getAllAdmin()
+    this.subscription = this.adminHttpService$
+    .pipe(shareReplay())
     .subscribe(
       response => {
         this.adminListInIt = response; 
@@ -61,5 +68,14 @@ export class SupAdminComponent implements OnInit {
   }
   onEdit(admin) {
    this.router.navigate(['/edit_admin', admin.id]); 
+  }
+  onDelete(id) {
+    this.adminService.deleteAdmin(id) 
+    .pipe(take(1))
+    .subscribe()
+  }
+  
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

@@ -96,4 +96,10 @@ export class AuthenticationService {
       return false;
     } 
   }
+  getEmail(): string {
+    const token = localStorage.getItem('token');
+    if(this.isLoggedIn()) {
+      return this.getDecodedAccessToken(token).user_name;
+    }
+  }
 }
