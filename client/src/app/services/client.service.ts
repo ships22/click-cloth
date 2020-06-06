@@ -14,6 +14,6 @@ export class ClientService {
   constructor(private httpClient: HttpClient) {}
 
   registration(newClient: Client, password: string): Observable<any> {
-  return this.httpClient.post<Client>(this.base_url + '/add_client/' + password, newClient, {responseType: 'text' as 'json'});
+  return this.httpClient.post<Client>(this.base_url + 'add_client/' + password, newClient, {responseType: 'text' as 'json'});
   }  
 }

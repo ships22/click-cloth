@@ -32,7 +32,7 @@ export class AuthenticationService {
 
   signIn(email: string, password: string): Observable<any> {
     return this.httpClient
-      .post<any>(this.base_url + "/authenticate", {
+      .post<any>(this.base_url + "authenticate", {
         email,
         password
       })

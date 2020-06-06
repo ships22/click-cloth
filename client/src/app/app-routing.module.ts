@@ -6,11 +6,13 @@ import { TestComponent } from './components/test/test.component';
 import { RoleGuardService as Guard} from './services/role-guard.service';
 import { SupAdminComponent } from './components/sup-admin/sup-admin.component';
 import { SuperAdminComponent } from './components/super-admin/super-admin.component';
+import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin.component';
 
 const routes: Routes = [
   // { path: "", component: HomeComponent },
   { path: "", component: SupAdminComponent },
   { path: "login", component: LoginComponent },
+  { path: "edit_admin/:id", component: EditAdminComponent },
   { 
     path: "test", component: TestComponent,
     canActivate: [Guard],

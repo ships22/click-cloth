@@ -14,8 +14,8 @@ import { ClientService } from "./services/client.service";
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
@@ -31,6 +31,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { AddAdminComponent } from './components/sup-admin/add-admin/add-admin.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin.component';
 
 const MaterialComponents = [  MatButtonModule, 
                               MatProgressSpinnerModule, 
@@ -39,7 +42,8 @@ const MaterialComponents = [  MatButtonModule,
                               MatInputModule,
                               MatTableModule, 
                               MatPaginatorModule, 
-                              MatSortModule
+                              MatSortModule, 
+                              MatDialogModule
                             ];
 
 @NgModule({
@@ -56,9 +60,16 @@ const MaterialComponents = [  MatButtonModule,
     AdminComponent,
     SupAdminComponent,
     SuperAdminComponent,
+    AddAdminComponent,
+    EditAdminComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents, CarouselModule],
-  providers: [AuthenticationService, AdminService, ClientService, LoadingService, MsgService],
+  providers: [AuthenticationService, AdminService, ClientService, LoadingService, MsgService,
+  {
+    provide: MatDialogRef,
+    useValue: {}
+  }],
   bootstrap: [AppComponent],
+  entryComponents: [AddAdminComponent]
 })
 export class AppModule {}
