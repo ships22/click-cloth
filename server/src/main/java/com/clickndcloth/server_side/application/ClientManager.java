@@ -65,7 +65,7 @@ public class ClientManager {
 	}
 	
 	@Transactional
-	public ClientDto addClient(Client client, String password) {
+	public String addClient(Client client, String password) {
 		if(userDomainService.getByEmail(client.getEmail()) ==  null) {
 			
 			Client addedClient = clientDomainService.addClient(client);
@@ -89,10 +89,10 @@ public class ClientManager {
 			clientDto.setStreet(addedClient.getStreet());
 			clientDto.setZip_code(addedClient.getZip_code());
 			clientDto.setCountry(addedClient.getCountry());
-			return clientDto;
+			return "account created";
 		}
 		System.out.println("User exists with mail id : " + client.getEmail());
-		return null;
+		return "e-mail déjà utilisé";
 	}
 	
 	@Transactional

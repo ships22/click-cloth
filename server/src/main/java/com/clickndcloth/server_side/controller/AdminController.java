@@ -44,9 +44,9 @@ public class AdminController {
 		
 	}
 	
-	@PutMapping(value = "/update_admin")
+	@PutMapping(value = "/update_admin/{id}")
 //	@PreAuthorize("hasRole('SUPER_ADMIN')")
-	public AdminDto updateAdmin(@RequestBody Admin admin) {
+	public AdminDto updateAdmin(@RequestBody Admin admin, @PathVariable("id") int id) {
 		return adminManager.updateAdmin(admin);
 	}
 	

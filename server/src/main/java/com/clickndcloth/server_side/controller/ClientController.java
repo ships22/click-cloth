@@ -39,9 +39,8 @@ public class ClientController {
 	}
 	
 	@PostMapping(value = "/add_client/{password}", produces = "application/json")
-	public ClientDto addClient(@RequestBody Client client, @PathVariable ("password") String password) {
+	public String addClient(@RequestBody Client client, @PathVariable ("password") String password) {
 		return clientManager.addClient(client, password);
-		
 	}
 	
 	@PutMapping(value = "/update_client")
