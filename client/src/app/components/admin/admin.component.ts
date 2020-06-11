@@ -6,6 +6,9 @@ import { AuthenticationService } from "src/app/services/authentication.service";
 import { MsgService } from "src/app/services/msg.service";
 import { take } from "rxjs/operators";
 import { Subscription } from "rxjs";
+import { ShopService } from 'src/app/services/shop.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddShopComponent } from './add-shop/add-shop.component';
 
 @Component({
   selector: "app-admin",
@@ -16,15 +19,20 @@ export class AdminComponent implements OnInit {
   subscrition: Subscription;
   admin: Admin;
   shop: Shop;
+  shopName: string;
 
   constructor(
     private adminService: AdminService,
     private messageService: MsgService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private shopService: ShopService,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
     this.getAdminDetails();
+    this.shopService.refresh$
+    .subscribe(() => this.getAdminDetails());
   }
 
   getAdminDetails() {
@@ -38,5 +46,8 @@ export class AdminComponent implements OnInit {
           (error) => this.messageService.sendMessage("Problème technique")
         );
     }
+  }
+  onCreate() {
+    this.dialog.open(AddShopComponent);
   }
 }

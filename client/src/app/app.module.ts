@@ -34,6 +34,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AddAdminComponent } from './components/sup-admin/add-admin/add-admin.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin.component';
+import { AddShopComponent } from './components/admin/add-shop/add-shop.component';
+import { ShopService } from './services/shop.service';
 
 const MaterialComponents = [  MatButtonModule, 
                               MatProgressSpinnerModule, 
@@ -62,9 +64,16 @@ const MaterialComponents = [  MatButtonModule,
     SupAdminComponent,
     AddAdminComponent,
     EditAdminComponent,
+    AddShopComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents, CarouselModule],
-  providers: [AuthenticationService, AdminService, ClientService, LoadingService, MsgService,
+  providers: [
+    AuthenticationService, 
+    AdminService, 
+    ClientService, 
+    LoadingService, 
+    MsgService,
+    ShopService,
   {
     provide: MatDialogRef,
     useValue: {}

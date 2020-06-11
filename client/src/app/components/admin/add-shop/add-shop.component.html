@@ -1,0 +1,24 @@
+<form (ngSubmit)="submit(f.value)" #f="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput ngModel #name="ngModel" name="name" type="text" id="name" required minlength="3" maxlength="25"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Téléphone</mat-label>
+      <input matInput ngModel #phone="ngModel" name="phone" type="text" id="phone" required minlength="3" maxlength="25"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input matInput ngModel #email="ngModel" name="email" type="text" id="email" required minlength="3" maxlength="25"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Adresse</mat-label>
+      <input matInput  ngModel #address="ngModel" name="address" type="text" id="address" required minlength="3" maxlength="100"/>
+    </mat-form-field>
+    <div class="btns">
+      <button mat-raised-button type="submit">
+          <mat-icon>playlist_add</mat-icon>Submit
+      </button>
+    </div>
+  </form>
+  <app-message></app-message>
