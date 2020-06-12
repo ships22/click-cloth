@@ -48,6 +48,7 @@ public class ProductManager {
 			productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
 			productDto.setShop_id_shop(product.getShop_id_shop());
 			productDto.setCategories(product.getCategories());
+			productDto.setStock(product.getStockList());
 			productDtos.add(productDto);
 		});
 		return productDtos;
@@ -66,6 +67,7 @@ public class ProductManager {
 		productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
 		productDto.setShop_id_shop(product.getShop_id_shop());
 		productDto.setCategories(product.getCategories());
+		productDto.setStock(product.getStockList());
 		return productDto;
 	}
 	
@@ -84,6 +86,7 @@ public class ProductManager {
 			productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
 			productDto.setShop_id_shop(product.getShop_id_shop());
 			productDto.setCategories(product.getCategories());
+			productDto.setStock(product.getStockList());
 			productDtos.add(productDto);
 		});
 		return productDtos;
@@ -102,6 +105,7 @@ public class ProductManager {
 		productDto.setShop_admin_id_admin(updatedProduct.getShop_admin_id_admin());
 		productDto.setShop_id_shop(updatedProduct.getShop_id_shop());
 		productDto.setCategories(product.getCategories());
+		productDto.setStock(product.getStockList());
 		return productDto;
 	}
 	

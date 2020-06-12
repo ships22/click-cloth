@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "Product")
 public class Product {
@@ -34,18 +36,19 @@ public class Product {
 	@ManyToMany
 	@JoinTable(name = "Product_categories", joinColumns = @JoinColumn(name = "product_id_product"), 
 	  inverseJoinColumns = @JoinColumn(name = "categories_id_categories"))
+	@JsonProperty("caegories")
 	private List<Categories> categories;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="product_id_product", referencedColumnName = "id", nullable = true)
-	private List<Stock> productList = new ArrayList<Stock>();
+	private List<Stock> stocktList = new ArrayList<Stock>();
 	
 	public Product() {
 		super();
 	}
 	
 	public Product(int id, String name, String description, double price, Blob image, String discount, int shop_id_shop,
-			int shop_admin_id_admin, List<Categories> categories, List<Stock> productList) {
+			int shop_admin_id_admin, List<Categories> categories, List<Stock> stocktList) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -56,7 +59,7 @@ public class Product {
 		this.shop_id_shop = shop_id_shop;
 		this.shop_admin_id_admin = shop_admin_id_admin;
 		this.categories = categories;
-		this.productList = productList;
+		this.stocktList = stocktList;
 	}
 
 	public int getId() {
@@ -131,12 +134,12 @@ public class Product {
 		this.categories = categories;
 	}
 
-	public List<Stock> getProductList() {
-		return productList;
+	public List<Stock> getStockList() {
+		return stocktList;
 	}
 
-	public void setProductList(List<Stock> productList) {
-		this.productList = productList;
+	public void setStockList(List<Stock> stocktList) {
+		this.stocktList = stocktList;
 	}
 
 }

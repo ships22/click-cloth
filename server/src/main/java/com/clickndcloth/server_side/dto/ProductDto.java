@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.util.List;
 
 import com.clickndcloth.server_side.models.Categories;
+import com.clickndcloth.server_side.models.Stock;
 
 public class ProductDto {
 	
@@ -16,6 +17,7 @@ public class ProductDto {
 	private int shop_id_shop;
 	private int shop_admin_id_admin;
 	private List<Categories> categories;
+	private List<Stock> stock;
 	
 	public int getId() {
 		return id;
@@ -70,6 +72,12 @@ public class ProductDto {
 	}
 	public void setCategories(List<Categories> categories) {
 		this.categories = categories;
+	}
+	public List<Stock> getStock() {
+		return stock;
+	}
+	public void setStock(List<Stock> stock) {
+		this.stock = stock;
 	}
 	
 

@@ -9,6 +9,7 @@ import { Subscription } from "rxjs";
 import { ShopService } from 'src/app/services/shop.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddShopComponent } from './add-shop/add-shop.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @Component({
   selector: "app-admin",
@@ -16,6 +17,7 @@ import { AddShopComponent } from './add-shop/add-shop.component';
   styleUrls: ["./admin.component.sass"],
 })
 export class AdminComponent implements OnInit {
+  productSearchKey: string;
   subscrition: Subscription;
   admin: Admin;
   shop: Shop;
@@ -47,7 +49,15 @@ export class AdminComponent implements OnInit {
         );
     }
   }
-  onCreate() {
+  onCreateShop() {
     this.dialog.open(AddShopComponent);
+  }
+  onCreateProduct() {
+    console.log('on ce pr');
+    this.dialog.open(AddProductComponent);
+  }
+  filterProduct() {
+    console.log('filter pr');
+    
   }
 }

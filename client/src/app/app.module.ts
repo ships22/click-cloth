@@ -36,6 +36,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin.component';
 import { AddShopComponent } from './components/admin/add-shop/add-shop.component';
 import { ShopService } from './services/shop.service';
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
 
 const MaterialComponents = [  MatButtonModule, 
                               MatProgressSpinnerModule, 
@@ -65,6 +66,7 @@ const MaterialComponents = [  MatButtonModule,
     AddAdminComponent,
     EditAdminComponent,
     AddShopComponent,
+    AddProductComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents, CarouselModule],
   providers: [

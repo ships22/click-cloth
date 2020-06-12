@@ -37,6 +37,11 @@ public class ProductController {
 		return productManager.getProductById(product_id);
 	}
 	
+	@GetMapping(value = "/productsByShop/{shop_id}")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public List <ProductDto> getProductByShopId(@PathVariable ("shop_id") Integer shop_id) {
+		return productManager.getProductsByShop(shop_id);
+	}
 	
 	@PostMapping(value = "/add_product", produces = "application/json")
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
