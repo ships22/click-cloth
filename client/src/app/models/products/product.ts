@@ -3,7 +3,7 @@ export class Product {
 	name: string;
 	description: string;
 	price: number;
-	image: string;
+	image: any;
 	discount: string;
 	shop_id_shop: number;
     shop_admin_id_admin: number;
@@ -12,7 +12,7 @@ export class Product {
         name: string,
         description: string,
         price: number,
-        image: string,
+        image: any,
         discount: string,
         shop_id_shop: number,
         shop_admin_id_admin: number,

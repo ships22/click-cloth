@@ -3,7 +3,7 @@
   <mat-tab-group dynamicHeight>
     <mat-tab label="Détails">
       <div class="details mat-elevation-z4">
-        <h2>{{ (admin?.shops)[0].name }}</h2>
+        <h2>{{ (admin?.shops)[0]?.name }}</h2>
         <button
           *ngIf="!(admin?.shops)[0]"
           mat-raised-button
@@ -38,24 +38,36 @@
               (keyup)="filterProduct()">
           </mat-form-field>
       </div>
-      <!-- <div class="dataTable mat-elevation-z8">
-          <mat-table [dataSource]="adminMatList" matSort class="animate__animated animate__fadeIn">
+      <!-- <div class="testPr" *ngFor="let product of productList">
+        <span>img</span>
+        <img src="data:image/jpeg;base64,{{product.image}}"/>
+      </div> -->
+      <div class="dataTable mat-elevation-z8">
+          <mat-table [dataSource]="productMatList" matSort class="animate__animated animate__fadeIn">
               <ng-container matColumnDef="id">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>No</mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{ element.id }}</mat-cell>
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>id</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> id: {{ element.id }}</mat-cell>
               </ng-container>
-              <ng-container matColumnDef="first_name">
+              <ng-container matColumnDef="name">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{ element.first_name }} {{ element.last_name }}</mat-cell>
+                  <mat-cell *matCellDef="let element"> {{ element.name }}</mat-cell>
               </ng-container>
-              <ng-container matColumnDef="email">
-                  <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{ element.email }}</mat-cell>
+              <ng-container matColumnDef="description">
+                  <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{ element.description }}</mat-cell>
               </ng-container>
-              <ng-container matColumnDef="address">
-                  <mat-header-cell *matHeaderCellDef>Adresse</mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{ element.address }}</mat-cell>
+              <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef>Prix</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.price }}</mat-cell>
               </ng-container>
+              <ng-container matColumnDef="discount">
+                  <mat-header-cell *matHeaderCellDef>Réduction</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{ element.description }}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="image">
+                <mat-header-cell *matHeaderCellDef>Photo</mat-header-cell>
+                <mat-cell *matCellDef="let element"> <img src="data:image/jpeg;base64,{{element.image}}"/></mat-cell>
+            </ng-container>
               <ng-container matColumnDef="options">
                   <mat-header-cell *matHeaderCellDef>Options</mat-header-cell>
                   <mat-cell *matCellDef="let row">
@@ -69,18 +81,21 @@
                   </mat-footer-cell>
               </ng-container>
               <ng-container matColumnDef="no-data">
-                  <mat-footer-cell *matFooterCellDef aria-colspan="6" colspan="6">Pas de admin</mat-footer-cell>
+                  <mat-footer-cell *matFooterCellDef aria-colspan="6" colspan="6">Pas de produit</mat-footer-cell>
               </ng-container>
+              
+              
               <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: columns;" class="animate__animated animate__fadeIn"></mat-row>
-              <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': adminMatList !=null}" class="animate__animated animate__flash"></mat-footer-row>
-              <mat-footer-row *matFooterRowDef="['no-data']" [ngClass]="{'hide': !(adminMatList !=null && adminMatList.data.length == 0)}" class="animate__animated animate__fadeIn"></mat-footer-row>
+               <mat-row *matRowDef="let row; columns: columns;" class="animate__animated animate__fadeIn"></mat-row>
+              <!-- <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': productMatList !=null}" class="animate__animated animate__flash"></mat-footer-row> -->
+              <!-- <mat-footer-row *matFooterRowDef="['no-data']" [ngClass]="{'hide': !(productMatList !=null && productMatList.data.length == 0)}" class="animate__animated animate__fadeIn"></mat-footer-row>  -->
+
           </mat-table>
           <mat-paginator [pageSizeOptions]="[1, 5, 10]" [pageSize]="5" showFirstLastButtons></mat-paginator>
-      </div> -->
+      </div>
       </div>
     </mat-tab>
-    <mat-tab label="Gérer la boutique">
+    <mat-tab label="Les commandes">
       <div class="order mat-elevation-z4">
         Large content
       </div>

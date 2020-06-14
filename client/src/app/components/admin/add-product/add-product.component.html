@@ -33,9 +33,9 @@
       matInput
       ngModel
       #prix="ngModel"
-      name="prix"
+      name="price"
       type="number"
-      id="prix"
+      id="price"
       required
       minlength="1"
       maxlength="6"
@@ -52,16 +52,23 @@
       id="discount"
     />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <!-- <mat-form-field appearance="fill">
     <mat-label>Image</mat-label>
     <input
       matInput
       ngModel
       #image="ngModel"
       name="image"
-      type="text"
+      type="file"
       id="image"
     />
+  </mat-form-field> -->
+  <mat-form-field>
+    <mat-label>Image</mat-label>
+    <ngx-mat-file-input ngModel
+    #image="ngModel"
+    name="image"
+    id="image"> </ngx-mat-file-input>
   </mat-form-field>
   <div class="btns">
     <button mat-raised-button type="submit">

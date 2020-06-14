@@ -1,5 +1,6 @@
 package com.clickndcloth.server_side.models;
 
+import java.io.Serializable;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +20,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "Product")
-public class Product {
+public class Product implements Serializable {
 	
-	
+
+	private static final long serialVersionUID = -2941819806587004936L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String description;
 	private double price;
-	private Blob image;
+	private byte[] image;
 	private String discount;
 	private int shop_id_shop;
 	private int shop_admin_id_admin;
@@ -36,19 +38,19 @@ public class Product {
 	@ManyToMany
 	@JoinTable(name = "Product_categories", joinColumns = @JoinColumn(name = "product_id_product"), 
 	  inverseJoinColumns = @JoinColumn(name = "categories_id_categories"))
-	@JsonProperty("caegories")
+	@JsonProperty("categories")
 	private List<Categories> categories;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="product_id_product", referencedColumnName = "id", nullable = true)
-	private List<Stock> stocktList = new ArrayList<Stock>();
+	private List<Stock> stocks = new ArrayList<Stock>();
 	
 	public Product() {
 		super();
 	}
 	
-	public Product(int id, String name, String description, double price, Blob image, String discount, int shop_id_shop,
-			int shop_admin_id_admin, List<Categories> categories, List<Stock> stocktList) {
+	public Product(int id, String name, String description, double price, byte[] image, String discount, int shop_id_shop,
+			int shop_admin_id_admin, List<Categories> categories, List<Stock> stocks) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -59,7 +61,7 @@ public class Product {
 		this.shop_id_shop = shop_id_shop;
 		this.shop_admin_id_admin = shop_admin_id_admin;
 		this.categories = categories;
-		this.stocktList = stocktList;
+		this.stocks = stocks;
 	}
 
 	public int getId() {
@@ -94,11 +96,11 @@ public class Product {
 		this.price = price;
 	}
 
-	public Blob getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Blob image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
@@ -134,12 +136,12 @@ public class Product {
 		this.categories = categories;
 	}
 
-	public List<Stock> getStockList() {
-		return stocktList;
+	public List<Stock> getStocks() {
+		return stocks;
 	}
 
-	public void setStockList(List<Stock> stocktList) {
-		this.stocktList = stocktList;
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
 	}
 
 }

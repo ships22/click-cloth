@@ -30,6 +30,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AddAdminComponent } from './components/sup-admin/add-admin/add-admin.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -47,7 +48,8 @@ const MaterialComponents = [  MatButtonModule,
                               MatPaginatorModule, 
                               MatSortModule, 
                               MatDialogModule,
-                              MatTabsModule
+                              MatTabsModule,
+                              MaterialFileInputModule
                             ];
 
 @NgModule({

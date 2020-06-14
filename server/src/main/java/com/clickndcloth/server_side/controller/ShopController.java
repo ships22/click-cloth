@@ -36,14 +36,14 @@ public class ShopController {
 		return shopManager.findShopById(id);
 	}
 	
-	@GetMapping(value = "/shop_by_id/{admin_id}")
-	public ShopDto getShopByAdminId(@PathVariable ("id") int admin_id) {
+	@GetMapping(value = "/shop_by_admin_id/{admin_id}")
+	public ShopDto getShopByAdminId(@PathVariable ("admin_id") Integer admin_id) {
 		return shopManager.findShopByAdminId(admin_id);
 	}
 	
 	@PostMapping(value = "/add_shop/{admin_id}", produces = "application/json")
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ShopDto addShop(@RequestBody Shop shop, @PathVariable ("admin_id") int admin_id) {
+	public ShopDto addShop(@RequestBody Shop shop, @PathVariable ("admin_id") Integer admin_id) {
 		return shopManager.addShop(shop, admin_id);
 	}
 	

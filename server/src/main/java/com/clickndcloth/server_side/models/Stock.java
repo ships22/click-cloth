@@ -18,14 +18,14 @@ public class Stock {
 	private String colour;
 	private int product_id_product;
 	private int product_shop_id_shop;
-	private int product_Shop_Admin_idAdmin;
+	private int product_shop_admin_id_admin;
 	
 	public Stock() {
 		super();
 	}
 
 	public Stock(int id, int quantite, String size, String colour, int product_id_product, int product_shop_id_shop,
-			int product_Shop_Admin_idAdmin) {
+			int product_shop_admin_id_admin) {
 		super();
 		this.id = id;
 		this.quantite = quantite;
@@ -33,7 +33,7 @@ public class Stock {
 		this.colour = colour;
 		this.product_id_product = product_id_product;
 		this.product_shop_id_shop = product_shop_id_shop;
-		this.product_Shop_Admin_idAdmin = product_Shop_Admin_idAdmin;
+		this.product_shop_admin_id_admin = product_shop_admin_id_admin;
 	}
 
 	public int getId() {
@@ -85,11 +85,11 @@ public class Stock {
 	}
 
 	public int getProduct_Shop_Admin_idAdmin() {
-		return product_Shop_Admin_idAdmin;
+		return product_shop_admin_id_admin;
 	}
 
-	public void setProduct_Shop_Admin_idAdmin(int product_Shop_Admin_idAdmin) {
-		this.product_Shop_Admin_idAdmin = product_Shop_Admin_idAdmin;
+	public void setProduct_Shop_Admin_idAdmin(int product_shop_admin_id_admin) {
+		this.product_shop_admin_id_admin = product_shop_admin_id_admin;
 	}
 	
 	

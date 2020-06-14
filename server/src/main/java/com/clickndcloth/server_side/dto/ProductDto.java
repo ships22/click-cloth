@@ -12,7 +12,7 @@ public class ProductDto {
 	private String name;
 	private String description;
 	private double price;
-	private Blob image;
+	private byte[] image;
 	private String discount;
 	private int shop_id_shop;
 	private int shop_admin_id_admin;
@@ -43,10 +43,10 @@ public class ProductDto {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Blob getImage() {
+	public byte[] getImage() {
 		return image;
 	}
-	public void setImage(Blob image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 	public String getDiscount() {

@@ -31,7 +31,6 @@ export class AddShopComponent implements OnInit {
 
 
   submit(newShop) {
-    
     if (
       newShop.name != "" &&
       newShop.phone!= "" &&
