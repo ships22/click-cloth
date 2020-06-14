@@ -8,12 +8,14 @@ import { SupAdminComponent } from './components/sup-admin/sup-admin.component';
 import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin.component';
 
 import { AdminComponent } from './components/admin/admin.component';
+import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 const routes: Routes = [
   // { path: "", component: HomeComponent },
   { path: "", component: AdminComponent },
   { path: "login", component: LoginComponent },
   { path: "edit_admin/:id", component: EditAdminComponent },
+  { path: "edit_product/:id", component: EditProductComponent },
   { 
     path: "test", component: TestComponent,
     canActivate: [Guard],

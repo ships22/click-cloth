@@ -38,6 +38,7 @@ import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin
 import { AddShopComponent } from './components/admin/add-shop/add-shop.component';
 import { ShopService } from './services/shop.service';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 const MaterialComponents = [  MatButtonModule, 
                               MatProgressSpinnerModule, 
@@ -69,6 +70,7 @@ const MaterialComponents = [  MatButtonModule,
     EditAdminComponent,
     AddShopComponent,
     AddProductComponent,
+    EditProductComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MaterialComponents, CarouselModule],
   providers: [

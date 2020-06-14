@@ -15,6 +15,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
 import { MatPaginator } from "@angular/material/paginator";
 import { ProductService } from "src/app/services/product.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-admin",
@@ -48,6 +49,7 @@ export class AdminComponent implements OnInit {
     private adminService: AdminService,
     private messageService: MsgService,
     private authenticationService: AuthenticationService,
+    private router: Router,
     private shopService: ShopService,
     private productService: ProductService,
     private dialog: MatDialog
@@ -92,10 +94,8 @@ export class AdminComponent implements OnInit {
   filterProduct() {
     console.log("filter pr");
   }
-  onEdit(admin) {
-    // this.router.navigate(["/edit_admin", admin.id]);
-    console.log('test edit...');
-    
+  onEdit(product) {
+    this.router.navigate(["/edit_product", product.id]);
   }
   onDelete(id) {
     this.adminService.deleteAdmin(id).pipe(take(1)).subscribe();

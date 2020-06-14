@@ -58,9 +58,6 @@ public class ProductController {
 	@RequestMapping(value = "/add_product", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ProductDto addProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product) throws IOException {
-		
-		System.out.println("test add product :" + product);
-		System.out.println("test add IMG:" + image);
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 		Product newProduct  =	objectMapper.readValue(product, Product.class);
@@ -70,8 +67,16 @@ public class ProductController {
 	
 	@PutMapping(value = "/update_product")
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ProductDto updateProduct(@RequestBody Product product) {
-		return productManager.updateProduct(product);
+	public ProductDto updateProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+		Product newProduct  =	objectMapper.readValue(product, Product.class);
+		if(image != null) {
+			newProduct.setImage(image.getBytes());
+		}
+		
+		return productManager.updateProduct(newProduct);
+		//return productManager.updateProduct(product);
 	}
 	
 	@DeleteMapping(value = "/delete_product/{product_id}")
