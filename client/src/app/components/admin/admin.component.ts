@@ -99,7 +99,6 @@ export class AdminComponent implements OnInit {
     this.router.navigate(["/edit_product", product.id]);
   }
   onDelete(id) {
-    this.adminService.deleteAdmin(id).pipe(take(1)).subscribe();
     this.productService.deleteProduct(id).pipe(take(1))
     .subscribe();
   }
