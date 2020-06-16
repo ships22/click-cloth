@@ -1,9 +1,13 @@
 package com.clickndcloth.server_side.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +19,7 @@ public class Stock {
 	private int id;
 	private int quantite;
 	private String size;
+	@Column(name= "colour", nullable = true)
 	private String colour;
 	private int product_id_product;
 	private int product_shop_id_shop;

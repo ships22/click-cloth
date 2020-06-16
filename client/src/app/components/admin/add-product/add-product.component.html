@@ -42,6 +42,26 @@
     />
   </mat-form-field>
   <mat-form-field appearance="fill">
+    <mat-label>Taile</mat-label>
+    <mat-select ngModel #size="ngModel" name="size">
+      <mat-option *ngFor="let every of sizes" [value]="every.size">
+        {{ every.size }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Quantité</mat-label>
+    <input
+      matInput
+      ngModel
+      #quantity="ngModel"
+      name="quantite"
+      type="number"
+      id="quantite"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Réduction</mat-label>
     <input
       matInput
@@ -52,23 +72,10 @@
       id="discount"
     />
   </mat-form-field>
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Image</mat-label>
-    <input
-      matInput
-      ngModel
-      #image="ngModel"
-      name="image"
-      type="file"
-      id="image"
-    />
-  </mat-form-field> -->
   <mat-form-field>
     <mat-label>Image</mat-label>
-    <ngx-mat-file-input ngModel
-    #image="ngModel"
-    name="image"
-    id="image"> </ngx-mat-file-input>
+    <ngx-mat-file-input ngModel #image="ngModel" name="image" id="image">
+    </ngx-mat-file-input>
   </mat-form-field>
   <div class="btns">
     <button mat-raised-button type="submit">

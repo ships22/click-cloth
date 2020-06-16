@@ -1,10 +1,15 @@
+import { Categories } from './categories';
+import { Stock } from './stock';
+
 export class Product {
     id: number;
 	name: string;
 	description: string;
 	price: number;
 	image: any;
-	discount: string;
+    discount: string;
+    categories: Categories[];
+    stocks: Stock[];
 	shop_id_shop: number;
     shop_admin_id_admin: number;
     constructor(

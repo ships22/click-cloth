@@ -1,6 +1,7 @@
 package com.clickndcloth.server_side.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.clickndcloth.server_side.application.ProductManager;
+import com.clickndcloth.server_side.application.StockManager;
 import com.clickndcloth.server_side.dto.ProductDto;
+import com.clickndcloth.server_side.models.Categories;
 import com.clickndcloth.server_side.models.Product;
+import com.clickndcloth.server_side.models.Stock;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -34,6 +38,10 @@ public class ProductController {
 	
 	@Autowired
 	private ProductManager productManager;
+	
+	@Autowired
+	private StockManager stockManager;
+	
 	
 	@GetMapping(value = "/products")
 	@PreAuthorize("permitAll()")
@@ -57,12 +65,24 @@ public class ProductController {
 
 	@RequestMapping(value = "/add_product", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ProductDto addProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product) throws IOException {
+	public ProductDto addProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product, @RequestPart(required=true, value="stock") String stock) throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 		Product newProduct  =	objectMapper.readValue(product, Product.class);
+		//List<Categories> categories = new ArrayList<Categories>();
+		//categories.add(null{"id" : 1, "name" : "cat 1"});
+		//newProduct.setCategories(categories);
+		Stock newStock = objectMapper.readValue(stock, Stock.class);
+		System.out.println("test stock : " + newStock.getProduct_Shop_Admin_idAdmin() + newStock.getProduct_shop_id_shop());
 		newProduct.setImage(image.getBytes());
-		return productManager.addProduct(newProduct);
+		//return productManager.addProduct(newProduct);
+		ProductDto addedProduct = productManager.addProduct(newProduct);
+		//if(addedProduct != null) {
+			//newStock.setProduct_id_product(addedProduct.getId());
+			//newStock.setColour("couleur de photo");
+			//stockManager.addStock(newStock);
+		//}
+		return addedProduct;
 	}
 	
 	@PutMapping(value = "/update_product")

@@ -20,6 +20,8 @@ export class EditProductComponent implements OnInit {
     description: null,
     price: null,
     discount: null,
+    categories: null,
+    stocks: null,
     image: null,
     shop_id_shop: null,
     shop_admin_id_admin: null

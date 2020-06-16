@@ -39,12 +39,14 @@ import { AddShopComponent } from './components/admin/add-shop/add-shop.component
 import { ShopService } from './services/shop.service';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
+import {MatSelectModule} from '@angular/material/select';
 
 const MaterialComponents = [  MatButtonModule, 
                               MatProgressSpinnerModule, 
                               MatIconModule,
                               MatFormFieldModule,
                               MatInputModule,
+                              MatSelectModule,
                               MatTableModule, 
                               MatPaginatorModule, 
                               MatSortModule, 
