@@ -34,6 +34,11 @@ export class LoginComponent implements OnInit {
           "res from login component : ",
           this.authenticationService.decoded_token
         );
+        if(this.authenticationService.isSuperAdmin()){
+          return this.router.navigate(['super_admin']);
+        }else if (this.authenticationService.isAdmin()) {
+          return this.router.navigate(['admin']);
+        }
         this.router.navigate(['']);
       },
       (err) => {

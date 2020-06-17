@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,6 +25,10 @@ public class Stock {
 	private int product_id_product;
 	private int product_shop_id_shop;
 	private int product_shop_admin_id_admin;
+	
+	//@ManyToOne
+	//@JoinColumn(name = "product_id_product", referencedColumnName = "id")
+	//private Product product;
 	
 	public Stock() {
 		super();

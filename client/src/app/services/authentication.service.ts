@@ -102,4 +102,8 @@ export class AuthenticationService {
       return this.getDecodedAccessToken(token).user_name;
     }
   }
+  resetPasswordRequest():Observable<any> {
+    const userEmail = this.getEmail();
+    return this.httpClient.post<any>(this.base_url + "reset_password", {"email" : userEmail});
+  }
 }

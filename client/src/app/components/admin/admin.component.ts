@@ -15,7 +15,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
 import { MatPaginator } from "@angular/material/paginator";
 import { ProductService } from "src/app/services/product.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-admin",
@@ -99,10 +99,22 @@ export class AdminComponent implements OnInit {
     this.router.navigate(["/edit_product", product.id]);
   }
   onDelete(id) {
-    this.productService.deleteProduct(id).pipe(take(1))
-    .subscribe();
+    this.productService.deleteProduct(id).pipe(take(1)).subscribe();
   }
-
+  resetPasswordRequest() {
+    this.authenticationService
+      .resetPasswordRequest()
+      .pipe(take(1))
+      .subscribe((response) => {
+        if (response.operationResult == "SUCCESS") {
+          this.messageService.sendMessage(
+            "Un lien de réinitialisation de mot de passe est envoyé à votre adresse mèl."
+          );
+        } else {
+          this.messageService.sendMessage("Problème technique");
+        }
+      });
+  }
   // ngOnDestroy() {
   //   this.subscription.unsubscribe();
   // }

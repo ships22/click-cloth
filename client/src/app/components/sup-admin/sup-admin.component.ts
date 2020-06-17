@@ -14,6 +14,7 @@ import { AddAdminComponent } from "./add-admin/add-admin.component";
 import { Router } from "@angular/router";
 import { Observable, Subscription } from "rxjs";
 import { share, shareReplay, finalize, take } from "rxjs/operators";
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: "app-sup-admin",
@@ -32,6 +33,7 @@ export class SupAdminComponent implements OnInit {
 
   constructor(
     private adminService: AdminService,
+    private authenticationService: AuthenticationService,
     private router: Router,
     public messageService: MsgService,
     private dialog: MatDialog,
@@ -71,7 +73,6 @@ export class SupAdminComponent implements OnInit {
   onDelete(id) {
     this.adminService.deleteAdmin(id).pipe(take(1)).subscribe();
   }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

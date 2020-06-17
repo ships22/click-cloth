@@ -23,7 +23,7 @@
             <li *ngIf="isLoggedIn$ | async"><a routerLink="''" mat-button color="menu_access" (click)="logout()" class="top_li">Déconnecter</a></li>
             <li><a href="#" mat-button color="menu_access">Propos</a></li>
             <li *ngIf="!(isAdmin$ | async) && !(isSuperAdmin$ | async)"><a mat-button color="menu_access">Panier</a></li>
-            <li *ngIf="isAdmin$ | async"><a mat-button color="menu_access">Admin</a></li>
+            <li *ngIf="isAdmin$ | async"><a routerLink="/admin" mat-button color="menu_access">Admin</a></li>
             <li *ngIf="isSuperAdmin$ | async"><a mat-button routerLink="/super_admin" color="menu_access">S_Admin</a></li>
         </ul>
     </nav>

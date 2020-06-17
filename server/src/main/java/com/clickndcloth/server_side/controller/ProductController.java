@@ -77,11 +77,11 @@ public class ProductController {
 		newProduct.setImage(image.getBytes());
 		//return productManager.addProduct(newProduct);
 		ProductDto addedProduct = productManager.addProduct(newProduct);
-		//if(addedProduct != null) {
-			//newStock.setProduct_id_product(addedProduct.getId());
-			//newStock.setColour("couleur de photo");
-			//stockManager.addStock(newStock);
-		//}
+		if(addedProduct != null) {
+			newStock.setProduct_id_product(addedProduct.getId());
+			newStock.setColour("couleur de photo");
+			stockManager.addStock(newStock);
+		}
 		return addedProduct;
 	}
 	
