@@ -17,8 +17,8 @@ export class ProductService {
     return this._refresh$;
   }
 
-  addProduct(product):Observable<any> {
-    return this.httpClient.post(this.base_url + 'add_product/', product)
+  addProduct(product, shop_id):Observable<any> {
+    return this.httpClient.post(this.base_url + 'add_product/'+ shop_id, product)
     .pipe( tap(() => this._refresh$.next()));
   }
   getAllProduct():Observable<Product[]> {

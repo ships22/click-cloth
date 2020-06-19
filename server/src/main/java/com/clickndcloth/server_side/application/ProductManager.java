@@ -8,8 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.clickndcloth.server_side.dto.ProductDto;
+import com.clickndcloth.server_side.dto.ShopDto;
+import com.clickndcloth.server_side.exception.NotFoundException;
 import com.clickndcloth.server_side.models.Product;
+import com.clickndcloth.server_side.models.Shop;
 import com.clickndcloth.server_side.services.ProductDomainServiceImpl;
+import com.clickndcloth.server_side.services.ShopDomainServiceImpl;
 
 @Service
 public class ProductManager {
@@ -17,8 +21,15 @@ public class ProductManager {
 	@Autowired
 	private ProductDomainServiceImpl productDomainService;
 	
+	@Autowired 
+	private ShopDomainServiceImpl shopDomainService;
+	
 	@Transactional
-	public ProductDto addProduct(Product product) {
+	public ProductDto addProduct(Product product, int shop_id) {
+		
+		Shop shop = shopDomainService.getById(shop_id);
+		product.setShop(shop);
+
 		Product addedProduct = productDomainService.addProduct(product);
 		ProductDto productDto = new ProductDto();
 		productDto.setId(addedProduct.getId());
@@ -27,9 +38,38 @@ public class ProductManager {
 		productDto.setDescription(addedProduct.getDescription());
 		productDto.setDiscount(addedProduct.getDiscount());
 		productDto.setImage(addedProduct.getImage());
-		productDto.setShop_admin_id_admin(addedProduct.getShop_admin_id_admin());
-		productDto.setShop_id_shop(addedProduct.getShop_id_shop());
-		productDto.setCategories(addedProduct.getCategories());
+		
+		
+		
+	/*	.map(shop -> {
+			
+			shop.setAdmin(admin);
+			Shop addedShop = new Shop();
+			addedShop = shopDomainService.addShop(shop);
+			ShopDto shopDto = new ShopDto();
+			shopDto.setShop_id(addedShop.getShop_id());
+			shopDto.setName(addedShop.getName());
+			shopDto.setAddress(addedShop.getAddress());
+			shopDto.setEmail(addedShop.getEmail());
+			shopDto.setPhone(addedShop.getPhone());
+			shopDto.setIs_active(addedShop.getIs_active());
+			return shopDto;
+		}).orElseThrow(() -> new NotFoundException("Admin not found"));
+		return null;*/
+		
+		
+		/*
+		 * Product addedProduct = productDomainService.addProduct(product); ProductDto
+		 * productDto = new ProductDto(); productDto.setId(addedProduct.getId());
+		 * productDto.setName(addedProduct.getName());
+		 * productDto.setPrice(addedProduct.getPrice());
+		 * productDto.setDescription(addedProduct.getDescription());
+		 * productDto.setDiscount(addedProduct.getDiscount());
+		 * productDto.setImage(addedProduct.getImage());
+		 */
+		//productDto.setShop_admin_id_admin(addedProduct.getShop_admin_id_admin());
+		//productDto.setShop_id_shop(addedProduct.getShop_id_shop());
+		//productDto.setCategories(addedProduct.getCategories());
 		return productDto;
 	}
 	
@@ -45,8 +85,8 @@ public class ProductManager {
 			productDto.setDescription(product.getDescription());
 			productDto.setDiscount(product.getDiscount());
 			productDto.setImage(product.getImage());
-			productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
-			productDto.setShop_id_shop(product.getShop_id_shop());
+			//productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
+			//productDto.setShop_id_shop(product.getShop_id_shop());
 			productDto.setCategories(product.getCategories());
 			productDto.setStock(product.getStocks());
 			productDtos.add(productDto);
@@ -64,15 +104,15 @@ public class ProductManager {
 		productDto.setDescription(product.getDescription());
 		productDto.setDiscount(product.getDiscount());
 		productDto.setImage(product.getImage());
-		productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
-		productDto.setShop_id_shop(product.getShop_id_shop());
+		//productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
+		//productDto.setShop_id_shop(product.getShop_id_shop());
 		productDto.setCategories(product.getCategories());
 		productDto.setStock(product.getStocks());
 		return productDto;
 	}
 	
 	@Transactional
-	public List<ProductDto>getProductsByShop(Integer shop_id) {
+	public List<ProductDto>getProductsByShop(int shop_id) {
 		List<Product>productList = productDomainService.getProductsByShopId(shop_id);
 		List<ProductDto>productDtos = new ArrayList<ProductDto>();
 		productList.forEach(product -> {
@@ -83,8 +123,8 @@ public class ProductManager {
 			productDto.setDescription(product.getDescription());
 			productDto.setDiscount(product.getDiscount());
 			productDto.setImage(product.getImage());
-			productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
-			productDto.setShop_id_shop(product.getShop_id_shop());
+			//productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
+			//productDto.setShop_id_shop(product.getShop_id_shop());
 			productDto.setCategories(product.getCategories());
 			productDto.setStock(product.getStocks());
 			productDtos.add(productDto);
@@ -102,8 +142,8 @@ public class ProductManager {
 		productDto.setDescription(updatedProduct.getDescription());
 		productDto.setDiscount(updatedProduct.getDiscount());
 		productDto.setImage(updatedProduct.getImage());
-		productDto.setShop_admin_id_admin(updatedProduct.getShop_admin_id_admin());
-		productDto.setShop_id_shop(updatedProduct.getShop_id_shop());
+		//productDto.setShop_admin_id_admin(updatedProduct.getShop_admin_id_admin());
+		//productDto.setShop_id_shop(updatedProduct.getShop_id_shop());
 		productDto.setCategories(product.getCategories());
 		productDto.setStock(product.getStocks());
 		return productDto;

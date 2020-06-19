@@ -25,12 +25,12 @@ public class ProductDomainServiceImpl implements ProductDomain{
 	}
 	
 	@Override
-	public List<Product> getProductsByShopId(Integer shop_id) {
-		return productRepository.getProductsByShopId(shop_id);
+	public List<Product> getProductsByShopId(int shop_id) {
+		return productRepository.findByShop(shop_id);
 	}
 
 	@Override
-	public Product getProductById(Integer id) {
+	public Product getProductById(int id) {
 		return productRepository.getOne(id);
 	}
 

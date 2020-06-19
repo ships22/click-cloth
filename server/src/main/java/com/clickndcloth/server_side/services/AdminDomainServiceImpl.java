@@ -27,7 +27,8 @@ public class AdminDomainServiceImpl implements AdminDomain {
 
 	@Override
 	public Admin updateAdmin(Admin admin) {
-		return adminRepository.saveAndFlush(admin);
+		admin.setId(admin.getId());
+		return adminRepository.save(admin);
 	}
 
 	@Override

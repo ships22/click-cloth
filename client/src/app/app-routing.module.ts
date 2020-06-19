@@ -11,7 +11,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", component: AdminComponent },
   { path: "login", component: LoginComponent },
   { path: "edit_admin/:id", component: EditAdminComponent },
   { path: "edit_product/:id", component: EditProductComponent },
@@ -22,13 +22,13 @@ const routes: Routes = [
       expectedRole: 'ROLE_CLIENT'
     }
   },
-  { 
-    path: "admin", component: AdminComponent,
-    canActivate: [Guard],
-    data: {
-      expectedRole: 'ROLE_ADMIN'
-    }
-  },
+  // { 
+  //   path: "admin", component: AdminComponent,
+  //   canActivate: [Guard],
+  //   data: {
+  //     expectedRole: 'ROLE_ADMIN'
+  //   }
+  // },
   { 
     path: "super_admin", component: SupAdminComponent,
     canActivate: [Guard],

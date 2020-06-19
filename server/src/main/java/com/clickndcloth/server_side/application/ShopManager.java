@@ -5,11 +5,14 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.clickndcloth.server_side.dto.ShopDto;
+import com.clickndcloth.server_side.exception.NotFoundException;
 import com.clickndcloth.server_side.models.Shop;
+import com.clickndcloth.server_side.services.AdminDomainServiceImpl;
 import com.clickndcloth.server_side.services.ShopDomainServiceImpl;
 
 @Service
@@ -18,23 +21,42 @@ public class ShopManager {
 	@Autowired
 	private ShopDomainServiceImpl shopDomainService;
 	
+	@Autowired
+	private AdminDomainServiceImpl adminDomainService;
+	
 	@Transactional
-	public ShopDto addShop(Shop shop, int admin_id) {
+	public ShopDto addShop(Shop shop, int admin_id)  {
 		
-		shop.setAdmin_id(admin_id);
-		shop.setIs_active(1);
+		adminDomainService.findAdminById(admin_id)
+		.map(admin -> {
+			shop.setAdmin(admin);
+			Shop addedShop = new Shop();
+			addedShop = shopDomainService.addShop(shop);
+			ShopDto shopDto = new ShopDto();
+			shopDto.setShop_id(addedShop.getShop_id());
+			shopDto.setName(addedShop.getName());
+			shopDto.setAddress(addedShop.getAddress());
+			shopDto.setEmail(addedShop.getEmail());
+			shopDto.setPhone(addedShop.getPhone());
+			shopDto.setIs_active(addedShop.getIs_active());
+			return shopDto;
+		}).orElseThrow(() -> new NotFoundException("Admin not found"));
+		return null;
+		//shop.setAdmin_id(admin_id);
+		//shop.setIs_active(1);
 		
-		Shop addedShop = shopDomainService.addShop(shop);
+		//Shop addedShop = shopDomainService.addShop(shop);
 		
-		ShopDto shopDto = new ShopDto();
-		shopDto.setShop_id(addedShop.getShop_id());
-		shopDto.setName(addedShop.getName());
-		shopDto.setAddress(addedShop.getAddress());
-		shopDto.setEmail(addedShop.getEmail());
-		shopDto.setPhone(addedShop.getPhone());
-		shopDto.setIs_active(addedShop.getIs_active());
-		shopDto.setAdmin_id(addedShop.getAdmin_id());
-		return shopDto;
+		/*
+		 * ShopDto shopDto = new ShopDto(); shopDto.setShop_id(addedShop.getShop_id());
+		 * shopDto.setName(addedShop.getName());
+		 * shopDto.setAddress(addedShop.getAddress());
+		 * shopDto.setEmail(addedShop.getEmail());
+		 * shopDto.setPhone(addedShop.getPhone());
+		 * shopDto.setIs_active(addedShop.getIs_active());
+		 */
+		//shopDto.setAdmin_id(addedShop.getAdmin_id());
+		//return shopDto;
 	}
 	
 	@Transactional
@@ -81,15 +103,34 @@ public class ShopManager {
 	}
 	
 	@Transactional
-	public ShopDto updateShop(Shop shop) {
-		Shop updatedShop = shopDomainService.updateShop(shop);
+	public ShopDto updateShop(Shop shop, int admin_id, int shop_id) {
 		ShopDto shopDto = new ShopDto();
-		shopDto.setShop_id(shop.getShop_id());
-		shopDto.setName(updatedShop.getName());
-		shopDto.setAddress(updatedShop.getAddress());
-		shopDto.setEmail(updatedShop.getEmail());
-		shopDto.setPhone(updatedShop.getPhone());
-		shopDto.setIs_active(shop.getIs_active());
+		adminDomainService.findAdminById(admin_id)
+		.map(admin -> {
+			shop.setAdmin(admin);
+			shop.setShop_id(shop_id);
+			Shop addedShop = new Shop();
+			addedShop = shopDomainService.addShop(shop);
+			//ShopDto shopDto = new ShopDto();
+			shopDto.setShop_id(addedShop.getShop_id());
+			shopDto.setName(addedShop.getName());
+			shopDto.setAddress(addedShop.getAddress());
+			shopDto.setEmail(addedShop.getEmail());
+			shopDto.setPhone(addedShop.getPhone());
+			shopDto.setIs_active(addedShop.getIs_active());
+			return shopDto;
+		}).orElseThrow(() -> new NotFoundException("Admin not found"));
+		/*
+		 * return null;
+		 * 
+		 * Shop updatedShop = shopDomainService.updateShop(shop, admin_id, shop_id);
+		 * ShopDto shopDto = new ShopDto(); shopDto.setShop_id(shop.getShop_id());
+		 * shopDto.setName(updatedShop.getName());
+		 * shopDto.setAddress(updatedShop.getAddress());
+		 * shopDto.setEmail(updatedShop.getEmail());
+		 * shopDto.setPhone(updatedShop.getPhone());
+		 * shopDto.setIs_active(shop.getIs_active());
+		 */
 		return shopDto;
 	}
 	

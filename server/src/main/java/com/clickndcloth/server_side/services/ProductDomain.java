@@ -10,9 +10,9 @@ public interface ProductDomain {
 	
 	List<Product> getAllProduct();
 	
-	List<Product> getProductsByShopId(Integer shop_id);
+	List<Product> getProductsByShopId(int shop_id);
 	
-	Product getProductById(Integer id);
+	Product getProductById(int id);
 	
 	Product updateProduct(Product product);
 	

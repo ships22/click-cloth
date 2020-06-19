@@ -25,9 +25,9 @@ export class AddProductComponent implements OnInit {
 	quantite:null,
 	size:null,
 	colour:null,
-	product_id_product:null,
-	product_shop_id_shop:null,
-  product_Shop_Admin_idAdmin:null
+	
+	
+  
   };
   sizes:any[] = [
     { size: "XS" },
@@ -57,15 +57,15 @@ export class AddProductComponent implements OnInit {
     
     this.stock.size = product.size;
     this.stock.quantite = product.quantite;
-    this.stock.product_shop_id_shop = this.shopId;
-    this.stock.product_Shop_Admin_idAdmin = this.adminId;
+    this.stock.colour = "red";
+    
 
     this.newProduct.name = product.name;
     this.newProduct.description = product.description;
     this.newProduct.price = product.price;
     this.newProduct.discount = product.discount;
-    this.newProduct.shop_id_shop = this.shopId;
-    this.newProduct.shop_admin_id_admin = this.adminId;
+    // this.newProduct.shop_id_shop = this.shopId;
+    // this.newProduct.shop_admin_id_admin = this.adminId;
       let productData = new FormData();
       productData.append(
       "image",
@@ -81,7 +81,7 @@ export class AddProductComponent implements OnInit {
     ) {
       productData.append("product", JSON.stringify(this.newProduct));
       productData.append("stock", JSON.stringify(this.stock));
-      this.productService.addProduct(productData).subscribe(
+      this.productService.addProduct(productData, 2).subscribe(
             (response) => (
               console.log("test add product :", response), this.dialogRef.close()
             ),

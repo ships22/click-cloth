@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Shop")
@@ -26,12 +29,24 @@ public class Shop {
 	private String email;
 	private String phone;
 	private int is_active;
-	@Column(name="admin_id")
-	private int adminId;
+	//@Column(name="admin_id")
+	//private int adminId;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="shop_id_shop", referencedColumnName = "shop_id", nullable = true)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "admin_id", nullable = false)
+	@JsonIgnore
+	private Admin admin;
+	
+	@OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Product> productList = new ArrayList<Product>();
+	
+	/*
+	 * @OneToMany(cascade=CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name="shop_id_shop", referencedColumnName = "shop_id", nullable =
+	 * true) private List<Product> productList = new ArrayList<Product>();
+	 */
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="shop_shop_id", referencedColumnName = "shop_id", nullable = true)
@@ -41,7 +56,7 @@ public class Shop {
 		super();
 	}
 
-	public Shop(int shop_id, String name, String address, String email, String phone, int is_active, int adminId,
+	public Shop(int shop_id, String name, String address, String email, String phone, int is_active,
 			List<Product> productList, List<Reservation> reservations) {
 		super();
 		this.shop_id = shop_id;
@@ -50,7 +65,7 @@ public class Shop {
 		this.email = email;
 		this.phone = phone;
 		this.is_active = is_active;
-		this.adminId = adminId;
+		//this.adminId = adminId;
 		this.productList = productList;
 		this.reservations = reservations;
 	}
@@ -91,12 +106,19 @@ public class Shop {
 	public void setIs_active(int is_active) {
 		this.is_active = is_active;
 	}
-	public int getAdmin_id() {
-		return adminId;
+
+	public Admin getAdmin() {
+		return admin;
 	}
-	public void setAdmin_id(int adminId) {
-		this.adminId = adminId;
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
+
+	/*
+	 * public int getAdmin_id() { return adminId; } public void setAdmin_id(int
+	 * adminId) { this.adminId = adminId; }
+	 */
 	public List<Product> getProductList() {
 		return productList;
 	}

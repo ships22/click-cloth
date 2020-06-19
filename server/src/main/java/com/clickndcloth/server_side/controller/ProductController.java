@@ -58,30 +58,32 @@ public class ProductController {
 	
 	@GetMapping(value = "/productsByShop/{shop_id}")
 	//@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public List <ProductDto> getProductByShopId(@PathVariable ("shop_id") Integer shop_id) {
+	public List <ProductDto> getProductByShopId(@PathVariable ("shop_id") int shop_id) {
 		return productManager.getProductsByShop(shop_id);
 	}
 	
 
-	@RequestMapping(value = "/add_product", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value = "/add_product/{shop_id}", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ProductDto addProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product, @RequestPart(required=true, value="stock") String stock) throws IOException {
+	public ProductDto addProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product, 
+			@RequestPart(required=true, value="stock") String stock, @PathVariable(name="shop_id") Integer shop_id) throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 		Product newProduct  =	objectMapper.readValue(product, Product.class);
-		//List<Categories> categories = new ArrayList<Categories>();
-		//categories.add(null{"id" : 1, "name" : "cat 1"});
-		//newProduct.setCategories(categories);
-		Stock newStock = objectMapper.readValue(stock, Stock.class);
-		System.out.println("test stock : " + newStock.getProduct_Shop_Admin_idAdmin() + newStock.getProduct_shop_id_shop());
-		newProduct.setImage(image.getBytes());
+		Stock newStock =  objectMapper.readValue(stock, Stock.class);
+		//System.out.println("test stock : " + newStock.getProduct_Shop_Admin_idAdmin() + newStock.getProduct_shop_id_shop());
+		//newProduct.setImage(image.getBytes());
+		List<Stock> stockList = new ArrayList<Stock>();
+		stockList.add(newStock);
+		newProduct.setImage(null);
+		newProduct.setStocks(stockList);
 		//return productManager.addProduct(newProduct);
-		ProductDto addedProduct = productManager.addProduct(newProduct);
-		if(addedProduct != null) {
-			newStock.setProduct_id_product(addedProduct.getId());
-			newStock.setColour("couleur de photo");
-			stockManager.addStock(newStock);
-		}
+		ProductDto addedProduct = productManager.addProduct(newProduct, shop_id);
+		/*
+		 * if(addedProduct != null) {
+		 * newStock.setProduct_id_product(addedProduct.getId());
+		 * newStock.setColour("couleur de photo"); stockManager.addStock(newStock); }
+		 */
 		return addedProduct;
 	}
 	

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.clickndcloth.server_side.exception.NotFoundException;
 import com.clickndcloth.server_side.models.Shop;
+import com.clickndcloth.server_side.repository.AdminRepository;
 import com.clickndcloth.server_side.repository.ShopRepository;
 
 @Component
@@ -13,6 +15,7 @@ public class ShopDomainServiceImpl implements ShopDomain {
 	
 	@Autowired
 	ShopRepository shopRepository;
+
 
 	@Override
 	public Shop addShop(Shop shop) {
@@ -36,7 +39,7 @@ public class ShopDomainServiceImpl implements ShopDomain {
 
 	@Override
 	public Shop updateShop(Shop shop) {
-		return shopRepository.saveAndFlush(shop);
+		return shopRepository.save(shop);
 	}
 
 	@Override
