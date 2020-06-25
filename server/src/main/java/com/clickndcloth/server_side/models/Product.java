@@ -3,7 +3,9 @@ package com.clickndcloth.server_side.models;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -35,19 +37,23 @@ public class Product implements Serializable {
 	private double price;
 	private byte[] image;
 	private String discount;
-	//private int shop_id_shop;
-	//private int shop_admin_id_admin;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "shop_id", nullable = false)
 	@JsonIgnore
 	private Shop shop;
 	
-	@ManyToMany
-	@JoinTable(name = "Product_categories", joinColumns = @JoinColumn(name = "product_id_product"), 
-	  inverseJoinColumns = @JoinColumn(name = "categories_id_categories"))
+	@ManyToMany(fetch = FetchType.LAZY, cascade =  { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@JoinTable(name = "product_categories", joinColumns = {@JoinColumn(name = "product_id")}, 
+	  inverseJoinColumns = {@JoinColumn(name = "categories_id")})
 	@JsonProperty("categories")
-	private List<Categories> categories;
+	private Set<Categories> categories = new HashSet<Categories>();
+	
+	@ManyToMany
+	@JoinTable(name = "product_reservation", joinColumns = @JoinColumn(name = "product_id"), 
+	  inverseJoinColumns = @JoinColumn(name = "reservation_id"))
+	@JsonProperty("reservation")
+	private List<Reservation> reservation;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="product_id", referencedColumnName = "id", nullable = true)
@@ -58,7 +64,7 @@ public class Product implements Serializable {
 	}
 	
 	public Product(int id, String name, String description, double price, byte[] image, String discount,
-			int shop_admin_id_admin, List<Categories> categories, List<Stock> stocks) {
+			int shop_admin_id_admin, Set<Categories> categories, List<Stock> stocks, Shop shop) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -66,10 +72,9 @@ public class Product implements Serializable {
 		this.price = price;
 		this.image = image;
 		this.discount = discount;
-		//this.shop_id_shop = shop_id_shop;
-		//this.shop_admin_id_admin = shop_admin_id_admin;
 		this.categories = categories;
 		this.stocks = stocks;
+		this.shop = shop;
 	}
 
 	public int getId() {
@@ -120,24 +125,12 @@ public class Product implements Serializable {
 		this.discount = discount;
 	}
 
-	/*
-	 * public int getShop_id_shop() { return shop_id_shop; }
-	 * 
-	 * public void setShop_id_shop(int shop_id_shop) { this.shop_id_shop =
-	 * shop_id_shop; }
-	 */
-	/*
-	 * public int getShop_admin_id_admin() { return shop_admin_id_admin; }
-	 * 
-	 * public void setShop_admin_id_admin(int shop_admin_id_admin) {
-	 * this.shop_admin_id_admin = shop_admin_id_admin; }
-	 */
 
-	public List<Categories> getCategories() {
+	public Set<Categories> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(List<Categories> categories) {
+	public void setCategories(Set<Categories> categories) {
 		this.categories = categories;
 	}
 

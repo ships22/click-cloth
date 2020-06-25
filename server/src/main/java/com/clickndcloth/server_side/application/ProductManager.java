@@ -10,8 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.clickndcloth.server_side.dto.ProductDto;
 import com.clickndcloth.server_side.dto.ShopDto;
 import com.clickndcloth.server_side.exception.NotFoundException;
+import com.clickndcloth.server_side.models.Categories;
 import com.clickndcloth.server_side.models.Product;
 import com.clickndcloth.server_side.models.Shop;
+import com.clickndcloth.server_side.models.Stock;
+import com.clickndcloth.server_side.services.CategoriesDomainServiceImpl;
 import com.clickndcloth.server_side.services.ProductDomainServiceImpl;
 import com.clickndcloth.server_side.services.ShopDomainServiceImpl;
 
@@ -24,12 +27,26 @@ public class ProductManager {
 	@Autowired 
 	private ShopDomainServiceImpl shopDomainService;
 	
+	@Autowired
+	private CategoriesDomainServiceImpl categoriesDomainService;
+	
 	@Transactional
-	public ProductDto addProduct(Product product, int shop_id) {
+	public ProductDto addProduct(Product product, int shop_id, int cat_id) {
+		
+	
 		
 		Shop shop = shopDomainService.getById(shop_id);
 		product.setShop(shop);
 
+		Categories category = categoriesDomainService.getCategoryByID(cat_id);
+		
+		product.getCategories().add(category);
+		
+		System.out.println("test cat call :" + category.getName());
+		category.getProducts().add(product);
+		
+		
+		
 		Product addedProduct = productDomainService.addProduct(product);
 		ProductDto productDto = new ProductDto();
 		productDto.setId(addedProduct.getId());
@@ -39,6 +56,13 @@ public class ProductManager {
 		productDto.setDiscount(addedProduct.getDiscount());
 		productDto.setImage(addedProduct.getImage());
 		
+		
+		
+		//category.getProducts().add(addedProduct);
+		//Categories addedCategory = categoriesDomainService.addCategory(category);
+		//List<Categories> categories = new ArrayList<Categories>();
+		//categories.add(category);
+		//product.setCategories(categories);
 		
 		
 	/*	.map(shop -> {
@@ -85,10 +109,9 @@ public class ProductManager {
 			productDto.setDescription(product.getDescription());
 			productDto.setDiscount(product.getDiscount());
 			productDto.setImage(product.getImage());
-			//productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
-			//productDto.setShop_id_shop(product.getShop_id_shop());
 			productDto.setCategories(product.getCategories());
 			productDto.setStock(product.getStocks());
+			productDto.setShop(product.getShop());
 			productDtos.add(productDto);
 		});
 		return productDtos;
@@ -104,10 +127,9 @@ public class ProductManager {
 		productDto.setDescription(product.getDescription());
 		productDto.setDiscount(product.getDiscount());
 		productDto.setImage(product.getImage());
-		//productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
-		//productDto.setShop_id_shop(product.getShop_id_shop());
 		productDto.setCategories(product.getCategories());
 		productDto.setStock(product.getStocks());
+		productDto.setShop(product.getShop());
 		return productDto;
 	}
 	
@@ -123,10 +145,9 @@ public class ProductManager {
 			productDto.setDescription(product.getDescription());
 			productDto.setDiscount(product.getDiscount());
 			productDto.setImage(product.getImage());
-			//productDto.setShop_admin_id_admin(product.getShop_admin_id_admin());
-			//productDto.setShop_id_shop(product.getShop_id_shop());
 			productDto.setCategories(product.getCategories());
 			productDto.setStock(product.getStocks());
+			productDto.setShop(product.getShop());
 			productDtos.add(productDto);
 		});
 		return productDtos;
@@ -142,10 +163,9 @@ public class ProductManager {
 		productDto.setDescription(updatedProduct.getDescription());
 		productDto.setDiscount(updatedProduct.getDiscount());
 		productDto.setImage(updatedProduct.getImage());
-		//productDto.setShop_admin_id_admin(updatedProduct.getShop_admin_id_admin());
-		//productDto.setShop_id_shop(updatedProduct.getShop_id_shop());
 		productDto.setCategories(product.getCategories());
 		productDto.setStock(product.getStocks());
+		productDto.setShop(product.getShop());
 		return productDto;
 	}
 	

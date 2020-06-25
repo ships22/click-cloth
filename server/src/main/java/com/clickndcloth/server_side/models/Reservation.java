@@ -1,12 +1,19 @@
 package com.clickndcloth.server_side.models;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Reservation")
@@ -20,14 +27,24 @@ public class Reservation {
 	private int total;
 	private String status;
 	private int quantity;
-	private int client_id;
-	private int shop_shop_id;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "client_id", nullable = false)
+	@JsonIgnore
+	private Client client;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "shop_id", nullable = false)
+	@JsonIgnore
+	private Shop shop;
+	
+	@ManyToMany(mappedBy = "reservation")
+	private List<Product>products;
 	
 	public Reservation() {
 		super();
 	}
-	public Reservation(int reservation_id, Date date_time, String reference, int total, String status, int quantity,
-			int client_id, int shop_shop_id) {
+	public Reservation(int reservation_id, Date date_time, String reference, int total, String status, int quantity, List<Product>products) {
 		super();
 		this.reservation_id = reservation_id;
 		this.date_time = date_time;
@@ -35,8 +52,7 @@ public class Reservation {
 		this.total = total;
 		this.status = status;
 		this.quantity = quantity;
-		this.client_id = client_id;
-		this.shop_shop_id =shop_shop_id;
+		this.products = products;
 	}
 	public int getReservation_id() {
 		return reservation_id;
@@ -74,17 +90,24 @@ public class Reservation {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getClient_id() {
-		return client_id;
+	public Client getClient() {
+		return client;
 	}
-	public void setClient_id(int client_id) {
-		this.client_id = client_id;
+	
+	public List<Product> getProducts() {
+		return products;
 	}
-	public int getShop_shop_id() {
-		return shop_shop_id;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
-	public void setShop_shop_id(int shop_shop_id) {
-		this.shop_shop_id = shop_shop_id;
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	public Shop getShop() {
+		return shop;
+	}
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 	
 }

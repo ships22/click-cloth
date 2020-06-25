@@ -1,5 +1,6 @@
 package com.clickndcloth.server_side.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Shop")
-public class Shop {
+public class Shop implements Serializable {
 	
+	private static final long serialVersionUID = 8452543819399075149L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int shop_id;
@@ -41,6 +43,10 @@ public class Shop {
 	@JsonIgnore
 	private List<Product> productList = new ArrayList<Product>();
 	
+//	@OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JsonIgnore
+//	private List<Reservation> reservations = new ArrayList<Reservation>();
+	
 	/*
 	 * @OneToMany(cascade=CascadeType.ALL)
 	 * 
@@ -49,7 +55,7 @@ public class Shop {
 	 */
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="shop_shop_id", referencedColumnName = "shop_id", nullable = true)
+	@JoinColumn(name="shop_id", referencedColumnName = "shop_id", nullable = true)
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
 	public Shop() {

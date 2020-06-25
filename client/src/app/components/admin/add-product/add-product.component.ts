@@ -81,7 +81,7 @@ export class AddProductComponent implements OnInit {
     ) {
       productData.append("product", JSON.stringify(this.newProduct));
       productData.append("stock", JSON.stringify(this.stock));
-      this.productService.addProduct(productData, 2).subscribe(
+      this.productService.addProduct(productData, 1, 1).subscribe(
             (response) => (
               console.log("test add product :", response), this.dialogRef.close()
             ),

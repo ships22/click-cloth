@@ -13,6 +13,4 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
 	@Query(value = "SELECT product.* FROM Product AS product WHERE product.shop_id = ?1", nativeQuery = true)
 	List<Product> findByShop(int shop_id);
-	
-
 }

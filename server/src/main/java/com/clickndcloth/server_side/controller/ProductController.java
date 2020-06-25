@@ -63,10 +63,11 @@ public class ProductController {
 	}
 	
 
-	@RequestMapping(value = "/add_product/{shop_id}", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value = "/add_product/{shop_id}/cat/{cat_id}", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ProductDto addProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product, 
-			@RequestPart(required=true, value="stock") String stock, @PathVariable(name="shop_id") Integer shop_id) throws IOException {
+			@RequestPart(required=true, value="stock") String stock, @PathVariable(name="shop_id") Integer shop_id,
+			@PathVariable(name="cat_id") Integer cat_id) throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 		Product newProduct  =	objectMapper.readValue(product, Product.class);
@@ -78,7 +79,7 @@ public class ProductController {
 		newProduct.setImage(null);
 		newProduct.setStocks(stockList);
 		//return productManager.addProduct(newProduct);
-		ProductDto addedProduct = productManager.addProduct(newProduct, shop_id);
+		ProductDto addedProduct = productManager.addProduct(newProduct, shop_id, cat_id);
 		/*
 		 * if(addedProduct != null) {
 		 * newStock.setProduct_id_product(addedProduct.getId());

@@ -1,14 +1,20 @@
 package com.clickndcloth.server_side.models;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Categories")
@@ -19,8 +25,9 @@ public class Categories {
 	private int id;
 	private String name;
 	
-	@ManyToMany(mappedBy = "categories")
-	private List<Product>products;
+	@ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY, cascade =  { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@JsonIgnore
+	private Set<Product>products = new HashSet<Product>();
 	
 	public Categories() {
 		super();
@@ -47,6 +54,14 @@ public class Categories {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 	
 
