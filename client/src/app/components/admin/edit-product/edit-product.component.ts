@@ -60,7 +60,11 @@ export class EditProductComponent implements OnInit {
     this.productService
       .getProductById(id)
       .pipe(take(1))
-      .subscribe((response) => (this.product = response, this.stock = response.stock[0]));
+      .subscribe(
+        (response) => (
+          (this.product = response), (this.stock = response.stock[0])
+        )
+      );
   }
   submit(product) {
     let productData = new FormData();
@@ -89,28 +93,26 @@ export class EditProductComponent implements OnInit {
     this.editedProduct.discount = product.discount;
     product.shop_id = 1;
 
-    
     // this.stock.size = product.size;
     // this.stock.quantite = product.quantite;
     // this.stock.colour = "red";
 
     productData.append("product", JSON.stringify(this.editedProduct));
     productData.append("stock", JSON.stringify(this.stock));
-    console.log('test here'),
-    this.productService.editProduct(productData, product.shop_id)
-    .subscribe( response => {
-        console.log("test edit product :", response);
-        this.router.navigate(["/admin"]);
-    }
-      // (response) => (
-        
-      //   console.log("test edit product :", response),
-      //   this.router.navigate(["/admin"])
-      // ),
-      // (error) =>
-      //   this.massageService.sendMessage(
-      //     "Une erreur s'est produite. Veuillez réessayer"
-      //   )
-    );
+    console.log("test here"),
+      this.productService.editProduct(productData, product.shop_id).subscribe(
+        //   response => {
+        //     console.log("test edit product :", response);
+        //     this.router.navigate(["/admin"]);
+        // }
+        (response) => (
+          console.log("test edit product :", response),
+          this.router.navigate(["/admin"])
+        ),
+        (error) =>
+          this.massageService.sendMessage(
+            "Une erreur s'est produite. Veuillez réessayer"
+          )
+      );
   }
 }

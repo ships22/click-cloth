@@ -9,9 +9,11 @@ import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin
 
 import { AdminComponent } from './components/admin/admin.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
+import { AllProductsComponent } from './components/all-products/all-products.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
+  { path: "all_products", component: AllProductsComponent },
   { path: "login", component: LoginComponent },
   { path: "edit_admin/:id", component: EditAdminComponent },
   { path: "edit_product/:id", component: EditProductComponent },

@@ -1,0 +1,8 @@
+<p>all-products works!</p>
+<ul>
+    <li>User name | UID</li>
+    <li *ngFor="let item of collection | paginate : {itemsPerPage : 5, currentPage : p}">
+        {{item.Name}} | {{ item.Id}}
+    </li>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</ul>
