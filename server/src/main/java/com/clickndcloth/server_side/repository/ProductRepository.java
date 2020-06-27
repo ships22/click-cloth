@@ -19,5 +19,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
     @Query(nativeQuery = true, value = "SELECT * FROM Product as p WHERE p.id IN (:ids)")  
     List<Product> findAllByProductId(@Param("ids") List<Integer> ids);
+    
+    
+    @Query(value = "SELECT * FROM Product AS product WHERE product.product_ref LIKE 'sf%'", nativeQuery = true)
+    List<Product> findAllByProductLadies();
 	
+    @Query(value = "SELECT * FROM Product AS product WHERE product.product_ref LIKE 'sh%'", nativeQuery = true)
+    List<Product> findAllByProductGents();
+	
+    @Query(value = "SELECT * FROM Product AS product WHERE product.product_ref LIKE 'se%'", nativeQuery = true)
+    List<Product> findAllByProductChildren();
 }

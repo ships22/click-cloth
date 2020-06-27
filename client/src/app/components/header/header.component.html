@@ -14,9 +14,9 @@
             <li class="dropdown"><a href="#" mat-button color="menu_access" class="top_li">Boutique</a>
                 <ul class="sub_menu">
                     <li><a routerLink="/all_products" mat-button color="menu_access">Tous les produits</a></li>
-                    <li><a href="#" mat-button color="menu_access">Femme</a></li>
-                    <li><a href="#" mat-button color="menu_access">Homme</a></li>
-                    <li><a href="#" mat-button color="menu_access">Enfants</a></li>
+                    <li><a routerLink="/ladies" mat-button color="menu_access">Femme</a></li>
+                    <li><a routerLink="/gents" mat-button color="menu_access">Homme</a></li>
+                    <li><a routerLink="/children" mat-button color="menu_access">Enfants</a></li>
                 </ul>
             </li>
             <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="/login" mat-button color="menu_access" class="top_li">Se connecter</a></li>

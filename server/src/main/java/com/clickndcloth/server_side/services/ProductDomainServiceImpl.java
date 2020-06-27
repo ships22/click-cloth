@@ -25,6 +25,20 @@ public class ProductDomainServiceImpl implements ProductDomain{
 	public List<Product> getAllProduct() {
 		return productRepository.findAll();
 	}
+
+	@Override
+	public List<Product> getAllProductLadies() {
+		return productRepository.findAllByProductLadies();
+	}
+	@Override
+	public List<Product> getAllProductGents() {
+		return productRepository.findAllByProductGents();
+	}
+
+	@Override
+	public List<Product> getAllProductChildren() {
+		return productRepository.findAllByProductChildren();
+	}
 	
 	@Override
 	public List<Product> getProductsByShopId(int shop_id) {
@@ -56,8 +70,6 @@ public class ProductDomainServiceImpl implements ProductDomain{
 	public Optional<Product> findById(int id) {
 		return productRepository.findById(id);
 	}
-
-
 	
 
 }

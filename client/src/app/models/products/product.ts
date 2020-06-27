@@ -5,6 +5,7 @@ export class Product {
     id: number;
 	name: string;
 	description: string;
+    productRef: string;
 	price: number;
 	image: any;
     discount: string;
@@ -16,15 +17,17 @@ export class Product {
         id: number,
         name: string,
         description: string,
+        productRef: string,
         price: number,
         image: any,
+        discount: string,
         categories: Categories[],
         stock: Stock[],
-        discount: string
     ) {
     this.id = id;
 	this.name = name;
-	this.description = description;
+    this.description = description;
+    this.productRef = productRef;
 	this.price = price;
     this.image = image;
     this.categories = categories;

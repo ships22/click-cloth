@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { ProductService } from 'src/app/services/product.service';
-import { Product } from 'src/app/models/products/product';
 import { take } from 'rxjs/operators';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-all-products',
-  templateUrl: './all-products.component.html',
-  styleUrls: ['./all-products.component.sass']
+  selector: 'app-gents',
+  templateUrl: './gents.component.html',
+  styleUrls: ['./gents.component.sass']
 })
-export class AllProductsComponent implements OnInit {
+export class GentsComponent implements OnInit {
   categories = [];
   selectedCat: '';
   p: number = 1;
@@ -23,7 +21,7 @@ export class AllProductsComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.productService.getAllProducts()
+    this.productService.getAllProductByMale()
     .pipe(take(1))
     .subscribe(response => {
       console.log('test products call :' , response);

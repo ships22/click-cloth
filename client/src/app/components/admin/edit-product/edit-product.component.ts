@@ -18,6 +18,7 @@ export class EditProductComponent implements OnInit {
     id: null,
     name: null,
     description: null,
+    productRef: null,
     price: null,
     discount: null,
     categories: null,
@@ -89,6 +90,7 @@ export class EditProductComponent implements OnInit {
     this.editedProduct.id = this.product.id;
     this.editedProduct.name = product.name;
     this.editedProduct.description = product.description;
+    this.editedProduct.productRef = product.productRef;
     this.editedProduct.price = product.price;
     this.editedProduct.discount = product.discount;
     product.shop_id = 1;

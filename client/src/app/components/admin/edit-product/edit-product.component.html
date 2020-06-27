@@ -101,6 +101,20 @@
     />
   </mat-form-field>
   <mat-form-field appearance="fill">
+    <mat-label>Référence</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.productRef"
+      #productRef="ngModel"
+      name="productRef"
+      type="text"
+      id="productRef"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Prix</mat-label>
     <input
       matInput

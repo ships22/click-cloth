@@ -43,6 +43,9 @@ import { EditProductComponent } from "./components/admin/edit-product/edit-produ
 import { MatSelectModule } from "@angular/material/select";
 import { AllProductsComponent } from "./components/all-products/all-products.component";
 import { from } from "rxjs";
+import { LadiesComponent } from './components/ladies/ladies.component';
+import { GentsComponent } from './components/gents/gents.component';
+import { ChildrenComponent } from './components/children/children.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -78,6 +81,9 @@ const MaterialComponents = [
     AddProductComponent,
     EditProductComponent,
     AllProductsComponent,
+    LadiesComponent,
+    GentsComponent,
+    ChildrenComponent,
   ],
   imports: [
     BrowserModule,

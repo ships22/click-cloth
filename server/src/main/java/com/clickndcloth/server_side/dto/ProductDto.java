@@ -14,6 +14,7 @@ public class ProductDto {
 	private int id;
 	private String name;
 	private String description;
+	private String productRef;
 	private double price;
 	private byte[] image;
 	private String discount;
@@ -39,6 +40,12 @@ public class ProductDto {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getProductRef() {
+		return productRef;
+	}
+	public void setProductRef(String productRef) {
+		this.productRef = productRef;
 	}
 	public double getPrice() {
 		return price;

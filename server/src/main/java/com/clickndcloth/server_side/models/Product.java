@@ -35,6 +35,7 @@ public class Product implements Serializable {
 	private int id;
 	private String name;
 	private String description;
+	private String productRef;
 	private double price;
 	private byte[] image;
 	private String discount;
@@ -68,12 +69,13 @@ public class Product implements Serializable {
 		super();
 	}
 	
-	public Product(int id, String name, String description, double price, byte[] image, String discount,
+	public Product(int id, String name, String description, String productRef, double price, byte[] image, String discount,
 			int shop_admin_id_admin, Set<Categories> categories, List<Stock> stocks, Shop shop) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.productRef = productRef;
 		this.price = price;
 		this.image = image;
 		this.discount = discount;
@@ -104,6 +106,14 @@ public class Product implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getProductRef() {
+		return productRef;
+	}
+
+	public void setProductRef(String productRef) {
+		this.productRef = productRef;
 	}
 
 	public double getPrice() {

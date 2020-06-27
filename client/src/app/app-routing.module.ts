@@ -10,10 +10,16 @@ import { EditAdminComponent } from './components/sup-admin/edit-admin/edit-admin
 import { AdminComponent } from './components/admin/admin.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 import { AllProductsComponent } from './components/all-products/all-products.component';
+import { LadiesComponent } from './components/ladies/ladies.component';
+import { GentsComponent } from './components/gents/gents.component';
+import { ChildrenComponent } from './components/children/children.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "all_products", component: AllProductsComponent },
+  { path: "ladies", component: LadiesComponent },
+  { path: "gents", component: GentsComponent },
+  { path: "children", component: ChildrenComponent },
   { path: "login", component: LoginComponent },
   { path: "edit_admin/:id", component: EditAdminComponent },
   { path: "edit_product/:id", component: EditProductComponent },

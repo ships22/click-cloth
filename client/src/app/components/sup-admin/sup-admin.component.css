@@ -38,17 +38,26 @@ div#main .add_filter ::ng-deep .mat-form-field .mat-form-field-ripple {
   background: red;
 }
 
+div#main .add_filter ::ng-deep .mat-form-field .mat-form-field-label {
+  margin: 15px 0px 0px 20px;
+}
+
 div#main .add_filter ::ng-deep .mat-form-field input {
   width: 100%;
   border: none;
   margin-left: 10px;
-  padding: 5px 10px;
+  padding: 15px 10px;
   border-radius: 4px;
   background: #f5f5f5;
 }
 
 div#main .add_filter ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-  color: #000000;
+  color: #726e6e;
+}
+
+div#main .dataTable img {
+  height: 350px;
+  width: 450px;
 }
 
 .hide {

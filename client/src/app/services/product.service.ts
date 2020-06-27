@@ -21,8 +21,17 @@ export class ProductService {
     return this.httpClient.post(this.base_url + 'add_product/' + shop_id + '/cat/' + cat_id, product )
     .pipe( tap(() => this._refresh$.next()));
   }
-  getAllProduct():Observable<Product[]> {
+  getAllProducts():Observable<Product[]> {
     return this.httpClient.get<Product[]>(this.base_url + 'products');
+  }
+  getAllProductByFemale():Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.base_url + 'products_ladies');
+  }
+  getAllProductByMale():Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.base_url + 'products_gents');
+  }
+  getAllProductByChildren():Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.base_url + 'products_children');
   }
   getProductById(id):Observable<Product> {
     return this.httpClient.get<Product>(this.base_url + 'product/' + id);

@@ -1,1 +1,152 @@
-/* No CSS *//*# sourceMappingURL=admin.component.css.map */
+#main {
+  margin-top: -160px;
+  background: white;
+  background: -webkit-gradient(linear, left bottom, left top, from(white), color-stop(57%, #fdbb2d));
+  background: linear-gradient(-1800deg, white 0%, #fdbb2d 57%);
+  border: 1px solid black;
+  padding-top: 160px;
+  min-height: 100vh;
+}
+
+#main h3 {
+  width: 100%;
+  padding: 20px;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.details, .shop, .order {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.details {
+  margin-top: 50px;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+}
+
+.details h2 {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+.details section {
+  width: 310px;
+  text-align: center;
+}
+
+.details section p {
+  padding: 10px 0px;
+}
+
+.details section a {
+  font-size: 12px;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  font-weight: 600;
+}
+
+.details section a:hover {
+  cursor: pointer;
+}
+
+.shop, .order {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.shop .add_filter {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.shop .add_filter button {
+  margin: 5px;
+  width: 150px;
+}
+
+.shop .add_filter ::ng-deep .mat-form-field {
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+}
+
+.shop .add_filter ::ng-deep .mat-form-field .mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+
+.shop .add_filter ::ng-deep .mat-form-field .mat-form-field-underline {
+  background-color: red;
+  display: none;
+}
+
+.shop .add_filter ::ng-deep .mat-form-field .mat-form-field-infix {
+  border-top: 0;
+}
+
+.shop .add_filter ::ng-deep .mat-form-field .mat-form-field-ripple {
+  background: red;
+}
+
+.shop .add_filter ::ng-deep .mat-form-field .mat-form-field-label {
+  margin: 15px 0px 0px 20px;
+}
+
+.shop .add_filter ::ng-deep .mat-form-field input {
+  width: 100%;
+  border: none;
+  margin-left: 10px;
+  padding: 15px 10px;
+  border-radius: 4px;
+  background: #f5f5f5;
+}
+
+.shop .add_filter ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #726e6e;
+}
+
+.shop .product {
+  width: 70%;
+}
+
+.hide {
+  display: none;
+}
+
+mat-footer-row mat-footer-cell {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dataTable img {
+  height: 100px;
+  width: 100px;
+}
+/*# sourceMappingURL=admin.component.css.map */

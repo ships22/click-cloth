@@ -11,6 +11,12 @@ public interface ProductDomain {
 	
 	List<Product> getAllProduct();
 	
+	List<Product>getAllProductLadies();
+	
+	List<Product>getAllProductGents();
+	
+	List<Product>getAllProductChildren();
+	
 	List<Product> getProductsByShopId(int shop_id);
 	
 	List<Product>getAllByIds(List<Integer> ids);

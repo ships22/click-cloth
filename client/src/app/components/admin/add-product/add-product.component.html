@@ -1,5 +1,5 @@
 <form (ngSubmit)="submit(f.value)" #f="ngForm">
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label>Nom</mat-label>
     <input
       matInput
@@ -13,7 +13,7 @@
       maxlength="25"
     />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label>Description</mat-label>
     <input
       matInput
@@ -27,7 +27,21 @@
       maxlength="25"
     />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field>
+    <mat-label>Référence</mat-label>
+    <input
+      matInput
+      ngModel
+      #productRef="ngModel"
+      name="productRef"
+      type="text"
+      id="productRef"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>Prix</mat-label>
     <input
       matInput
@@ -41,7 +55,7 @@
       maxlength="6"
     />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label>Taile</mat-label>
     <mat-select ngModel #size="ngModel" name="size">
       <mat-option *ngFor="let every of sizes" [value]="every.size">
@@ -49,7 +63,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label>Quantité</mat-label>
     <input
       matInput
@@ -61,7 +75,7 @@
       required
     />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label>Réduction</mat-label>
     <input
       matInput

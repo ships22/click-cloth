@@ -53,6 +53,7 @@ public class ProductManager {
 		productDto.setName(addedProduct.getName());
 		productDto.setPrice(addedProduct.getPrice());
 		productDto.setDescription(addedProduct.getDescription());
+		productDto.setProductRef(addedProduct.getProductRef());
 		productDto.setDiscount(addedProduct.getDiscount());
 		productDto.setImage(addedProduct.getImage());
 		
@@ -107,6 +108,70 @@ public class ProductManager {
 			productDto.setName(product.getName());
 			productDto.setPrice(product.getPrice());
 			productDto.setDescription(product.getDescription());
+			productDto.setProductRef(product.getProductRef());
+			productDto.setDiscount(product.getDiscount());
+			productDto.setImage(product.getImage());
+			productDto.setCategories(product.getCategories());
+			productDto.setStock(product.getStocks());
+			productDto.setShop(product.getShop());
+			productDtos.add(productDto);
+		});
+		return productDtos;
+	}
+	
+	@Transactional
+	public List<ProductDto>getAllProductLadies() {
+		List<Product>productList = productDomainService.getAllProductLadies();
+		List<ProductDto>productDtos = new ArrayList<ProductDto>();
+		productList.forEach(product -> {
+			ProductDto productDto = new ProductDto();
+			productDto.setId(product.getId());
+			productDto.setName(product.getName());
+			productDto.setPrice(product.getPrice());
+			productDto.setDescription(product.getDescription());
+			productDto.setProductRef(product.getProductRef());
+			productDto.setDiscount(product.getDiscount());
+			productDto.setImage(product.getImage());
+			productDto.setCategories(product.getCategories());
+			productDto.setStock(product.getStocks());
+			productDto.setShop(product.getShop());
+			productDtos.add(productDto);
+		});
+		return productDtos;
+	}
+	
+	@Transactional
+	public List<ProductDto>getAllProductGents() {
+		List<Product>productList = productDomainService.getAllProductGents();
+		List<ProductDto>productDtos = new ArrayList<ProductDto>();
+		productList.forEach(product -> {
+			ProductDto productDto = new ProductDto();
+			productDto.setId(product.getId());
+			productDto.setName(product.getName());
+			productDto.setPrice(product.getPrice());
+			productDto.setDescription(product.getDescription());
+			productDto.setProductRef(product.getProductRef());
+			productDto.setDiscount(product.getDiscount());
+			productDto.setImage(product.getImage());
+			productDto.setCategories(product.getCategories());
+			productDto.setStock(product.getStocks());
+			productDto.setShop(product.getShop());
+			productDtos.add(productDto);
+		});
+		return productDtos;
+	}
+	
+	@Transactional
+	public List<ProductDto>getAllProductChildren() {
+		List<Product>productList = productDomainService.getAllProductChildren();
+		List<ProductDto>productDtos = new ArrayList<ProductDto>();
+		productList.forEach(product -> {
+			ProductDto productDto = new ProductDto();
+			productDto.setId(product.getId());
+			productDto.setName(product.getName());
+			productDto.setPrice(product.getPrice());
+			productDto.setDescription(product.getDescription());
+			productDto.setProductRef(product.getProductRef());
 			productDto.setDiscount(product.getDiscount());
 			productDto.setImage(product.getImage());
 			productDto.setCategories(product.getCategories());
@@ -125,6 +190,7 @@ public class ProductManager {
 		productDto.setName(product.getName());
 		productDto.setPrice(product.getPrice());
 		productDto.setDescription(product.getDescription());
+		productDto.setProductRef(product.getProductRef());
 		productDto.setDiscount(product.getDiscount());
 		productDto.setImage(product.getImage());
 		productDto.setCategories(product.getCategories());
@@ -143,6 +209,7 @@ public class ProductManager {
 			productDto.setName(product.getName());
 			productDto.setPrice(product.getPrice());
 			productDto.setDescription(product.getDescription());
+			productDto.setProductRef(product.getProductRef());
 			productDto.setDiscount(product.getDiscount());
 			productDto.setImage(product.getImage());
 			productDto.setCategories(product.getCategories());

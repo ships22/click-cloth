@@ -64,6 +64,7 @@ export class AddProductComponent implements OnInit {
 
     this.newProduct.name = product.name;
     this.newProduct.description = product.description;
+    this.newProduct.productRef = 's' + product.productRef.toLowerCase() + this.shopId;
     this.newProduct.price = product.price;
     this.newProduct.discount = product.discount;
       let productData = new FormData();
@@ -77,7 +78,8 @@ export class AddProductComponent implements OnInit {
       product.description != "" &&
       product.price != "" &&
       product.quantite != "" &&
-      product.size != ""
+      product.size != "" &&
+      product.productRef != ""
     ) {
       productData.append("product", JSON.stringify(this.newProduct));
       productData.append("stock", JSON.stringify(this.stock));

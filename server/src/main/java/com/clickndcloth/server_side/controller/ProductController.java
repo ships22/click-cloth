@@ -49,6 +49,23 @@ public class ProductController {
 		return productManager.getAllProduct();
 	}
 	
+	@GetMapping(value = "/products_ladies")
+	@PreAuthorize("permitAll()")
+	public List<ProductDto> getAllProductLadies() {
+		return productManager.getAllProductLadies();
+	}
+	
+	@GetMapping(value = "/products_gents")
+	@PreAuthorize("permitAll()")
+	public List<ProductDto> getAllProductGents() {
+		return productManager.getAllProductGents();
+	}
+	
+	@GetMapping(value = "/products_children")
+	@PreAuthorize("permitAll()")
+	public List<ProductDto> getAllProductChildren() {
+		return productManager.getAllProductChildren();
+	}
 
 	@GetMapping(value = "/product/{product_id}")
 	@PreAuthorize("permitAll()")
@@ -71,6 +88,7 @@ public class ProductController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 		Product newProduct  =	objectMapper.readValue(product, Product.class);
+		System.out.println("test stockaddd: " + stock);
 		Stock newStock =  objectMapper.readValue(stock, Stock.class);
 		//System.out.println("test stock : " + newStock.getProduct_Shop_Admin_idAdmin() + newStock.getProduct_shop_id_shop());
 		newProduct.setImage(image.getBytes());
@@ -97,9 +115,11 @@ public class ProductController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 		Product newProduct  =	objectMapper.readValue(product, Product.class);
+		
 		Stock newStock =  objectMapper.readValue(stock, Stock.class);
 		List<Stock> stockList = new ArrayList<Stock>();
 		stockList.add(newStock);
+		
 		//newProduct.setImage(null);
 		newProduct.setStocks(stockList);
 		if(image != null) {
