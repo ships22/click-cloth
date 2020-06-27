@@ -7,6 +7,7 @@ import java.util.Set;
 import com.clickndcloth.server_side.models.Categories;
 import com.clickndcloth.server_side.models.Shop;
 import com.clickndcloth.server_side.models.Stock;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class ProductDto {
 	
@@ -18,6 +19,7 @@ public class ProductDto {
 	private String discount;
 	private Set<Categories> categories;
 	private List<Stock> stock;
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Shop shop;
 	
 	public int getId() {

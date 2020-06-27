@@ -2,16 +2,22 @@ package com.clickndcloth.server_side.dto;
 
 import java.sql.Date;
 
+import com.clickndcloth.server_side.models.Client;
+import com.clickndcloth.server_side.models.Product;
+import com.clickndcloth.server_side.models.Shop;
+
+
 public class ReservationDto {
 	
 	private int reservation_id;
 	private Date date_time;
 	private String reference;
-	private int total;
+	private double total;
 	private String status;
 	private int quantity;
-	private int client_id;
-	private int shop_shop_id;
+	private Client client;
+	private Shop shop;
+	private Product product;
 	
 	public int getReservation_id() {
 		return reservation_id;
@@ -31,10 +37,10 @@ public class ReservationDto {
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
-	public int getTotal() {
+	public double getTotal() {
 		return total;
 	}
-	public void setTotal(int total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 	public String getStatus() {
@@ -49,17 +55,23 @@ public class ReservationDto {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getClient_id() {
-		return client_id;
+	public Client getClient() {
+		return client;
 	}
-	public void setClient_id(int client_id) {
-		this.client_id = client_id;
+	public void setClient(Client client) {
+		this.client = client;
 	}
-	public int getShop_shop_id() {
-		return shop_shop_id;
+	public Shop getShop() {
+		return shop;
 	}
-	public void setShop_shop_id(int shop_shop_id) {
-		this.shop_shop_id = shop_shop_id;
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 }

@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -44,16 +45,20 @@ public class Product implements Serializable {
 	private Shop shop;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade =  { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
-	@JoinTable(name = "product_categories", joinColumns = {@JoinColumn(name = "product_id")}, 
+	@JoinTable(name = "product_categories", joinColumns = { @JoinColumn(name = "product_id") }, 
 	  inverseJoinColumns = {@JoinColumn(name = "categories_id")})
 	@JsonProperty("categories")
 	private Set<Categories> categories = new HashSet<Categories>();
 	
-	@ManyToMany
-	@JoinTable(name = "product_reservation", joinColumns = @JoinColumn(name = "product_id"), 
-	  inverseJoinColumns = @JoinColumn(name = "reservation_id"))
-	@JsonProperty("reservation")
-	private List<Reservation> reservation;
+	
+//	@JoinColumn(name = "reservation_id")
+//	@JsonIgnore
+//	@OneToOne(fetch = FetchType.EAGER, mappedBy = "product", cascade=CascadeType.ALL)
+//	private Reservation reservation;
+	
+	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+	@JsonIgnore
+	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="product_id", referencedColumnName = "id", nullable = true)
@@ -149,5 +154,15 @@ public class Product implements Serializable {
 	public void setShop(Shop shop) {
 		this.shop = shop;
 	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+	
+	
 
 }

@@ -147,14 +147,16 @@ public class ProductManager {
 			productDto.setImage(product.getImage());
 			productDto.setCategories(product.getCategories());
 			productDto.setStock(product.getStocks());
-			productDto.setShop(product.getShop());
+		//	productDto.setShop(product.getShop());
 			productDtos.add(productDto);
 		});
 		return productDtos;
 	}
 	
 	@Transactional
-	public ProductDto updateProduct(Product product) {
+	public ProductDto updateProduct(Product product, int shop_id) {
+		Shop shop = shopDomainService.getById(shop_id);
+		product.setShop(shop);
 		Product updatedProduct = productDomainService.updateProduct(product);
 		ProductDto productDto = new ProductDto();
 		productDto.setId(updatedProduct.getId());

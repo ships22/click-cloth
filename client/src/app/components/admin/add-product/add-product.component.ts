@@ -53,6 +53,8 @@ export class AddProductComponent implements OnInit {
     this.getAdminId();
   }
   submit(product) {
+
+
     console.log('test pro :' , product.quantite);
     
     this.stock.size = product.size;
@@ -64,8 +66,6 @@ export class AddProductComponent implements OnInit {
     this.newProduct.description = product.description;
     this.newProduct.price = product.price;
     this.newProduct.discount = product.discount;
-    // this.newProduct.shop_id_shop = this.shopId;
-    // this.newProduct.shop_admin_id_admin = this.adminId;
       let productData = new FormData();
       productData.append(
       "image",
@@ -81,7 +81,7 @@ export class AddProductComponent implements OnInit {
     ) {
       productData.append("product", JSON.stringify(this.newProduct));
       productData.append("stock", JSON.stringify(this.stock));
-      this.productService.addProduct(productData, 1, 1).subscribe(
+      this.productService.addProduct(productData, this.shopId, 1).subscribe(
             (response) => (
               console.log("test add product :", response), this.dialogRef.close()
             ),
@@ -95,40 +95,6 @@ export class AddProductComponent implements OnInit {
             }
           );
     }
-    
-
-    // console.log("test new product :", product.image.files[0]);
-    // let imageData = new FormData();
-    // imageData.append(
-    //   "image",
-    //   product.image.files[0],
-    //   product.image.files[0].name
-    // );
-    // if (
-    //   product.name != "" &&
-    //   product.description != "" &&
-    //   product.price != ""
-    // ) {
-    //   product.shop_id_shop = this.shopId;
-    //   product.shop_admin_id_admin = this.adminId;
-    //   product.image = null;
-    //   imageData.append("product", JSON.stringify(product));
-    //   this.productService.addProduct(imageData).subscribe(
-    //     (response) => (
-    //       console.log("test add product :", response), this.dialogRef.close()
-    //     ),
-    //     (error) => {
-    //       this.messageService.sendMessage(
-    //         "Une erreur s'est produite. Veuillez réessayer"
-    //       ),
-    //         setTimeout(() => {
-    //           this.dialogRef.close();
-    //         }, 3000);
-    //     }
-    //   );
-    // } else {
-    //   this.messageService.sendMessage("Tous les chams sont obligatoire!");
-    // }
   }
 
   getAdminId() {
@@ -144,6 +110,8 @@ export class AddProductComponent implements OnInit {
               this.shopService
                 .getShopByAdmin(response.id)
                 .subscribe((shop) => (this.shopId = shop.shop_id));
+                console.log("test shop id :", this.shopId);
+                
             }
           },
           (error) => this.messageService.sendMessage("Problème technique")

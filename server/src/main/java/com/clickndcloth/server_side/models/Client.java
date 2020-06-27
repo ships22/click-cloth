@@ -1,5 +1,6 @@
 package com.clickndcloth.server_side.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Client")
-public class Client {
+public class Client implements Serializable {
+	
+	private static final long serialVersionUID = -5444593157616908616L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,9 +40,9 @@ public class Client {
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "client")
 	private User user;
 	
-	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "client")
 	@JsonIgnore
-	private List<Reservation> reservations;
+	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
 	public Client() {
 		super();

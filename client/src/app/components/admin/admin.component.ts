@@ -74,12 +74,13 @@ export class AdminComponent implements OnInit {
           (response) => (
             (this.admin = response),
             console.log("test admin :", response),
-            (this.productListInIt = response.shops[0]?.productList),
-            (this.productMatList = new MatTableDataSource(
-              this.productListInIt
-            )),
-            (this.productMatList.sort = this.sort),
-            (this.productMatList.paginator = this.paginator)
+            this.getAllProductByShop(response.shops[0].shop_id)
+            // (this.productListInIt = response.shops[0]?.productList),
+            // (this.productMatList = new MatTableDataSource(
+            //   this.productListInIt
+            // )),
+            // (this.productMatList.sort = this.sort),
+            // (this.productMatList.paginator = this.paginator)
           ),
           (error) => this.messageService.sendMessage("Problème technique")
         );
@@ -87,6 +88,19 @@ export class AdminComponent implements OnInit {
   }
   onCreateShop() {
     this.dialog.open(AddShopComponent);
+  }
+  getAllProductByShop(shop_id) {
+    this.productService
+      .getProductByShopId(shop_id)
+      .pipe(take(1))
+      .subscribe((response) => {
+        this.productListInIt = response;
+        console.log('test all prod', response);
+        
+        (this.productMatList = new MatTableDataSource(this.productListInIt)),
+          (this.productMatList.sort = this.sort);
+        this.productMatList.paginator = this.paginator;
+      });
   }
   onCreateProduct() {
     console.log("on ce pr");

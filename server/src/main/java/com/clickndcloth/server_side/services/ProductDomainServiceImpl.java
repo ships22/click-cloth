@@ -1,6 +1,7 @@
 package com.clickndcloth.server_side.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,8 @@ public class ProductDomainServiceImpl implements ProductDomain{
 	
 	@Override
 	public Product addProduct(Product product) {
-		return productRepository.save(product);
+		//return productRepository.save(product);
+		return productRepository.saveAndFlush(product);
 	}
 
 	@Override
@@ -27,6 +29,11 @@ public class ProductDomainServiceImpl implements ProductDomain{
 	@Override
 	public List<Product> getProductsByShopId(int shop_id) {
 		return productRepository.findByShop(shop_id);
+	}
+	
+	@Override
+	public List<Product> getAllByIds(List<Integer> ids) {
+		return productRepository.findAllByProductId(ids);
 	}
 
 	@Override
@@ -44,6 +51,12 @@ public class ProductDomainServiceImpl implements ProductDomain{
 		productRepository.deleteById(id);
 		return "Product with id : " + id + " has been deleted successfully";
 	}
+
+	@Override
+	public Optional<Product> findById(int id) {
+		return productRepository.findById(id);
+	}
+
 
 	
 

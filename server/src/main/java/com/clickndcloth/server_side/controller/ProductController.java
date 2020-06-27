@@ -73,10 +73,10 @@ public class ProductController {
 		Product newProduct  =	objectMapper.readValue(product, Product.class);
 		Stock newStock =  objectMapper.readValue(stock, Stock.class);
 		//System.out.println("test stock : " + newStock.getProduct_Shop_Admin_idAdmin() + newStock.getProduct_shop_id_shop());
-		//newProduct.setImage(image.getBytes());
+		newProduct.setImage(image.getBytes());
 		List<Stock> stockList = new ArrayList<Stock>();
 		stockList.add(newStock);
-		newProduct.setImage(null);
+		//newProduct.setImage(null);
 		newProduct.setStocks(stockList);
 		//return productManager.addProduct(newProduct);
 		ProductDto addedProduct = productManager.addProduct(newProduct, shop_id, cat_id);
@@ -88,17 +88,25 @@ public class ProductController {
 		return addedProduct;
 	}
 	
-	@PutMapping(value = "/update_product")
+	@PutMapping(value = "/update_product/{shop_id}")
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ProductDto updateProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product) throws IOException {
+	public ProductDto updateProduct(@RequestPart(required=true, value="image") MultipartFile image, 
+			@RequestPart(required=true, value="product") String product,
+			@RequestPart(required=true, value="stock") String stock,
+			@PathVariable(name="shop_id") Integer shop_id) throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 		Product newProduct  =	objectMapper.readValue(product, Product.class);
+		Stock newStock =  objectMapper.readValue(stock, Stock.class);
+		List<Stock> stockList = new ArrayList<Stock>();
+		stockList.add(newStock);
+		//newProduct.setImage(null);
+		newProduct.setStocks(stockList);
 		if(image != null) {
 			newProduct.setImage(image.getBytes());
 		}
 		
-		return productManager.updateProduct(newProduct);
+		return productManager.updateProduct(newProduct, shop_id);
 		//return productManager.updateProduct(product);
 	}
 	

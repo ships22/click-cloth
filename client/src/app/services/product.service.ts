@@ -30,8 +30,8 @@ export class ProductService {
   getProductByShopId(shopId: number):Observable<Product[]> {
     return this.httpClient.get<Product[]>(this.base_url + 'productsByShop/' + shopId);
   }
-  editProduct(product):Observable<any> {
-    return this.httpClient.put(this.base_url +'update_product/', product)
+  editProduct(product, shop_id):Observable<any> {
+    return this.httpClient.put(this.base_url +'update_product/' + shop_id, product)
     .pipe( tap(() => this._refresh$.next()));
   }
   deleteProduct(id):Observable<any> {

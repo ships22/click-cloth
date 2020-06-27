@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Shop")
@@ -25,7 +26,7 @@ public class Shop implements Serializable {
 	private static final long serialVersionUID = 8452543819399075149L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int shop_id;
+	private int id;
 	private String name;
 	private String address;
 	private String email;
@@ -53,19 +54,20 @@ public class Shop implements Serializable {
 	 * @JoinColumn(name="shop_id_shop", referencedColumnName = "shop_id", nullable =
 	 * true) private List<Product> productList = new ArrayList<Product>();
 	 */
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="shop_id", referencedColumnName = "shop_id", nullable = true)
+
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "shop", fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@JsonIgnore
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
 	public Shop() {
 		super();
 	}
 
-	public Shop(int shop_id, String name, String address, String email, String phone, int is_active,
-			List<Product> productList, List<Reservation> reservations) {
+	public Shop(int id, String name, String address, String email, String phone, int is_active,
+			List<Product> productList) {
 		super();
-		this.shop_id = shop_id;
+		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.email = email;
@@ -73,14 +75,14 @@ public class Shop implements Serializable {
 		this.is_active = is_active;
 		//this.adminId = adminId;
 		this.productList = productList;
-		this.reservations = reservations;
+		//this.reservations = reservations;
 	}
 
 	public int getShop_id() {
-		return shop_id;
+		return id;
 	}
-	public void setShop_id(int shop_id) {
-		this.shop_id = shop_id;
+	public void setShop_id(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

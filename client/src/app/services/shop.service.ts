@@ -18,7 +18,7 @@ export class ShopService {
     return this._refresh$;
   }
   addShop(shop):Observable<any> {
-    return this.httpClient.post(this.base_url + 'add_shop/' + shop.admin_id, shop)
+    return this.httpClient.post(this.base_url + 'add_shop/' + shop.admin_id + '/shop/', shop)
     .pipe( tap(() => this._refresh$.next()));
   }
   getShopByAdmin(admin_id):Observable<Shop> {

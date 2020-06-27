@@ -88,8 +88,8 @@
               <ng-container matColumnDef="stocks">
                 <mat-header-cell *matHeaderCellDef>Stocks</mat-header-cell>
                 <mat-cell *matCellDef="let element">
-                  <ng-container *ngFor="let stock of element.stocks">
-                    {{ stock.size }} - {{ stock.quantite }}
+                  <ng-container *ngFor="let details of element.stock">
+                    {{ details.size }} - {{ details.quantite }}
                   </ng-container>
                 </mat-cell>
               </ng-container>

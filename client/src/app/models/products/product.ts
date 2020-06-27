@@ -9,7 +9,7 @@ export class Product {
 	image: any;
     discount: string;
     categories: Categories[];
-    stocks: Stock[];
+    stock: Stock[];
 	shop_id_shop: number;
     shop_admin_id_admin: number;
     constructor(
@@ -18,17 +18,18 @@ export class Product {
         description: string,
         price: number,
         image: any,
-        discount: string,
-        shop_id_shop: number,
-        shop_admin_id_admin: number,
+        categories: Categories[],
+        stock: Stock[],
+        discount: string
     ) {
     this.id = id;
 	this.name = name;
 	this.description = description;
 	this.price = price;
-	this.image = image;
+    this.image = image;
+    this.categories = categories;
+    this.stock = stock;
 	this.discount = discount;
-	this.shop_id_shop = shop_id_shop;
-    this.shop_admin_id_admin = shop_admin_id_admin;
+	
     }
 }
