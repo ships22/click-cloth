@@ -183,6 +183,27 @@ public class ProductManager {
 	}
 	
 	@Transactional
+	public List<ProductDto>getAllByProductRef(String ref) {
+		List<Product>productList = productDomainService.getAllByProductRef(ref);
+		List<ProductDto>productDtos = new ArrayList<ProductDto>();
+		productList.forEach(product -> {
+			ProductDto productDto = new ProductDto();
+			productDto.setId(product.getId());
+			productDto.setName(product.getName());
+			productDto.setPrice(product.getPrice());
+			productDto.setDescription(product.getDescription());
+			productDto.setProductRef(product.getProductRef());
+			productDto.setDiscount(product.getDiscount());
+			productDto.setImage(product.getImage());
+			productDto.setCategories(product.getCategories());
+			productDto.setStock(product.getStocks());
+			productDto.setShop(product.getShop());
+			productDtos.add(productDto);
+		});
+		return productDtos;
+	}
+	
+	@Transactional
 	public ProductDto getProductById(Integer id) {
 		Product product = productDomainService.getProductById(id);
 		ProductDto productDto = new ProductDto();

@@ -66,11 +66,18 @@ public class ProductController {
 	public List<ProductDto> getAllProductChildren() {
 		return productManager.getAllProductChildren();
 	}
+	
 
 	@GetMapping(value = "/product/{product_id}")
 	@PreAuthorize("permitAll()")
 	public ProductDto getProductById(@PathVariable ("product_id") Integer product_id) {
 		return productManager.getProductById(product_id);
+	}
+	
+	@GetMapping(value = "/products_by_ref/{productRef}")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public List <ProductDto> getAllByProductRef(@PathVariable ("productRef") String productRef) {
+		return productManager.getAllByProductRef(productRef);
 	}
 	
 	@GetMapping(value = "/productsByShop/{shop_id}")

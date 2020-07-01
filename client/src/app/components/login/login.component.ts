@@ -73,4 +73,7 @@ export class LoginComponent implements OnInit {
     this.userToLogIn = {};
     this.newUser = {};
   }
+  passwordReset() {
+    this.authenticationService.resetPasswordRequest();
+  }
 }

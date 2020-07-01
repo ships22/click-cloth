@@ -46,6 +46,11 @@ public class ProductDomainServiceImpl implements ProductDomain{
 	}
 	
 	@Override
+	public List<Product> getAllByProductRef(String ref) {
+		return productRepository.findByProductRef(ref);
+	}
+	
+	@Override
 	public List<Product> getAllByIds(List<Integer> ids) {
 		return productRepository.findAllByProductId(ids);
 	}

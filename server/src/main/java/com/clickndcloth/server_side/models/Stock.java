@@ -45,8 +45,6 @@ public class Stock {
 		this.quantite = quantite;
 		this.size = size;
 		this.colour = colour;
-		
-		
 	}
 
 	/*

@@ -46,6 +46,7 @@ import { from } from "rxjs";
 import { LadiesComponent } from './components/ladies/ladies.component';
 import { GentsComponent } from './components/gents/gents.component';
 import { ChildrenComponent } from './components/children/children.component';
+import { ProductSelectComponent } from './components/product-select/product-select.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -84,6 +85,7 @@ const MaterialComponents = [
     LadiesComponent,
     GentsComponent,
     ChildrenComponent,
+    ProductSelectComponent,
   ],
   imports: [
     BrowserModule,

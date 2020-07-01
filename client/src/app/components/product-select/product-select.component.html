@@ -1,0 +1,19 @@
+<div id="main" class="animate__animated animate__fadeIn">
+  <h2>Sélectioner les details</h2>
+    <section class="products_holder">
+      <div
+        class="product_selection animate__animated animate__fadeIn"
+    
+      >
+        <img src="data:image/jpeg;base64,{{ product.image }}" />
+        <div class="details_selection">
+          <p class="price">{{ product.price }}€</p>
+          <p class="name">{{ product.name }}</p>
+          <p class="description">{{ product.description }}</p>
+          <p class="shop">Boutique : {{ product.shop.name }} - {{ product.shop.address }}</p>
+          <button class="btn_add_basket">Ajouter au panier</button>
+        </div>
+      </div>
+    </section>
+  <app-footer></app-footer>
+</div>

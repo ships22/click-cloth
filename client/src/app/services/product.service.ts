@@ -36,6 +36,9 @@ export class ProductService {
   getProductById(id):Observable<Product> {
     return this.httpClient.get<Product>(this.base_url + 'product/' + id);
   }
+  getAllProductsByRef(ref):Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.base_url + 'products_by_ref/' + ref);
+  }
   getProductByShopId(shopId: number):Observable<Product[]> {
     return this.httpClient.get<Product[]>(this.base_url + 'productsByShop/' + shopId);
   }

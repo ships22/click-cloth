@@ -17,6 +17,8 @@ public interface ProductDomain {
 	
 	List<Product>getAllProductChildren();
 	
+	List<Product>getAllByProductRef(String ref);
+	
 	List<Product> getProductsByShopId(int shop_id);
 	
 	List<Product>getAllByIds(List<Integer> ids);

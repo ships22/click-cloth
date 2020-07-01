@@ -13,6 +13,7 @@ import { AllProductsComponent } from './components/all-products/all-products.com
 import { LadiesComponent } from './components/ladies/ladies.component';
 import { GentsComponent } from './components/gents/gents.component';
 import { ChildrenComponent } from './components/children/children.component';
+import { ProductSelectComponent } from './components/product-select/product-select.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: "gents", component: GentsComponent },
   { path: "children", component: ChildrenComponent },
   { path: "login", component: LoginComponent },
+  { path: "product_select/:productRef", component: ProductSelectComponent },
   { path: "edit_admin/:id", component: EditAdminComponent },
   { path: "edit_product/:id", component: EditProductComponent },
   { 

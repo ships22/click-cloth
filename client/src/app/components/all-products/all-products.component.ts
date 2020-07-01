@@ -3,6 +3,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/products/product';
 import { take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-products',
@@ -15,7 +16,7 @@ export class AllProductsComponent implements OnInit {
   p: number = 1;
   collection: any[] = [];
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private router: Router,) {
    }
 
   ngOnInit(): void {
@@ -48,6 +49,9 @@ export class AllProductsComponent implements OnInit {
     // }
     console.log('test cat :' , selectedCat);
     
+  }
+  selectProduct(productRef) {
+    this.router.navigate(["/product_select", productRef]);
   }
 
 }
