@@ -36,17 +36,21 @@ public class ShopController {
 		return shopManager.findShopById(id);
 	}
 	
-	@PostMapping(value = "/add_shop/{admin_id}", produces = "application/json")
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ShopDto addShop(@RequestBody Shop shop, @PathVariable ("admin_id") int admin_id) {
-		return shopManager.addShop(shop, admin_id);
-		
+	@GetMapping(value = "/shop_by_admin_id/{admin_id}")
+	public ShopDto getShopByAdminId(@PathVariable ("admin_id") Integer admin_id) {
+		return shopManager.findShopByAdminId(admin_id);
 	}
 	
-	@PutMapping(value = "/update_shop")
+	@PostMapping(value = "/add_shop/{admin_id}/shop", produces = "application/json")
 //	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ShopDto updateShop(@RequestBody Shop shop) {
-		return shopManager.updateShop(shop);
+	public ShopDto addShop(@RequestBody Shop shop, @PathVariable ("admin_id") Integer admin_id) {
+		return shopManager.addShop(shop, admin_id);
+	}
+	
+	@PutMapping(value = "/update_shop/{admin_id}/shop/{shop_id}")
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public ShopDto updateShop(@RequestBody Shop shop, @PathVariable ("admin_id") Integer admin_id, @PathVariable ("shop_id") Integer shop_id) {
+		return shopManager.updateShop(shop, admin_id, shop_id);
 	}
 	
 	@DeleteMapping(value = "/delete_shop/{id}")

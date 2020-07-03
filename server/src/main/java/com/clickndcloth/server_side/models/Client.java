@@ -1,5 +1,6 @@
 package com.clickndcloth.server_side.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +16,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Client")
-public class Client {
+public class Client implements Serializable {
+	
+	private static final long serialVersionUID = -5444593157616908616L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +40,8 @@ public class Client {
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "client")
 	private User user;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="client_id", referencedColumnName = "id", nullable = true)
+	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "client")
+	@JsonIgnore
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
 	public Client() {

@@ -13,6 +13,7 @@ public class CategoriesDomainServiceImpl implements CategoriesDomain {
 
 	@Autowired
 	private CategoriesRepository categoriesRepository; 
+
 	
 	@Override
 	public Categories addCategory(Categories category) {

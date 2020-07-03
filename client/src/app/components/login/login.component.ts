@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   registering = false;
+  forgotpassword = false;
   newUser: any = {};
   userToLogIn: any = {};
+  userToReinitPass: any = {};
   message: any;
   loading = false;
 
@@ -34,6 +36,11 @@ export class LoginComponent implements OnInit {
           "res from login component : ",
           this.authenticationService.decoded_token
         );
+        if(this.authenticationService.isSuperAdmin()){
+          return this.router.navigate(['super_admin']);
+        }else if (this.authenticationService.isAdmin()) {
+          return this.router.navigate(['admin']);
+        }
         this.router.navigate(['']);
       },
       (err) => {
@@ -64,8 +71,33 @@ export class LoginComponent implements OnInit {
   }
   
   toggleRegistration() {
+    if(this.forgotpassword) {
+      this.forgotpassword = !this.forgotpassword;
+    }
     this.registering = !this.registering;
     this.userToLogIn = {};
     this.newUser = {};
+  }
+  toggleReinit() {
+    if(this.registering) {
+      this.registering = !this.registering;
+    }
+    this.forgotpassword = !this.forgotpassword;
+    this.userToReinitPass = {};
+  }
+  
+  reinitPass(value) {
+    this.authenticationService.resetPasswordRequest(value.email)
+    .subscribe(response =>  {
+      if(response.operationResult == 'USER DOES NOT EXIST') {
+        this.messageService.sendMessage("Utilisateur n'est pas enregistré avec cette adresse mail!");
+      } else {
+        this.messageService.sendMessage( "Un lien de réinitialisation de mot de passe est envoyé à votre adresse mèl.");
+        this.toggleReinit();
+      }
+    }, 
+    (error) => {
+      this.messageService.sendMessage("Une erreur s'est produite");
+    })
   }
 }

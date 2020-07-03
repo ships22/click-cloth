@@ -1,0 +1,135 @@
+#main
+  margin-top: -160px
+  background: rgb(255,255,255)
+  background: linear-gradient(-1800deg, rgba(255,255,255,1) 0%, rgba(253,187,45,1) 57%)
+  border: 1px solid black
+  padding-top: 160px
+  min-height: 100vh
+  h3
+    width: 100%
+    padding: 20px
+    color: #ffffff
+    font-size: 36px
+    font-weight: 400
+    text-align: center
+    margin-top: 10px
+
+.details, .shop, .order
+  display: flex
+  align-items: center
+  justify-content: center
+  margin: 16px
+  padding: 16px
+  border-radius: 8px
+
+
+.details
+  margin-top: 50px
+  flex-direction: column !important
+  h2
+    text-transform: uppercase
+    letter-spacing: 4px
+    font-weight: 800
+    margin-bottom: 20px
+    font-size: 40px
+  section
+    width: 310px
+    text-align: center
+  section p
+    padding: 10px 0px
+  section a 
+      font-size: 12px
+      transition: all .4s
+      font-weight: 600
+      &:hover
+        cursor: pointer
+
+
+.shop, .order
+  // height: 300px
+  // width: 300px
+  display: flex
+  flex-direction: column
+
+//shop 
+.shop
+  .add_filter
+        padding: 10px
+        display: flex
+        button
+            margin: 5px
+            width: 150px
+        ::ng-deep .mat-form-field
+            flex-grow: 2
+            .mat-form-field-wrapper
+                padding-bottom: 0px
+            .mat-form-field-underline 
+                background-color: red
+                display: none
+            .mat-form-field-infix
+                border-top: 0
+            .mat-form-field-ripple 
+                background: red
+            .mat-form-field-label
+                margin: 15px 0px 0px 20px
+            input
+                width: 100%
+                border: none
+                margin-left: 10px
+                padding: 15px 10px
+                border-radius: 4px
+                background: #f5f5f5
+        ::ng-deep .mat-form-field.mat-focused
+              .mat-form-field-label
+                  color: #726e6e
+  .product
+    width: 70%
+            
+
+.hide
+    display: none
+
+mat-footer-row mat-footer-cell 
+    justify-content: center
+
+
+
+// div#main
+//     width: 80%
+//     margin: 50px auto
+//     .add_filter
+//         padding: 10px
+//         display: flex
+//         button
+//             margin: 5px
+//             width: 150px
+//         ::ng-deep .mat-form-field
+//             flex-grow: 2
+//             .mat-form-field-wrapper
+//                 padding-bottom: 0px
+//             .mat-form-field-underline 
+//                 background-color: red
+//                 display: none
+//             .mat-form-field-infix
+//                 border-top: 0
+//             .mat-form-field-ripple 
+//                 background: red
+//             .mat-form-field-label
+//                 margin: 15px 0px 0px 20px
+//             input
+//                 width: 100%
+//                 border: none
+//                 margin-left: 10px
+//                 padding: 15px 10px
+//                 border-radius: 4px
+//                 background: #f5f5f5
+//         ::ng-deep .mat-form-field.mat-focused
+//               .mat-form-field-label
+//                   color: #726e6e
+.dataTable
+  img
+    height: 100px
+    width: 100px            
+            
+
+

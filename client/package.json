@@ -22,7 +22,9 @@
     "@angular/platform-browser-dynamic": "~10.0.0-next.6",
     "@angular/router": "~10.0.0-next.6",
     "jwt-decode": "^2.2.0",
+    "ngx-material-file-input": "^2.1.1",
     "ngx-owl-carousel-o": "^3.0.0",
+    "ngx-pagination": "^5.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

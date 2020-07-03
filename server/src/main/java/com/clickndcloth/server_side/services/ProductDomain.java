@@ -1,6 +1,7 @@
 package com.clickndcloth.server_side.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.clickndcloth.server_side.models.Product;
 
@@ -10,14 +11,24 @@ public interface ProductDomain {
 	
 	List<Product> getAllProduct();
 	
-	List<Product> getProductsByShopId(Integer shop_id);
+	List<Product>getAllProductLadies();
 	
-	Product getProductById(Integer id);
+	List<Product>getAllProductGents();
+	
+	List<Product>getAllProductChildren();
+	
+	List<Product>getAllByProductRef(String ref);
+	
+	List<Product> getProductsByShopId(int shop_id);
+	
+	List<Product>getAllByIds(List<Integer> ids);
+	
+	Product getProductById(int id);
 	
 	Product updateProduct(Product product);
 	
 	String deleteProduct(Integer id);
 	
-	
+	Optional<Product> findById(int id);
 
 }

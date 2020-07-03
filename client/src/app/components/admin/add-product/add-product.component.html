@@ -1,0 +1,100 @@
+<form (ngSubmit)="submit(f.value)" #f="ngForm">
+  <mat-form-field>
+    <mat-label>Nom</mat-label>
+    <input
+      matInput
+      ngModel
+      #name="ngModel"
+      name="name"
+      type="text"
+      id="name"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input
+      matInput
+      ngModel
+      #description="ngModel"
+      name="description"
+      type="text"
+      id="description"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Référence</mat-label>
+    <input
+      matInput
+      ngModel
+      #productRef="ngModel"
+      name="productRef"
+      type="text"
+      id="productRef"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Prix</mat-label>
+    <input
+      matInput
+      ngModel
+      #prix="ngModel"
+      name="price"
+      type="number"
+      id="price"
+      required
+      minlength="1"
+      maxlength="6"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Taile</mat-label>
+    <mat-select ngModel #size="ngModel" name="size">
+      <mat-option *ngFor="let every of sizes" [value]="every.size">
+        {{ every.size }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Quantité</mat-label>
+    <input
+      matInput
+      ngModel
+      #quantity="ngModel"
+      name="quantite"
+      type="number"
+      id="quantite"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Réduction</mat-label>
+    <input
+      matInput
+      ngModel
+      #discount="ngModel"
+      name="discount"
+      type="text"
+      id="discount"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Image</mat-label>
+    <ngx-mat-file-input ngModel #image="ngModel" name="image" id="image">
+    </ngx-mat-file-input>
+  </mat-form-field>
+  <div class="btns">
+    <button mat-raised-button type="submit">
+      <mat-icon>playlist_add</mat-icon>Submit
+    </button>
+  </div>
+</form>
+<app-message></app-message>

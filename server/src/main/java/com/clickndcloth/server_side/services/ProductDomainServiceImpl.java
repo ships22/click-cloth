@@ -1,6 +1,7 @@
 package com.clickndcloth.server_side.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,21 +17,46 @@ public class ProductDomainServiceImpl implements ProductDomain{
 	
 	@Override
 	public Product addProduct(Product product) {
-		return productRepository.save(product);
+		//return productRepository.save(product);
+		return productRepository.saveAndFlush(product);
 	}
 
 	@Override
 	public List<Product> getAllProduct() {
 		return productRepository.findAll();
 	}
-	
+
 	@Override
-	public List<Product> getProductsByShopId(Integer shop_id) {
-		return productRepository.getProductsByShopId(shop_id);
+	public List<Product> getAllProductLadies() {
+		return productRepository.findAllByProductLadies();
+	}
+	@Override
+	public List<Product> getAllProductGents() {
+		return productRepository.findAllByProductGents();
 	}
 
 	@Override
-	public Product getProductById(Integer id) {
+	public List<Product> getAllProductChildren() {
+		return productRepository.findAllByProductChildren();
+	}
+	
+	@Override
+	public List<Product> getProductsByShopId(int shop_id) {
+		return productRepository.findByShop(shop_id);
+	}
+	
+	@Override
+	public List<Product> getAllByProductRef(String ref) {
+		return productRepository.findByProductRef(ref);
+	}
+	
+	@Override
+	public List<Product> getAllByIds(List<Integer> ids) {
+		return productRepository.findAllByProductId(ids);
+	}
+
+	@Override
+	public Product getProductById(int id) {
 		return productRepository.getOne(id);
 	}
 
@@ -45,6 +71,10 @@ public class ProductDomainServiceImpl implements ProductDomain{
 		return "Product with id : " + id + " has been deleted successfully";
 	}
 
+	@Override
+	public Optional<Product> findById(int id) {
+		return productRepository.findById(id);
+	}
 	
 
 }

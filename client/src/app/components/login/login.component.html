@@ -1,6 +1,6 @@
 <div class="main">
   <!-- login form -->
-  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="!registering">
+  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="!registering && !forgotpassword">
     <div class="form_header">
       <h3>
         S'identifier
@@ -18,6 +18,7 @@
             name="email"
             [(ngModel)]="userToLogIn.email"
             #email="ngModel"
+            onfocus="this.value=''"
             required
           />
           <span class="warning_msg" *ngIf="logInForm.submitted && !userToLogIn.email"
@@ -31,6 +32,7 @@
             [(ngModel)]="userToLogIn.password"
             #password="ngModel"
             placeholder="Mot de passe *"
+            onfocus="this.value=''"
             required
           />
         </div>
@@ -39,7 +41,46 @@
         <button mat-raised-button color="login">Conexion</button>
         <p class="or">ou</p>
         <div>
-          <span>mot de passe oublié</span>
+          <span (click)="toggleReinit()"> mot de passe oublié</span>
+          <p>/</p>
+          <span (click)="toggleRegistration()">créer un compte</span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- forgot password form -->
+  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="!registering && forgotpassword">
+    <div class="form_header">
+      <h3>
+        Réinitialisation de mot de passe
+      </h3>
+    </div>
+    <form #reinitForm="ngForm" (ngSubmit)="reinitForm.form.valid && reinitPass(reinitForm.value)" novalidate>
+      <section class="left">
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': reinitForm.submitted && !email.valid }"
+        >
+          <input
+            type="text"
+            placeholder="E-mail *"
+            name="email"
+            [(ngModel)]="userToReinitPass.email"
+            #email="ngModel"
+            onfocus="this.value=''"
+            required
+          />
+          <span class="warning_msg" *ngIf="reinitForm.submitted && !userToReinitPass.email"
+            >Adresse mail est obligatoire</span
+          >
+        </div>
+      </section>
+      <div class="input_group btn">
+        <button mat-raised-button color="login">Réinitialiser</button>
+        <p class="or">ou</p>
+        <div>
+          <span (click)="toggleReinit()"> annuler </span>
           <p>/</p>
           <span (click)="toggleRegistration()">créer un compte</span>
         </div>
@@ -50,7 +91,7 @@
 
   <!-- registration from -->
 
-  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="registering">
+  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="registering && !forgotpassword">
     <div class="form_header">
       <h3>
         Inscription
@@ -69,6 +110,7 @@
             id="first_name"
             [(ngModel)]="newUser.first_name"
             #first_name="ngModel"
+            onfocus="this.value=''"
             required
           />
           <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.first_name"
@@ -85,6 +127,7 @@
             name="last_name"
             [(ngModel)]="newUser.last_name"
             #last_name="ngModel"
+            onfocus="this.value=''"
             required
           />
           <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.last_name"
@@ -101,6 +144,7 @@
             name="email"
             [(ngModel)]="newUser.email"
             #email="ngModel"
+            onfocus="this.value=''"
             required
           />
           <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.email"
@@ -116,6 +160,7 @@
             placeholder="Numéro de portable"
             name="phone"
             [(ngModel)]="newUser.phone"
+            onfocus="this.value=''"
             #phone="ngModel"
           />
         </div>
@@ -126,6 +171,7 @@
             [ngModel]="newUser.new_password"
             #new_password="ngModel"
             placeholder="Mot de passe *"
+            onfocus="this.value=''"
             required
           />
         </div>
@@ -141,6 +187,7 @@
             name="house_no"
             [(ngModel)]="newUser.house_no"
             #house_no="ngModel"
+            onfocus="this.value=''"
             required
           />
           <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.house_no"
@@ -157,6 +204,7 @@
             name="street"
             [(ngModel)]="newUser.street"
             #street="ngModel"
+            onfocus="this.value=''"
             required
           />
           <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.street"
@@ -173,6 +221,7 @@
             name="zip_code"
             [(ngModel)]="newUser.zip_code"
             #zip_code="ngModel"
+            onfocus="this.value=''"
             required
           />
           <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.zip_code"
@@ -189,6 +238,7 @@
             name="country"
             [(ngModel)]="newUser.country"
             #country="ngModel"
+            onfocus="this.value=''"
             required
           />
           <span class="warning_msg" *ngIf="registrationForm.submitted && !newUser.country"
@@ -202,6 +252,7 @@
             [ngModel]="newUser.password_retyped"
             #password_retyped="ngModel"
             placeholder="Re-Mot de passe *"
+            onfocus="this.value=''"
             required
           />
         </div>

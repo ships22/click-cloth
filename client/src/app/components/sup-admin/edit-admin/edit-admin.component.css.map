@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACD,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,OAAO;EACnB,MAAM,EAAE,UAAU;EAClB,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,CAAC,mBAAmB,EAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,mBAAmB;CAEjE;;AAPxB,AAMI,IANA,CAMA,cAAc,CAAC;EACX,KAAK,EAAE,IAAI;CAAG",
+    "sources": [
+        "edit-admin.component.sass"
+    ],
+    "names": [],
+    "file": "edit-admin.component.css"
+}

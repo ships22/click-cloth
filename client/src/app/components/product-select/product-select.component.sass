@@ -1,0 +1,85 @@
+@mixin menu_font_style
+    font-size: 14px
+    color: #000000
+    font-weight: 600
+    line-height: 30px
+    // padding: 0px 5px
+    height: 30px
+    display: block
+    border-radius: 0
+
+
+.products_holder
+    max-width: 1280px
+    margin: 70px auto
+    .product_selection
+        display: flex
+        justify-content: space-evenly
+        width: 700px
+        margin: auto
+        img
+            height: 410px
+            width: 300px
+            box-shadow: 1px 1px 12px 1px #eb4c0e1a
+        .details_selection
+            position: relative
+            width: calc( 100% - 300px )
+            margin-left: 20px
+            p.price
+                float: right
+                font-weight: 600
+                background: yellow
+                background: #f4f6ea
+                font-size: 20px
+                padding: 10px
+            p.name
+                font-size: 20px
+                text-transform: uppercase
+                font-weight: 600
+                padding: 10px
+                background: #000000
+                color: #ffffff
+                width: 310px
+                // margin-left: 10px
+            p.description
+                padding: 5px
+                font-size: 12px
+            .productOfSize
+                margin-top: 20px 
+                #productOfSize-label
+                    margin-left: 7px
+                    font-size: 12px
+                .productOfSize-group
+                    display: flex
+                    flex-direction: column
+                    margin: 10px 0
+                .input_group
+                    padding: 0
+                    width: 310px
+                    margin-bottom: 10px
+                .productOfSize-button
+                    margin: 5px 0px
+                    position: relative
+                    width: 310px
+                span
+                    font-size: 10px
+                    background: #f4f6ea
+                    padding: 3px 5px
+                    margin-left: 10px
+                    position: absolute
+                    right: 0px
+            button.mat-add_to_cart
+                @include menu_font_style
+                font-weight: 200
+                &:hover
+                    background: lighten(#000000, 0%)
+                    color: #ffffff
+            p.shop
+                position: absolute
+                font-size: 12px
+                width: 300px
+                bottom: 0
+                left: 0
+                
+
+            

@@ -2,20 +2,26 @@ package com.clickndcloth.server_side.dto;
 
 import java.sql.Blob;
 import java.util.List;
+import java.util.Set;
 
 import com.clickndcloth.server_side.models.Categories;
+import com.clickndcloth.server_side.models.Shop;
+import com.clickndcloth.server_side.models.Stock;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class ProductDto {
 	
 	private int id;
 	private String name;
 	private String description;
+	private String productRef;
 	private double price;
-	private Blob image;
+	private byte[] image;
 	private String discount;
-	private int shop_id_shop;
-	private int shop_admin_id_admin;
-	private List<Categories> categories;
+	private Set<Categories> categories;
+	private List<Stock> stock;
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Shop shop;
 	
 	public int getId() {
 		return id;
@@ -35,16 +41,22 @@ public class ProductDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getProductRef() {
+		return productRef;
+	}
+	public void setProductRef(String productRef) {
+		this.productRef = productRef;
+	}
 	public double getPrice() {
 		return price;
 	}
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Blob getImage() {
+	public byte[] getImage() {
 		return image;
 	}
-	public void setImage(Blob image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 	public String getDiscount() {
@@ -53,23 +65,23 @@ public class ProductDto {
 	public void setDiscount(String discount) {
 		this.discount = discount;
 	}
-	public int getShop_id_shop() {
-		return shop_id_shop;
-	}
-	public void setShop_id_shop(int shop_id_shop) {
-		this.shop_id_shop = shop_id_shop;
-	}
-	public int getShop_admin_id_admin() {
-		return shop_admin_id_admin;
-	}
-	public void setShop_admin_id_admin(int shop_admin_id_admin) {
-		this.shop_admin_id_admin = shop_admin_id_admin;
-	}
-	public List<Categories> getCategories() {
+	public Set<Categories> getCategories() {
 		return categories;
 	}
-	public void setCategories(List<Categories> categories) {
+	public void setCategories(Set<Categories> categories) {
 		this.categories = categories;
+	}
+	public List<Stock> getStock() {
+		return stock;
+	}
+	public void setStock(List<Stock> stock) {
+		this.stock = stock;
+	}
+	public Shop getShop() {
+		return shop;
+	}
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 	
 

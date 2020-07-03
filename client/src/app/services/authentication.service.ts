@@ -96,4 +96,13 @@ export class AuthenticationService {
       return false;
     } 
   }
+  getEmail(): string {
+    const token = localStorage.getItem('token');
+    if(this.isLoggedIn()) {
+      return this.getDecodedAccessToken(token).user_name;
+    }
+  }
+  resetPasswordRequest(email: string):Observable<any> {
+    return this.httpClient.post<any>(this.base_url + "reset_password", {"email" : email});
+  }
 }

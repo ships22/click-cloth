@@ -1,0 +1,183 @@
+<!-- <app-message></app-message>
+<form (ngSubmit)="submit(f.value)" #f="ngForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.name"
+      #name="ngModel"
+      name="name"
+      type="text"
+      id="name"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.description"
+      #description="ngModel"
+      name="description"
+      type="text"
+      id="description"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Prix</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.price"
+      #price="ngModel"
+      name="price"
+      type="number"
+      id="price"
+      required
+      minlength="1"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Réduction</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.discount"
+      #discount="ngModel"
+      name="discount"
+      type="text"
+      id="discount"
+      required
+      minlength="3"
+    />
+  </mat-form-field>
+  <div class="img_act">
+    <mat-label>Image actuelle</mat-label>
+    <img src="data:image/jpeg;base64,{{product.image}}"/>
+  </div>
+  <mat-form-field>
+    <mat-label>Nouvelle image</mat-label>
+    <ngx-mat-file-input [(ngModel)]="newImage" #image="ngModel" name="image" id="image">
+    </ngx-mat-file-input>
+  </mat-form-field>
+  <div class="btns">
+    <button mat-raised-button type="submit">
+      <mat-icon>playlist_add</mat-icon>Submit
+    </button>
+  </div>
+</form> -->
+
+<form (ngSubmit)="submit(f.value)" #f="ngForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.name"
+      #name="ngModel"
+      name="name"
+      type="text"
+      id="name"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.description"
+      #description="ngModel"
+      name="description"
+      type="text"
+      id="description"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Référence</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.productRef"
+      #productRef="ngModel"
+      name="productRef"
+      type="text"
+      id="productRef"
+      required
+      minlength="3"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Prix</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.price"
+      #price="ngModel"
+      name="price"
+      type="number"
+      id="price"
+      required
+      minlength="1"
+      maxlength="25"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Taile</mat-label>
+    <mat-select [(ngModel)]="stock.size" #size="ngModel" name="size">
+      <mat-option *ngFor="let every of sizes" [value]="every.size">
+        {{ every.size }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Quantité</mat-label>
+    <input
+      matInput
+      [(ngModel)]="stock.quantite"
+      #quantity="ngModel"
+      name="quantite"
+      type="number"
+      id="quantite"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Réduction</mat-label>
+    <input
+      matInput
+      [(ngModel)]="product.discount"
+      #discount="ngModel"
+      name="discount"
+      type="text"
+      id="discount"
+      required
+      minlength="3"
+    />
+  </mat-form-field>
+  <div class="img_act">
+    <mat-label>Image actuelle</mat-label>
+    <img src="data:image/jpeg;base64,{{ product.image }}" />
+  </div>
+  <mat-form-field>
+    <mat-label>Nouvelle image</mat-label>
+    <ngx-mat-file-input
+      [(ngModel)]="newImage"
+      #image="ngModel"
+      name="image"
+      id="image"
+    >
+    </ngx-mat-file-input>
+  </mat-form-field>
+  <div class="btns">
+    <button mat-raised-button type="submit">
+      <mat-icon>playlist_add</mat-icon>Submit
+    </button>
+  </div>
+</form>

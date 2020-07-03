@@ -10,6 +10,8 @@ public interface ShopDomain {
 	
 	List<Shop> getAllShop();
 	
+	Shop getByAdminId(int admin_id);
+	
 	Shop getById(Integer id);
 	
 	Shop updateShop(Shop shop);

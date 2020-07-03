@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Admin")
 public class Admin {
@@ -28,12 +30,19 @@ public class Admin {
 	private String email;
 	private String address;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "admin")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "admin", cascade = CascadeType.ALL)
 	private User user;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="admin_id", referencedColumnName = "id", nullable = true)
-	private List<Shop> shopList = new ArrayList<Shop>();
+	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Shop> shopList;
+	
+	/*
+	 * @OneToMany(cascade=CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name="admin_id", referencedColumnName = "id", nullable = true)
+	 * private List<Shop> shopList = new ArrayList<Shop>();
+	 */
 
 	public Admin() {
 		super();

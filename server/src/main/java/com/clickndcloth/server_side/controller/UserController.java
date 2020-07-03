@@ -46,7 +46,7 @@ public class UserController {
 		if(operationResult) {
 			status.setOperationResult(RequestOperationStatus.SUCCESS.name());
 		} else {
-			status.setOperationResult("User not found");
+			status.setOperationResult("USER DOES NOT EXIST");
 		}
 		return status;
 	}

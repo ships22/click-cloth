@@ -1,33 +1,64 @@
 package com.clickndcloth.server_side.models;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Reservation")
-public class Reservation {
+public class Reservation implements Serializable {
+	
+	private static final long serialVersionUID = 1559835579977071728L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int reservation_id;
 	private Date date_time;
 	private String reference;
-	private int total;
+	private double total;
 	private String status;
 	private int quantity;
-	private int client_id;
-	private int shop_shop_id;
+	
+	
+	//@JsonIgnore
+//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	//@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "client_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Client client;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "shop_id", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	public Shop shop;
+	
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "product_id", nullable = false)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Product product;
 	
 	public Reservation() {
 		super();
 	}
-	public Reservation(int reservation_id, Date date_time, String reference, int total, String status, int quantity,
-			int client_id, int shop_shop_id) {
+	public Reservation(int reservation_id, Date date_time, String reference, double total, String status, int quantity, Product product) {
 		super();
 		this.reservation_id = reservation_id;
 		this.date_time = date_time;
@@ -35,8 +66,7 @@ public class Reservation {
 		this.total = total;
 		this.status = status;
 		this.quantity = quantity;
-		this.client_id = client_id;
-		this.shop_shop_id =shop_shop_id;
+		this.product = product;
 	}
 	public int getReservation_id() {
 		return reservation_id;
@@ -56,10 +86,10 @@ public class Reservation {
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
-	public int getTotal() {
+	public double getTotal() {
 		return total;
 	}
-	public void setTotal(int total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 	public String getStatus() {
@@ -74,17 +104,23 @@ public class Reservation {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getClient_id() {
-		return client_id;
+	public Client getClient() {
+		return client;
 	}
-	public void setClient_id(int client_id) {
-		this.client_id = client_id;
+	public void setClient(Client client) {
+		this.client = client;
 	}
-	public int getShop_shop_id() {
-		return shop_shop_id;
+	public Shop getShop() {
+		return shop;
 	}
-	public void setShop_shop_id(int shop_shop_id) {
-		this.shop_shop_id = shop_shop_id;
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 }

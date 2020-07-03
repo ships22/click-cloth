@@ -62,6 +62,19 @@ public class AdminManager {
 		return adminDto;
 	}
 	
+	@Transactional
+	public AdminDto findAdminByEmail(String email) {
+		Admin admin = adminDomainService.findByEmail(email);
+		AdminDto adminDto = new AdminDto();
+		adminDto.setId(admin.getId());
+		adminDto.setFirst_name(admin.getFirst_name());
+		adminDto.setLast_name(admin.getLast_name());
+		adminDto.setEmail(admin.getEmail());
+		adminDto.setAddress(admin.getAddress());
+		adminDto.setShops(admin.getShopList());
+		return adminDto;
+	}
+	
 	
 	@Transactional
 	public AdminDto addAdmin(Admin admin) {
