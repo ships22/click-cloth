@@ -48,6 +48,7 @@ import { LadiesComponent } from "./components/ladies/ladies.component";
 import { GentsComponent } from "./components/gents/gents.component";
 import { ChildrenComponent } from "./components/children/children.component";
 import { ProductSelectComponent } from "./components/product-select/product-select.component";
+import { CartService } from './services/cart.service';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -103,6 +104,7 @@ const MaterialComponents = [
     AuthenticationService,
     AdminService,
     ClientService,
+    CartService,
     LoadingService,
     MsgService,
     ShopService,
