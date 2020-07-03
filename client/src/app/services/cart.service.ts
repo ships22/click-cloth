@@ -21,23 +21,23 @@ export class CartService {
     return null;
   }
 
-  addToCart(item) {
+  addToCart(item, qty) {
     this.getAllItem();
-       this.addOrIncrease(item);
-       this.cartSync(this.KEY, this.contents);
+       this.addOrIncrease(item, qty);
   }
   async cartSync(KEY, contents) {
     let _cart = JSON.stringify(contents);
     await localStorage.setItem(KEY, _cart);
   }
-  addOrIncrease(item) {
+  addOrIncrease(item, qty) {
     let exists = this.contents.find(product => product.id == item.id);
     if(!exists) {
-      item.qty = 1;
+      item.qty = qty;
       this.contents.push(item);
     } else {
-      exists.qty++;
+      exists.qty =+ exists.qty + qty;
     }
-    this.checkItemsSubject.next(this.getAllItem());
+    this.cartSync(this.KEY, this.contents);
+  return this.checkItemsSubject.next(this.getAllItem());
   }
 }

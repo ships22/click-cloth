@@ -40,14 +40,14 @@ export class ProductSelectComponent implements OnInit {
       this.product = this.products[0];
     })
   }
-  addToCart(product) {
+  addToCart() {
     if(!this.quantity || !this.productOfSize) {
       this.massageService.sendMessage('Tous les champs sont obligatoire');
     } else if(this.quantity > this.productOfSize.stock[0].quantite) {
       this.massageService.sendMessage(`Il y que ${this.productOfSize.stock[0].quantite} disponible pour l'instant.`);
     } else {
       console.log('ok');
-      this.cartService.addToCart(product);
+      this.cartService.addToCart(this.productOfSize, this.quantity);
     }
   }
 

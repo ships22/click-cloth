@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   isAdmin$;
   isLoggedIn$;
   isSuperAdmin$;
+  totalItemsAdded$;
 
   constructor(
     public authentication: AuthenticationService,
