@@ -1,19 +1,48 @@
 <div id="main" class="animate__animated animate__fadeIn">
   <h2>Sélectioner les details</h2>
-    <section class="products_holder">
-      <div
-        class="product_selection animate__animated animate__fadeIn"
-    
-      >
-        <img src="data:image/jpeg;base64,{{ product.image }}" />
-        <div class="details_selection">
-          <p class="price">{{ product.price }}€</p>
-          <p class="name">{{ product.name }}</p>
-          <p class="description">{{ product.description }}</p>
-          <p class="shop">Boutique : {{ product.shop.name }} - {{ product.shop.address }}</p>
-          <button class="btn_add_basket">Ajouter au panier</button>
-        </div>
+  <section class="products_holder">
+    <div class="product_selection animate__animated animate__fadeIn">
+      <img src="data:image/jpeg;base64,{{ product.image }}" />
+      <div class="details_selection">
+        <p class="price">{{ product.price }}€</p>
+        <p class="name">{{ product.name }}</p>
+        <p class="description">{{ product.description }}</p>
+        <section class="productOfSize">
+          <label id="productOfSize-label">Votre taille * :</label>
+          <mat-radio-group
+            aria-labelledby="productOfSize-label"
+            class="productOfSize-group"
+            [(ngModel)]="productOfSize"
+          >
+            <mat-radio-button
+              class="productOfSize-button"
+              *ngFor="let product of products"
+              [value]="product"
+            >
+              {{ product.stock[0]?.size }}
+              <span>En stock : {{ product.stock[0]?.quantite }}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="input_group">
+            <input
+              type="number"
+              placeholder="Quantite *"
+              name="qauntity"
+              [(ngModel)]="qauntity"
+              onfocus="this.value=''"
+              required
+            />
+          </div>
+        </section>
+        <button mat-button color="add_to_cart" class="btn_add_to_cart" (click)="addToCart(product)">
+          Ajouter au panier
+        </button>
+        
+        <p class="shop">
+          Boutique : {{ product.shop?.name }} - {{ product.shop?.address }}
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
   <app-footer></app-footer>
 </div>

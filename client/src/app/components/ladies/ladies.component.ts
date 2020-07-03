@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ladies',
@@ -14,7 +15,7 @@ export class LadiesComponent implements OnInit {
   p: number = 1;
   collection: any[] = [];
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private router: Router,) {
    }
 
   ngOnInit(): void {
@@ -44,6 +45,9 @@ export class LadiesComponent implements OnInit {
     // }
     console.log('test cat :' , selectedCat);
     
+  }
+  selectProduct(productRef) {
+    this.router.navigate(["/product_select", productRef]);
   }
 
 }

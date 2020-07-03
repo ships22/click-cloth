@@ -14,6 +14,9 @@ export class ProductSelectComponent implements OnInit {
   productRef: string;
   products: any[] = [];
   product: any = {};
+  qauntity: any = null;
+  productOfSize: any = {};
+
   constructor(private router: Router,
     private productService: ProductService,
     private massageService: MsgService,
@@ -34,6 +37,9 @@ export class ProductSelectComponent implements OnInit {
       this.products = response;
       this.product = this.products[0];
     })
+  }
+  addToCart(product) {
+    console.log('test added product :', product);
   }
 
 }

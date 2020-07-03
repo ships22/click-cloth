@@ -41,12 +41,13 @@ import { ShopService } from "./services/shop.service";
 import { AddProductComponent } from "./components/admin/add-product/add-product.component";
 import { EditProductComponent } from "./components/admin/edit-product/edit-product.component";
 import { MatSelectModule } from "@angular/material/select";
+import { MatRadioModule } from "@angular/material/radio";
 import { AllProductsComponent } from "./components/all-products/all-products.component";
 import { from } from "rxjs";
-import { LadiesComponent } from './components/ladies/ladies.component';
-import { GentsComponent } from './components/gents/gents.component';
-import { ChildrenComponent } from './components/children/children.component';
-import { ProductSelectComponent } from './components/product-select/product-select.component';
+import { LadiesComponent } from "./components/ladies/ladies.component";
+import { GentsComponent } from "./components/gents/gents.component";
+import { ChildrenComponent } from "./components/children/children.component";
+import { ProductSelectComponent } from "./components/product-select/product-select.component";
 
 const MaterialComponents = [
   MatButtonModule,
@@ -60,6 +61,7 @@ const MaterialComponents = [
   MatSortModule,
   MatDialogModule,
   MatTabsModule,
+  MatRadioModule,
   MaterialFileInputModule,
 ];
 
@@ -94,8 +96,8 @@ const MaterialComponents = [
     HttpClientModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    MaterialComponents,
     CarouselModule,
+    MaterialComponents,
   ],
   providers: [
     AuthenticationService,

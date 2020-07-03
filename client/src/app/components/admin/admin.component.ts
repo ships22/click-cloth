@@ -116,8 +116,9 @@ export class AdminComponent implements OnInit {
     this.productService.deleteProduct(id).pipe(take(1)).subscribe();
   }
   resetPasswordRequest() {
+    const adminEmail = this.authenticationService.getEmail();
     this.authenticationService
-      .resetPasswordRequest()
+      .resetPasswordRequest(adminEmail)
       .pipe(take(1))
       .subscribe((response) => {
         if (response.operationResult == "SUCCESS") {

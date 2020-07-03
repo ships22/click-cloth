@@ -1,6 +1,6 @@
 <div class="main">
   <!-- login form -->
-  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="!registering">
+  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="!registering && !forgotpassword">
     <div class="form_header">
       <h3>
         S'identifier
@@ -41,7 +41,46 @@
         <button mat-raised-button color="login">Conexion</button>
         <p class="or">ou</p>
         <div>
-          <span (click)="passwordReset()"> mot de passe oublié</span>
+          <span (click)="toggleReinit()"> mot de passe oublié</span>
+          <p>/</p>
+          <span (click)="toggleRegistration()">créer un compte</span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- forgot password form -->
+  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="!registering && forgotpassword">
+    <div class="form_header">
+      <h3>
+        Réinitialisation de mot de passe
+      </h3>
+    </div>
+    <form #reinitForm="ngForm" (ngSubmit)="reinitForm.form.valid && reinitPass(reinitForm.value)" novalidate>
+      <section class="left">
+        <div
+          class="input_group"
+          [ngClass]="{ 'has-error': reinitForm.submitted && !email.valid }"
+        >
+          <input
+            type="text"
+            placeholder="E-mail *"
+            name="email"
+            [(ngModel)]="userToReinitPass.email"
+            #email="ngModel"
+            onfocus="this.value=''"
+            required
+          />
+          <span class="warning_msg" *ngIf="reinitForm.submitted && !userToReinitPass.email"
+            >Adresse mail est obligatoire</span
+          >
+        </div>
+      </section>
+      <div class="input_group btn">
+        <button mat-raised-button color="login">Réinitialiser</button>
+        <p class="or">ou</p>
+        <div>
+          <span (click)="toggleReinit()"> annuler </span>
           <p>/</p>
           <span (click)="toggleRegistration()">créer un compte</span>
         </div>
@@ -52,7 +91,7 @@
 
   <!-- registration from -->
 
-  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="registering">
+  <div class="form_wrapper animate__animated animate__fadeIn" *ngIf="registering && !forgotpassword">
     <div class="form_header">
       <h3>
         Inscription
