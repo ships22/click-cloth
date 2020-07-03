@@ -49,6 +49,7 @@ import { GentsComponent } from "./components/gents/gents.component";
 import { ChildrenComponent } from "./components/children/children.component";
 import { ProductSelectComponent } from "./components/product-select/product-select.component";
 import { CartService } from './services/cart.service';
+import { CartComponent } from './components/cart/cart.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -89,6 +90,7 @@ const MaterialComponents = [
     GentsComponent,
     ChildrenComponent,
     ProductSelectComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

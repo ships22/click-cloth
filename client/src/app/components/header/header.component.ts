@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "src/app/services/authentication.service";
 import { RoleGuardService } from "src/app/services/role-guard.service";
-import { CartService } from 'src/app/services/cart.service';
+import { CartService } from "src/app/services/cart.service";
 
 @Component({
   selector: "app-header",
@@ -12,7 +12,8 @@ export class HeaderComponent implements OnInit {
   isAdmin$;
   isLoggedIn$;
   isSuperAdmin$;
-  totalItemsAdded$;
+  totalItemsAdded = 0;
+  cartItems: any = [];
 
   constructor(
     public authentication: AuthenticationService,
@@ -24,10 +25,19 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn$ = this.authentication.checkLogIn$;
     this.isAdmin$ = this.authentication.checkAdmin$;
     this.isSuperAdmin$ = this.authentication.checkSuperAdmin$;
-    this.cartService.numberOfItems$
-    .subscribe(res => console.log('test cart itams :', res)
-    )
+
+    this.cartService.numberOfItems$.subscribe((data) => {
+      this.cartItems = data;
+      if (data) {
+        let qty = 0;
+        for (let i = 0; i < data.length; i++) {
+          qty += data[i].qty;
+        }
+        this.totalItemsAdded = qty;
+      }
+    });
   }
+
   logout() {
     this.authentication.signOut();
   }
