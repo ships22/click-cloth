@@ -49,6 +49,8 @@ export class ProductSelectComponent implements OnInit {
       console.log('ok');
       this.cartService.addToCart(this.productOfSize, this.quantity);
     }
+    console.log('test pr :', this.productOfSize);
+    
   }
 
 }

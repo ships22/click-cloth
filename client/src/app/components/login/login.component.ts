@@ -37,13 +37,16 @@ export class LoginComponent implements OnInit {
           this.authenticationService.decoded_token
         );
         if(this.authenticationService.isSuperAdmin()){
-          return this.router.navigate(['super_admin']);
+          this.router.navigate(['super_admin']);
         }else if (this.authenticationService.isAdmin()) {
-          return this.router.navigate(['admin']);
+          this.router.navigate(['admin']);
+        } else {
+          this.router.navigate(['cart']);
         }
-        this.router.navigate(['']);
+        this.messageService.sendMessage("vous êtes connecté");
       },
       (err) => {
+        this.router.navigate(['']);
         this.messageService.sendMessage("e-mail ou mot de passe incorrect");
       });
     } 

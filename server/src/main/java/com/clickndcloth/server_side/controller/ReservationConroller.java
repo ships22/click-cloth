@@ -18,10 +18,12 @@ import com.clickndcloth.server_side.dto.ProductDto;
 import com.clickndcloth.server_side.dto.ReservationDto;
 import com.clickndcloth.server_side.models.Client;
 import com.clickndcloth.server_side.models.Reservation;
+import com.clickndcloth.server_side.models.Stock;
 import com.clickndcloth.server_side.repository.ClientRepository;
 import com.clickndcloth.server_side.repository.ProductRepository;
 import com.clickndcloth.server_side.repository.ReservationRepository;
 import com.clickndcloth.server_side.repository.ShopRepository;
+import com.clickndcloth.server_side.repository.StockRepository;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -36,6 +38,9 @@ public class ReservationConroller {
 	@Autowired
 	private ShopRepository sho;
 	
+	@Autowired
+	private StockRepository stRepo;
+	
 	@RequestMapping(value = "/do_reservation/{product_id}/shop/{shop_id}", method = RequestMethod.POST, produces = "application/json")
 //	@PreAuthorize("hasRole('ROLE_CLIENT')")
 	public ReservationDto doReservation(@RequestBody Reservation reservation, 
@@ -49,6 +54,19 @@ public class ReservationConroller {
 	public List <Reservation> getReservationByClientId(@PathVariable ("client_id") int client_id) {
 		return res.findAllByClientId(client_id);
 	}
+
+	@GetMapping(value = "/reservationsByShop/{shop_id}")
+	//@PreAuthorize("hasRole('ROLE_CLIENT')")
+	public List <ReservationDto> getReservationByShopId(@PathVariable ("shop_id") int shop_id) {
+		return reservationManager.getAllByShop(shop_id);
+	}
 	
+	@RequestMapping(value = "/updateStock/{product_sold}/product/{product_id}", method = RequestMethod.POST, produces = "application/json")
+	//@PreAuthorize("hasRole('ROLE_CLIENT')")
+	public int updateStock(@PathVariable("product_sold") int product_sold , @PathVariable ("product_id") int product_id) {
+		 
+		stRepo.updateQuantity(product_sold, product_id);
+		 return 1;
+	}
 
 }

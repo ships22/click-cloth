@@ -1,10 +1,13 @@
 package com.clickndcloth.server_side.dto;
 
-import java.sql.Date;
+
+
+import java.util.Date;
 
 import com.clickndcloth.server_side.models.Client;
 import com.clickndcloth.server_side.models.Product;
 import com.clickndcloth.server_side.models.Shop;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 public class ReservationDto {
@@ -15,8 +18,11 @@ public class ReservationDto {
 	private double total;
 	private String status;
 	private int quantity;
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Client client;
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Shop shop;
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Product product;
 	
 	public int getReservation_id() {

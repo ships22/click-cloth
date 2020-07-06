@@ -49,7 +49,7 @@
       </li>
       <li><a href="#" mat-button color="menu_access">Propos</a></li>
       <li *ngIf="!(isAdmin$ | async) && !(isSuperAdmin$ | async)">
-        <a mat-button color="menu_access" class="nav_panier"
+        <a routerLink="/cart" mat-button color="menu_access" class="nav_panier"
           >Panier
           <span class="totalItems animate__animated animate__fadeIn" *ngIf="totalItemsAdded">{{
             totalItemsAdded

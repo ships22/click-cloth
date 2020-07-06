@@ -38,6 +38,12 @@ public class ClientController {
 		return clientManager.findClientById(id);
 	}
 	
+	@GetMapping(value = "/client_by_email/{email}")
+//	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN') or hasRole('ROLE_CLIENT')")
+	public ClientDto getByEmail(@PathVariable ("email") String email) {
+		return clientManager.findClientByEmail(email);
+	}
+	
 	@PostMapping(value = "/add_client/{password}", produces = "application/json")
 	public String addClient(@RequestBody Client client, @PathVariable ("password") String password) {
 		return clientManager.addClient(client, password);

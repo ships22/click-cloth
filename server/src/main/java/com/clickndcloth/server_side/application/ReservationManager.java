@@ -1,6 +1,7 @@
 package com.clickndcloth.server_side.application;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +47,7 @@ public class ReservationManager {
 		//getting all the reserved product -
 		reservation.setShop(shopService.getById(shop_id));
 		reservation.setProduct(productService.findById(product_id).get());
-		
+		reservation.setDate_time(new Date());
 		//finalising the reservation -
 		Reservation addedReservation = reservationService.addReservation(reservation);
 		ReservationDto reservationDto = new ReservationDto();
@@ -59,5 +60,23 @@ public class ReservationManager {
 		reservationDto.setTotal(addedReservation.getTotal());
 		reservationDto.setStatus(addedReservation.getStatus());
 		return reservationDto;
+	}
+	
+	public List<ReservationDto> getAllByShop(Integer shop_id) {
+		List<Reservation>reservationList = reservationService.getAllByShop(shop_id);
+		List<ReservationDto>reservationDtos = new ArrayList<ReservationDto>();
+		reservationList.forEach(reservation -> {
+			ReservationDto reservationDto = new ReservationDto();
+			reservationDto.setReservation_id(reservation.getReservation_id());
+			reservationDto.setDate_time(reservation.getDate_time());
+			reservationDto.setReference(reservation.getReference());
+			reservationDto.setTotal(reservation.getTotal());
+			reservationDto.setStatus(reservation.getStatus());
+			reservationDto.setQuantity(reservation.getQuantity());
+			reservationDto.setClient(reservation.getClient());
+			reservationDto.setProduct(reservation.getProduct());
+			reservationDtos.add(reservationDto);
+		});
+		return reservationDtos;
 	}
 }

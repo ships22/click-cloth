@@ -18,4 +18,9 @@ public class StockDomainServiceImpl implements StockDomain {
 		return stockRepository.save(stock);
 	}
 
+	@Override
+	public void updateQuantity(int product_sold, int product_id) {
+		stockRepository.updateQuantity(product_sold, product_id);
+	}
+
 }

@@ -50,6 +50,7 @@ import { ChildrenComponent } from "./components/children/children.component";
 import { ProductSelectComponent } from "./components/product-select/product-select.component";
 import { CartService } from './services/cart.service';
 import { CartComponent } from './components/cart/cart.component';
+import { ReservationComponent } from './components/admin/reservation/reservation.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -91,6 +92,7 @@ const MaterialComponents = [
     ChildrenComponent,
     ProductSelectComponent,
     CartComponent,
+    ReservationComponent,
   ],
   imports: [
     BrowserModule,

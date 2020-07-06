@@ -1,0 +1,91 @@
+@mixin grid($cols, $mgn) 
+    float: left
+    margin-right: $mgn
+    margin-bottom: $mgn
+    width: ((100% - (($cols - 1) * $mgn)) / $cols)
+    &:nth-child(#{$cols}n)
+        margin-right: 0
+
+@mixin menu_font_style
+    font-size: 14px
+    color: #000000
+    font-weight: 600
+    line-height: 30px
+    // padding: 0px 5px
+    height: 30px
+    display: block
+    border-radius: 0
+
+#main
+    .product_container
+        display: grid
+        .products_holder
+            flex-direction: column !important
+            width: 900px
+            padding: 5px
+            margin: auto
+            .product
+                // width: 100% !important
+                @include grid(2, 2% )
+                height: 200px
+                padding: 10px
+                display: flex
+                flex-direction: row
+                
+                box-shadow: 1px 1px 12px 1px #eb4c0e1a
+                img 
+                    height: 180px
+                    width: 140px
+                .details
+                    margin-left: 20px
+                    width: calc( 100% - 160px )
+                    section.cart_option
+                        position: relative
+                        float: right
+                        display: flex
+                        width: 120px
+                        button 
+                            z-index: 15
+                            border: none
+                            transition: .4s
+                            &:hover
+                                background: red
+                                cursor: pointer
+                        button.supprimer
+                            height: 25px
+                            font-size: 10px
+                            font-weight: 400
+                            // background: #000000s
+                            // color: #ffffff
+                            text-align: center
+                            padding: 0px 5px
+                            margin-left: 10px
+                        button.decrease
+                            width: 40px
+                    .sous_total
+                        font-weight: 600
+                    button.reserve
+                        z-index: 15
+                        border: none
+                        transition: .4s
+                        padding: 5px
+                        position: absolute
+                        bottom: 10px
+                        left: 180px
+                        &:hover
+                            cursor: pointer
+                            background: #000000
+                            color: #ffffff
+                &::after
+                    content: ''
+                    display: none !important
+                    background: red
+        section.info_cart
+            padding: 10px
+            margin-top: 50px
+            text-align: center
+            // background: red
+            border-top: 1px solid #000000
+            p.total
+                float: right
+                font-weight: 600                

@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     this.isSuperAdmin$ = this.authentication.checkSuperAdmin$;
 
     this.cartService.numberOfItems$.subscribe((data) => {
-      this.cartItems = data;
+      // this.cartItems = data;
       if (data) {
         let qty = 0;
         for (let i = 0; i < data.length; i++) {
