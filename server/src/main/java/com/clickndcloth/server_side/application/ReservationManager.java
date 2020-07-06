@@ -21,6 +21,7 @@ import com.clickndcloth.server_side.services.ClientDomainServiceImpl;
 import com.clickndcloth.server_side.services.ProductDomainServiceImpl;
 import com.clickndcloth.server_side.services.ReservationDomainServiceImpl;
 import com.clickndcloth.server_side.services.ShopDomainServiceImpl;
+import com.clickndcloth.server_side.services.StockDomainServiceImpl;
 
 @Service
 public class ReservationManager {
@@ -39,7 +40,7 @@ public class ReservationManager {
 	
 
 	@Autowired
-	private ProductRepository pro;
+	private StockDomainServiceImpl  stockService;
 	
 	@Transactional
 	public ReservationDto doReservation(Reservation reservation, int product_id, int shop_id) {
@@ -79,4 +80,10 @@ public class ReservationManager {
 		});
 		return reservationDtos;
 	}
+	
+	public String reservationAndStockUpdate(int stockId, int product_sold, int reservation_id, String status) {
+		stockService.updateQuantity(product_sold, stockId);
+		return reservationService.updateStatus(status, reservation_id);
+	}
+	
 }

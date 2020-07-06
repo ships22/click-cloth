@@ -29,4 +29,10 @@ public class ReservationDomainServiceImpl implements ReservationDomain {
 		return reservationRepository.findAllByShopId(shop_id);
 	}
 
+	@Override
+	public String updateStatus(String status, int reservation_id) {
+		reservationRepository.updateStatus(status, reservation_id);
+		return "Status updated";
+	}
+
 }

@@ -61,12 +61,13 @@ public class ReservationConroller {
 		return reservationManager.getAllByShop(shop_id);
 	}
 	
-	@RequestMapping(value = "/updateStock/{product_sold}/product/{product_id}", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/update/{status}/reservation/{reservation_id}/product/{product_sold}/stock/{id}", method = RequestMethod.POST, produces = "application/json")
 	//@PreAuthorize("hasRole('ROLE_CLIENT')")
-	public int updateStock(@PathVariable("product_sold") int product_sold , @PathVariable ("product_id") int product_id) {
+	public String updateStock(@PathVariable("status") String status, @PathVariable ("reservation_id") int reservation_id, 
+			@PathVariable ("product_sold") int product_sold, @PathVariable("id") int id) {
 		 
-		stRepo.updateQuantity(product_sold, product_id);
-		 return 1;
+		return reservationManager.reservationAndStockUpdate(id, product_sold, reservation_id, status);
+		 
 	}
 
 }

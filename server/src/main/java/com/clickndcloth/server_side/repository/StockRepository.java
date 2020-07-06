@@ -25,6 +25,6 @@ void updateUser(@Param("emailVerificationStatus") boolean emailVerificationStatu
 	
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE Product_available As pa SET pa.quantite = (pa.quantite - :product_sold) WHERE pa.product_id  =:product_id", nativeQuery = true)
-	void updateQuantity(@Param("product_sold") int product_sold , @Param("product_id") int product_id);
+	@Query(value = "UPDATE Product_available As pa SET pa.quantite = (pa.quantite - :product_sold) WHERE pa.id  =:id", nativeQuery = true)
+	void updateQuantity(@Param("product_sold") int product_sold , @Param("id") int id);
 }
