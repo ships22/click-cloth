@@ -10,30 +10,65 @@
     <h1>Click <span>&</span> Cloth</h1>
     <a href="#" mat-button color="menu_access">Homme</a>
   </div>
+
+  <input type="checkbox" id="nav-toggler" class="nav-toggler" />
+  <label for="nav-toggler"><span></span></label>
+
   <nav>
     <ul class="nav_main">
-      <li><a routerLink="/" mat-button color="menu_access">Acceuil</a></li>
+      <li>
+        <a routerLink="/" mat-button color="menu_access" (click)="closeBar()"
+          >Acceuil</a
+        >
+      </li>
       <li class="dropdown">
-        <a href="#" mat-button color="menu_access" class="top_li">Boutique</a>
+        <a href="" mat-button color="menu_access" class="top_li">Boutique</a>
         <ul class="sub_menu">
           <li>
-            <a routerLink="/all_products" mat-button color="menu_access"
+            <a
+              routerLink="/all_products"
+              mat-button
+              color="menu_access"
+              (click)="closeBar()"
               >Tous les produits</a
             >
           </li>
           <li>
-            <a routerLink="/ladies" mat-button color="menu_access">Femme</a>
+            <a
+              routerLink="/ladies"
+              mat-button
+              color="menu_access"
+              (click)="closeBar()"
+              >Femme</a
+            >
           </li>
           <li>
-            <a routerLink="/gents" mat-button color="menu_access">Homme</a>
+            <a
+              routerLink="/gents"
+              mat-button
+              color="menu_access"
+              (click)="closeBar()"
+              >Homme</a
+            >
           </li>
           <li>
-            <a routerLink="/children" mat-button color="menu_access">Enfants</a>
+            <a
+              routerLink="/children"
+              mat-button
+              color="menu_access"
+              (click)="closeBar()"
+              >Enfants</a
+            >
           </li>
         </ul>
       </li>
       <li *ngIf="!(isLoggedIn$ | async)">
-        <a routerLink="/login" mat-button color="menu_access" class="top_li"
+        <a
+          routerLink="/login"
+          mat-button
+          color="menu_access"
+          class="top_li"
+          (click)="closeBar()"
           >Se connecter</a
         >
       </li>
@@ -44,23 +79,47 @@
           color="menu_access"
           (click)="logout()"
           class="top_li"
+          (click)="closeBar()"
           >Déconnecter</a
         >
       </li>
-      <li><a href="#" mat-button color="menu_access">Propos</a></li>
+      <li>
+        <a href="#" mat-button color="menu_access" (click)="closeBar()"
+          >Propos</a
+        >
+      </li>
       <li *ngIf="!(isAdmin$ | async) && !(isSuperAdmin$ | async)">
-        <a routerLink="/cart" mat-button color="menu_access" class="nav_panier"
+        <a
+          routerLink="/cart"
+          mat-button
+          color="menu_access"
+          class="nav_panier"
+          (click)="closeBar()"
           >Panier
-          <span class="totalItems animate__animated animate__fadeIn" *ngIf="totalItemsAdded">{{
-            totalItemsAdded
-          }}</span>
+          <span
+            class="totalItems animate__animated animate__fadeIn"
+            *ngIf="totalItemsAdded"
+            >{{ totalItemsAdded }}</span
+          >
         </a>
       </li>
       <li *ngIf="isAdmin$ | async">
-        <a routerLink="/admin" mat-button color="menu_access">Admin</a>
+        <a
+          routerLink="/admin"
+          mat-button
+          color="menu_access"
+          (click)="closeBar()"
+          >Admin</a
+        >
       </li>
       <li *ngIf="isSuperAdmin$ | async">
-        <a mat-button routerLink="/super_admin" color="menu_access">S_Admin</a>
+        <a
+          mat-button
+          routerLink="/super_admin"
+          color="menu_access"
+          (click)="closeBar()"
+          >S_Admin</a
+        >
       </li>
     </ul>
   </nav>

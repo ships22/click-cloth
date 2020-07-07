@@ -41,4 +41,11 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authentication.signOut();
   }
+  closeBar() {
+    let checkBox = document.getElementById('nav-toggler') as HTMLInputElement;
+    checkBox.checked = false;
+    // checkBox.checked
+    console.log('test menu closing', checkBox);
+    
+  }
 }

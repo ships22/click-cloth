@@ -62,6 +62,48 @@ header
             &:hover
                 background: lighten(#000000, 15%)
                 color: #ffffff
+    input#nav-toggler
+        position: absolute
+        right: 25px
+        height: 10px
+        width: 10px
+        top: 50%
+        transform: translateY(-35%)
+        opacity: 0
+        display: none
+        &:checked ~ nav
+            transform: scale(1, 1)
+            ul li
+                transform: scale(1, 1)
+                transition: 250ms ease-in-out
+    label
+        position: absolute
+        top: 44px
+        right: 25px
+        height: 9%
+        width: 25px
+        border-radius: 4px
+        display: flex
+        align-items: center
+        // display: none
+        span 
+            position: relative
+            height: 3px
+            width: 25px
+            z-index: 2
+            // background: rgb(238, 238, 207)
+            background: #000000
+            &::before, &::after
+                content: ''
+                position: absolute
+                bottom: 7px
+                height: 3px
+                width: 25px
+                z-index: 2
+                background: #000000
+            &::after
+                top: 7px
+            
 
     nav
         // padding: 10px
@@ -202,3 +244,150 @@ header
     
             
   
+
+/********************  responsive  ***************/
+
+@media screen and (min-width:800px) and (max-width:959px) 
+    header    
+        height: 140px
+        marquee.sub_info
+            font-size: 18px
+            font-weight: 400
+            height: 30px
+        div.logo
+            height: 45px
+            width: 45px
+        div#title
+            height: 76px
+            h1
+                font-size: 54px
+            a.mat-menu_access
+                font-size: 20px
+                height: 26px
+                line-height: 26px
+                &:hover
+                    background: lighten(#000000, 15%)
+                    color: #ffffff
+        nav
+            height: 28px
+            ul
+                li 
+                    a.mat-menu_access
+                        font-size: 20px
+                        height: 26px
+                        line-height: 26px
+
+@media screen and (min-width:480px) and (max-width:799px) 
+    header    
+        height: 80px
+        // height: auto
+        position: relative
+        marquee.sub_info
+            font-size: 10px
+            font-weight: 400
+            height: 20px
+        div.logo
+            height: 45px
+            width: 45px
+        div#title
+            height: auto
+            // background: red
+            h1
+                font-size: 34px
+            a.mat-menu_access
+                font-size: 20px
+                height: 26px
+                line-height: 26px
+                display: none
+                &:hover
+                    background: lighten(#000000, 15%)
+                    color: #ffffff
+    
+        input#nav-toggler, label, label span  
+            display: block
+        nav
+            height: auto
+            position: absolute
+            transform: scale(1, 0)
+            transition: 250ms ease-in-out
+            transform-origin: top
+            background: rgba(255, 255, 255, .5)
+            right: 17px
+            top: 80px
+            
+            ul
+                display: flex
+                flex-direction: column
+                padding: 0
+                li 
+                    transform: scale(1, 0)
+                    transition: 250ms ease-in-out
+                    width: 120px
+                    a.mat-menu_access
+                        font-size: 20px
+                        height: 26px
+                        line-height: 26px
+                        border: none
+                        font-size: 12px
+                li.dropdown
+                    order: 5
+                    ul.sub_menu
+                        left: -10px
+                    ul.sub_menu li
+                        width: 140px
+
+@media screen and (min-width: 320px) and (max-width:479px)
+    header    
+        height: 60px
+        position: relative
+        marquee.sub_info
+            font-size: 8px
+            font-weight: 400
+            height: 17px
+        div.logo
+            height: 28px
+            width: 28px
+        div#title
+            height: auto
+            h1
+                font-size: 24px
+            a.mat-menu_access
+                display: none
+        input#nav-toggler, label, label span  
+            display: block
+        label span
+            top: -5px
+        label span, label span::before, label span::after
+            width: 20px
+            height: 2px
+            
+        nav
+            height: auto
+            position: absolute
+            transform: scale(1, 0)
+            transition: 250ms ease-in-out
+            transform-origin: top
+            background: rgba(255, 255, 255, .5)
+            right: 17px
+            top: 60px
+            ul
+                display: flex
+                flex-direction: column
+                padding: 0
+                li 
+                    transform: scale(1, 0)
+                    transition: 250ms ease-in-out
+                    width: 120px
+                    a.mat-menu_access
+                        font-size: 20px
+                        height: 26px
+                        line-height: 26px
+                        border: none
+                        font-size: 12px
+                li.dropdown
+                    order: 5
+                    ul.sub_menu
+                        left: -10px
+                    ul.sub_menu li
+                        width: 140px
+    
