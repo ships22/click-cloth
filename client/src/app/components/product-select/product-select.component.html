@@ -27,14 +27,14 @@
             <input
               type="number"
               placeholder="Quantite *"
-              name="qauntity"
-              [(ngModel)]="qauntity"
+              name="quantity"
+              [(ngModel)]="quantity"
               onfocus="this.value=''"
               required
             />
           </div>
         </section>
-        <button mat-button color="add_to_cart" class="btn_add_to_cart" (click)="addToCart(product)">
+        <button mat-button color="add_to_cart" class="btn_add_to_cart" (click)="addToCart()">
           Ajouter au panier
         </button>
         
@@ -44,5 +44,6 @@
       </div>
     </div>
   </section>
+  <app-message></app-message>
   <app-footer></app-footer>
 </div>

@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.clickndcloth.server_side.dto.ShopDto;
+
 import com.clickndcloth.server_side.dto.StockDto;
-import com.clickndcloth.server_side.models.Shop;
+
 import com.clickndcloth.server_side.models.Stock;
 import com.clickndcloth.server_side.services.StockDomainServiceImpl;
 
@@ -25,4 +25,5 @@ public class StockManager {
 		stockDto.setQuantite(addedStock.getQuantite());
 		return stockDto;
 	}
+	
 }

@@ -34,12 +34,12 @@ export class HomeComponent implements OnInit {
     pullDrag: true,
     autoplay: true,
     autoplayHoverPause: true,
-    center: false,
+    // center: false,
     dots: false,
     autoHeight: false,
-    // autoWidth: true,
-    slideBy: 3,
-    margin: 15,
+    autoWidth: true,
+    // slideBy: 3,
+    // margin: 10,
     nav: true,
     // navText: ['Précédent', 'Suivant'],
     navText: ["<span class='previous'>Précédent</span>", "<span class='next'>Suivant</span>"],
@@ -47,12 +47,16 @@ export class HomeComponent implements OnInit {
       0: {
         items: 1,
       },
-      600: {
-        items: 3,
+      400: {
+        items: 2,
       },
-      900: {
+      740: {
+        items: 3
+      },
+      1200: {
         items: 4,
       }
+
     }
   }
   

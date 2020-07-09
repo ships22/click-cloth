@@ -1,29 +1,7 @@
 <div id="main">
   <h3>{{ admin?.first_name }}, votre panneau d'administration</h3>
   <app-message></app-message>
-  <mat-tab-group dynamicHeight>
-    <mat-tab label="Détails">
-      <div class="details mat-elevation-z4">
-        <h2>{{ (admin?.shops)[0]?.name }}</h2>
-        <button
-          *ngIf="!(admin?.shops)[0]"
-          mat-raised-button
-          (click)="onCreateShop()"
-        >
-          <mat-icon>add</mat-icon>Ajouter votre boutique
-        </button>
-        <section class="proprietor">
-          <p class="name">
-            Propriétaire : {{ admin?.first_name }} {{ admin?.last_name }}
-          </p>
-          <p class="email">Adresse mèl : {{ admin?.email }}</p>
-          <p class="address">Adresse : {{ admin?.address }}</p>
-          <a (click)="resetPasswordRequest()">
-            Cliquer ici pour réinitialiser le mot de passe
-          </a>
-        </section>
-      </div>
-    </mat-tab>
+  <mat-tab-group dynamicHeight mat-align-tabs="center" [selectedIndex]="1">
     <mat-tab label="Gérer la boutique">
       <div class="shop mat-elevation-z4">
         <section class="product">
@@ -55,9 +33,7 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header
                   >id</mat-header-cell
                 >
-                <mat-cell *matCellDef="let element">
-                  id: {{ element.id }}</mat-cell
-                >
+                <mat-cell *matCellDef="let element"> {{ element.id }}</mat-cell>
               </ng-container>
               <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef mat-sort-header
@@ -150,9 +126,31 @@
         </section>
       </div>
     </mat-tab>
-    <mat-tab label="Les commandes" *ngIf="(admin?.shops)[0]">
-      <div class="order mat-elevation-z4">
-        Large content
+    <mat-tab label="Les réservations">
+      <div class="reservation mat-elevation-z4">
+        <app-reservation></app-reservation>
+      </div>
+    </mat-tab>
+    <mat-tab label="Détails">
+      <div class="details mat-elevation-z4">
+        <h2 class="shop_name">{{ (admin?.shops)[0]?.name }}</h2>
+        <button
+          *ngIf="!(admin?.shops)[0]"
+          mat-raised-button
+          (click)="onCreateShop()"
+        >
+          <mat-icon>add</mat-icon>Ajouter votre boutique
+        </button>
+        <section class="proprietor">
+          <p class="name">
+            Propriétaire : {{ admin?.first_name }} {{ admin?.last_name }}
+          </p>
+          <p class="email">Adresse mèl : {{ admin?.email }}</p>
+          <p class="address">Adresse : {{ admin?.address }}</p>
+          <a (click)="resetPasswordRequest()">
+            Cliquer ici pour réinitialiser le mot de passe
+          </a>
+        </section>
       </div>
     </mat-tab>
   </mat-tab-group>

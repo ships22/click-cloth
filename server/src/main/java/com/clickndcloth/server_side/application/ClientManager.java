@@ -65,6 +65,22 @@ public class ClientManager {
 	}
 	
 	@Transactional
+	public ClientDto findClientByEmail(String email) {
+		Client client = clientDomainService.findByEmail(email);
+		ClientDto clientDto = new ClientDto();
+		clientDto.setId(client.getId());
+		clientDto.setFirst_name(client.getFirst_name());
+		clientDto.setLast_name(client.getLast_name());
+		clientDto.setEmail(client.getEmail());
+		clientDto.setPhone(client.getPhone());
+		clientDto.setHouse_no(client.getHouse_no());
+		clientDto.setStreet(client.getStreet());
+		clientDto.setZip_code(client.getZip_code());
+		clientDto.setCountry(client.getCountry());
+		return clientDto;
+	}
+	
+	@Transactional
 	public String addClient(Client client, String password) {
 		if(userDomainService.getByEmail(client.getEmail()) ==  null) {
 			

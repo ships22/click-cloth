@@ -11,5 +11,7 @@ public interface ReservationDomain {
 	List<Reservation>getAllByClient(int client_id);
 	
 	List<Reservation>getAllByShop(int shop_id);
+	
+	String updateStatus(String status, int reservation_id);
 
 }

@@ -66,3 +66,85 @@ div.footer_main
         color: #ffffff
         padding: 40px
                 
+/********************  responsive  ***************/
+
+@media screen and (min-width:768px) and (max-width:959px) 
+    div.info_box_header
+        h6
+            font-size: 16px !important
+            padding: 35px 25px !important
+            
+    div.info_box_body
+        
+        .info_box
+            padding: 30px !important
+    div.info_box_body
+        a
+            font-size: 14px !important
+        
+        p
+            font-size: 13px !important
+
+@media screen and (min-width:480px) and (max-width:767px) 
+    div.info_box_header
+        h6
+            font-size: 12px !important
+            padding: 30px 3px !important
+            span
+                &::after
+                    width: 40px !important
+                    height: 3px !important
+                    
+            
+    div.info_box_body
+        .info_box
+            padding: 10px !important
+            span
+                height: 40px !important
+                width: 65px !important
+                
+                &:nth-child(1)
+                    background-size: 50px 30px !important
+                &:nth-child(2) 
+                    background-size: 50px 30px !important
+                &:nth-child(3)
+                    background-size: 50px 30px !important
+    div.info_box_body
+        a
+            font-size: 12px !important
+        
+    p
+        font-size: 12px !important
+
+@media screen and (min-width:320px) and (max-width:479px) 
+    div.info_box_header
+        h6
+            font-size: 9px !important
+            padding: 15px 0px !important
+            span
+                &::after
+                    width: 28px !important
+                    height: 2px !important
+                    
+            
+    div.info_box_body
+        .info_box
+            padding: 0px !important
+            span
+                height: 35px !important
+                width: 45px !important
+                
+                &:nth-child(1)
+                    background-size: 45px 25px !important
+                &:nth-child(2) 
+                    background-size: 45px 25px !important
+                &:nth-child(3)
+                    background-size: 45px 25px !important
+    div.info_box_body
+        a
+            font-size: 10px !important
+    p
+        font-size: 10px !important
+        
+        
+            

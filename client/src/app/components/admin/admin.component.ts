@@ -16,6 +16,8 @@ import { MatSort } from "@angular/material/sort";
 import { MatPaginator } from "@angular/material/paginator";
 import { ProductService } from "src/app/services/product.service";
 import { Router } from "@angular/router";
+import { Reservation } from 'src/app/models/reservation';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: "app-admin",
@@ -23,6 +25,10 @@ import { Router } from "@angular/router";
   styleUrls: ["./admin.component.sass"],
 })
 export class AdminComponent implements OnInit {
+
+  
+  // product management -
+
   productSearchKey: string;
   subscrition: Subscription;
   admin: Admin;
@@ -46,6 +52,23 @@ export class AdminComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  // reservation management -
+  reservationSearch: string;
+  reservationListInIt: any[];
+  reservationMatList: MatTableDataSource<Reservation>;
+  resColumns: string[] = [
+    "reservation_id",
+    "reference",
+    "product"
+    // "client",
+    // "total",
+    // "discount",
+    // "image",
+    // "size",
+    // "quantité",
+    // "options",
+  ];
+
   constructor(
     private adminService: AdminService,
     private messageService: MsgService,
@@ -53,6 +76,7 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private shopService: ShopService,
     private productService: ProductService,
+    private reseravtionService: ReservationService,
     private dialog: MatDialog
   ) {}
   adminHttpService$ = new Observable<Admin[]>();
@@ -74,7 +98,8 @@ export class AdminComponent implements OnInit {
           (response) => (
             (this.admin = response),
             console.log("test admin :", response),
-            this.getAllProductByShop(response.shops[0].shop_id)
+            this.getAllProductByShop(response.shops[0].shop_id),
+            this.getAllReservationByShop(response.shops[0].shop_id)
             // (this.productListInIt = response.shops[0]?.productList),
             // (this.productMatList = new MatTableDataSource(
             //   this.productListInIt
@@ -101,6 +126,19 @@ export class AdminComponent implements OnInit {
           (this.productMatList.sort = this.sort);
         this.productMatList.paginator = this.paginator;
       });
+  }
+  getAllReservationByShop(shop_id) {
+    this.reseravtionService
+    .getReservationsByShop(shop_id)
+    .pipe(take(1))
+    .subscribe((response) => {
+      this.reservationListInIt = response;
+      console.log('test reservation :', response);
+      
+      this.reservationMatList = new MatTableDataSource(this.reservationListInIt);
+      this.reservationMatList.sort = this.sort;
+      this.reservationMatList.paginator = this.paginator;
+    })
   }
   onCreateProduct() {
     console.log("on ce pr");
