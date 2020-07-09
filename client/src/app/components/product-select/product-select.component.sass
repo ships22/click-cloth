@@ -82,4 +82,133 @@
                 left: 0
                 
 
-            
+
+/***************************** responsive**************************/
+
+    
+@media screen and (min-width: 480px) and (max-width: 767px) 
+    
+    .products_holder
+        max-width: 470px
+        margin: 20px auto
+        .product_selection
+            width: 470px
+            margin: auto
+            img
+                height: 350px
+                width: 250px
+                
+            .details_selection
+                width: calc( 100% - 250px )
+                margin-left: 10px
+                p.price
+                    font-size: 16px
+                    padding: 8px
+                p.name
+                    font-size: 16px
+                    padding: 8px
+                    width: 200px
+                p.description
+                    padding: 5px
+                    font-size: 12px
+                .productOfSize
+                    margin-top: 20px 
+                    #productOfSize-label
+                        margin-left: 7px
+                        font-size: 12px
+                    .productOfSize-group
+                        display: flex
+                        flex-direction: column
+                        margin: 10px 0
+                    .input_group
+                        padding: 0
+                        width: 200px
+                        margin-bottom: 10px
+                    .productOfSize-button
+                        margin: 5px 0px
+                        position: relative
+                        width: 200px
+                    span
+                        font-size: 10px
+                        background: #f4f6ea
+                        padding: 3px 5px
+                        margin-left: 10px
+                        position: absolute
+                        right: 0px
+                button.mat-add_to_cart
+                    @include menu_font_style
+                    font-weight: 400
+                    &:hover
+                        background: lighten(#000000, 0%)
+                        color: #ffffff
+                p.shop
+                    position: absolute
+                    font-size: 12px
+                    width: 200px
+                    bottom: 0
+                    left: 0
+
+    
+@media screen and (min-width: 320px) and (max-width: 479px) 
+    
+    .products_holder
+        max-width: 310px
+        margin: 20px auto
+        .product_selection
+            width: 310px
+            margin: 0px auto 20px !important
+            min-height: 340px
+            img
+                height: 190px
+                width: 140px 
+            .details_selection
+                width: calc( 100% - 140px )
+                margin-left: 5px
+                p.price
+                    font-size: 14px
+                    padding: 6px
+                p.name
+                    font-size: 14px
+                    padding: 6px
+                    width: 170px
+                p.description
+                    padding: 5px
+                    font-size: 12px
+                .productOfSize
+                    margin-top: 16px 
+                    #productOfSize-label
+                        margin-left: 5px
+                        font-size: 10px
+                    .productOfSize-group
+                        display: flex
+                        flex-direction: column
+                        margin: 8px 0
+                        .productOfSize-button
+                            font-size: 12px
+                    .input_group
+                        padding: 0
+                        width: 170px
+                        margin-bottom: 10px
+                    .productOfSize-button
+                        margin: 5px 0px
+                        position: relative
+                        width: 160px
+                    span
+                        font-size: 10px
+                        background: #f4f6ea
+                        padding: 3px 5px
+                        margin-left: 10px
+                        position: absolute
+                        right: 0px
+                button.mat-add_to_cart
+                    @include menu_font_style
+                    font-weight: 400
+                    &:hover
+                        background: lighten(#000000, 0%)
+                        color: #ffffff
+                p.shop
+                    position: absolute
+                    font-size: 10px
+                    width: 160px
+                    bottom: 0px
+                    left: 0

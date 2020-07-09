@@ -1,12 +1,12 @@
-<div id="main" class="animate__animated animate__fadeIn">
+<div id="main_cart" class="animate__animated animate__fadeIn">
   <h2>Votre panier</h2>
   <h3 *ngIf="emptyCart" class="no_product">
     Panier est vide!
   </h3>
   <div class="product_container" *ngIf="!emptyCart">
-    <section class="products_holder">
+    <section class="cart_products_holder">
       <div
-        class="product animate__animated animate__fadeIn"
+        class="cart_product animate__animated animate__fadeIn"
         *ngFor="
           let item of cartItems
             | paginate: { itemsPerPage: 6, currentPage: p }

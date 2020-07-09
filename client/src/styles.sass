@@ -12,19 +12,38 @@ body, html
 // product components -
 // mixins
 @mixin grid($cols, $mgn) 
-    float: left
-    margin-right: $mgn
-    margin-bottom: $mgn
-    width: ((100% - (($cols - 1) * $mgn)) / $cols)
+    float: left !important
+    margin-right: $mgn !important
+    margin-bottom: $mgn !important
+    width: ((100% - (($cols - 1) * $mgn)) / $cols) !important
     &:nth-child(#{$cols}n)
-        margin-right: 0
-        
+        margin-right: 0 !important
 
+@mixin big-screen
+  @media (min-width: 1050px)
+       @include grid(4, 2%)
+
+@mixin medium-screen
+  @media (max-width: 1049px) and (min-width: 600px)
+       @include grid(3, 2%)
+       
+@mixin small-screen
+  @media (max-width: 599px) and (min-width: 480px)
+       @include grid(2, 2%)
+
+@mixin x-small-margin
+  @media (max-width: 479px) and (min-width: 400px)
+       @include grid(2, 2%)
+        
+@mixin xx-small-margin
+  @media (max-width: 399px) and (min-width: 320px)
+       @include grid(2, 2%)
+       
+        
     
 #main
     padding-top: 160px
     margin: -160px auto 0px
-    // background: linear-gradient(-1800deg, rgba(255,255,255,1) 0%, #fcf9f5 57%)
     h2
         width: 100%
         text-align: center
@@ -54,7 +73,12 @@ body, html
             height: 100%
             width: 840px
             .product
-                @include grid(4, 2% )
+                @include big-screen
+                @include medium-screen
+                @include small-screen
+                @include x-small-margin
+                @include xx-small-margin
+                
                 height: 350px
                 position: relative
                 box-shadow: 1px 1px 12px 1px #eb4c0e1a
@@ -147,3 +171,88 @@ body, html
             background: #f7f3ea
             box-shadow: 0 0 0 30px #f7f3ea inset !important
             border-bottom: 1px solid #000000 !important
+
+
+/***************************** responsive**************************/
+
+    
+@media screen and (min-width:768px) and (max-width:1049px) 
+    h2
+        font-size: 20px
+        padding: 16px
+    .product_container
+        max-width: 760px !important
+        margin: 50px auto !important
+        .filter
+            width: 170px !important 
+            height: 400px !important
+        .products_holder
+            width: 570px !important
+            .product
+                height: 340px !important
+                margin-bottom: 50px !important
+                img 
+                    width: 100%
+                    height: calc( 100% - 80px )
+               
+@media screen and (min-width:600px) and (max-width:767px) 
+    h2
+        font-size: 16px
+        padding: 14px
+    .product_container
+        max-width: 750px !important
+        margin: 40px auto !important
+        flex-direction: column
+        align-items: center
+        .filter
+            width: 590px !important
+            height: auto !important
+            margin-bottom: 20px
+        .products_holder
+            width: 590px !important
+
+@media screen and (min-width:480px) and (max-width:599px) 
+    h2
+        font-size: 16px
+        padding: 14px
+    .product_container
+        max-width: 470px !important
+        margin: 10px auto !important
+        flex-direction: column
+        align-items: center
+        .filter
+            width: 470px !important
+            height: auto !important
+            margin-bottom: 20px
+        .products_holder
+            width: 470px !important
+
+@media screen and (min-width:320px) and (max-width:479px) 
+    h2
+        font-size: 14px 
+        padding: 8px 
+
+    .product_container
+        max-width: 310px !important
+        margin: 10px auto !important
+        flex-direction: column
+        align-items: center
+        .filter
+            width: 310px !important
+            height: auto !important
+            margin-bottom: 15px
+        .products_holder
+            width: 310px !important
+            .product
+                max-width: 180px !important
+                height: 300px !important
+    
+    h3.no_product
+        padding: 5px !important
+        font-size: 14px
+        
+
+
+@media screen and (max-width: 319px) 
+    body
+        display: none
