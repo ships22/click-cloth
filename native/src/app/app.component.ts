@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { from } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -12,9 +13,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
 
   public appMenu = [
-    { title: 'Tous les produits', url: '/test1' },
+    { title: 'Tous les produits', url: '/tabs/all-products' },
     { title: 'Femme', url: '/test1' },
     { title: 'Homme', url: '/test1' },
+    { title: 'Enfants', url: '/test1' },
   ]
 
   constructor(

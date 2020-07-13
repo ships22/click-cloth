@@ -1,6 +1,6 @@
 <ion-app>
-  
-    <ion-menu menuId="main-menu" content-id="main">
+  <ion-split-pane contentId="main">
+    <ion-menu side="start" menuId="main" contentId="main" type="overlay">
       <ion-header>
         <ion-toolbar>
           <ion-title>Menu</ion-title>
@@ -19,5 +19,25 @@
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-split-pane>
+
+
+  <!-- <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="landing">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Acceuil</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="cart">
+        <ion-icon name="cart"></ion-icon>
+        <ion-label>Panier</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button tab="account">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Compte</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> -->
   
 </ion-app>
