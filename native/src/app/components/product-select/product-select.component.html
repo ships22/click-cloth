@@ -1,0 +1,92 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>
+      Sélectionner votre produit
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+  <div id="main" class="animate__animated animate__fadeIn">
+    <section class="products_holder">
+      <div class="product_selection animate__animated animate__fadeIn">
+        <img class="photo" src="data:image/jpeg;base64,{{ product.image }}" />
+        <div class="details_selection">
+          <p class="price">{{ product.price }}€</p>
+          <p class="name">{{ product.name }}</p>
+          <p class="description">{{ product.description }}</p>
+          <section class="productOfSize">
+            <ion-list>
+              <ion-radio-group [(ngModel)]="productOfSize">
+                <ion-label>Votre taille *:</ion-label>
+                <ion-item *ngFor="let product of products">
+                  <ion-label style="padding: 0px;">
+                    {{ product.stock[0]?.size }}
+
+                  </ion-label>
+                  <ion-radio slot="start" mode="md" color="dark" [value]="product">
+                  </ion-radio>
+                  <span>En stock : {{ product.stock[0]?.quantite }}</span>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+
+            <!-- <label id="productOfSize-label">Votre taille * :</label>
+            <mat-radio-group
+              aria-labelledby="productOfSize-label"
+              class="productOfSize-group"
+              [(ngModel)]="productOfSize"
+            >
+              <radio-button
+                class="productOfSize-button"
+                *ngFor="let product of products"
+                [value]="product"
+              >
+                {{ product.stock[0]?.size }}
+                <span>En stock : {{ product.stock[0]?.quantite }}</span>
+              </radio-button>
+            </radio-group>  -->
+
+
+
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating">Quantité*</ion-label>
+                <ion-input
+                type="number"
+                name="quantity"
+                [(ngModel)]="quantity"
+                onfocus="this.value=''"
+                required
+                ></ion-input>
+              </ion-item>
+            </ion-list>
+
+            <!-- <div class="input_group">
+              <input
+                type="number"
+                placeholder="Quantite *"
+                name="quantity"
+                [(ngModel)]="quantity"
+                onfocus="this.value=''"
+                required
+              />
+            </div> -->
+          </section>
+          <!-- <button mat-button color="add_to_cart" class="btn_add_to_cart" (click)="addToCart()">
+            Ajouter au panier
+          </button> -->
+          <ion-button size="small" class="btn_add_to_cart" expand="full" color="dark" (click)="addToCart()">Réserver</ion-button>
+          
+          <p class="shop">
+            Boutique : {{ product.shop?.name }} - {{ product.shop?.address }}
+          </p>
+        </div>
+      </div>
+    </section>
+    <app-message></app-message>
+  </div>
+  
+</ion-content>

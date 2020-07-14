@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
 import { AllProductsComponent } from '../components/all-products/all-products.component';
+import { ProductSelectComponent } from '../components/product-select/product-select.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,15 @@ const routes: Routes = [
             path: '',
             // loadChildren: () => import('../components/all-products/all-products.component').then( m => m.AllProductsComponent)
             component: AllProductsComponent
+          }
+        ]
+      },
+      {
+        path: '',
+        children: [
+          {
+            path: 'product_select/:productRef',
+            component: ProductSelectComponent
           }
         ]
       },

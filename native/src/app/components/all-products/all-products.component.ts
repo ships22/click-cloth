@@ -51,7 +51,7 @@ export class AllProductsComponent implements OnInit {
     
   }
   selectProduct(productRef) {
-    this.router.navigate(["/product_select", productRef]);
+    this.router.navigate(["/tabs/product_select", productRef]);
   }
 
 }

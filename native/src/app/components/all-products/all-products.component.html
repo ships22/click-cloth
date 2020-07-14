@@ -32,7 +32,7 @@
         <div
           class="product animate__animated animate__fadeIn"
           *ngFor="
-            let item of collection | paginate: { itemsPerPage: 12, currentPage: p }
+            let item of collection | paginate: { itemsPerPage: 4, currentPage: p }
           "
         >
           <img src="data:image/jpeg;base64,{{ item.image }}" />
@@ -46,6 +46,8 @@
           </div>
           <button class="btn_add_basket" (click)="selectProduct(item.productRef)">Ajouter au panier</button>
         </div>
+      </section>
+      <section class="info_cart">
         <pagination-controls style="float: left;"
           (pageChange)="p = $event"
           class="paginator"

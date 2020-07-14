@@ -1,0 +1,108 @@
+.products_holder {
+  max-width: 310px;
+  margin: 20px auto;
+}
+
+.products_holder .product_selection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 340px;
+  margin: 0px auto 20px;
+}
+
+.products_holder .product_selection img {
+  height: 350px;
+  -webkit-box-shadow: 1px 1px 12px 1px #eb4c0e1a;
+          box-shadow: 1px 1px 12px 1px #eb4c0e1a;
+}
+
+.products_holder .product_selection .details_selection {
+  position: relative;
+}
+
+.products_holder .product_selection .details_selection p {
+  margin: 0;
+}
+
+.products_holder .product_selection .details_selection p.price {
+  float: right;
+  font-weight: 600;
+  background: #f4f6ea;
+  font-size: 14px;
+  padding: 10px 5px;
+}
+
+.products_holder .product_selection .details_selection p.name {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px 5px;
+  background: #000000;
+  color: #ffffff;
+}
+
+.products_holder .product_selection .details_selection p.description {
+  font-size: 12px;
+}
+
+.products_holder .product_selection .details_selection .productOfSize {
+  margin: 16px auto;
+}
+
+.products_holder .product_selection .details_selection .productOfSize #productOfSize-label {
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+.products_holder .product_selection .details_selection .productOfSize .productOfSize-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 8px 0px;
+}
+
+.products_holder .product_selection .details_selection .productOfSize .productOfSize-group .productOfSize-button {
+  font-size: 12px;
+}
+
+.products_holder .product_selection .details_selection .productOfSize .input_group {
+  padding: 0;
+  width: 170px;
+  margin-bottom: 10px;
+}
+
+.products_holder .product_selection .details_selection .productOfSize .productOfSize-button {
+  margin: 5px 0px;
+  position: relative;
+  width: 160px;
+}
+
+.products_holder .product_selection .details_selection .productOfSize span {
+  font-size: 10px;
+  background: #f4f6ea;
+  padding: 3px 5px;
+  margin-left: 10px;
+  position: absolute;
+  right: 0px;
+}
+
+.products_holder .product_selection .details_selection p.shop {
+  font-size: 10px;
+  width: 160px;
+  bottom: 0;
+  left: 0;
+}
+
+button {
+  padding: 0;
+}
+/*# sourceMappingURL=product-select.component.css.map */
