@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
 import { AllProductsComponent } from '../components/all-products/all-products.component';
 import { ProductSelectComponent } from '../components/product-select/product-select.component';
+import { CartComponent } from '../components/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../pages/cart/cart.module').then( m => m.CartPageModule)
+            //loadChildren: () => import('../pages/cart/cart.module').then( m => m.CartPageModule)
+            component: CartComponent
           }
         ]
       },

@@ -1,3 +1,60 @@
-<p>
-  cart works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>
+      Panier
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div id="main_cart" class="animate__animated animate__fadeIn">
+    <h3 *ngIf="emptyCart" class="no_product">
+      Panier est vide!
+    </h3>
+    <div class="product_container" *ngIf="!emptyCart">
+      <section class="cart_products_holder">
+        <div
+          class="cart_product animate__animated animate__fadeIn"
+          *ngFor="
+            let item of cartItems
+              | paginate: { itemsPerPage: 6, currentPage: p }
+          "
+        >
+          <img src="data:image/jpeg;base64,{{ item.image }}" />
+          <div class="details">
+            <section class="cart_option">
+              <button class="warn decrease" (click)="decrase(item)">-</button>
+              <button class="warn supprimer" (click)="delete(item)">
+                supprimer
+              </button>
+            </section>
+            <p class="price">{{ item.price }}€</p>
+            <p class="name">{{ item.name }}</p>
+            <p class="description">{{ item.description }}</p>
+            <p class="description">Vous avez ajouté : {{ item.qty }}</p>
+            <p class="description sous_total">
+              Sous total : {{ item.sub_total }}
+            </p>
+            <p class="shop">{{ item.shop.name }} - {{ item.shop.address }}</p>
+            <button class="reserve" (click)="reserve(item)">
+              Finaliser la réservation
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="info_cart">
+        <pagination-controls
+          style="float: left;"
+          (pageChange)="p = $event"
+          class="paginator"
+          previousLabel="Précédent"
+          nextLabel="Suivant"
+          autoHide="true"
+          responsive="true"
+        ></pagination-controls>
+        <p class="total">Total à payer: {{ totalToPay }}</p>
+      </section>
+      <app-message></app-message>
+    </div>
+  </div>
+</ion-content>
