@@ -29,7 +29,8 @@ export class CartService {
   async getAllItem() {
     // let contents = this.localStorage.get("c&cCart");
     let cart = await this.localStorage.get("c&cCart");
-    this.contents = JSON.parse(cart);
+    if(cart) return this.contents = JSON.parse(cart);
+    
     return this.contents;
     
     // cart.then((value) => {
@@ -54,7 +55,7 @@ export class CartService {
     await this.localStorage.set(KEY, _cart);
   }
   addOrIncrease(item, qty) {
-    let exists = this.contents.find((product) => product.id == item.id);
+    let exists = this.contents?.find((product) => product.id == item.id);
     if (!exists) {
       item.qty = qty;
       this.contents.push(item);

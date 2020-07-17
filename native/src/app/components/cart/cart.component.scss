@@ -1,0 +1,100 @@
+
+#main_cart {
+    h2 {
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+        font-weight: 800;
+        text-transform: uppercase;
+        background: #f4f6ea;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+    .product_container {
+        display: grid;
+        flex-direction: column !important;
+        justify-content: center;
+        .cart_products_holder {
+            width: 310px;
+            padding: 5px;
+            margin: auto;
+            .cart_product {
+                height: 230px;
+                padding: 6px;
+                display: flex;
+                flex-direction: row;
+                box-shadow: 1px 1px 12px 1px #eb4c0e1a;
+                img {
+                    height: 150px;
+                    width: 110px;
+                }
+                .details {
+                    margin-left: 15px;
+                    width: calc( 100% - 120px );
+                    position: relative;
+                    p {
+                        font-size: 12px;
+                    }
+                    section.cart_option {
+                        position: relative;
+                        float: right;
+                        display: flex;
+                        width: 90px;
+                        bottom: 10px;
+                        button {
+                            margin-top: 10px;
+                            z-index: 15;
+                            border: none;
+                            transition: .4s;
+                            &:hover {
+                                background: red;
+                                cursor: pointer;
+                            }
+                        }
+                        button.supprimer {
+                            height: 25px;
+                            font-size: 10px;
+                            font-weight: 400;
+                            text-align: center;
+                            padding: 0px 5px;
+                            margin-left: 8px;
+                        }
+                        button.decrease {
+                            width: 35px;
+                        }
+                    .sous_total {
+                        font-weight: 600;
+                    }
+
+                }
+                        button.reserve {
+                            z-index: 15;
+                            border: none;
+                            transition: .4s;
+                            padding: 5px !important;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            &:hover {
+                                cursor: pointer;
+                                background: #000000;
+                                color: #ffffff;
+                            }
+                        }
+            }
+        }
+    }
+        section.info_cart {
+            padding: 10px;
+            margin-top: 50px;
+            text-align: center;
+            border-top: 1px solid #000000;
+            p.total {
+                float: right;
+                font-weight: 600;
+                text-align: right;
+            }
+        }
+    
+    }
+}  

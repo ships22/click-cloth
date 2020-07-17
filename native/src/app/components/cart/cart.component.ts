@@ -55,14 +55,18 @@ export class CartComponent implements OnInit {
       this.emptyCart = true;
     }
   }
-  reserve(item) {
+  async reserve(item) {
     console.log("id to reserve :", item);
-    if (!this.authentication.isLoggedIn()) {
+
+    let userloggedin = await this.authentication.isLoggedIn();
+    console.log('test userloggedis :', userloggedin);
+    if(!userloggedin) {
       console.log("user not logged in ");
-      this.router.navigate(["login"]);
+      this.router.navigate(["tabs/account"]);  
     } else {
       console.log("logged in user");
-      let clientEmail = this.authentication.getEmail();
+
+      let clientEmail = this.authentication.getDecodedAccessToken(userloggedin).user_name;
       this.clientService.getClientByEmail(clientEmail).subscribe((response) => {
         console.log("test client by mail :", response);
         let reservation = {
@@ -83,5 +87,32 @@ export class CartComponent implements OnInit {
           });
       });
     }
+
+    // if (!this.authentication.isLoggedIn()) {
+    //   console.log("user not logged in ");
+    //   this.router.navigate(["tabs/account"]);
+    // } else {
+    //   console.log("logged in user");
+    //   let clientEmail = this.authentication.getEmail();
+    //   this.clientService.getClientByEmail(clientEmail).subscribe((response) => {
+    //     console.log("test client by mail :", response);
+    //     let reservation = {
+    //       reference: item.productRef,
+    //       total: item.sub_total,
+    //       status: "en attente",
+    //       quantity: item.qty,
+    //       client: {
+    //         id: response.id,
+    //       },
+    //     };
+    //     this.cartService
+    //       .reserve(reservation, item.id, item.shop.shop_id)
+    //       .subscribe((response) => {
+    //         console.log("item reserved :", response);
+    //         this.delete(item);
+    //         this.msgService.sendMessage("Merci pour votre réservation.");
+    //       });
+    //   });
+    // }
   }
 }

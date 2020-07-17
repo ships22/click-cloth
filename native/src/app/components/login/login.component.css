@@ -1,0 +1,141 @@
+.main {
+  height: calc( 100vh -  100px);
+  padding-top: 15px;
+}
+
+.main div.form_wrapper {
+  width: 310px;
+  margin: auto;
+  margin-bottom: 20px;
+  background: #ffffff;
+  border: 1px solid #f0e8e8;
+  -webkit-box-shadow: 1px 1px 15px 3px #eb4c0e1a;
+          box-shadow: 1px 1px 15px 3px #eb4c0e1a;
+  -webkit-transition: opacity 4s all ease-in;
+  transition: opacity 4s all ease-in;
+}
+
+.main div.form_wrapper div.form_header {
+  padding: 5px;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(216, 186, 255, 0.32)), to(rgba(245, 228, 199, 0.4)));
+  background: linear-gradient(to right, rgba(216, 186, 255, 0.32) 0%, rgba(245, 228, 199, 0.4) 100%);
+}
+
+.main div.form_wrapper div.form_header h3 {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.main div.form_wrapper form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px 0px;
+}
+
+.main div.form_wrapper form section {
+  width: 100%;
+  text-align: center;
+}
+
+.main div.form_wrapper form .input_group {
+  padding: 5px;
+}
+
+.main div.form_wrapper form .input_group input {
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #000000;
+  width: 100%;
+  background: none;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+          box-shadow: 0 0 0 30px white inset !important;
+}
+
+.main div.form_wrapper form .input_group input:focus {
+  border: none !important;
+  background: #f7f3ea;
+  -webkit-box-shadow: 0 0 0 30px #f7f3ea inset !important;
+          box-shadow: 0 0 0 30px #f7f3ea inset !important;
+  border-bottom: 1px solid #000000 !important;
+}
+
+.main div.form_wrapper form .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.main div.form_wrapper form .btn .btn_login, .main div.form_wrapper form .btn .btn_registration {
+  border: 1px solid orange;
+  background: orange;
+  text-transform: uppercase;
+  color: #ffffff;
+  outline: none;
+  margin-top: 10px;
+  height: 30px;
+  padding: 0px 5px;
+  line-height: 30px;
+}
+
+.main div.form_wrapper form .btn .btn_login:hover, .main div.form_wrapper form .btn .btn_registration:hover {
+  background: #e69500;
+  cursor: pointer;
+}
+
+.main div.form_wrapper form .btn p.or {
+  font-size: 10px;
+  position: relative;
+  color: #908e8e;
+  font-weight: 600;
+  width: 40px;
+  margin: 20px auto 10px;
+}
+
+.main div.form_wrapper form .btn p.or::before {
+  content: '';
+  position: absolute;
+  right: 40px;
+  height: 1px;
+  width: 35px;
+  background: #b1afaf;
+  top: 8px;
+}
+
+.main div.form_wrapper form .btn p.or::after {
+  content: '';
+  position: absolute;
+  left: 40px;
+  height: 1px;
+  width: 35px;
+  background: #b1afaf;
+  top: 8px;
+}
+
+.main div.form_wrapper form .btn span {
+  font-weight: 600;
+  font-size: 12px;
+  color: #b1afaf;
+}
+
+.main div.form_wrapper form .btn span:hover {
+  cursor: pointer;
+  color: #000000;
+}
+
+.main div.form_wrapper form .btn div span, .main div.form_wrapper form .btn div p {
+  display: inlin;
+  margin: 10p;
+  font-size: 10px;
+}
+
+.has-error {
+  color: red;
+}
+/*# sourceMappingURL=login.component.css.map */
