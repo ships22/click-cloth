@@ -6,11 +6,11 @@ import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-all-products',
-  templateUrl: './all-products.component.html',
-  styleUrls: ['./all-products.component.scss']
+  selector: 'app-ladies',
+  templateUrl: './ladies.component.html',
+  styleUrls: ['./ladies.component.scss'],
 })
-export class AllProductsComponent implements OnInit {
+export class LadiesComponent implements OnInit {
   categories = [];
   selectedCat: '';
   p: number = 1;
@@ -24,12 +24,12 @@ export class AllProductsComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.productService.getAllProducts()
+    this.productService.getAllProductByFemale()
     .pipe(take(1))
     .subscribe(response => {
       console.log('test products call :' , response);
       this.collection = response;
-      this.collection.forEach(product => {
+      this.collection.forEach(product => {  
         product.stock.forEach(stock => {
           product['inStock'] =+ stock.quantite;
         });

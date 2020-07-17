@@ -39,6 +39,7 @@
           flex-direction: row;
   -webkit-box-shadow: 1px 1px 12px 1px #eb4c0e1a;
           box-shadow: 1px 1px 12px 1px #eb4c0e1a;
+  margin-top: 15px;
 }
 
 #main_cart .product_container .cart_products_holder .cart_product img {

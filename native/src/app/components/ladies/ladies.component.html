@@ -1,0 +1,64 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>
+      Femme
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div id="main" class="animate__animated animate__fadeIn">
+    
+    <div class="product_container">
+      <section class="filter">
+        <div class="search_box">
+          <label for="cat">Category : </label>
+          <select
+            
+            (change)="filter(selectedCat)"
+            name="selectedCat"
+            id="selectedCat"
+            required
+          >
+            <option value="">ALL CATEGORIES</option>
+            <option *ngFor="let c of categories" ngValue="c.Id"
+              >{{ c.Name }}
+            </option>
+          </select>
+        </div>
+      </section>
+      <section class="products_holder">
+        <div
+          class="product animate__animated animate__fadeIn"
+          *ngFor="
+            let item of collection | paginate: { itemsPerPage: 4, currentPage: p }
+          "
+        >
+          <img src="data:image/jpeg;base64,{{ item.image }}" />
+          <div class="details">
+            <p class="stock" *ngIf="item.inStock">En stock ( {{ item.inStock }} )</p>
+            <p class="stock" *ngIf="!item.inStock">Undisponible</p>
+            <p class="price">{{ item.price }}€</p>
+            <p class="name">{{ item.name }}</p>
+            <p class="description">{{ item.description }}</p>
+            <p class="shop">{{ item.shop.name }} - {{ item.shop.address }}</p>
+          </div>
+          <button class="btn_add_basket" (click)="selectProduct(item.productRef)">Ajouter au panier</button>
+        </div>
+      </section>
+      <section class="info_cart">
+        <pagination-controls style="float: left;"
+          (pageChange)="p = $event"
+          class="paginator"
+          previousLabel="Précédent"
+          nextLabel="Suivant"
+          autoHide="true"
+          responsive="true"
+        ></pagination-controls>
+      </section>
+    </div>
+  
+    <app-message></app-message>
+  </div>
+</ion-content>

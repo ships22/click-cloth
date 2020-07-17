@@ -14,9 +14,9 @@ export class AppComponent {
 
   public appMenu = [
     { title: 'Tous les produits', url: '/tabs/all-products' },
-    { title: 'Femme', url: '/test1' },
-    { title: 'Homme', url: '/test1' },
-    { title: 'Enfants', url: '/test1' },
+    { title: 'Femme', url: '/tabs/ladies' },
+    { title: 'Homme', url: '/tabs/gents' },
+    { title: 'Enfants', url: '/tabs/children' },
   ]
 
   constructor(

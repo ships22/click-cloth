@@ -6,11 +6,11 @@ import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-all-products',
-  templateUrl: './all-products.component.html',
-  styleUrls: ['./all-products.component.scss']
+  selector: 'app-gents',
+  templateUrl: './gents.component.html',
+  styleUrls: ['./gents.component.scss'],
 })
-export class AllProductsComponent implements OnInit {
+export class GentsComponent implements OnInit {
   categories = [];
   selectedCat: '';
   p: number = 1;
@@ -24,7 +24,7 @@ export class AllProductsComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.productService.getAllProducts()
+    this.productService.getAllProductByMale()
     .pipe(take(1))
     .subscribe(response => {
       console.log('test products call :' , response);

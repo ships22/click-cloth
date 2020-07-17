@@ -24,9 +24,12 @@ import { AuthenticationService } from './services/authentication.service';
 import { ClientService } from './services/client.service';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginComponent } from './components/login/login.component';
+import { LadiesComponent } from './components/ladies/ladies.component';
+import { ChildrenComponent } from './components/children/children.component';
+import { GentsComponent } from './components/gents/gents.component';
 
 @NgModule({
-  declarations: [AppComponent, AllProductsComponent, CartComponent, LoginComponent, ProductSelectComponent, MessageComponent],
+  declarations: [AppComponent, AllProductsComponent, CartComponent, ChildrenComponent, GentsComponent, LadiesComponent, LoginComponent, ProductSelectComponent, MessageComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule, NgxPaginationModule],
   providers: [
