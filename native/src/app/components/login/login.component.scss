@@ -110,6 +110,25 @@
             }
         }
     }
+    div.userDetails {
+        text-align: center;
+        section.contact {
+            text-align: left;
+            padding: 50px 30px;
+        }
+        section.contact p{
+            margin: 0;
+            padding: 0;
+        }
+        section.contact button {
+            padding: 7px;
+            margin-top: 10px;
+            &:hover {
+                background-color: #000000;
+                color: #f7f3ea;
+            }
+        }
+    }
 }
 
 .has-error {

@@ -17,13 +17,29 @@ export class LoginComponent implements OnInit {
   userToReinitPass: any = {};
   message: any;
   loading = false;
+  loggedInUser: any = {};
 
   constructor(private authenticationService: AuthenticationService, 
               private clientService: ClientService,
               public messageService: MsgService,
               private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authenticationService.checkLoginSubject
+    .subscribe(data => {
+      data.then(value => {
+        if(value) {
+          let username = this.authenticationService.getDecodedAccessToken(value).user_name;
+          this.clientService.getClientByEmail(username)
+          .subscribe(response => {
+            if(response) { this.loggedInUser = response; }      
+          })
+        } else {
+          this.loggedInUser = null;
+        }
+      });
+    })
+  }
 
  signIn(formValues) {
     const email: string = this.userToLogIn.email;
@@ -36,7 +52,7 @@ export class LoginComponent implements OnInit {
           "res from login component : ",
           this.authenticationService.decoded_token
         );
-        if(this.authenticationService.isSuperAdmin()){
+        if(this.authenticationService.isSuperAdmin()) {
           this.router.navigate(['super_admin']);
         }else if (this.authenticationService.isAdmin()) {
           this.router.navigate(['admin']);

@@ -135,6 +135,30 @@
   font-size: 10px;
 }
 
+.main div.userDetails {
+  text-align: center;
+}
+
+.main div.userDetails section.contact {
+  text-align: left;
+  padding: 50px 30px;
+}
+
+.main div.userDetails section.contact p {
+  margin: 0;
+  padding: 0;
+}
+
+.main div.userDetails section.contact button {
+  padding: 7px;
+  margin-top: 10px;
+}
+
+.main div.userDetails section.contact button:hover {
+  background-color: #000000;
+  color: #f7f3ea;
+}
+
 .has-error {
   color: red;
 }

@@ -11,7 +11,7 @@
   <!-- login form -->
   <div
     class="form_wrapper animate__animated animate__fadeIn"
-    *ngIf="!registering && !forgotpassword"
+    *ngIf="!registering && !forgotpassword && !loggedInUser"
   >
     <div class="form_header">
       <h3>
@@ -70,7 +70,7 @@
   <!-- forgot password form -->
   <div
     class="form_wrapper animate__animated animate__fadeIn"
-    *ngIf="!registering && forgotpassword"
+    *ngIf="!registering && forgotpassword && !loggedInUser"
   >
     <div class="form_header">
       <h3>
@@ -119,7 +119,7 @@
 
   <div
     class="form_wrapper animate__animated animate__fadeIn"
-    *ngIf="registering && !forgotpassword"
+    *ngIf="registering && !forgotpassword && !loggedInUser"
   >
     <div class="form_header">
       <h3>
@@ -331,6 +331,15 @@
     </form>
   </div>
   <app-message></app-message>
-  <button (click)="signout()">Déconnecter</button>
+  <div class="userDetails" *ngIf="loggedInUser">
+    <h2>{{ loggedInUser.first_name }} {{ loggedInUser.last_name }}</h2>
+    <section class="contact">
+      <p>Email : {{ loggedInUser.email }}</p>
+      <p>No : {{ loggedInUser.house_no }}</p>
+      <p>Rue : {{ loggedInUser.street }}</p>
+      <p>Code postale : {{ loggedInUser.zip_code }}</p>
+      <button (click)="signout()">Déconnecter</button>
+    </section>
+  </div>
 </div>
 </ion-content>

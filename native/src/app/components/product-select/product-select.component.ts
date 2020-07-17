@@ -50,12 +50,10 @@ export class ProductSelectComponent implements OnInit {
     } else if(this.quantity > this.productOfSize.stock[0].quantite) {
       this.messageService.sendMessage(`Il y que ${this.productOfSize.stock[0].quantite} disponible pour l'instant.`);
     } else {
-      console.log('ok');
       this.cartService.addToCart(this.productOfSize, this.quantity);
-    this.messageService.sendMessage('Ajouté au panier');
-    }
-    console.log('test pr :', this.productOfSize);
-    
+      this.messageService.sendMessage('Ajouté au panier');
+      this.router.navigate(['tabs/all-products']);
+    }  
   }
 
 }
