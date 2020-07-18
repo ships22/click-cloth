@@ -28,6 +28,7 @@
     "@ionic/angular": "^5.0.0",
     "@ionic/storage": "^2.2.0",
     "capacitor-data-storage-sqlite": "^2.2.0",
+    "jwt-decode": "^2.2.0",
     "ngx-owl-carousel-o": "^3.0.1",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.5.1",

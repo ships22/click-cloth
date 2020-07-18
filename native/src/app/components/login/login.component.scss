@@ -1,0 +1,136 @@
+.main {
+    height: calc( 100vh -  100px);
+    padding-top: 15px;
+    div.form_wrapper {
+        width: 310px;
+        margin: auto;
+        margin-bottom: 20px;
+        background: #ffffff;
+        border: 1px solid #f0e8e8;
+        box-shadow: 1px 1px 15px 3px #eb4c0e1a;
+        transition: opacity 4s all ease-in;
+        div.form_header {
+            padding: 5px;
+            background: linear-gradient(to right, rgba(216,186,255,0.32) 0%, rgba(245,228,199,0.4) 100%);
+            h3 {
+                font-size: 16px;
+                font-weight: 400;
+                text-align: center;
+            }
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 15px 0px;
+            section {
+                width: 100%;
+                text-align: center;
+            }
+            .input_group {
+                padding: 5px;
+                input {
+                    padding: 5px;
+                    border: none;
+                    outline: none;
+                    border-bottom: 1px solid #000000;
+                    width: 100%;
+                    background: none;
+                    box-shadow: 0 0 0 30px white inset !important;
+                    
+                    &:focus {
+                        border: none !important;
+                        background: #f7f3ea;
+                        box-shadow: 0 0 0 30px #f7f3ea inset !important;
+                        border-bottom: 1px solid #000000 !important;
+                    }
+                }
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+                .btn_login, .btn_registration {
+                    border: 1px solid orange;
+                    background: orange;
+                    text-transform: uppercase;
+                    color: #ffffff;
+                    outline: none;
+                    margin-top: 10px;
+                    height: 30px;
+                    padding: 0px 5px;
+                    line-height: 30px;
+                    &:hover {
+                        background: #e69500;
+                        cursor: pointer;
+                    }
+                }
+                
+                p.or {
+                    font-size: 10px;
+                    position: relative;
+                    color: #908e8e;
+                    font-weight: 600;
+                    width: 40px;
+                    margin: 20px auto 10px;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        right: 40px;
+                        height: 1px;
+                        width: 35px;
+                        background: #b1afaf;
+                        top: 8px;
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 40px;
+                        height: 1px;
+                        width: 35px;
+                        background: #b1afaf;
+                        top: 8px ;
+                    }
+                }
+                span {
+                    font-weight: 600;
+                    font-size: 12px;
+                    color: #b1afaf;
+                    &:hover {
+                        cursor: pointer;
+                        color: #000000;
+                    }
+                }
+                div {
+                    span, p {
+                        display: inlin;
+                        margin: 10p;
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+    div.userDetails {
+        text-align: center;
+        section.contact {
+            text-align: left;
+            padding: 50px 30px;
+        }
+        section.contact p{
+            margin: 0;
+            padding: 0;
+        }
+        section.contact button {
+            padding: 7px;
+            margin-top: 10px;
+            &:hover {
+                background-color: #000000;
+                color: #f7f3ea;
+            }
+        }
+    }
+}
+
+.has-error {
+    color: red;
+}

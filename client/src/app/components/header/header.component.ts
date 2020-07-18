@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
     this.isSuperAdmin$ = this.authentication.checkSuperAdmin$;
 
     this.cartService.numberOfItems$.subscribe((data) => {
-      // this.cartItems = data;
       if (data) {
         let qty = 0;
         for (let i = 0; i < data.length; i++) {
@@ -46,6 +45,6 @@ export class HeaderComponent implements OnInit {
     checkBox.checked = false;
     // checkBox.checked
     console.log('test menu closing', checkBox);
-    
+
   }
 }

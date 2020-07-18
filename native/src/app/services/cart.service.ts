@@ -26,16 +26,22 @@ export class CartService {
     private localStorage: Storage
   ) {}
 
-  getAllItem() {
+  async getAllItem() {
     // let contents = this.localStorage.get("c&cCart");
-    this.localStorage.get("c&cCart").then((value) => {
-      let contents = value;
-      
-      if (contents) {
-        return this.contents = JSON.parse(contents);
-      }
-    });
-    return null;
+    let cart = await this.localStorage.get("c&cCart");
+    if(cart) return this.contents = JSON.parse(cart);
+    
+    return this.contents;
+    
+    // cart.then((value) => {
+    //   let contents = value;
+    //   if (contents) {
+    //     console.log('test get all prod', contents)
+    //     this.contents = JSON.parse(contents);
+    //   }
+    //   return this.contents;
+    // });
+    // return null;
   }
 
   addToCart(item, qty) {
@@ -49,7 +55,7 @@ export class CartService {
     await this.localStorage.set(KEY, _cart);
   }
   addOrIncrease(item, qty) {
-    let exists = this.contents.find((product) => product.id == item.id);
+    let exists = this.contents?.find((product) => product.id == item.id);
     if (!exists) {
       item.qty = qty;
       this.contents.push(item);
