@@ -15,6 +15,8 @@ import { GentsComponent } from './components/gents/gents.component';
 import { ChildrenComponent } from './components/children/children.component';
 import { ProductSelectComponent } from './components/product-select/product-select.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AboutComponent } from './components/about/about.component';
+
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -27,21 +29,22 @@ const routes: Routes = [
   { path: "edit_admin/:id", component: EditAdminComponent },
   { path: "edit_product/:id", component: EditProductComponent },
   { path: "cart", component: CartComponent },
-  { 
+  { path: "about", component: AboutComponent },
+  {
     path: "test", component: TestComponent,
     canActivate: [Guard],
     data: {
       expectedRole: 'ROLE_CLIENT'
     }
   },
-  { 
+  {
     path: "admin", component: AdminComponent,
     canActivate: [Guard],
     data: {
       expectedRole: 'ROLE_ADMIN'
     }
   },
-  { 
+  {
     path: "super_admin", component: SupAdminComponent,
     canActivate: [Guard],
     data: {

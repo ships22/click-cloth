@@ -1,1 +1,10 @@
-/* No CSS *//*# sourceMappingURL=app.component.css.map */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+ion-title img {
+  padding-top: 5px;
+  height: 45px;
+  width: 45px;
+}
+/*# sourceMappingURL=app.component.css.map */

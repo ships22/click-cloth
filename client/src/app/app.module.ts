@@ -33,6 +33,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MaterialFileInputModule } from "ngx-material-file-input";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatExpansionModule } from "@angular/material/expansion";
 import { AddAdminComponent } from "./components/sup-admin/add-admin/add-admin.component";
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { EditAdminComponent } from "./components/sup-admin/edit-admin/edit-admin.component";
@@ -42,15 +43,17 @@ import { AddProductComponent } from "./components/admin/add-product/add-product.
 import { EditProductComponent } from "./components/admin/edit-product/edit-product.component";
 import { MatSelectModule } from "@angular/material/select";
 import { MatRadioModule } from "@angular/material/radio";
+import { MatCardModule } from "@angular/material/card";
 import { AllProductsComponent } from "./components/all-products/all-products.component";
 import { from } from "rxjs";
 import { LadiesComponent } from "./components/ladies/ladies.component";
 import { GentsComponent } from "./components/gents/gents.component";
 import { ChildrenComponent } from "./components/children/children.component";
 import { ProductSelectComponent } from "./components/product-select/product-select.component";
-import { CartService } from './services/cart.service';
-import { CartComponent } from './components/cart/cart.component';
-import { ReservationComponent } from './components/admin/reservation/reservation.component';
+import { CartService } from "./services/cart.service";
+import { CartComponent } from "./components/cart/cart.component";
+import { ReservationComponent } from "./components/admin/reservation/reservation.component";
+import { AboutComponent } from "./components/about/about.component";
 
 const MaterialComponents = [
   MatButtonModule,
@@ -61,11 +64,13 @@ const MaterialComponents = [
   MatSelectModule,
   MatTableModule,
   MatPaginatorModule,
+  MatExpansionModule,
   MatSortModule,
   MatDialogModule,
   MatTabsModule,
   MatRadioModule,
   MaterialFileInputModule,
+  MatCardModule,
 ];
 
 @NgModule({
@@ -93,6 +98,7 @@ const MaterialComponents = [
     ProductSelectComponent,
     CartComponent,
     ReservationComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
