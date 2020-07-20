@@ -1,17 +1,19 @@
 <div id="main">
+  <h2>Super admin</h2>
+  <span class="screen_warn">Merci de consulter cette page en plein écran</span>
     <div class="add_filter">
         <button mat-raised-button (click)="onCreate()">
             <mat-icon>add</mat-icon>Ajouter
         </button>
-        
+
         <mat-form-field class="search" floatLabel="never">
             <mat-label class="searc_plHolder">Chercher...</mat-label>
-            <input matInput 
+            <input matInput
             class="input_field"
             floatLabel="never"
-            [(ngModel)]="searchKey" 
-            placeholder="Chercher..." 
-            autocomplete="off" 
+            [(ngModel)]="searchKey"
+            placeholder="Chercher..."
+            autocomplete="off"
             onfocus="this.value=''"
             (keyup)="filter()">
         </mat-form-field>
@@ -56,4 +58,5 @@
         </mat-table>
         <mat-paginator [pageSizeOptions]="[1, 5, 10]" [pageSize]="5" showFirstLastButtons></mat-paginator>
     </div>
+    <app-footer></app-footer>
 </div>

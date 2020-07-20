@@ -26,7 +26,7 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 export class AdminComponent implements OnInit {
 
-  
+
   // product management -
 
   productSearchKey: string;
@@ -55,6 +55,8 @@ export class AdminComponent implements OnInit {
   // reservation management -
   reservationSearch: string;
   reservationListInIt: any[];
+  reservationSubscription: Subscription;
+
   reservationMatList: MatTableDataSource<Reservation>;
   resColumns: string[] = [
     "reservation_id",
@@ -98,8 +100,8 @@ export class AdminComponent implements OnInit {
           (response) => (
             (this.admin = response),
             console.log("test admin :", response),
-            this.getAllProductByShop(response.shops[0].shop_id),
-            this.getAllReservationByShop(response.shops[0].shop_id)
+            this.getAllProductByShop(response.shops[0].shop_id)
+            // this.getAllReservationByShop(response.shops[0].shop_id)
             // (this.productListInIt = response.shops[0]?.productList),
             // (this.productMatList = new MatTableDataSource(
             //   this.productListInIt
@@ -121,27 +123,25 @@ export class AdminComponent implements OnInit {
       .subscribe((response) => {
         this.productListInIt = response;
         console.log('test all prod', response);
-        
         (this.productMatList = new MatTableDataSource(this.productListInIt)),
           (this.productMatList.sort = this.sort);
         this.productMatList.paginator = this.paginator;
       });
   }
-  getAllReservationByShop(shop_id) {
-    this.reseravtionService
-    .getReservationsByShop(shop_id)
-    .pipe(take(1))
-    .subscribe((response) => {
-      this.reservationListInIt = response;
-      console.log('test reservation :', response);
-      
-      this.reservationMatList = new MatTableDataSource(this.reservationListInIt);
-      this.reservationMatList.sort = this.sort;
-      this.reservationMatList.paginator = this.paginator;
-    })
-  }
+  // getAllReservationByShop(shop_id) {
+  //   this.reseravtionService
+  //   .getReservationsByShop(shop_id)
+  //   .pipe(take(1))
+  //   .subscribe((response) => {
+  //     this.reservationListInIt = response;
+  //     console.log('test reservation :', response);
+
+  //     this.reservationMatList = new MatTableDataSource(this.reservationListInIt);
+  //     this.reservationMatList.sort = this.sort;
+  //     this.reservationMatList.paginator = this.paginator;
+  //   })
+  // }
   onCreateProduct() {
-    console.log("on ce pr");
     this.dialog.open(AddProductComponent);
   }
   filterProduct() {
@@ -161,14 +161,11 @@ export class AdminComponent implements OnInit {
       .subscribe((response) => {
         if (response.operationResult == "SUCCESS") {
           this.messageService.sendMessage(
-            "Un lien de réinitialisation de mot de passe est envoyé à votre adresse mèl."
+            "Un lien de réinitialisation de mot de passe a été envoyé à votre adresse mèl."
           );
         } else {
           this.messageService.sendMessage("Problème technique");
         }
       });
   }
-  // ngOnDestroy() {
-  //   this.subscription.unsubscribe();
-  // }
 }

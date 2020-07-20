@@ -65,12 +65,8 @@ export class AuthenticationService {
    isLoggedIn() {
      return this.localStorage.get("token");
   }
-  getToken() {
-  return  this.localStorage.get("token")
-  .then(token => {
-    if(token) return token;
-    return 'not logged in';
-  });
+  async getToken() {
+    return await this.localStorage.get("token");
   }
   getDecodedAccessToken(token: string): any {
     try {
@@ -80,27 +76,34 @@ export class AuthenticationService {
     }
   }
 
-  async isAdmin() {
-    const token = await this.localStorage.get('token');
-    if(this.isLoggedIn()) {
-      const decodedToken = jwt_decode(token);
-      if(decodedToken.scopes[0].authority == 'ROLE_ADMIN') {
+  isClient() {
+    return this.getToken()
+    .then(token => {
+      let role = this.getDecodedAccessToken(token).scopes[0].authority;
+      if(role == 'ROLE_CLIENT') return true;
+      return false;
+    });
+    
+      // if(this.decoded_token.scopes[0].authority == 'ROLE_CLIENT') {
+      //   return true;
+      // }
+      // return false;
+    }
+  isAdmin() {
+      if(this.decoded_token.scopes[0].authority == 'ROLE_ADMIN') {
         return true;
       }
       return false;
     }
-  }
+  
 
-  async isSuperAdmin() {
-    const token = await this.localStorage.get('token');
-    if(this.isLoggedIn()) {
-      const decodedToken = jwt_decode(token);
-      if(decodedToken.scopes[0].authority == 'ROLE_SUPER_ADMIN') {
+  isSuperAdmin() {
+      if(this.decoded_token.scopes[0].authority == 'ROLE_SUPER_ADMIN') {
         return true;
       }
       return false;
     }
-  }
+  
  async getEmail() {
     await this.localStorage.get('token')
     .then(token =>{

@@ -9,7 +9,7 @@
     display: block
     border-radius: 0
 
-@mixin grid($cols, $mgn) 
+@mixin grid($cols, $mgn)
     float: left
     margin-right: $mgn
     margin-bottom: $mgn
@@ -20,12 +20,12 @@
 @mixin big-screen
   @media (min-width: 480px)
        @include grid(2, 2%)
-       
+
 @mixin small-screen
   @media (min-width: 320px) and  (max-width: 479px)
        @include grid(1, 2%)
 
-        
+
 
 #main_cart
     h2
@@ -36,6 +36,10 @@
         text-transform: uppercase
         background: #f4f6ea
         margin-bottom: 20px
+    .no_product
+      padding: 50px
+      color: red
+      text-align: center
     .product_container
         display: grid
         flex-direction: column !important
@@ -44,17 +48,17 @@
             width: 900px
             padding: 5px
             margin: auto
-            .cart_product 
+            .cart_product
                 // @include grid(2, 2%)
                 @include big-screen
                 @include small-screen
-                
+
                 height: 200px
                 padding: 10px
                 display: flex
                 flex-direction: row
                 box-shadow: 1px 1px 12px 1px #eb4c0e1a
-                img 
+                img
                     height: 180px
                     width: 140px
                 .details
@@ -66,7 +70,7 @@
                         float: right
                         display: flex
                         width: 120px
-                        button 
+                        button
                             z-index: 15
                             border: none
                             transition: .4s
@@ -103,43 +107,43 @@
             border-top: 1px solid #000000
             p.total
                 float: right
-                font-weight: 600            
+                font-weight: 600
 
 
 /***************************** responsive page title **************************/
 
-@media screen and (min-width:768px) and (max-width:1049px) 
+@media screen and (min-width:768px) and (max-width:1049px)
     h2
         font-size: 20px
         padding: 16px
 
-@media screen and (min-width:600px) and (max-width:767px) 
+@media screen and (min-width:600px) and (max-width:767px)
     h2
         font-size: 16px
         padding: 14px
 
-@media screen and (min-width:480px) and (max-width:599px) 
+@media screen and (min-width:480px) and (max-width:599px)
     h2
         font-size: 16px
         padding: 14px
 
-@media screen and (min-width:320px) and (max-width:479px) 
+@media screen and (min-width:320px) and (max-width:479px)
     h2
-        font-size: 14px 
-        padding: 8px 
+        font-size: 14px
+        padding: 8px
 
 /***************************** responsive cart **************************/
 
-@media screen and (min-width:768px) and (max-width:959px) 
+@media screen and (min-width:768px) and (max-width:959px)
     .product_container
         .cart_products_holder
             width: 760px !important
             padding: 5px !important
-            .cart_product 
+            .cart_product
                 // @include grid(2, 2%)
                 height: 190px !important
                 padding: 8px !important
-                img 
+                img
                     height: 170px !important
                     width: 130px !important
                 .details
@@ -160,24 +164,24 @@
                         font-weight: 600 !important
                     button.reserve
                         padding: 4px !important
-                        
+
         section.info_cart
             padding: 10px !important
             margin-top: 50px !important
-            
+
             p.total
-            
-                font-weight: 600  
-    
-@media screen and (min-width:480px) and (max-width:767px) 
+
+                font-weight: 600
+
+@media screen and (min-width:480px) and (max-width:767px)
     .product_container
         .cart_products_holder
             width: 470px !important
             padding: 5px !important
-            .cart_product 
+            .cart_product
                 height: 260px !important
                 padding: 6px !important
-                img 
+                img
                     height: 150px !important
                     width: 110px !important
                 .details
@@ -199,22 +203,22 @@
                         font-weight: 600 !important
                     button.reserve
                         padding: 4px !important
-                        
+
         section.info_cart
             padding: 10px !important
             margin-top: 50px !important
             p.total
-                font-weight: 600  
+                font-weight: 600
 
-@media screen and (min-width:320px) and (max-width:479px) 
+@media screen and (min-width:320px) and (max-width:479px)
     .product_container
         .cart_products_holder
             width: 310px !important
             padding: 5px !important
-            .cart_product 
+            .cart_product
                 height: 180px !important
                 padding: 6px !important
-                img 
+                img
                     height: 150px !important
                     width: 110px !important
                 .details
@@ -236,10 +240,10 @@
                         font-weight: 600 !important
                     button.reserve
                         padding: 4px !important
-                        
+
         section.info_cart
             padding: 10px !important
             margin-top: 50px !important
-            
+
             p.total
-                font-weight: 600  
+                font-weight: 600

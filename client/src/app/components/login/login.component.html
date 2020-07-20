@@ -217,7 +217,7 @@
         >
           <input
             type="text"
-            placeholder="Code postale *" 
+            placeholder="Code postale *"
             name="zip_code"
             [(ngModel)]="newUser.zip_code"
             #zip_code="ngModel"
@@ -234,7 +234,7 @@
         >
           <input
             type="text"
-            placeholder="Pays *" 
+            placeholder="Pays *"
             name="country"
             [(ngModel)]="newUser.country"
             #country="ngModel"
@@ -258,7 +258,7 @@
         </div>
       </section>
       <div class="input_group btn">
-        <button mat-raised-button color="registration">Enrégistrer</button> 
+        <button mat-raised-button color="registration">Enrégistrer</button>
         <br>
         <p class="or">ou</p>
         <span (click)="toggleRegistration()">annuler</span>
@@ -266,4 +266,5 @@
     </form>
   </div>
   <app-message></app-message>
+  <app-footer></app-footer>
 </div>

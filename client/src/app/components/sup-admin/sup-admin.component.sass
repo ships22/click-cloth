@@ -1,6 +1,17 @@
 div#main
-    width: 80%
-    margin: 50px auto
+    // width: 80%
+
+    // margin: 50px auto
+    .screen_warn
+      padding: 100px
+      color: red
+      text-align: center
+      display: none
+    .add_filter, .dataTable
+      width: 80%
+      margin: auto
+    .dataTable
+      margin-bottom: 150px
     .add_filter
         padding: 10px
         display: flex
@@ -11,12 +22,12 @@ div#main
             flex-grow: 2
             .mat-form-field-wrapper
                 padding-bottom: 0px
-            .mat-form-field-underline 
+            .mat-form-field-underline
                 background-color: red
                 display: none
             .mat-form-field-infix
                 border-top: 0
-            .mat-form-field-ripple 
+            .mat-form-field-ripple
                 background: red
             .mat-form-field-label
                 margin: 15px 0px 0px 20px
@@ -33,12 +44,28 @@ div#main
     .dataTable
         img
             height: 350px
-            width: 450px            
-            
+            width: 450px
+
 
 .hide
     display: none
 
-mat-footer-row mat-footer-cell 
+mat-footer-row mat-footer-cell
     justify-content: center
+
+
+
+/***************************** responsive **************************/
+
+@media screen and (min-width:768px) and (max-width:1000px)
+  .add_filter, .dataTable
+      width: 98% !important
+
+@media screen and (max-width:960px)
+  .screen_warn
+    display: block !important
+  .add_filter
+    display: none !important
+  .dataTable
+    display: none !important
 

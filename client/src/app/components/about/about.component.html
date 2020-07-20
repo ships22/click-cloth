@@ -1,0 +1,278 @@
+<div id="main" class="animate__animated animate__fadeIn">
+  <h2>Propos</h2>
+  <section class="info_holder">
+    <section class="top">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h4>Propos de click and cloth</h4>
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+              Cliquez ici pour savoir +
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <p>
+            Un site web où vous pouvez facilement trouver les vêtements que vous
+            souhaitez acheter. Vous pouvez réserver les vêtements et les
+            récupérer à votre convenance. Vous ne payez pas à l'avance, vous
+            payez dans la boutique lorsque vous les récupèrez après s’être
+            assurés que vous êtes satisfaits de cet article. Il-n'y-a donc aucun
+            risque de fraude et aucun problème pour-les-personnes-qui n'ont pas
+            de carte bancaire ou qui veulent payer en espèce. Aussi, en
+            supprimant l’idée de la livraison, ce site a une vraie portée
+            écologique, et vise à servir d’inspiration aux acheteurs, en les
+            incitant à se déplacer jusqu’en-magasin.
+            <br />
+            D’un autre côté, la boutique ne conserve la réservation que durant
+            le temps indiqué. Ils n'ont donc rien à perdre. Enfin, Vous ne
+            perdez pas de temps en vous déplaçant physiquement ni en longue
+            recherche dans les différents rayons d’un magasin. Vous acheterez
+            les vêtements que vous aurez présélectionnés en les ajoutant à leur
+            liste shopping.
+          </p>
+        </mat-expansion-panel>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h4>Accessibilité et exception</h4>
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+
+              Cliquez ici pour savoir +
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <p>
+            clickandcloth.fr s'engage à fournir un site web accessible au public
+            le plus large possible, indépendamment de la technologie ou des
+            capacités. Nous travaillons activement pour augmenter
+            l'accessibilité et la convivialité de notre site web et application
+            mobile, ce faisant, nous visons à adhérer à de nombreuses normes et
+            directives disponibles.
+            <br />
+            Bien que clickandcloth.fr s'efforce de respecter les directives et
+            normes acceptées en matière d'accessibilité et de convivialité, il
+            n'est pas toujours possible de le faire dans toutes les zones du
+            site Web. Nous recherchons en permanence des solutions qui amèneront
+            toutes les zones du site au même niveau d'accessibilité globale. En
+            attendant, si vous rencontrez des difficultés pour accéder au site
+            clickandcloth.fr, n'hésitez pas à nous contacter.
+          </p>
+        </mat-expansion-panel>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <!-- <h4>Accessibilité et exception</h4> -->
+              <h4>Termes et conditions</h4>
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+
+              Cliquez ici pour savoir +
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <ul>
+            <li>
+              Click and cloth ne fournit aucune garantie sur les réserves de
+              produits de ce site Web.
+            </li>
+            <li>
+              Nous n'avons pas notre propre produit, nous travaillons en tant
+              que fournisseur de plate-forme tiers.
+            </li>
+            <li>
+              Cette plate-forme est uniquement responsible de rassembler les
+              entreprises qui souhaitent présenter leur produit au client en
+              plus d'avoir leur client en magasin.
+            </li>
+          </ul>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <div class="contact">
+        <mat-card class="contact-card">
+          <mat-card-header>
+            <mat-card-title
+              >Contact
+              <span class="material-icons">
+                contact_mail
+              </span>
+            </mat-card-title>
+            <mat-card-subtitle>officielle</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Adresse : 55 Rue de Vincennes, Montreuil, 93100, Paris, France.
+            </p>
+            <p>
+              Téléphone : +3312345678, +3321457896
+            </p>
+            <p>
+              Email : info@clickandcloth.fr
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </section>
+    <section class="bottom">
+      <div class="info_general" id="payment_info">
+        <mat-card class="info_general-card">
+          <mat-card-header>
+            <mat-card-title>
+              Paiments
+              <span class="material-icons">
+                credit_card
+              </span>
+            </mat-card-title>
+            <mat-card-subtitle>officielle</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Le paiement lié aux produits doit être effectué en boutique.
+              Normalement, la plupart de nos partenaires acceptent les paiements
+              en espèces et par carte bancaire.
+            </p>
+            <hr />
+            <p>
+              En règle générale, les politiques de remboursement et d'échange
+              sont applicables pendant 14 jours à compter de la date d'achat du
+              produit, mais elles peuvent également varier d'un magasin à
+              l'autre.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="info_general" id="business_info">
+        <mat-card class="info_general-card">
+          <mat-card-header>
+            <mat-card-title
+              >Corporate info
+              <span class="material-icons">
+                business
+              </span>
+            </mat-card-title>
+            <mat-card-subtitle>officielle</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Sécurité - Nous faisons de notre mieux pour garder vos
+              informations confidentielles comme le nom, le contact et l'adresse
+              en toute sécurité et séparé. En dehors de cela, nous travaillons
+              constamment à l'amélioration de la sécurité des droits de nos
+              clients.
+            </p>
+            <hr />
+            <p>
+              Career avec nous - Pour le moment, nous ne recrutons aucun nouveau
+              membre de notre équipe, mais nous aurons sûrement des opportunités
+              pour les personnes qui seront intéressées de travailler avec nous
+              pendant que nous développons notre business.
+            </p>
+            <hr />
+            <p>
+              Conditions générales de ventes - Tous les magasins partenaires
+              respectent le droit européen des ventes et des affaires.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="info_general" id="help">
+        <mat-card class="info_general-card help_info">
+          <mat-card-header>
+            <mat-card-title
+              >L'aide
+              <span class="material-icons">
+                help_center
+              </span>
+            </mat-card-title>
+            <!-- <mat-card-subtitle>officielle</mat-card-subtitle> -->
+          </mat-card-header>
+          <mat-card-content>
+            FAQ -
+            <ul>
+              <li>
+                Quelle est votre politique de retour ?
+                <br />
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> > Tout le
+                remboursement et le retour doivent être effectués en boutique.
+                La politique de retour standard de 14 jours s'applique à tous
+                les produits, mais elle peut varier d'un magasin à l'autre.
+              </li>
+              <li>
+                Comment votre service de livraison fonctionne-t-il ?
+                <br />
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> > Click nd cloth ne
+                dispose pas encore de son propre mode de livraison, mais vous
+                pouvez toujours faire livrer votre produit à votre adresse en
+                contactant directement la boutique.
+              </li>
+              <li>
+                Comment puis-je obtenir un code de réduction ?
+                <br />
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> > La plupart du
+                temps, nous avons différents produits disponibles avec de
+                nombreuses réductions sur eux dans divers magasins.
+              </li>
+            </ul>
+            <hr />
+            <p>
+              Mon compte - Pour finaliser votre réservation, vous devrez créer
+              un compte avec une adresse email valide. Vous pouvez également
+              réinitialiser votre mot de passe si vous avez déjà un compte avec
+              click and cloth en demandant à partir du lien de réinitialisation
+              du mot de passe et en vous connectant à vos e-mails.
+            </p>
+            <hr />
+            <p>
+              Guide des tailles - Vous pouvez sélectionner votre taille préférée
+              et la quantité que vous souhaitez du produit tout en ajoutant au
+              panier avant de finaliser la réservation à partir des différentes
+              tailles disponibles de ce produit particulier.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="info_general" id="delivery">
+        <mat-card class="info_general-card delivery_info">
+          <mat-card-header>
+            <mat-card-title
+              >Livraison
+              <span class="material-icons">
+                local_shipping
+              </span>
+            </mat-card-title>
+            <mat-card-subtitle>officielle</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              L'assurance - En magasin, l'assurance du produit est obligatoire
+              si le client souhaite prendre un produit en location.
+            </p>
+            <hr />
+            <p>
+              Livraisons differentes - Nos boutiques partenaires proposent
+              différents types de modes de livraison. Par exemple - livraison le
+              jour même, le lendemain ou livraison à une date spécifique, etc.
+              Plus d'informations et la livraison peuvent être organisées en
+              contactant directement les magasins.
+            </p>
+            <hr />
+            <p>
+              Conditions de livraison - Le client devra payer à l'avance
+              s'il souhaite se faire livrer le produit à l'adresse indiquée. Des
+              frais de livraison supplémentaires sont applicables pour tout type
+              de livraison et si la livraison est incomplète, le client
+              obtiendra le remboursement intégral du produit après déduction des
+              frais de livraison uniquement.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </section>
+  </section>
+  <app-footer></app-footer>
+</div>

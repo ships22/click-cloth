@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
 import { take } from "rxjs/operators";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
@@ -12,7 +12,7 @@ import { ShopService } from "src/app/services/shop.service";
 import { ProductService } from "src/app/services/product.service";
 import { ReservationService } from "src/app/services/reservation.service";
 import { MatDialog } from "@angular/material/dialog";
-import { Subscription } from "rxjs";
+import { Subscription, interval } from "rxjs";
 import { Admin } from "src/app/models/admin";
 
 @Component({
@@ -20,7 +20,7 @@ import { Admin } from "src/app/models/admin";
   templateUrl: "./reservation.component.html",
   styleUrls: ["./reservation.component.sass"],
 })
-export class ReservationComponent implements OnInit {
+export class ReservationComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   admin: Admin;
   shopId: number;
@@ -30,6 +30,7 @@ export class ReservationComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   // reservation management -
+  reservationSubscription: Subscription;
   reservationSearch: string;
   reservationListInIt: any[];
   reservationMatList: MatTableDataSource<Reservation>;
@@ -57,6 +58,7 @@ export class ReservationComponent implements OnInit {
     private reseravtionService: ReservationService,
     private dialog: MatDialog
   ) {}
+
   ngOnInit(): void {
     this.getAdminDetails();
     this.shopService.refresh$.subscribe(() => this.getAdminDetails());
@@ -64,8 +66,8 @@ export class ReservationComponent implements OnInit {
       this.getAdminDetails()
     );
     this.reseravtionService.refresh$.subscribe((response) =>
-      this.getAllReservationByShop(this.shopId)
-    );
+    this.getAllReservationByShop(this.shopId)
+    )
   }
 
   getAdminDetails() {
@@ -78,7 +80,12 @@ export class ReservationComponent implements OnInit {
           (response) => (
             (this.admin = response),
             (this.shopId = response.shops[0].shop_id),
-            this.getAllReservationByShop(response.shops[0].shop_id)
+            this.reservationSubscription = interval(60000)
+    .subscribe((func => {
+      console.log('test reservation cl...');
+      this.getAllReservationByShop(response.shops[0].shop_id);
+    })),
+    this.getAllReservationByShop(response.shops[0].shop_id)
             // (this.productListInIt = response.shops[0]?.productList),
             // (this.productMatList = new MatTableDataSource(
             //   this.productListInIt
@@ -128,5 +135,8 @@ export class ReservationComponent implements OnInit {
   }
   filterProduct() {
     console.log("tst filter");
+  }
+  ngOnDestroy(): void {
+    this.reservationSubscription.unsubscribe();
   }
 }
