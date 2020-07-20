@@ -103,8 +103,10 @@ export class ReservationComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe((response) => {
         this.reservationListInIt = response;
-        console.log("test reservation :", response);
-
+        this.reservationListInIt.forEach(element => {
+          element["client_mail"] = element.client.email;
+          element["client_nom"] = element.client.last_name;
+        });
         this.reservationMatList = new MatTableDataSource(
           this.reservationListInIt
         );
@@ -112,10 +114,6 @@ export class ReservationComponent implements OnInit, OnDestroy {
         this.reservationMatList.paginator = this.paginator;
       });
   }
-  // updateStatus(status : string, reservationId: number, stockId: number, quantity: number) {
-  //   console.log('test update st');
-
-  // }
   updateStatus(status: string, reservation) {
     console.log(
       "test update st",
@@ -134,7 +132,7 @@ export class ReservationComponent implements OnInit, OnDestroy {
     )
   }
   filterProduct() {
-    console.log("tst filter");
+    this.reservationMatList.filter = this.searchKey.trim().toLocaleLowerCase();
   }
   ngOnDestroy(): void {
     this.reservationSubscription.unsubscribe();
