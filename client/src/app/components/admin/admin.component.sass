@@ -13,6 +13,11 @@
     font-weight: 400
     text-align: center
     margin-top: 10px
+  .screen_warn
+    padding: 100px
+    color: red
+    text-align: center
+    display: none
 
 .details, .shop, .order
   display: flex
@@ -38,7 +43,7 @@
     text-align: center
   section p
     padding: 10px 0px
-  section a 
+  section a
       font-size: 12px
       transition: all .4s
       font-weight: 600
@@ -52,7 +57,7 @@
   display: flex
   flex-direction: column
 
-//shop 
+//shop
 .shop
   .add_filter
         padding: 10px
@@ -64,12 +69,12 @@
             flex-grow: 2
             .mat-form-field-wrapper
                 padding-bottom: 0px
-            .mat-form-field-underline 
+            .mat-form-field-underline
                 background-color: red
                 display: none
             .mat-form-field-infix
                 border-top: 0
-            .mat-form-field-ripple 
+            .mat-form-field-ripple
                 background: red
             .mat-form-field-label
                 margin: 15px 0px 0px 20px
@@ -85,12 +90,12 @@
                   color: #726e6e
   .product
     width: 70%
-            
+
 
 .hide
     display: none
 
-mat-footer-row mat-footer-cell 
+mat-footer-row mat-footer-cell
     justify-content: center
 
 
@@ -108,12 +113,12 @@ mat-footer-row mat-footer-cell
 //             flex-grow: 2
 //             .mat-form-field-wrapper
 //                 padding-bottom: 0px
-//             .mat-form-field-underline 
+//             .mat-form-field-underline
 //                 background-color: red
 //                 display: none
 //             .mat-form-field-infix
 //                 border-top: 0
-//             .mat-form-field-ripple 
+//             .mat-form-field-ripple
 //                 background: red
 //             .mat-form-field-label
 //                 margin: 15px 0px 0px 20px
@@ -130,7 +135,21 @@ mat-footer-row mat-footer-cell
 .dataTable
   img
     height: 100px
-    width: 100px            
-            
+    width: 100px
+
+/***************************** responsive **************************/
+
+@media screen and (min-width:768px) and (max-width:1000px)
+  .add_filter, .dataTable
+      width: 98% !important
+
+@media screen and (max-width:960px)
+  .screen_warn
+    display: block !important
+  .shop
+    display: none !important
+  .reservation, mat-tab-group
+    display: none !important
+
 
 

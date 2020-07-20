@@ -11,7 +11,7 @@ body, html
 
 // product components -
 // mixins
-@mixin grid($cols, $mgn) 
+@mixin grid($cols, $mgn)
     float: left !important
     margin-right: $mgn !important
     margin-bottom: $mgn !important
@@ -26,7 +26,7 @@ body, html
 @mixin medium-screen
   @media (max-width: 1049px) and (min-width: 600px)
        @include grid(3, 2%)
-       
+
 @mixin small-screen
   @media (max-width: 599px) and (min-width: 480px)
        @include grid(2, 2%)
@@ -34,13 +34,13 @@ body, html
 @mixin x-small-margin
   @media (max-width: 479px) and (min-width: 400px)
        @include grid(2, 2%)
-        
+
 @mixin xx-small-margin
   @media (max-width: 399px) and (min-width: 320px)
        @include grid(2, 2%)
-       
-        
-    
+
+
+
 #main
     padding-top: 160px
     margin: -160px auto 0px
@@ -57,7 +57,7 @@ body, html
         padding: 20px
         margin: 100px
         color: red
-        
+
     .product_container
         // border: 2px solid #e7e4e4
         display: flex
@@ -78,12 +78,12 @@ body, html
                 @include small-screen
                 @include x-small-margin
                 @include xx-small-margin
-                
+
                 height: 350px
                 position: relative
                 box-shadow: 1px 1px 12px 1px #eb4c0e1a
                 margin-bottom: 50px
-                img 
+                img
                     width: 100%
                     height: calc( 100% - 80px )
                 .details
@@ -131,12 +131,12 @@ body, html
                     display: block
                     cursor: pointer
 
-                                
 
-                
+
+
     // filters
 
-.search_box 
+.search_box
   width: 100%
   height: 50px
   text-align: center
@@ -145,7 +145,7 @@ body, html
   label
       font-size: 14px
 
-.search_box select 
+.search_box select
   height: 30px
   width: 160px
   margin-left: 20px
@@ -153,7 +153,7 @@ body, html
   border: 1px solid rgb(151, 147, 153)
   outline: 0
 
-.search_box select:focus 
+.search_box select:focus
   border: 2px solid rgb(164, 66, 230)
 
 .input_group
@@ -175,8 +175,8 @@ body, html
 
 /***************************** responsive**************************/
 
-    
-@media screen and (min-width:768px) and (max-width:1049px) 
+
+@media screen and (min-width:768px) and (max-width:1049px)
     h2
         font-size: 20px
         padding: 16px
@@ -184,18 +184,18 @@ body, html
         max-width: 760px !important
         margin: 50px auto !important
         .filter
-            width: 170px !important 
+            width: 170px !important
             height: 400px !important
         .products_holder
             width: 570px !important
             .product
                 height: 340px !important
                 margin-bottom: 50px !important
-                img 
+                img
                     width: 100%
                     height: calc( 100% - 80px )
-               
-@media screen and (min-width:600px) and (max-width:767px) 
+
+@media screen and (min-width:600px) and (max-width:767px)
     h2
         font-size: 16px
         padding: 14px
@@ -211,7 +211,7 @@ body, html
         .products_holder
             width: 590px !important
 
-@media screen and (min-width:480px) and (max-width:599px) 
+@media screen and (min-width:480px) and (max-width:599px)
     h2
         font-size: 16px
         padding: 14px
@@ -227,10 +227,10 @@ body, html
         .products_holder
             width: 470px !important
 
-@media screen and (min-width:320px) and (max-width:479px) 
+@media screen and (min-width:320px) and (max-width:479px)
     h2
-        font-size: 14px 
-        padding: 8px 
+        font-size: 14px
+        padding: 8px
 
     .product_container
         max-width: 310px !important
@@ -246,13 +246,13 @@ body, html
             .product
                 max-width: 180px !important
                 height: 300px !important
-    
+
     h3.no_product
         padding: 5px !important
         font-size: 14px
-        
 
 
-@media screen and (max-width: 319px) 
+
+@media screen and (max-width: 319px)
     body
         display: none
