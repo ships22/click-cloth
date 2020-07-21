@@ -33,6 +33,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "SELECT * FROM Product AS product WHERE product.product_ref LIKE 'se%'", nativeQuery = true)
     List<Product> findAllByProductChildren();
     
-    @Query(value = "SELECT * FROM Product AS product WHERE discount IS NOT NULL", nativeQuery = true)
+    @Query(value = "SELECT * FROM Product AS product WHERE discount != '' ", nativeQuery = true)
     List<Product> findAllProductWithDiscount();
 }
