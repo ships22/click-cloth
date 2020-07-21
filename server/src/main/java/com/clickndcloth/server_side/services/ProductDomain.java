@@ -19,6 +19,8 @@ public interface ProductDomain {
 	
 	List<Product>getAllByProductRef(String ref);
 	
+	List<Product>getAllProductWithDiscount();
+	
 	List<Product> getProductsByShopId(int shop_id);
 	
 	List<Product>getAllByIds(List<Integer> ids);

@@ -67,6 +67,11 @@ public class ProductController {
 		return productManager.getAllProductChildren();
 	}
 	
+	@GetMapping(value = "/products_discount")
+	@PreAuthorize("permitAll()")
+	public List<ProductDto> getAllProductWithDiscount() {
+		return productManager.getAllProductWithDiscount();
+	}
 
 	@GetMapping(value = "/product/{product_id}")
 	@PreAuthorize("permitAll()")

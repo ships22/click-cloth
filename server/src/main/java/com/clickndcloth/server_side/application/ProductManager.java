@@ -260,6 +260,28 @@ public class ProductManager {
 	}
 	
 	@Transactional
+	public List<ProductDto>getAllProductWithDiscount () {
+			List<Product>productList = productDomainService.getAllProductWithDiscount();
+			System.out.println("lenth : " + productList.size());
+			List<ProductDto>productDtos = new ArrayList<ProductDto>();
+			productList.forEach(product -> {
+				ProductDto productDto = new ProductDto();
+				productDto.setId(product.getId());
+				productDto.setName(product.getName());
+				productDto.setPrice(product.getPrice());
+				productDto.setDescription(product.getDescription());
+				productDto.setProductRef(product.getProductRef());
+				productDto.setDiscount(product.getDiscount());
+				productDto.setImage(product.getImage());
+				productDto.setCategories(product.getCategories());
+				productDto.setStock(product.getStocks());
+				productDto.setShop(product.getShop());
+				productDtos.add(productDto);
+			});
+			return productDtos;
+		}
+	
+	@Transactional
 	public String deleteProduct(Integer id) {
 		productDomainService.deleteProduct(id);
 		return "Product with id : " + id + " has been deleted succesfully";
