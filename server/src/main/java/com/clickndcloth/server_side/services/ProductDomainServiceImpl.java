@@ -75,6 +75,11 @@ public class ProductDomainServiceImpl implements ProductDomain{
 	public Optional<Product> findById(int id) {
 		return productRepository.findById(id);
 	}
+
+	@Override
+	public List<Product> getAllProductWithDiscount() {
+		return productRepository.findAllProductWithDiscount();
+	}
 	
 
 }

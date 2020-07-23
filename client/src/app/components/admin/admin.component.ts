@@ -145,7 +145,7 @@ export class AdminComponent implements OnInit {
     this.dialog.open(AddProductComponent);
   }
   filterProduct() {
-    console.log("filter pr");
+    this.productMatList.filter = this.productSearchKey.trim().toLocaleLowerCase();
   }
   onEdit(product) {
     this.router.navigate(["/edit_product", product.id]);
