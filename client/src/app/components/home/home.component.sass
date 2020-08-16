@@ -5,7 +5,7 @@
     display: block
     border-radius: 0
 
-@mixin grid($cols, $mgn) 
+@mixin grid($cols, $mgn)
     float: left
     margin-right: $mgn
     margin-bottom: $mgn
@@ -21,8 +21,8 @@ body
     height: 100%
     width: 100%
     max-width: 100%
-    
-.slider_wrapper 
+
+.slider_wrapper
   position: relative
   width: 100vw
   height: 100vh
@@ -33,7 +33,7 @@ body
   left: 0
   margin-top: -176px
 
-figure 
+figure
   position: absolute
   width: 100%
   height: 100%
@@ -44,7 +44,7 @@ figure
   -webkit-animation: slideShow 24s linear infinite 0s
 
 
-.slide-1 
+.slide-1
   opacity: 1
   background: url("../../../assets/images/img_1.jpg") no-repeat center center
   -webkit-background-size: cover
@@ -52,7 +52,7 @@ figure
   -o-background-size: cover
   background-size: cover
 
-.slide-2 
+.slide-2
   animation-delay: 6s
   -o-animation-delay: 6s
   -moz--animation-delay: 6s
@@ -63,7 +63,7 @@ figure
   -o-background-size: cover
   background-size: cover
 
-.slide-3 
+.slide-3
   animation-delay: 12s
   -o-animation-delay: 12s
   -moz--animation-delay: 12s
@@ -74,7 +74,7 @@ figure
   -o-background-size: cover
   background-size: cover
 
-.slide-4 
+.slide-4
   animation-delay: 18s
   -o-animation-delay: 18s
   -moz--animation-delay: 18s
@@ -87,68 +87,23 @@ figure
 
 
 // The fading effect using keyframes.
-@keyframes slideShow 
-  0% 
+@keyframes slideShow
+  0%
         opacity: 0
         transform: scale(1)
         -ms-transform: scale(1)
   5%
         opacity: 1
-  25% 
+  25%
         opacity: 1
-  30% 
+  30%
         opacity: 0
         transform: scale(1.1)
         -ms-transform: scale(1.1)
-  100% 
+  100%
         opacity: 0
         transform: scale(1)
         -ms-transformm: scale(1)
-
-// @-o-keyframes   slideShow  
-//     0% 
-//         opacity: 0
-//          -o-transform: scale(1)
-//     5% 
-//         opacity: 1
-//     25% 
-//         opacity: 1
-//     30% 
-//         opacity: 0
-//          -o-transform: scale(1.1)
-//     100% 
-//         opacity: 0
-//          -o-transformm: scale(1)
- 
-// @-moz-keyframes slideShow   
-//     0% 
-//         opacity: 0
-//          -moz-transform: scale(1)
-//     5% 
-//         opacity: 1
-//     25% 
-//         opacity: 1
-//     30% 
-//         opacity: 0
-//          -moz-transform: scale(1.1)
-//     100% 
-//         opacity: 0
-//          -moz-transformm: scale(1)
-
-// @-webkit-keyframes  slideShow 
-//     0% 
-//         opacity: 0
-//          -webkit-transform: scale(1)
-//     5% 
-//         opacity: 1
-//     25% 
-//         opacity: 1     
-//     30% 
-//         opacity: 0
-//          -webkit-transform:scale(1.1)
-//     100% 
-//         opacity: 0
-//          -webkit-transformm:scale(1)
 
 section.text_slider
     position: relative
@@ -158,7 +113,7 @@ section.text_slider
     z-index: 2
     width: 100%
     overflow: hidden
-    
+
     h3
         text-align: center
         white-space: nowrap
@@ -170,12 +125,12 @@ section.text_slider
         width: 100%
         text-transform: uppercase
     h3.quoto_line_top-1, h3.quoto_line_top-2, h3.quoto_line_top-3, h3.quoto_line_top-4
-        animation: slide-text-right 24s cubic-bezier(.01,1.04,1, .01) infinite 
-        transform: translateX(100%) 
+        animation: slide-text-right 24s cubic-bezier(.01,1.04,1, .01) infinite
+        transform: translateX(100%)
         top: 0
     h3.quoto_line_bottom-1, h3.quoto_line_bottom-2, h3.quoto_line_bottom-3, h3.quoto_line_bottom-4
         animation: 24s slide-text-left cubic-bezier(.01,1.04,1, .01) infinite
-        transform: translateX(-100%) 
+        transform: translateX(-100%)
         top: 90px
     h3.quoto_line_top-2
          animation-delay: 6s
@@ -209,34 +164,34 @@ section.text_slider
          -moz--animation-delay: 18s
          -webkit-animation-delay: 18s
 
-@keyframes slide-text-right  
-    0% 
+@keyframes slide-text-right
+    0%
         opacity: 0
         transform: translateX(-100%)
     2%
         opacity: 1
     23%
         opacity: 1
-    25% 
-        opacity: 0
-        transform: translateX(100%)  
-    100% 
+    25%
         opacity: 0
         transform: translateX(100%)
-        
+    100%
+        opacity: 0
+        transform: translateX(100%)
+
 @keyframes slide-text-left
 
-    0% 
+    0%
         opacity: 0
         transform: translateX(100%)
     2%
         opacity: 1
     23%
         opacity: 1
-    25% 
+    25%
         opacity: 0
-        transform: translateX(-100%)  
-    100% 
+        transform: translateX(-100%)
+    100%
         opacity: 0
         transform: translateX(-100%)
 
@@ -245,15 +200,11 @@ section.text_slider
 div.middle
     height: 100vh
     min-height: 768px
-    width: 100vw 
+    width: 100vw
     overflow: hidden
     display: flex
     flex-direction: column
-    // min-height: 768px
     position: relative
-    // max-height: 100%
-    // max-width: 100%
-    // background: #e9e0e0
     .wave
         width: 100%
         min-height: 700px
@@ -269,7 +220,7 @@ div.middle
             background-size: cover
             bottom: 0
             left: 0
-            
+
     h2
         background: yellow
         text-align: center
@@ -317,8 +268,8 @@ div.middle
             width: 750px
             margin: 0px auto 20px
             font-weight: 800
-            
-    .slide_product 
+
+    .slide_product
         height: 300px
         // height: 40vh
         width: 230px
@@ -343,15 +294,12 @@ div.middle
                 transition: all 0.2s ease-in
             span.discount_lbl
                 text-align: center
-                // line-height: 
+                // line-height:
                 height: 30px
                 width: 120px
                 line-height: 30px
                 font-size: 16px
                 font-weight: 600
-                // border-bottom: 100px solid red
-                // border-left: 25px solid transparent
-                // border-right: 25px solid transparent
                 transform: rotate(-50deg)
                 top: 150px
                 right: -17px
@@ -380,7 +328,7 @@ div.middle
                     transform: skewx(-50deg)
                     z-index: -1
 
-        span.category 
+        span.category
             position: absolute
             width: 100%
             bottom: -5px
@@ -397,7 +345,7 @@ div.middle
 // Section bottom -
 div#bottom_rapper
     background: #ebdddd
-    padding-top: 50px 
+    padding-top: 50px
 
 div#bottom
     display: flex
@@ -417,10 +365,10 @@ div#bottom
              width: 20px
              height: 100%
              background: #ffffff
-             background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 52%) // FF3.6-15 
-             background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // Chrome10-25,Safari5.1-6 
-             background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
-             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ) // IE6-9 
+             background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 52%) // FF3.6-15
+             background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // Chrome10-25,Safari5.1-6
+             background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
+             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ) // IE6-9
              right: 0
              top: 0
         section.femme_lbl
@@ -453,26 +401,26 @@ div#bottom
                   width: 80px
                   padding-left: 10px
                   z-index: 5
-                                 
-             
 
-    #mode_female-slider 
+
+
+    #mode_female-slider
         box-shadow: 1px 1px 5px rgba(0,0,0,0.7)
         height: 100%
         width: 100%
-        margin: auto 
+        margin: auto
         overflow: hidden
         position: relative
         &:hover li
             animation-play-state: paused !important
         &:hover .progress-bar
             animation-play-state: paused !important
-            
+
         //https://www.smashingmagazine.com/2012/04/pure-css3-cycling-slideshow/
-        #mask 
+        #mask
             height: 380px
             transform: skewX(15deg)
-            ul 
+            ul
                 margin: 0
                 padding: 0
                 position: relative
@@ -490,7 +438,7 @@ div#bottom
                          object-fit: cover
                          height: 100%
                          width: 100%
-                    div.tooltip 
+                    div.tooltip
                         background: rgba(0,0,0,0.7)
                         width: 330px
                         width: 100%
@@ -500,7 +448,7 @@ div#bottom
                         bottom: -200px
                         //left: -320px
                         transition: all 0.3s ease-in-out
-                        h2 
+                        h2
                             color: #fff
                             font-size: 24px
                             font-weight: 300
@@ -509,28 +457,28 @@ div#bottom
                             text-align: center !important
                               //    padding: 0 0 0 10px
 
-                li.firstanimation 
+                li.firstanimation
                     animation: cycle 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                li.secondanimation 
+                li.secondanimation
                     animation: cycletwo 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                li.thirdanimation 
+                li.thirdanimation
                     animation: cyclethree 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                li.fourthanimation 
+                li.fourthanimation
                     animation: cyclefour 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                li.fifthanimation 
+                li.fifthanimation
                     animation: cyclefive 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                        
-        .progress-bar 
+
+        .progress-bar
             position: relative
             top: -35px
             width: 680px
@@ -539,7 +487,7 @@ div#bottom
             animation: fullexpand 25s ease-out infinite
 
 
-    
+
     #mode_male
         border-bottom: 30px solid #ffffff
         padding-bottom: 50px
@@ -556,10 +504,10 @@ div#bottom
              width: 20px
              height: 100%
              background: #ffffff
-             background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 52%) // FF3.6-15 
-             background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // Chrome10-25,Safari5.1-6 
-             background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
-             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ) // IE6-9 
+             background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 52%) // FF3.6-15
+             background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // Chrome10-25,Safari5.1-6
+             background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 52%) // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
+             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ) // IE6-9
              left: 0
              bottom: -1px
         section.male_lbl
@@ -592,28 +540,28 @@ div#bottom
                   height: 65px
                   width: 80px
                   padding-right: 10px
-                                 
-             
 
-    #mode_male-slider 
+
+
+    #mode_male-slider
         box-shadow: 1px 1px 5px rgba(0,0,0,0.7)
         height: 350px
         width: 100%
-        margin: auto 
+        margin: auto
         overflow: hidden
         position: relative
         &:hover li
             animation-play-state: paused !important
         &:hover .progress-bar_male
             animation-play-state: paused !important
-            
+
         //https://www.smashingmagazine.com/2012/04/pure-css3-cycling-slideshow/
-        #mask_male 
+        #mask_male
             height: 350px
             margin-left: -50px !important
-            
+
             transform: skewX(15deg)
-            ul 
+            ul
                 margin: 0
                 padding: 0
                 position: relative
@@ -630,7 +578,7 @@ div#bottom
                          object-fit: cover
                          height: 100%
                          width: 100%
-                    div.tooltip 
+                    div.tooltip
                         background: rgba(0,0,0,0.7)
                         width: 100%
                         height: 60px
@@ -638,7 +586,7 @@ div#bottom
                         bottom: -200px
                          //     right: -300px
                         transition: all 0.3s ease-in-out
-                        h2 
+                        h2
                             color: #fff
                             font-size: 24px
                             font-weight: 330
@@ -646,28 +594,28 @@ div#bottom
                             padding: 0 0 0 10px
                             text-align: center
 
-                li.firstanimation 
+                li.firstanimation
                     animation: cycle 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                li.secondanimation 
+                li.secondanimation
                     animation: cycletwo 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                li.thirdanimation 
+                li.thirdanimation
                     animation: cyclethree 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                li.fourthanimation 
+                li.fourthanimation
                     animation: cyclefour 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                li.fifthanimation 
+                li.fifthanimation
                     animation: cyclefive 25s linear infinite
                     &:hover .tooltip
                         bottom: 68px
-                        
-        .progress-bar_male 
+
+        .progress-bar_male
             position: relative
             top: -5px
             float: right
@@ -676,31 +624,31 @@ div#bottom
             background: #000
             animation: fullexpand 25s ease-out infinite
 
-       
 
 
-@keyframes cycle 
+
+@keyframes cycle
    0%
         top: 0px
-   4%  
+   4%
         top: 0px
-   16% 
+   16%
         top: 0px
         opacity: 1
         z-index: 0
-   20% 
+   20%
         top: 325px
         opacity: 0
         z-index: 0
-   21% 
+   21%
         top: -325px
         opacity: 0
         z-index: -1
-   92% 
+   92%
         top: -325px
         opacity: 0
         z-index: 0
-   96% 
+   96%
         top: -325px
         opacity: 0
    100%
@@ -708,88 +656,28 @@ div#bottom
         opacity: 1
 
 
-@keyframes cycletwo 
-   0% 
+@keyframes cycletwo
+   0%
         top: -325px
         opacity: 0
-   16% 
+   16%
         top: -325px
         opacity: 0
-   20% 
+   20%
         top: 0px
         opacity: 1
-   24% 
+   24%
         top: 0px
         opacity: 1
-   36% 
+   36%
         top: 0px
         opacity: 1
         z-index: 0
-   40% 
+   40%
         top: 325px
         opacity: 0
         z-index: 0
-   41% 
-        top: -325px
-        opacity: 0
-        z-index: -1
-   100%
-        top: -325px
-        opacity: 0 
-        z-index: -1
-
-
-@keyframes cyclethree 
-   0%  
-        top: -325px
-        opacity: 0
-   36% 
-        top: -325px
-        opacity: 0
-   40% 
-        top: 0px 
-        opacity: 1
-   44% 
-        top: 0px
-        opacity: 1
-   56% 
-        top: 0px
-        opacity: 1
-   60% 
-        top: 325px
-        opacity: 0
-        z-index: 0
-   61% 
-        top: -325px
-        opacity: 0
-        z-index: -1
-   100%
-        top: -325px 
-        opacity: 0 
-        z-index: -1
-
-@keyframes cyclefour 
-   0%  
-        top: -325px
-        opacity: 0
-   56% 
-        top: -325px
-        opacity: 0
-   60% 
-        top: 0px 
-        opacity: 1
-   64% 
-        top: 0px
-        opacity: 1
-   76% 
-        top: 0px
-        opacity: 1
-        z-index: 0
-   80% 
-        top: 325px
-        opacity: 0
-        z-index: 0
-   81% 
+   41%
         top: -325px
         opacity: 0
         z-index: -1
@@ -798,21 +686,81 @@ div#bottom
         opacity: 0
         z-index: -1
 
-@keyframes cyclefive 
-   0%  
+
+@keyframes cyclethree
+   0%
         top: -325px
         opacity: 0
-   76% 
+   36%
         top: -325px
         opacity: 0
-   80%  
-        top: 0px 
+   40%
+        top: 0px
         opacity: 1
-   84% 
-        top: 0px 
+   44%
+        top: 0px
         opacity: 1
-   96% 
-        top: 0px 
+   56%
+        top: 0px
+        opacity: 1
+   60%
+        top: 325px
+        opacity: 0
+        z-index: 0
+   61%
+        top: -325px
+        opacity: 0
+        z-index: -1
+   100%
+        top: -325px
+        opacity: 0
+        z-index: -1
+
+@keyframes cyclefour
+   0%
+        top: -325px
+        opacity: 0
+   56%
+        top: -325px
+        opacity: 0
+   60%
+        top: 0px
+        opacity: 1
+   64%
+        top: 0px
+        opacity: 1
+   76%
+        top: 0px
+        opacity: 1
+        z-index: 0
+   80%
+        top: 325px
+        opacity: 0
+        z-index: 0
+   81%
+        top: -325px
+        opacity: 0
+        z-index: -1
+   100%
+        top: -325px
+        opacity: 0
+        z-index: -1
+
+@keyframes cyclefive
+   0%
+        top: -325px
+        opacity: 0
+   76%
+        top: -325px
+        opacity: 0
+   80%
+        top: 0px
+        opacity: 1
+   84%
+        top: 0px
+        opacity: 1
+   96%
+        top: 0px
         opacity: 1
         z-index: 0
    100%
@@ -821,24 +769,24 @@ div#bottom
         z-index: 0
 
 
-@keyframes fullexpand 
-   
-   0%, 20%, 40%, 60%, 80%, 100% 
+@keyframes fullexpand
+
+   0%, 20%, 40%, 60%, 80%, 100%
         width: 0%
         opacity: 0
-   4%, 24%, 44%, 64%, 84% 
+   4%, 24%, 44%, 64%, 84%
         width: 0%
         opacity: 0.3
-   16%, 36%, 56%, 76%, 96% 
+   16%, 36%, 56%, 76%, 96%
         width: 100%
         opacity: 0.7
-   17%, 37%, 57%, 77%, 97% 
+   17%, 37%, 57%, 77%, 97%
         width: 100%
         opacity: 0.3
-   18%, 38%, 58%, 78%, 98% 
+   18%, 38%, 58%, 78%, 98%
         width: 100%
         opacity: 0
-                
+
 
 .brands
      background: #ffffff
@@ -847,7 +795,7 @@ div#bottom
      margin-top: 100px
      padding: 10px
      span
-          
+
           box-shadow: 1px 1px 15px 3px #eb4c0e1a
           background-size: 90px 60px
           border-radius: 5px
@@ -865,16 +813,16 @@ div#bottom
           &:nth-child(4)
                background: url("../../../assets/images/lisa.svg") no-repeat center center
                background-size: 120px 60px
-               
+
      p
           border-left: 5px solid orange
           padding-left: 15px
           line-height: 90px
           font-weight: 600
-          
 
-        
-        
+
+
+
 /********************  responsive  ***************/
 
 @mixin small-screen
@@ -886,22 +834,22 @@ div#bottom
 @mixin x-small-margin
   @media (max-width: 479px)
        margin-left: -50px !important
-       
 
 
-@media screen and (min-width:768px) and (max-width:959px) 
-     .slider_wrapper 
+
+@media screen and (min-width:768px) and (max-width:959px)
+     .slider_wrapper
           margin-top: -80px
-     section.text_slider 
+     section.text_slider
           height: 100px
           h3
                font-size: 50px
           h3.quoto_line_bottom-1, h3.quoto_line_bottom-2, h3.quoto_line_bottom-3, h3.quoto_line_bottom-4
                top: 48px
-     
+
 
      div.middle
-          .wave    
+          .wave
                // min-height: auto
           h2
                padding: 6px
@@ -914,22 +862,22 @@ div#bottom
           .owl_wrapper
                min-width: auto
                padding: 15px 10px 10px 10px
-               
+
                h6
-                    font-size: 48px   
+                    font-size: 48px
                h3
                     font-size: 42px
                     padding: 0px 0px 0px 20px
                     text-align: left
                     margin: 0px auto 20px
-          .slide_product 
+          .slide_product
                height: 250px
                width: 190px
                a.mat-link_access
                     height: 200px
                     width: 200x
-            
-                
+
+
                     span.discount_lbl
                          height: 25px
                          width: 100px
@@ -952,22 +900,10 @@ div#bottom
                               transform: skewx(-50deg)
                               z-index: -1
 
-          // span.category 
-          //   position: absolute
-          //   width: 100%
-          //   bottom: -5px
-          //   background: #dad9d6
-          //   border: 8px solid #eb9e47
-          //   border: 5px solid #000000
-          //   border-radius: 3px
-          //   text-align: center
-          //   padding: 5px
-          //   font-size: 16px
-          //   font-weight: 600
-          //   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4)
+
      .brands
-          span   
-          
+          span
+
                background-size: 90px 60px
                border-radius: 5px
                height: 75px
@@ -984,29 +920,29 @@ div#bottom
                &:nth-child(4)
                     background: url("../../../assets/images/lisa.svg") no-repeat center center
                     background-size: 85px 50px
-                    
+
           p
                border-left: 5px solid orange
                padding-left: 15px
                line-height: 75px
                font-weight: 600
                font-size: 14px
-     
 
-@media screen and (min-width:480px) and (max-width:767px) 
-     .slider_wrapper 
+
+@media screen and (min-width:480px) and (max-width:767px)
+     .slider_wrapper
           margin-top: -80px
-     section.text_slider 
+     section.text_slider
           height: 100px
           top: 50% !important
           h3
                font-size: 44px
           h3.quoto_line_bottom-1, h3.quoto_line_bottom-2, h3.quoto_line_bottom-3, h3.quoto_line_bottom-4
                top: 48px
-     
+
 
      div.middle
-          .wave    
+          .wave
                // min-height: auto
           h2
                padding: 6px
@@ -1019,9 +955,9 @@ div#bottom
           .owl_wrapper
                min-width: auto
                padding: 15px 10px 10px 10px
-               
+
                h6
-                    font-size: 40px   
+                    font-size: 40px
                     width: 450px
                h3
                     font-size: 38px
@@ -1030,14 +966,14 @@ div#bottom
                     margin: 0px auto 10px
                     width: 450px
 
-          .slide_product 
+          .slide_product
                height: 250px
                width: 190px
                a.mat-link_access
                     height: 200px
                     width: 200x
-            
-                
+
+
                     span.discount_lbl
                          height: 25px
                          width: 100px
@@ -1060,25 +996,13 @@ div#bottom
                               transform: skewx(-50deg)
                               z-index: -1
 
-          // span.category 
-          //   position: absolute
-          //   width: 100%
-          //   bottom: -5px
-          //   background: #dad9d6
-          //   border: 8px solid #eb9e47
-          //   border: 5px solid #000000
-          //   border-radius: 3px
-          //   text-align: center
-          //   padding: 5px
-          //   font-size: 16px
-          //   font-weight: 600
-          //   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4)
+
      .brands
           display: flex
           flex-flow: row wrap
           flex-direction: row !important
-          span   
-          
+          span
+
                // background-size: 90px 60px
                border-radius: 5px
                height: 75px
@@ -1096,10 +1020,10 @@ div#bottom
                     background: url("../../../assets/images/lisa.svg") no-repeat center center
                     background-size: 85px 50px
                     order: 1 !important
-                    
-                    
+
+
           p
-               
+
                border-bottom: 3px solid orange
                border-left: none
                padding-bottom: 7px
@@ -1110,22 +1034,22 @@ div#bottom
                flex-grow: 1
                order: -1 !important
                flex: 1 0 100%
-          
-               
+
+
 @media screen and (min-width:320px) and (max-width:479px)
-     .slider_wrapper 
+     .slider_wrapper
           margin-top: -50px
-     section.text_slider 
+     section.text_slider
           height: 80px
           top: 50% !important
           h3
                font-size: 24px
           h3.quoto_line_bottom-1, h3.quoto_line_bottom-2, h3.quoto_line_bottom-3, h3.quoto_line_bottom-4
                top: 28px
-     
+
 
      div.middle
-          .wave    
+          .wave
                // min-height: auto
           h2
                padding: 6px
@@ -1138,9 +1062,9 @@ div#bottom
           .owl_wrapper
                min-width: auto
                padding: 15px 10px 10px 10px
-               
+
                h6
-                    font-size: 28px   
+                    font-size: 28px
                     width: 320px
                h3
                     font-size: 22px
@@ -1149,55 +1073,12 @@ div#bottom
                     margin: 0px auto 10px
                     width: 320px
 
-          // .slide_product 
-          //      height: 250px
-          //      width: 190px
-          //      a.mat-link_access
-          //           height: 200px
-          //           width: 200x
-            
-                
-          //           span.discount_lbl
-          //                height: 25px
-          //                width: 100px
-          //                line-height: 25px
-          //                font-size: 13px
-          //                top: 130px
-          //                right: -14px
-          //                &::before
-          //                     height: 25px
-          //                     width: 40px
-          //                     top: 0
-          //                     left: -20px
-          //                     transform: skewx(40deg)
-          //                     z-index: -1
-          //                &::after
-          //                     height: 25px
-          //                     width: 40px
-          //                     top: 0
-          //                     right: -15px
-          //                     transform: skewx(-50deg)
-          //                     z-index: -1
-
-          // span.category 
-          //   position: absolute
-          //   width: 100%
-          //   bottom: -5px
-          //   background: #dad9d6
-          //   border: 8px solid #eb9e47
-          //   border: 5px solid #000000
-          //   border-radius: 3px
-          //   text-align: center
-          //   padding: 5px
-          //   font-size: 16px
-          //   font-weight: 600
-          //   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4)
      .brands
           display: flex
           flex-flow: row wrap
           flex-direction: row !important
-          span   
-          
+          span
+
                // background-size: 90px 60px
                border-radius: 5px
                height: 75px
@@ -1216,10 +1097,10 @@ div#bottom
                     background: url("../../../assets/images/lisa.svg") no-repeat center center
                     background-size: 85px 50px
                     order: 1 !important
-                    
-                    
+
+
           p
-               
+
                border-bottom: 3px solid orange
                border-left: none
                padding-bottom: 7px
@@ -1231,11 +1112,11 @@ div#bottom
                order: -1 !important
                flex: 1 0 100%
 
-     
+
 
 // mode slider female and male **************************
 
-@media screen and (min-width:950px) and (max-width:1200px) 
+@media screen and (min-width:950px) and (max-width:1200px)
      #mode_female
           border-top: 20px solid #ffffff !important
           padding-top: 10px !important
@@ -1258,13 +1139,13 @@ div#bottom
                     height: 45px !important
                     width: 60px !important
                     padding-left: 5px !important
-     
-     #mask 
+
+     #mask
           height: 380px
-          ul 
+          ul
                li
                     width: calc( 50vw + 20px ) !important
-     
+
 
      #mode_male
           border-bottom: 20px solid #ffffff !important
@@ -1276,7 +1157,7 @@ div#bottom
           section.male_lbl
                margin-bottom: 10px !important
                height: 60px !important
-               
+
                h3
                     font-size: 18px !important
                     line-height: 60px !important
@@ -1289,8 +1170,8 @@ div#bottom
                     padding-right: 5px !important
 
 
-@media screen and (min-width:480px) and (max-width:949px) 
-             
+@media screen and (min-width:480px) and (max-width:949px)
+
      div#bottom
           flex-direction: column
           #mode_female
@@ -1299,7 +1180,7 @@ div#bottom
                padding-top: 10px !important
                padding-right: 35px !important
                height: 380px !important
-               
+
                @include small-screen
                &::after
                     width: 15px !important
@@ -1308,11 +1189,11 @@ div#bottom
                     h3
                          @include small-screen
                          @include small-screen-h3
-                         
+
                #mode_female-slider
                     #mask
                          @include small-screen
-                         
+
                     ul li
                          width: 99vw
                          left: 50px
@@ -1326,7 +1207,7 @@ div#bottom
                right: -100px !important
                top: 130px
                @include small-screen
-               
+
                &::after
                     width: 15px !important
                section.male_lbl
@@ -1334,12 +1215,12 @@ div#bottom
                     h3
                          @include small-screen
                          @include small-screen-h3
-                         
-                         
+
+
                #mode_male-slider
                     #mask_male
                          @include small-screen
-                         
+
                     ul li
                          width: 99vw
      .brands
@@ -1348,7 +1229,7 @@ div#bottom
 
 @media screen and (min-width:320px) and (max-width:479px)
 
-     
+
      div#bottom
           flex-direction: column
           #mode_female
@@ -1366,11 +1247,11 @@ div#bottom
                     h3
                          @include small-screen
                          font-size: 12px
-                         
+
                #mode_female-slider
                     #mask
                          @include small-screen
-                         
+
                     ul li
                          width: 99vw
                          left: 50px
@@ -1384,7 +1265,7 @@ div#bottom
                right: -20px !important
                top: 130px
                @include small-screen
-               
+
                &::after
                     width: 15px !important
                section.male_lbl
@@ -1392,12 +1273,12 @@ div#bottom
                     h3
                          @include small-screen
                          font-size: 12px
-                         
-                         
+
+
                #mode_male-slider
                     #mask_male
                          @include small-screen
-                         
+
                     ul li
                          width: 99vw
      .brands
