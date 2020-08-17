@@ -12,27 +12,27 @@ import com.clickndcloth.server_side.models.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
-	@Query(value = "SELECT product.* FROM Product AS product WHERE product.shop_id = ?1", nativeQuery = true)
+	@Query(value = "SELECT product.* FROM product AS product WHERE product.shop_id = ?1", nativeQuery = true)
 	List<Product> findByShop(int shop_id);
 	
-	@Query(value = "SELECT product.* FROM Product AS product WHERE product.product_ref = ?1", nativeQuery = true)
+	@Query(value = "SELECT product.* FROM product AS product WHERE product.product_ref = ?1", nativeQuery = true)
 	List<Product> findByProductRef(String product_ref);
 	
 	//List<Product> findByIdIn(List<Integer> ids);
 	
-    @Query(nativeQuery = true, value = "SELECT * FROM Product as p WHERE p.id IN (:ids)")  
+    @Query(nativeQuery = true, value = "SELECT * FROM product as p WHERE p.id IN (:ids)")  
     List<Product> findAllByProductId(@Param("ids") List<Integer> ids);
     
     
-    @Query(value = "SELECT * FROM Product AS product WHERE product.product_ref LIKE 'sf%'", nativeQuery = true)
+    @Query(value = "SELECT * FROM product AS product WHERE product.product_ref LIKE 'sf%'", nativeQuery = true)
     List<Product> findAllByProductLadies();
 	
-    @Query(value = "SELECT * FROM Product AS product WHERE product.product_ref LIKE 'sh%'", nativeQuery = true)
+    @Query(value = "SELECT * FROM product AS product WHERE product.product_ref LIKE 'sh%'", nativeQuery = true)
     List<Product> findAllByProductGents();
 	
-    @Query(value = "SELECT * FROM Product AS product WHERE product.product_ref LIKE 'se%'", nativeQuery = true)
+    @Query(value = "SELECT * FROM product AS product WHERE product.product_ref LIKE 'se%'", nativeQuery = true)
     List<Product> findAllByProductChildren();
     
-    @Query(value = "SELECT * FROM Product AS product WHERE discount != '' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM product AS product WHERE discount != '' ", nativeQuery = true)
     List<Product> findAllProductWithDiscount();
 }

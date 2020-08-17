@@ -13,10 +13,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	Optional<User> findByEmail(String email);
 
-	@Query(value = "SELECT user.* FROM User AS user where user.email = ?1", nativeQuery = true)
+	@Query(value = "SELECT user.* FROM user AS user where user.email = ?1", nativeQuery = true)
 	User getByEmail(String email);
 
-	@Query(value = "UPDATE User u SET u.is_active = ? WHERE u.id = ?", nativeQuery = true)
+	@Query(value = "UPDATE user u SET u.is_active = ? WHERE u.id = ?", nativeQuery = true)
 	User userStatus(int is_active, Integer id);
 
 }
