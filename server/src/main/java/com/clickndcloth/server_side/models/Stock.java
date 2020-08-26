@@ -38,8 +38,8 @@ public class Stock {
 		super();
 	}
 
-	public Stock(int id, int quantite, String size, String colour, int product_id_product, int product_shop_id_shop,
-			int product_shop_admin_id_admin) {
+	public Stock(int id, int quantite, String size, String colour 
+			) {
 		super();
 		this.id = id;
 		this.quantite = quantite;
