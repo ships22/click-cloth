@@ -16,6 +16,7 @@ import { ChildrenComponent } from './components/children/children.component';
 import { ProductSelectComponent } from './components/product-select/product-select.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,13 @@ const routes: Routes = [
   },
   {
     path: "admin", component: AdminComponent,
+    canActivate: [Guard],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: "category", component: CategoryComponent,
     canActivate: [Guard],
     data: {
       expectedRole: 'ROLE_ADMIN'
