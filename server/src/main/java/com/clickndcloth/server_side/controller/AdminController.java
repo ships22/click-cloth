@@ -26,25 +26,25 @@ public class AdminController {
 	private AdminManager adminManager;
 
 	@GetMapping(value = "/admins")
-//	@PreAuthorize("hasRole('SUPER_ADMIN')")
+ 	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public List<AdminDto> getAllAdmin() {
 		return adminManager.getAllAdmin();
 	}
 	
 	@GetMapping(value = "/admin_by_id/{id}")
-//	@PreAuthorize("hasRole('SUPER_ADMIN')")
+	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public AdminDto getById(@PathVariable ("id") Integer id) {
 		return adminManager.findAdminById(id);
 	}
 	
 	@GetMapping(value = "/admin_by_email/{email}")
-//	@PreAuthorize("hasRole('SUPER_ADMIN')")
+	@PreAuthorize("hasRole('SUPER_ADMIN')")
 	public AdminDto getByEmail(@PathVariable ("email") String email) {
 		return adminManager.findAdminByEmail(email);
 	}
 	
 	@PostMapping(value = "/add_admin", produces = "application/json")
-//	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
 	public AdminDto addAdmin(@RequestBody Admin admin) {
 		return adminManager.addAdmin(admin);
 	}

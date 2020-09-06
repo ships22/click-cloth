@@ -18,7 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query(value = "SELECT product.* FROM Product AS product WHERE product.product_ref = ?1", nativeQuery = true)
 	List<Product> findByProductRef(String product_ref);
 	
-	//List<Product> findByIdIn(List<Integer> ids);
 	
     @Query(nativeQuery = true, value = "SELECT * FROM Product as p WHERE p.id IN (:ids)")  
     List<Product> findAllByProductId(@Param("ids") List<Integer> ids);
