@@ -46,8 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				"/api/reset_password", 
 				"/api/update_password",
 				"/api/shops",
-				"/api/test_get_mapping/**", 
-				"/api/**").permitAll()
+				"/api/test_get_mapping/**",
+				"/api/add_client/**", "/api/**"
+				).permitAll()
 		.anyRequest().authenticated()
 		.and().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
