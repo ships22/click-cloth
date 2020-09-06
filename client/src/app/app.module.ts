@@ -54,6 +54,8 @@ import { CartService } from "./services/cart.service";
 import { CartComponent } from "./components/cart/cart.component";
 import { ReservationComponent } from "./components/admin/reservation/reservation.component";
 import { AboutComponent } from "./components/about/about.component";
+import { CategoryComponent } from './components/category/category.component';
+import { CategoryService } from './services/category.service';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -99,6 +101,7 @@ const MaterialComponents = [
     CartComponent,
     ReservationComponent,
     AboutComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,6 +118,7 @@ const MaterialComponents = [
     AdminService,
     ClientService,
     CartService,
+    CategoryService,
     LoadingService,
     MsgService,
     ShopService,

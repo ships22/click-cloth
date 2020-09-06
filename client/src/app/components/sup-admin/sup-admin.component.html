@@ -2,10 +2,12 @@
   <h2>Super admin</h2>
   <span class="screen_warn">Merci de consulter cette page en plein écran</span>
     <div class="add_filter">
+        <button mat-raised-button (click)="categories()">
+          <mat-icon>book</mat-icon>Categories
+        </button>
         <button mat-raised-button (click)="onCreate()">
             <mat-icon>add</mat-icon>Ajouter
         </button>
-
         <mat-form-field class="search" floatLabel="never">
             <mat-label class="searc_plHolder">Chercher...</mat-label>
             <input matInput
