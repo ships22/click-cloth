@@ -11,9 +11,9 @@
           id="selectedCat"
           required
         >
-          <option value="">ALL CATEGORIES</option>
-          <option *ngFor="let c of categories" [ngValue]="c.Id"
-            >{{ c.Name }}
+          <option class="opt" value="">ALL CATEGORIES</option>
+          <option class="opt" *ngFor="let c of categories"
+            >{{ c.name }}
           </option>
         </select>
       </div>
