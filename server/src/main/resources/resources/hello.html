@@ -41,7 +41,7 @@
 				"contentType" : "application/json"
 			})
 			
-			$.post('http://localhost:8080/api/update_password', JSON.stringify(dataPayload))
+			$.post('http://ec2-15-236-194-141.eu-west-3.compute.amazonaws.com:8080/api/update_password', JSON.stringify(dataPayload))
 			 .done(function (response) {
 				document.getElementById("new_password").value = "";
 				document.getElementById("repeat_password").value = "";

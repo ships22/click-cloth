@@ -29,7 +29,7 @@ public class Emailer {
 		mail.setFrom("info@clickandcloth.online");
 		mail.setSubject("Password reset link");
 		String text = "Cliquez sur le lien pour réinitialiser votre mot de passe. Veuillez noter que le lien n'est valable que pour une heure.";
-		mail.setText(text + " Le lien : http://ec2-15-236-232-34.eu-west-3.compute.amazonaws.com:8080/reset_password?token=" + token);
+		mail.setText(text + " Le lien : http://ec2-15-236-194-141.eu-west-3.compute.amazonaws.com:8080/reset_password?token=" + token);
 		javaMailSender.send(mail);
 		return result;
 	}
