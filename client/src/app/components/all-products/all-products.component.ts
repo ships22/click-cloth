@@ -58,7 +58,6 @@ export class AllProductsComponent implements OnInit {
     } else {
       this.collection = this.filteredProduct;
     }
-
   }
   selectProduct(productRef) {
     this.router.navigate(["/product_select", productRef]);
