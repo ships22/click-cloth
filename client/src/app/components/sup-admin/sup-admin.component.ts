@@ -74,8 +74,7 @@ export class SupAdminComponent implements OnInit {
     this.adminService.deleteAdmin(id).pipe(take(1)).subscribe();
   }
   categories() {
-    console.log("categories");
-
+    this.router.navigate(["/category"]);
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
