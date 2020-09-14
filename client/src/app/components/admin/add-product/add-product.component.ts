@@ -8,6 +8,7 @@ import { take } from "rxjs/operators";
 import { ProductService } from "src/app/services/product.service";
 import { Product } from "src/app/models/products/product";
 import { Stock } from 'src/app/models/products/stock';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: "app-add-product",
@@ -44,13 +45,15 @@ export class AddProductComponent implements OnInit {
     private productService: ProductService,
     public messageService: MsgService,
     private authenticationService: AuthenticationService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private categoryService: CategoryService
   ) {
     this.dialogRef = this.injector.get(MatDialogRef, null);
   }
 
   ngOnInit(): void {
     this.getAdminId();
+    this.getAllCategory();
   }
   submit(product) {
 
@@ -79,11 +82,12 @@ export class AddProductComponent implements OnInit {
       product.price != "" &&
       product.quantite != "" &&
       product.size != "" &&
+      product.category != "" &&
       product.productRef != ""
     ) {
       productData.append("product", JSON.stringify(this.newProduct));
       productData.append("stock", JSON.stringify(this.stock));
-      this.productService.addProduct(productData, this.shopId, 1).subscribe(
+      this.productService.addProduct(productData, this.shopId, product.category).subscribe(
             (response) => (
               console.log("test add product :", response), this.dialogRef.close()
             ),
@@ -119,5 +123,12 @@ export class AddProductComponent implements OnInit {
           (error) => this.messageService.sendMessage("Problème technique")
         );
     }
+  }
+  getAllCategory() {
+    this.categoryService.getAllCategory()
+    .subscribe(data => {
+      this.categories = data;
+      console.log('test cat list :', this.categories);
+    })
   }
 }
