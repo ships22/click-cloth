@@ -13,6 +13,7 @@ export class ChildrenComponent implements OnInit {
   selectedCat: '';
   p: number = 1;
   collection: any[] = [];
+  filteredProduct: any[] = [];
 
   constructor(private productService: ProductService, private router: Router,) {
    }
@@ -27,26 +28,25 @@ export class ChildrenComponent implements OnInit {
     .subscribe(response => {
       console.log('test products call :' , response);
       this.collection = response;
-      
+
       this.collection.forEach(product => {
-        
-        
+
+
         product.stock.forEach(stock => {
           product['inStock'] =+ stock.quantite;
         });
-      })
+      });
+      this.filteredProduct = this.collection;
     })
   }
 
   filter(selectedCat) {
-    // let filteredDvds = this.dvds.filter((dvd) => dvd.cat === selectedCat);
-    // if (selectedCat) {
-    //   return this.dvdDisplay = filteredDvds;
-    // } else if (selectedCat.length === 0) {
-    //   return this.dvdDisplay = this.dvds;
-    // }
     console.log('test cat :' , selectedCat);
-    
+    if(selectedCat) {
+      this.collection = this.filteredProduct.filter(product => product.categories[0].name == selectedCat);
+    } else {
+      this.collection = this.filteredProduct;
+    }
   }
   selectProduct(productRef) {
     this.router.navigate(["/product_select", productRef]);
