@@ -113,12 +113,12 @@ export class AddProductComponent implements OnInit {
         .subscribe(
           (response) => {
             this.adminId = response.id;
+            console.log('tres :', response);
+
             if (response.shops.length) {
               this.shopService
                 .getShopByAdmin(response.id)
-                .subscribe((shop) => (this.shopId = shop.shop_id));
-                console.log("test shop id :", this.shopId);
-
+                .subscribe((shop) => this.shopId = shop.shop_id);
             }
           },
           (error) => this.messageService.sendMessage("Problème technique")

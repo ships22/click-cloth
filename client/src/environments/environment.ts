@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: "http://localhost:8080/api/",
+  // api_url: "http://localhost:8080/api/",
+  api_url: "http://ec2-15-236-194-141.eu-west-3.compute.amazonaws.com:8080/api/",
 };
 
 /*

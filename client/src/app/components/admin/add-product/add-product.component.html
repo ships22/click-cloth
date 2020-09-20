@@ -55,7 +55,7 @@
       maxlength="6"
     />
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="slectField">
     <mat-label>Taile</mat-label>
     <mat-select ngModel #size="ngModel" name="size">
       <mat-option *ngFor="let every of sizes" [value]="every.size">
@@ -70,18 +70,6 @@
         {{ category.name }}
       </mat-option>
     </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Quantité</mat-label>
-    <input
-      matInput
-      ngModel
-      #quantity="ngModel"
-      name="quantite"
-      type="number"
-      id="quantite"
-      required
-    />
   </mat-form-field>
   <mat-form-field class="slectField">
     <mat-label>Catégorie</mat-label>
