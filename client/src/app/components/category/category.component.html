@@ -2,11 +2,23 @@
   <form (ngSubmit)="submit(f.value); f.reset()" #f="ngForm" name="f">
     <mat-form-field appearance="fill">
       <mat-label>Category</mat-label>
-      <input onfocus="''" matInput ngModel #name="ngModel" name="name" type="text" id="name" required minlength="3" maxlength="25"/>
+      <input
+        onfocus="''"
+        matInput
+        ngModel
+        #name="ngModel"
+        name="name"
+        type="text"
+        id="name"
+        required
+        minlength="3"
+        maxlength="25"
+        style="height: 20px;"
+      />
     </mat-form-field>
     <div class="btns">
       <button mat-raised-button type="submit">
-          <mat-icon>playlist_add</mat-icon>Submit
+        <mat-icon>playlist_add</mat-icon>Submit
       </button>
     </div>
   </form>

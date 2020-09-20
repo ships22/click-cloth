@@ -20,7 +20,7 @@ export class EditAdminComponent implements OnInit {
     shops: null
   };
 
-  constructor(  private router: Router, 
+  constructor(  private router: Router,
                 private adminService: AdminService,
                 private massageService: MsgService,
                 private activatedRoute: ActivatedRoute ) { }
@@ -32,7 +32,7 @@ export class EditAdminComponent implements OnInit {
       this.getAdminById(this.id);
     })
   }
-  
+
   getAdminById(id) {
     this.adminService.getAdminById(id)
     .subscribe(response => this.admin = response)
@@ -43,7 +43,7 @@ export class EditAdminComponent implements OnInit {
     admin.id = this.id;
     this.adminService.editAdmin(admin.id, admin)
     .subscribe(
-        response => this.router.navigate(['""']),
+        response => this.router.navigate(['/super_admin']),
         error => this.massageService.sendMessage('Une erreur s\'est produite. Veuillez réessayer'));
   }
 

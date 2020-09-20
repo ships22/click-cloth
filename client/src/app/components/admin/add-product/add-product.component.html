@@ -55,30 +55,6 @@
       maxlength="6"
     />
   </mat-form-field>
-  <mat-form-field class="slectField">
-    <mat-label>Taile</mat-label>
-    <mat-select ngModel #size="ngModel" name="size">
-      <mat-option *ngFor="let every of sizes" [value]="every.size">
-        {{ every.size }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="slectField">
-    <mat-label>Catégorie</mat-label>
-    <mat-select ngModel #category="ngModel" name="category">
-      <mat-option *ngFor="let category of categories" [value]="category.id">
-        {{ category.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="slectField">
-    <mat-label>Catégorie</mat-label>
-    <mat-select ngModel #category="ngModel" name="category">
-      <mat-option *ngFor="let category of categories" [value]="category.id">
-        {{ category.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
   <mat-form-field>
     <mat-label>Quantité</mat-label>
     <input
@@ -103,8 +79,24 @@
     />
   </mat-form-field>
   <mat-form-field>
+    <mat-label>Taile</mat-label>
+    <mat-select ngModel #size="ngModel" name="size" style="height: 60px;">
+      <mat-option *ngFor="let every of sizes" [value]="every.size">
+        {{ every.size }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="slectField">
+    <mat-label>Catégorie</mat-label>
+    <mat-select ngModel #category="ngModel" name="category" style="height: 60px;">
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>Image</mat-label>
-    <ngx-mat-file-input ngModel #image="ngModel" name="image" id="image">
+    <ngx-mat-file-input ngModel #image="ngModel" name="image" id="image" style="height: 60px;">
     </ngx-mat-file-input>
   </mat-form-field>
   <div class="btns">
