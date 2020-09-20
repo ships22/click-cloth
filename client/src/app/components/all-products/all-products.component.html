@@ -3,7 +3,7 @@
   <div class="product_container">
     <section class="filter">
       <div class="search_box">
-        <label for="cat">Category : </label>
+        <label for="cat">Categorie : </label>
         <select
           [(ngModel)]="selectedCat"
           (change)="filter(selectedCat)"
@@ -11,7 +11,7 @@
           id="selectedCat"
           required
         >
-          <option class="opt" value="">ALL CATEGORIES</option>
+          <option class="opt" value="">Toutes catégories</option>
           <option class="opt" *ngFor="let c of categories"
             >{{ c.name }}
           </option>
@@ -34,7 +34,7 @@
           <p class="description">{{ item.description }}</p>
           <p class="shop">{{ item.shop.name }} - {{ item.shop.address }}</p>
         </div>
-        <button class="btn_add_basket" (click)="selectProduct(item.productRef)">Ajouter au panier</button>
+        <button *ngIf="!(isAdmin$ | async) && !(isSuperAdmin$ | async)" class="btn_add_basket" (click)="selectProduct(item.productRef)">Ajouter au panier</button>
       </div>
       <pagination-controls style="float: left;"
         (pageChange)="p = $event"
