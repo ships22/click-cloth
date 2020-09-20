@@ -20,7 +20,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 	
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE Reservation As res SET res.status =:status WHERE res.reservation_id  =:reservation_id", nativeQuery = true)
+	@Query(value = "UPDATE reservation As res SET res.status =:status WHERE res.reservation_id  =:reservation_id", nativeQuery = true)
 	void updateStatus(@Param("status") String status , @Param("reservation_id") int reservation_id);
 	
 }
