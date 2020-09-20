@@ -63,6 +63,34 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <mat-form-field class="slectField">
+    <mat-label>Catégorie</mat-label>
+    <mat-select ngModel #category="ngModel" name="category">
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Quantité</mat-label>
+    <input
+      matInput
+      ngModel
+      #quantity="ngModel"
+      name="quantite"
+      type="number"
+      id="quantite"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field class="slectField">
+    <mat-label>Catégorie</mat-label>
+    <mat-select ngModel #category="ngModel" name="category">
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
   <mat-form-field>
     <mat-label>Quantité</mat-label>
     <input
