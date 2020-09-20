@@ -83,6 +83,7 @@ export class AddProductComponent implements OnInit {
       product.price != "" &&
       product.quantite != "" &&
       product.size != "" &&
+      product.category != "" &&
       product.productRef != ""
     ) {
       productData.append("product", JSON.stringify(this.newProduct));
@@ -124,7 +125,6 @@ export class AddProductComponent implements OnInit {
         );
     }
   }
-
   getAllCategory() {
     this.categoryService.getAllCategory()
     .subscribe(data => {

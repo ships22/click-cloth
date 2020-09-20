@@ -49,7 +49,7 @@ const routes: Routes = [
     path: "category", component: CategoryComponent,
     canActivate: [Guard],
     data: {
-      expectedRole: 'ROLE_ADMIN'
+      expectedRole: 'ROLE_SUPER_ADMIN'
     }
   },
   {
