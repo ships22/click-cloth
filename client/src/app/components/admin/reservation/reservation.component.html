@@ -59,11 +59,12 @@
           <mat-header-cell *matHeaderCellDef>Statut</mat-header-cell>
           <!-- <mat-label>Statut</mat-label> -->
           <mat-cell *matCellDef="let element">
-            <mat-select [ngModel]="element.status"  (selectionChange)="updateStatus($event.value, element)">
+            <mat-select *ngIf="element.status != 'confirmé'" [ngModel]="element.status"  (selectionChange)="updateStatus($event.value, element)">
               <mat-option *ngFor="let every of status" [value]="every.st">
                 {{ every.st }}
               </mat-option>
             </mat-select>
+            <span *ngIf="element.status == 'confirmé'">{{ element.status }}</span>
           </mat-cell>
         </ng-container>
         <ng-container matColumnDef="client">
