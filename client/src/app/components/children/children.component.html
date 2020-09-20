@@ -38,7 +38,7 @@
           <p class="description">{{ item.description }}</p>
           <p class="shop">{{ item.shop.name }} - {{ item.shop.address }}</p>
         </div>
-        <button class="btn_add_basket" (click)="selectProduct(item.productRef)">Ajouter au panier</button>
+        <button *ngIf="!(isAdmin$ | async) && !(isSuperAdmin$ | async)" class="btn_add_basket" (click)="selectProduct(item.productRef)">Ajouter au panier</button>
       </div>
       <pagination-controls
         style="float: left;"

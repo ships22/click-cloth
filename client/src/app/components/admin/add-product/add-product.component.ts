@@ -125,7 +125,6 @@ export class AddProductComponent implements OnInit {
         );
     }
   }
-
   getAllCategory() {
     this.categoryService.getAllCategory()
     .subscribe(data => {
