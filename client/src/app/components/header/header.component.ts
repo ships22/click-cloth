@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "src/app/services/authentication.service";
+import { CartService } from 'src/app/services/cart.service';
 import { RoleGuardService } from "src/app/services/role-guard.service";
-import { CartService } from "src/app/services/cart.service";
+
 
 @Component({
   selector: "app-header",
