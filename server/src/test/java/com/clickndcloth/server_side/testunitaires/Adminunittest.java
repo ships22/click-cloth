@@ -5,7 +5,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,9 +18,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.clickndcloth.server_side.application.AdminManager;
-import com.clickndcloth.server_side.dto.AdminDto;
 import com.clickndcloth.server_side.models.Admin;
-import com.clickndcloth.server_side.models.Product;
 import com.clickndcloth.server_side.services.AdminDomainServiceImpl;
 
 @ExtendWith(SpringExtension.class)
@@ -32,7 +30,6 @@ public class Adminunittest {
 	private AdminDomainServiceImpl adminService;
 	
 	// test get all admin -
-	@SuppressWarnings("unchecked")
 	@Test
 	void testGetAllAdmin() {
 		Admin admin = new Admin();
