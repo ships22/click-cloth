@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { MsgService } from "./msg.service";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 import { Storage } from '@ionic/storage';
@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage';
 })
 export class CartService {
   private base_url = environment.api_url;
-
+  private token;
   checkItemsSubject: BehaviorSubject<any> = new BehaviorSubject<any>(
     this.getAllItem()
   );
@@ -24,8 +24,10 @@ export class CartService {
     private messageService: MsgService,
     private router: Router,
     private localStorage: Storage
-  ) {}
-
+  ) {this.token = 'Bearer ' + this.getToken();}
+  async getToken() {
+    return await this.localStorage.get("token");
+  }
   async getAllItem() {
     // let contents = this.localStorage.get("c&cCart");
     let cart = await this.localStorage.get("c&cCart");
@@ -99,9 +101,10 @@ export class CartService {
   }
 
   reserve(reservation: any, product_id, shop_id): Observable<any> {
+    const headers = new HttpHeaders().set("Authorization", this.token );
     return this.httpClient.post<any>(
       this.base_url + "do_reservation/" + product_id + "/shop/" + shop_id,
-      reservation
+      reservation, {headers}
     );
   }
 }
