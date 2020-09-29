@@ -93,6 +93,7 @@ export class EditProductComponent implements OnInit {
     this.editedProduct.productRef = product.productRef;
     this.editedProduct.price = product.price;
     this.editedProduct.discount = product.discount;
+    this.editedProduct.categories = this.product.categories;
     product.shop_id = 1;
 
     // this.stock.size = product.size;

@@ -3,6 +3,7 @@ package com.clickndcloth.server_side.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +38,7 @@ public class CategoriesController {
 	
 	
 	@PostMapping(value = "/add_category", produces = "application/json")
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
 	public CategoriesDto addCategory(@RequestBody Categories category) {
 		return categoriesManager.addCategory(category);
 		
@@ -50,7 +51,7 @@ public class CategoriesController {
 	}
 	
 	@DeleteMapping(value = "/delete_category/{category_id}")
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
 	public String deleteCategory(@PathVariable ("category_id") Integer category_id) {
 		return categoriesManager.deleteCategory(category_id);
 	}

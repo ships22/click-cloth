@@ -86,14 +86,14 @@ public class ProductController {
 	}
 	
 	@GetMapping(value = "/productsByShop/{shop_id}")
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("permitAll()")
 	public List <ProductDto> getProductByShopId(@PathVariable ("shop_id") int shop_id) {
 		return productManager.getProductsByShop(shop_id);
 	}
 	
 
 	@RequestMapping(value = "/add_product/{shop_id}/cat/{cat_id}", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ProductDto addProduct(@RequestPart(required=true, value="image") MultipartFile image, @RequestPart(required=true, value="product") String product, 
 			@RequestPart(required=true, value="stock") String stock, @PathVariable(name="shop_id") Integer shop_id,
 			@PathVariable(name="cat_id") Integer cat_id) throws IOException {
@@ -119,7 +119,7 @@ public class ProductController {
 	}
 	
 	@PutMapping(value = "/update_product/{shop_id}")
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ProductDto updateProduct(@RequestPart(required=true, value="image") MultipartFile image, 
 			@RequestPart(required=true, value="product") String product,
 			@RequestPart(required=true, value="stock") String stock,
@@ -143,7 +143,7 @@ public class ProductController {
 	}
 	
 	@DeleteMapping(value = "/delete_product/{product_id}")
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String deleteCategory(@PathVariable ("product_id") Integer product_id) {
 		return productManager.deleteProduct(product_id);
 	}

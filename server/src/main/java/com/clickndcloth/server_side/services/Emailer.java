@@ -29,7 +29,7 @@ public class Emailer {
 		mail.setFrom("info@clickandcloth.online");
 		mail.setSubject("Password reset link");
 		String text = "Cliquez sur le lien pour réinitialiser votre mot de passe. Veuillez noter que le lien n'est valable que pour une heure.";
-		mail.setText(text + " Le lien : http://ec2-15-236-232-34.eu-west-3.compute.amazonaws.com:8080/reset_password?token=" + token);
+		mail.setText(text + " Le lien : http://localhost:8080/reset_password?token=" + token);
 		javaMailSender.send(mail);
 		return result;
 	}
@@ -38,8 +38,8 @@ public class Emailer {
 		boolean result = true;
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(user.getEmail());
-		//mail.setFrom("mhsfreelanc.ing@gmail.com");
-		mail.setFrom("info@clickandcloth.online");
+		mail.setFrom("mhsfreelanc.ing@gmail.com");
+		//mail.setFrom("info@clickandcloth.online");
 		mail.setSubject("Account info");
 		String text = "Le compte a été créé avec succès. Votre identifant est votre adresse mail et le mot de passe initial est : "
 				+ password + " . Veuillez modifier votre mot de passe initial s'il vous plait. Merci";
