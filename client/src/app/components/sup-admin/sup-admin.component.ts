@@ -75,7 +75,6 @@ export class SupAdminComponent implements OnInit {
   }
   categories() {
     this.router.navigate(["/category"]);
-
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
