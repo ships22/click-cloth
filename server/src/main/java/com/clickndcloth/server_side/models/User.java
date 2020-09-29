@@ -1,5 +1,6 @@
 package com.clickndcloth.server_side.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +26,7 @@ public class User {
 	private Integer client_id_client;
 	private Integer admin_id_admin;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id", unique = true, nullable = true)
 	private Client client;
 	

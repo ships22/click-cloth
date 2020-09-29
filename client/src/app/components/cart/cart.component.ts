@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.sass']
 })
 export class CartComponent implements OnInit {
-  
+
   cartItems: any[] = [];
   emptyCart: boolean = true;
   totalToPay: any = 0;
@@ -36,28 +36,28 @@ export class CartComponent implements OnInit {
         for (let i = 0; i < this.cartItems.length; i++) {
           this.cartItems[i].sub_total = this.cartItems[i].qty * this.cartItems[i].price;
           total += this.cartItems[i].sub_total;
-          
+
         }
         this.emptyCart = false;
         this.totalToPay = total;
-        
+
       }
     });
     console.log("test length :" , this.cartItems?.length);
-    
+
   }
   decrase(item) {
     this.cartService.decrease(item);
     if(this.cartItems.length == 0) {
       this.emptyCart = true;
-    } 
+    }
   }
   delete(item) {
     this.cartService.delete(item);
     if(this.cartItems.length == 0) {
       this.emptyCart = true;
     }
-    
+
   }
   reserve(item) {
     console.log('id to reserve :', item);
@@ -83,10 +83,10 @@ export class CartComponent implements OnInit {
         .subscribe(response => {
           console.log('item reserved :' , response);
           this.delete(item);
-          this.msgService.sendMessage("Merci pour votre réservation.");
-        })   
+          this.msgService.sendMessage("Merci de récupérer votre réservation dans 3 jours.");
+        })
       })
-     
+
     }
   }
 }

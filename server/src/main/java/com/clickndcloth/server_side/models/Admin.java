@@ -30,7 +30,7 @@ public class Admin {
 	private String email;
 	private String address;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "admin", cascade = CascadeType.ALL)
+	@OneToOne( mappedBy = "admin")
 	private User user;
 	
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
