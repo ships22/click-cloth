@@ -1,8 +1,11 @@
 package com.clickndcloth.server_side.config;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -12,6 +15,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import com.clickndcloth.server_side.services.security.MyUserDetailsService;
 
@@ -40,15 +46,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 		.authorizeRequests()
-//		.antMatchers("/clients").hasRole("ADMIN")
+		//.antMatchers("/api/admins").hasRole("SUPER_ADMIN")
 		.antMatchers("/api/authenticate",
 				"/reset_password",
 				"/api/reset_password", 
 				"/api/update_password",
 				"/api/shops",
+				"/api/shop_by_admin_id/**",
+				"/api/shop_by_id/**",
+				"/api/add_shop/**",
+				"/api/productsByShop/**",
 				"/api/test_get_mapping/**",
-				"/api/add_client/**", "/api/**"
+				"/api/add_client/**",
+				"/api/product/**",
+				"/api/products",
+				"/api/products_by_ref/**",
+				"/api/products_gents",
+				"/api/products_ladies",
+				"/api/products_children",
+				"/api/categories"
 				).permitAll()
+		.antMatchers(HttpMethod.OPTIONS, "/**")
+		.permitAll()
 		.anyRequest().authenticated()
 		.and().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -65,6 +84,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder;
 	}
-	
 
 }

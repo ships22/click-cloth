@@ -36,7 +36,8 @@
         </div>
         <button *ngIf="!(isAdmin$ | async) && !(isSuperAdmin$ | async)" class="btn_add_basket" (click)="selectProduct(item.productRef)">Ajouter au panier</button>
       </div>
-      <pagination-controls style="float: left;"
+      <section class="paging">
+        <pagination-controls style="float: left;"
         (pageChange)="p = $event"
         class="paginator"
         previousLabel="Précédent"
@@ -44,6 +45,9 @@
         autoHide="true"
         responsive="true"
       ></pagination-controls>
+      </section>
+
+
     </section>
   </div>
 <app-footer></app-footer>

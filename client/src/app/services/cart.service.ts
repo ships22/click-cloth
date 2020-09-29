@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { MsgService } from "./msg.service";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 
@@ -15,14 +15,16 @@ export class CartService {
     this.getAllItem()
   );
   numberOfItems$ = this.checkItemsSubject.asObservable();
-
+  private token;
   contents: any = [];
   KEY: string = "c&cCart";
   constructor(
     private httpClient: HttpClient,
     private messageService: MsgService,
     private router: Router
-  ) {}
+  ) {
+    this.token = 'Bearer ' + this.getToken();
+  }
 
   getAllItem() {
     let contents = localStorage.getItem("c&cCart");
@@ -30,6 +32,9 @@ export class CartService {
       return (this.contents = JSON.parse(contents));
     }
     return null;
+  }
+  getToken():string {
+    return localStorage.getItem('token');
   }
 
   addToCart(item, qty) {
@@ -85,9 +90,10 @@ export class CartService {
   }
 
   reserve(reservation: any, product_id, shop_id): Observable<any> {
+    const headers = new HttpHeaders().set("Authorization", this.token );
     return this.httpClient.post<any>(
       this.base_url + "do_reservation/" + product_id + "/shop/" + shop_id,
-      reservation
+      reservation, {headers}
     );
   }
 }
